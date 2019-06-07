@@ -1,15 +1,16 @@
 import { css } from "styled-components"
+import { getRems } from "../utils/helpers"
 
 const sizes = {
-  mobile: 600,
-  tablet: 960,
-  laptop: 1441,
+  mobile: getRems(600),
+  tablet: getRems(960),
+  laptop: getRems(1442),
 }
 
 // The only thing that will change above tablet will be the spacing
 const above = Object.keys(sizes).reduce((acc, size) => {
   acc[size] = (...args) => css`
-    @media (min-width: ${sizes[size]}px) {
+    @media (min-width: ${sizes[size]}rem) {
       ${css(...args)}
     }
   `
@@ -20,6 +21,9 @@ const darkTheme = {
   baseBackgroundColor: "#141414",
   mainBackgroundBorderColor: "#101010",
   mainBackgroundColor: "#19191C",
+  headlinePrimary: "#545885",
+  headlineSecondary: "#4D5D7E",
+  bodyText: "#B3B6E1",
 }
 
-export { above, darkTheme }
+export { above, darkTheme, sizes }

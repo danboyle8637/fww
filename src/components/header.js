@@ -1,18 +1,51 @@
+import React, { useContext, useState, useEffect } from "react"
 import { Link } from "gatsby"
-import React from "react"
+import styled from "styled-components"
 
-const Header = ({ siteTitle }) => (
-  <header>
-    <div>
-      <h1>
-        <Link to="/">{siteTitle}</Link>
-      </h1>
-    </div>
-  </header>
-)
+import { getRems } from "../utils/helpers"
+import FWWLogo from "../svgs/FWWLogo"
+import MenuChicklet from "../components/Website/Nav/MenuChicklet"
+import ScreenWidthContext from "../context/ScreenWidthContext"
+import { above } from "../styles/Theme"
 
-Header.defaultProps = {
-  siteTitle: `Fit Women's Weekly`,
+const Header = () => {
+  const device = useContext(ScreenWidthContext)
+  const [showLogo, setShowLogo] = useState(true)
+
+  useEffect(() => {
+    if (device === "mobile") {
+      setShowLogo(false)
+    }
+  }, [device])
+
+  return (
+    <HeaderBar maxWidth={getRems(1200)}>
+      <Link to={"/"}>{showLogo ? <Logo /> : null}</Link>
+      <MenuChicklet />
+    </HeaderBar>
+  )
 }
 
 export default Header
+
+const HeaderBar = styled.header`
+  margin: 0;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: ${props => `${props.maxWidth}rem`};
+`
+
+const Logo = styled(FWWLogo)`
+  width: 4rem;
+  ${above.mobile`
+    width: 4.5rem;
+  `}
+  ${above.tablet`
+    width: 5rem;
+  `}
+`
