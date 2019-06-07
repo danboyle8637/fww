@@ -24,6 +24,11 @@ const darkTheme = {
   headlinePrimary: "#545885",
   headlineSecondary: "#4D5D7E",
   bodyText: "#B3B6E1",
+  whiteText: "#f8f8f8",
+  primaryAccent: "#5AFDF2",
+  secondaryAccent: "#8B53F6",
+  tertiaryAccent: "#B44CFF",
+  footerBackground: "#26243E",
 }
 
 export { above, darkTheme, sizes }

@@ -38,6 +38,7 @@ const HeaderBar = styled.header`
   align-items: center;
   width: 100%;
   max-width: ${props => `${props.maxWidth}rem`};
+  z-index: 9999;
 `
 
 const Logo = styled(FWWLogo)`

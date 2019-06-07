@@ -31,9 +31,9 @@ class MainMenuIcon extends Component {
           strokeMiterlimit="10"
           strokeWidth="34"
         >
-          <path id="top-menu-bar" d="M17 30.18h248" />
-          <path id="middle-menu-bar" d="M104.5 102.74h161" />
-          <path id="bottom-menu-bar" d="M55.5 175.3h210" />
+          <path id="top-menu-bar" d="M17 17.18h248" />
+          <path id="middle-menu-bar" d="M104.5 104.74h161" />
+          <path id="bottom-menu-bar" d="M55.5 192.3h210" />
         </g>
       </svg>
     )

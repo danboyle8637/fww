@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "fit-womens-weekly",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A workout and nutrition app for women.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Never Back Down",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.8.4",

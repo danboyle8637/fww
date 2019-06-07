@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { flex } from "../styles/Containers"
 
 const SectionGrid = styled.section`
   position: relative;
@@ -10,12 +11,12 @@ const SectionGrid = styled.section`
 const BackgroundAsset = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  width: ${props => props.width};
 `
 
 const ContentWrapper = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  ${flex}
   z-index: 1;
 `
 
