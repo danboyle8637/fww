@@ -3,12 +3,14 @@ import styled from "styled-components"
 
 import FWWLogo from "../../../svgs/FWWLogo"
 import FooterNavMenu from "./FooterNavMenu"
+import SocialIcons from "./SocialIcons"
 
 const FooterSection = () => {
   return (
     <FooterContainer>
       <Logo />
       <FooterNavMenu />
+      <SocialIcons />
     </FooterContainer>
   )
 }

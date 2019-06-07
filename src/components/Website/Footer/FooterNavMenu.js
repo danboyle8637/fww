@@ -37,7 +37,7 @@ const FooterNavMenu = () => {
 export default FooterNavMenu
 
 const MenuGrid = styled.div`
-  margin-top: 30px;
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(6, 1fr);
