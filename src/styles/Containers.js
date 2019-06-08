@@ -110,12 +110,3 @@ export {
   NodeContainer,
   flex,
 }
-
-// padding-left: ${props => {
-//   if (props.fullWidth) return 0
-//   return "18rem"
-// }};
-// padding-right: ${props => {
-//   if (props.fullWidth) return 0
-//   return "18rem"
-// }};

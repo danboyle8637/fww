@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
@@ -11,13 +11,37 @@ import {
 import { NodeContainer } from "../../../styles/Containers"
 import Headline from "./Headline"
 import FWWLogo from "../../../svgs/FWWLogo"
+import siteConfig from "../../../utils/siteConfig"
+import ScreenWidthContext from "../../../context/ScreenWidthContext"
 
 const HeadlineSection = () => {
+  const device = useContext(ScreenWidthContext)
+
   const query = graphql`
     query {
-      file(name: { eq: "kindal-600x1375" }) {
+      mobile: file(
+        sourceInstanceName: { eq: "homeimages" }
+        name: { regex: "/mobile/" }
+      ) {
         childImageSharp {
-          fluid(maxWidth: 600, maxHeight: 1375, quality: 90) {
+          fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      tablet: file(
+        sourceInstanceName: { eq: "homeimages" }
+        name: { regex: "/tablet/" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      desktop: file(name: { eq: "desktop-1440x800" }) {
+        childImageSharp {
+          fluid(maxWidth: 1440, maxHeight: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -25,19 +49,14 @@ const HeadlineSection = () => {
     }
   `
 
-  const backgroundImage = useStaticQuery(query)
-  const fluid = backgroundImage.file.childImageSharp.fluid
+  const image = useStaticQuery(query)
+  const mobile = image.mobile.childImageSharp.fluid
+  const tablet = image.tablet.childImageSharp.fluid
+  const desktop = image.desktop.childImageSharp.fluid
 
-  const homeLinks = [
-    { id: 1, path: "/", name: "what we do" },
-    { id: 2, path: "/", name: "who we are" },
-    { id: 3, path: "/", name: "the app" },
-    { id: 4, path: "/", name: "programs" },
-    { id: 5, path: "/", name: "follow me" },
-    { id: 6, path: "/", name: "blog" },
-  ]
+  console.log(device)
 
-  const homeButtons = homeLinks.map(button => {
+  const homeButtons = siteConfig.home.homeLinks.map(button => {
     const id = button.id
     const path = button.path
     const name = button.name
@@ -51,7 +70,7 @@ const HeadlineSection = () => {
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={fluid} />
+        <Image fluid={desktop} />
       </BackgroundAsset>
       <ContentWrapper column>
         <HeadlineWrapper>

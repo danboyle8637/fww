@@ -29,6 +29,7 @@ const darkTheme = {
   secondaryAccent: "#8B53F6",
   tertiaryAccent: "#B44CFF",
   footerBackground: "#26243E",
+  footerAddressText: "#19191C",
 }
 
 export { above, darkTheme, sizes }

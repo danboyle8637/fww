@@ -4,6 +4,7 @@ import styled from "styled-components"
 import FWWLogo from "../../../svgs/FWWLogo"
 import FooterNavMenu from "./FooterNavMenu"
 import SocialIcons from "./SocialIcons"
+import FooterAddress from "./FooterAddress"
 
 const FooterSection = () => {
   return (
@@ -11,6 +12,7 @@ const FooterSection = () => {
       <Logo />
       <FooterNavMenu />
       <SocialIcons />
+      <FooterAddress />
     </FooterContainer>
   )
 }
@@ -19,7 +21,7 @@ export default FooterSection
 
 const FooterContainer = styled.footer`
   margin: 0;
-  padding: 40px 16px 80px 16px;
+  padding: 40px 16px 40px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
