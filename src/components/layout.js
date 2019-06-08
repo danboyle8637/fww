@@ -31,7 +31,7 @@ const Main = styled.main`
   width: 100%;
   max-width: 1440px;
   background-color: ${props => props.theme.mainBackgroundColor};
-  ${above.laptop`
+  ${above.ultraWide`
     border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
     border-radius: 6px;
   `}

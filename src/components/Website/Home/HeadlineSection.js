@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
@@ -6,43 +6,48 @@ import Image from "gatsby-image"
 import {
   SectionGrid,
   BackgroundAsset,
-  ContentWrapper,
+  HeadlineContainer,
 } from "../../../styles/GridContainer"
-import { NodeContainer } from "../../../styles/Containers"
+import { ElementContainer } from "../../../styles/Containers"
 import Headline from "./Headline"
 import FWWLogo from "../../../svgs/FWWLogo"
 import siteConfig from "../../../utils/siteConfig"
-import ScreenWidthContext from "../../../context/ScreenWidthContext"
+import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage"
+import { above } from "../../../styles/Theme"
 
 const HeadlineSection = () => {
-  const device = useContext(ScreenWidthContext)
-
   const query = graphql`
     query {
       mobile: file(
-        sourceInstanceName: { eq: "homeimages" }
+        sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/mobile/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
+            aspectRatio
           }
         }
       }
       tablet: file(
-        sourceInstanceName: { eq: "homeimages" }
+        sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/tablet/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
+            aspectRatio
           }
         }
       }
-      desktop: file(name: { eq: "desktop-1440x800" }) {
+      desktop: file(
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/desktop/" }
+      ) {
         childImageSharp {
-          fluid(maxWidth: 1440, maxHeight: 800, quality: 90) {
+          fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
+            aspectRatio
           }
         }
       }
@@ -50,11 +55,12 @@ const HeadlineSection = () => {
   `
 
   const image = useStaticQuery(query)
-  const mobile = image.mobile.childImageSharp.fluid
-  const tablet = image.tablet.childImageSharp.fluid
-  const desktop = image.desktop.childImageSharp.fluid
+  const mobile = image.mobile
+  const tablet = image.tablet
+  const desktop = image.desktop
 
-  console.log(device)
+  // make sure you pass the whole data object
+  const background = useRenderBackgroundImage(mobile, tablet, desktop)
 
   const homeButtons = siteConfig.home.homeLinks.map(button => {
     const id = button.id
@@ -70,17 +76,17 @@ const HeadlineSection = () => {
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={desktop} />
+        <Image fluid={background} />
       </BackgroundAsset>
-      <ContentWrapper column>
+      <HeadlineContainer column>
         <HeadlineWrapper>
           <Logo />
           <Headline />
         </HeadlineWrapper>
-        <NodeContainer column setMobileMarginTop={40}>
+        <ElementContainer column setMobileMarginTop={40} moveTabletX={10}>
           {homeButtons}
-        </NodeContainer>
-      </ContentWrapper>
+        </ElementContainer>
+      </HeadlineContainer>
     </SectionGrid>
   )
 }
@@ -92,7 +98,10 @@ const Logo = styled(FWWLogo)`
 `
 
 const HeadlineWrapper = styled.div`
-  margin: 30px 0 0 20px;
+  margin-left: 20px;
+  ${above.mobile`
+    margin-left: 0;
+  `}
 `
 
 const HomeButton = styled(Link)`
@@ -110,9 +119,16 @@ const HomeButton = styled(Link)`
   transform: translateX(-40px);
   transition: background-color, border, transform, 150ms ease-out;
   cursor: pointer;
-  &:hover {
-    background: rgba(139, 83, 246, 0.3);
-    border: 2px solid ${props => props.theme.secondaryAccent};
-    transform: translateX(-20px);
-  }
+  ${above.mobile`
+    padding: 8px;
+    text-align: center;
+    transform: translateX(0);
+  `}
+  ${above.tablet`
+    &:hover {
+      background: rgba(139, 83, 246, 0.3);
+      border: 2px solid ${props => props.theme.secondaryAccent};
+      transform: translateX(20px);
+    }
+  `}
 `

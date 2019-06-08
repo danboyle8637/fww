@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { above } from "../styles/Theme"
 
 const baseHeadline = css`
   margin: 0;
@@ -12,18 +13,21 @@ const baseHeadline = css`
   font-weight: 800;
   line-height: 1.4;
   text-transform: ${props => (props.upper ? "uppercase" : "none")};
+  ${above.mobile`
+    font-size: 32px;
+  `}
 `
 
-const Headline1 = styled.h1`
+const Header1 = styled.h1`
   ${baseHeadline}
 `
 
-const Headline2 = styled.h2`
+const Header2 = styled.h2`
   ${baseHeadline}
 `
 
-const Headline3 = styled.h3`
+const Header3 = styled.h3`
   ${baseHeadline}
 `
 
-export { Headline1, Headline2, Headline3 }
+export { Header1, Header2, Header3 }

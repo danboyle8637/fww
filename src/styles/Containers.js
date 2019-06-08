@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { above } from "./Theme"
+import { above, headlineWidths } from "./Theme"
 
 /******  ******/
 
@@ -24,6 +24,18 @@ const setWidth = css`
   `}
   ${above.tablet`
     width: ${props => `${props.setLaptopWidth}px` || "100%"};
+  `}
+`
+
+const moveHeadline = x => `translateX(${x}px)`
+
+const moveX = css`
+  transform: ${props => moveHeadline(props.moveMobileX)};
+  ${above.mobile`
+    transform: ${props => moveHeadline(props.moveTabletX)};
+  `}
+  ${above.tablet`
+    transform: ${props => moveHeadline(props.moveLaptopX)};
   `}
 `
 
@@ -64,7 +76,7 @@ const flex = css`
 
 /******  ******/
 
-const ContentContainer = styled.section`
+const SectionContainer = styled.section`
   margin-top: ${props => props.setMarginTop || "5rem"};
   margin-bottom: ${props => props.setMarginBottom || "5rem"};
   margin-left: 0;
@@ -75,7 +87,7 @@ const ContentContainer = styled.section`
   align-items: center;
 `
 
-const ElementContainer = styled.div`
+const ContentContainer = styled.div`
   padding-left: ${props => {
     if (props.fullWidth) return 0
     return "1rem"
@@ -86,14 +98,25 @@ const ElementContainer = styled.div`
   }};
   width: 100%;
   ${above.tablet`
-    max-width: 54rem;
+    max-width: ${headlineWidths.laptop};
   `}
 `
 
-const NodeContainer = styled.div`
+const HeadlineContainer = styled.div`
+  width: ${headlineWidths.mobile};
+  ${above.mobile`
+    max-width: ${headlineWidths.tablet};
+  `}
+  ${above.tablet`
+    max-width: ${headlineWidths.laptop};
+  `}
+`
+
+const ElementContainer = styled.div`
   ${setMarginTop}
   ${flex}
   ${setWidth}
+  ${moveX}
 `
 
 const AppContentContainer = styled.div`
@@ -107,6 +130,7 @@ export {
   AppContentContainer,
   ContentContainer,
   ElementContainer,
-  NodeContainer,
+  SectionContainer,
   flex,
+  HeadlineContainer,
 }

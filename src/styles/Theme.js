@@ -4,7 +4,14 @@ import { getRems } from "../utils/helpers"
 const sizes = {
   mobile: getRems(600),
   tablet: getRems(960),
-  laptop: getRems(1442),
+  laptop: getRems(1440),
+  ultraWide: getRems(1460),
+}
+
+const headlineWidths = {
+  mobile: "100%",
+  tablet: "43rem",
+  laptop: "54rem",
 }
 
 // The only thing that will change above tablet will be the spacing
@@ -32,4 +39,4 @@ const darkTheme = {
   footerAddressText: "#19191C",
 }
 
-export { above, darkTheme, sizes }
+export { above, darkTheme, sizes, headlineWidths }

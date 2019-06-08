@@ -1,16 +1,21 @@
 import React from "react"
 
-import { Headline1 } from "../../../styles/Headlines"
-import { NodeContainer } from "../../../styles/Containers"
+import { Header1 } from "../../../styles/Headlines"
+import { ElementContainer } from "../../../styles/Containers"
 
 const Headline = () => {
   return (
-    <NodeContainer setMobileWidth={220}>
-      <Headline1 primary small>
+    <ElementContainer
+      setMobileWidth={220}
+      setTabletWidth={390}
+      setLaptopWidth={600}
+      moveMobileX={10}
+    >
+      <Header1 primary small>
         A fresh take on intense workouts and healthy meal planning for modern
         day, busy women.
-      </Headline1>
-    </NodeContainer>
+      </Header1>
+    </ElementContainer>
   )
 }
 

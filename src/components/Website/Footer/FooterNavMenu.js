@@ -6,19 +6,12 @@ import siteConfig from "../../../utils/siteConfig"
 import { above } from "../../../styles/Theme"
 
 const FooterNavMenu = () => {
-  const links = siteConfig.footerLinks.map(link => {
-    const id = link.id
-    const path = link.path
-    const name = link.name
-
-    return (
-      <FooterLink key={id} to={path}>
-        {name}
-      </FooterLink>
-    )
-  })
-
-  return <MenuGrid>{links}</MenuGrid>
+  return (
+    <MenuGrid>
+      <Group position={"start"}>links</Group>
+      <Group position={"end"}>links</Group>
+    </MenuGrid>
+  )
 }
 
 export default FooterNavMenu
@@ -30,6 +23,9 @@ const MenuGrid = styled.div`
   column-gap: 50px;
   row-gap: 10px;
   cursor: pointer;
+  ${above.mobile`
+    column-gap: 80px;
+  `}
   ${above.tablet`
     margin-top: 60px;
     grid-template-columns: repeat(4, 1fr);
@@ -39,8 +35,16 @@ const MenuGrid = styled.div`
   `}
 `
 
-const FooterLink = styled(Link)`
+const Group = styled.div`
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: ${props => props.position};
+`
+
+const FooterLink = styled(Link)`
+  margin: 0 0 12px 0;
   padding: 0;
   font-size: 16px;
   text-transform: capitalize;

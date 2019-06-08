@@ -10,7 +10,7 @@ const ScreenWidthStore = ({ children }) => {
 
   useEffect(() => {
     const width = getRems(window.innerWidth)
-    const { mobile, laptop } = sizes
+    const { mobile, tablet, laptop } = sizes
 
     if (width < mobile) {
       setScreenWidth("mobile")
@@ -20,8 +20,8 @@ const ScreenWidthStore = ({ children }) => {
       setScreenWidth("tablet")
     }
 
-    if (width > laptop) {
-      setScreenWidth("ultraWide")
+    if (width > tablet) {
+      setScreenWidth("laptop")
     }
   }, [])
 
