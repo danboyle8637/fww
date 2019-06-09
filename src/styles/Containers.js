@@ -88,6 +88,9 @@ const SectionContainer = styled.section`
 `
 
 const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-left: ${props => {
     if (props.fullWidth) return 0
     return "1rem"

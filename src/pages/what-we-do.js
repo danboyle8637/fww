@@ -1,13 +1,13 @@
 import React from "react"
 
 import HeadlineSection from "../components/Website/WhatWeDo/HeadlineSection/HeadlineSection"
-import IgniteImage from "../components/Website/WhatWeDo/Reason2/IgniteImage"
+import TextMessageSection from "../components/Website/WhatWeDo/TextMessageSection/TextMessageSection"
 
 const WhatWeDo = () => {
   return (
     <>
       <HeadlineSection />
-      <IgniteImage />
+      <TextMessageSection />
     </>
   )
 }

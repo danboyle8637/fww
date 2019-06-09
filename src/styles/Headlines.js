@@ -5,16 +5,37 @@ const baseHeadline = css`
   margin: 0;
   padding: 0;
   font-size: ${props =>
-    props.large ? "52px" : props.medium ? "32px" : props.small && "22px"};
+    props.mobileLarge
+      ? "52px"
+      : props.mobileMedium
+      ? "32px"
+      : props.mobileSmall && "22px"};
   color: ${props =>
     props.primary
       ? props.theme.headlinePrimary
-      : props.secondary && props.theme.headlineSecondary};
+      : props.secondary
+      ? props.theme.headlineSecondary
+      : props.tertiary && props.theme.bodyText};
   font-weight: 800;
-  line-height: 1.4;
+  line-height: ${props => props.setMLineHeight || 1.0};
   text-transform: ${props => (props.upper ? "uppercase" : "none")};
   ${above.mobile`
-    font-size: 32px;
+    font-size: ${props =>
+      props.tabletLarge
+        ? "52px"
+        : props.tabletMedium
+        ? "32px"
+        : props.tabletSmall && "22px"};
+    line-height: ${props => props.setTLineHeight || 1.0};
+  `}
+  ${above.tablet`
+    font-size: ${props =>
+      props.laptopLarge
+        ? "52px"
+        : props.laptopMedium
+        ? "32px"
+        : props.laptopSmall && "22px"};
+    line-height: ${props => props.setLLineHeight || 1.0};
   `}
 `
 

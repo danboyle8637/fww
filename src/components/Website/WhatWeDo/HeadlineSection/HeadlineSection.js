@@ -5,7 +5,7 @@ import Image from "gatsby-image"
 import {
   SectionGrid,
   BackgroundAsset,
-  HeadlineContainer,
+  ContentContainer,
 } from "../../../../styles/GridContainer"
 import Headline1 from "./Headline1"
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage"
@@ -35,9 +35,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      desktop: file(
+      laptop: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        name: { regex: "/900/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -60,9 +60,9 @@ const HeadlineSection = () => {
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <HeadlineContainer>
+      <ContentContainer>
         <Headline1 />
-      </HeadlineContainer>
+      </ContentContainer>
     </SectionGrid>
   )
 }
