@@ -4,8 +4,12 @@ import styled from "styled-components"
 import NavArrow from "../../svgs/NavigationArrow"
 
 const BackArrow = () => {
+  const handleBack = () => {
+    console.log("Back button clicked")
+  }
+
   return (
-    <CircleBackground>
+    <CircleBackground onClick={handleBack}>
       <Arrow />
     </CircleBackground>
   )
@@ -22,10 +26,12 @@ const CircleBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(43, 44, 58, 0.6);
+  background: rgba(16, 16, 16, 0.6);
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
+  z-index: 10000;
+  cursor: pointer;
 `
 
 const Arrow = styled(NavArrow)`

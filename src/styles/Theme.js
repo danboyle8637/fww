@@ -25,8 +25,11 @@ const above = Object.keys(sizes).reduce((acc, size) => {
 }, {})
 
 const darkTheme = {
+  // This is the second darkest background color
   baseBackgroundColor: "#141414",
+  // This is the darkest. The main page border
   mainBackgroundBorderColor: "#101010",
+  // This is the main background color
   mainBackgroundColor: "#19191C",
   accentBackgroundColor: "#2B2C3A",
   headlinePrimary: "#545885",

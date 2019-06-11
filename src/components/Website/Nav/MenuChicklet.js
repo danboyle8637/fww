@@ -5,8 +5,12 @@ import MainMenuIcon from "../../../svgs/MainMenuIcon"
 import "./Menu.css"
 
 const MenuChicklet = () => {
+  const handleToggleMenu = () => {
+    console.log("Menu Icon Clicked")
+  }
+
   return (
-    <Chicklet>
+    <Chicklet onClick={handleToggleMenu}>
       <MenuIcon />
     </Chicklet>
   )
