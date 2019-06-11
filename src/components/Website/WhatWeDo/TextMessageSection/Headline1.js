@@ -39,10 +39,12 @@ export default Headline1
 
 const HeadlineContainer = styled.div`
   margin: 80px 0 0 0;
+  align-self: start;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   ${above.mobile`
+    align-self: center;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
     column-gap: 10px;

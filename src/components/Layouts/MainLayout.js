@@ -18,4 +18,5 @@ const Main = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  overflow: hidden;
 `

@@ -24,19 +24,30 @@ const Headline2 = () => {
         setTLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        We take care of it so you can
+        Will take care of it so you can
       </Header3>
       <BaseLineWrapper>
-        <Header3 primary mobileLarge upper>
+        <Header3
+          primary
+          mobileLarge
+          upper
+          setTLineHeight={1.2}
+          setLLineHeight={1.2}
+        >
           Focus
         </Header3>
         {showHeadline ? null : (
-          <Header3 tertiary mobileMedium>
+          <Header3 tertiary mobileMedium setMLineHeight={1.2}>
             on
           </Header3>
         )}
         {showHeadline ? (
-          <Header3 tertiary mobileMedium>
+          <Header3
+            tertiary
+            mobileMedium
+            setTLineHeight={1.5}
+            setLLineHeight={1.5}
+          >
             on everything else
           </Header3>
         ) : null}
@@ -53,10 +64,22 @@ const Headline2 = () => {
         </Header3>
       )}
       <BaseLineWrapper>
-        <Header3 tertiary mobileMedium>
+        <Header3
+          tertiary
+          mobileMedium
+          setMLineHeight={1.2}
+          setTLineHeight={1.5}
+          setLLineHeight={1.5}
+        >
           that
         </Header3>
-        <Header3 primary mobileLarge upper>
+        <Header3
+          primary
+          mobileLarge
+          upper
+          setTLineHeight={1.2}
+          setLLineHeight={1.2}
+        >
           Matters
         </Header3>
       </BaseLineWrapper>

@@ -15,6 +15,7 @@ const MenuChicklet = () => {
 export default MenuChicklet
 
 const Chicklet = styled.div`
+  margin-top: 5px;
   background: transparent;
 `
 

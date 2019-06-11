@@ -18,12 +18,12 @@ const setMarginTop = css`
 `
 
 const setWidth = css`
-  width: ${props => `${props.setMobileWidth}px` || "100%"};
+  width: ${props => props.setMobileWidth || "100%"};
   ${above.mobile`
-    width: ${props => `${props.setTabletWidth}px` || "100%"};
+    width: ${props => props.setTabletWidth || "100%"};
   `}
   ${above.tablet`
-    width: ${props => `${props.setLaptopWidth}px` || "100%"};
+    width: ${props => props.setLaptopWidth || "100%"};
   `}
 `
 

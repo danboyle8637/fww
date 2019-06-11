@@ -6,9 +6,9 @@ import { ElementContainer } from "../../../styles/Containers"
 const Headline = () => {
   return (
     <ElementContainer
-      setMobileWidth={220}
-      setTabletWidth={390}
-      setLaptopWidth={600}
+      setMobileWidth={"220px"}
+      setTabletWidth={"390px"}
+      setLaptopWidth={"600px"}
       setTabletMarginTop={20}
       setLaptopMarginTop={20}
       moveMobileX={10}

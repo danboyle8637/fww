@@ -28,6 +28,7 @@ const darkTheme = {
   baseBackgroundColor: "#141414",
   mainBackgroundBorderColor: "#101010",
   mainBackgroundColor: "#19191C",
+  accentBackgroundColor: "#2B2C3A",
   headlinePrimary: "#545885",
   headlineSecondary: "#4D5D7E",
   bodyText: "#B3B6E1",

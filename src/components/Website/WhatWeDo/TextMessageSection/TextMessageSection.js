@@ -66,7 +66,7 @@ const TextMessageContainer = styled.div`
 `
 
 const Logo = styled(FWWLogo)`
-  margin: 30px 0;
+  margin: 40px 0;
   width: 180px;
   align-self: center;
 `
