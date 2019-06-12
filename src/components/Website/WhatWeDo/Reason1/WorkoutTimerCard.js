@@ -3,18 +3,22 @@ import styled from "styled-components";
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header3 } from "../../../../styles/Headlines";
-import { BodyText } from "../../../../styles/BodyText";
+import { SetBodyText } from "../../../../styles/BodyText";
 import WorkoutTimerIcon from "../../../../svgs/WorkoutTimerIcon";
+import { above } from "../../../../styles/Theme";
 
 const WorkoutTimerCard = ({ timerId, headline, body }) => {
   return (
     <TimerContainer>
       <WorkoutTimer timerId={timerId} />
       <ElementContainer>
-        <Header3 secondary mobileSmall>
+        <Header3 secondary mobileSmall setMLineHeight={1.4}>
           {headline}
         </Header3>
-        <BodyText setMobileMarginTop={12}>{body}</BodyText>
+        <SetBodyText
+          setMobileMarginTop={12}
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
       </ElementContainer>
     </TimerContainer>
   );
@@ -25,11 +29,20 @@ export default WorkoutTimerCard;
 const TimerContainer = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 20px;
+  column-gap: 20px;
   justify-items: start;
   align-items: start;
+  ${above.mobile`
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 0px;
+    row-gap: 20px;
+  `}
 `;
 
 const WorkoutTimer = styled(WorkoutTimerIcon)`
   width: 80px;
+  ${above.mobile`
+    justify-self: center;
+  `}
 `;

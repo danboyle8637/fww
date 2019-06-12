@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import Headline2 from "./Headlines/Headline2";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import DividerMarker1 from "../../../../svgs/DividerMarker1";
+import DividerMarker2 from "../../../../svgs/DividerMarker2";
 import { above } from "../../../../styles/Theme";
 
 const DesignStatementSection = () => {
@@ -60,12 +62,14 @@ const DesignStatementSection = () => {
 
   return (
     <SectionGrid>
+      <DividerTop />
       <BackgroundAsset>
         <Image fluid={backgroundImage} />
       </BackgroundAsset>
       <HeadlineWrapper>
         <Headline2 />
       </HeadlineWrapper>
+      <DividerBottom />
     </SectionGrid>
   );
 };
@@ -85,8 +89,33 @@ const HeadlineWrapper = styled.div`
     padding: 0 0 0 50px;
   `}
   ${above.tablet`
-    padding: 0;
+    padding: 0 16px;
     justify-self: center;
     width: 54rem;
+  `}
+`;
+
+const DividerTop = styled(DividerMarker1)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  transform: translateY(-30px);
+  z-index: 2;
+  ${above.mobile`
+    width: 100%;
+  `}
+`;
+
+const DividerBottom = styled(DividerMarker2)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  transform: translateY(30px) rotate(180deg);
+  z-index: 2;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(3px) rotate(180deg);
   `}
 `;

@@ -17,10 +17,10 @@ const BodyText = styled.p`
 `;
 
 const SetBodyText = styled.div`
+  ${setMarginTop}
   width: 100%;
   & p {
     ${sharedBodyText}
-    ${setMarginTop}
   }
   & ul {
     list-style: none;

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link } from "gatsby"
+import styled from "styled-components";
+import { Link } from "gatsby";
 
 const InnerButton = styled(Link)`
   margin: 0;
@@ -13,7 +13,8 @@ const InnerButton = styled(Link)`
   text-transform: uppercase;
   font-weight: 800;
   width: 100%;
+  max-width: 600px;
   cursor: pointer;
-`
+`;
 
-export { InnerButton }
+export { InnerButton };
