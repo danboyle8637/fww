@@ -1,15 +1,17 @@
-import React from "react"
+import React from "react";
 
-import LeadSection from "../components/Website/WhatWeDo/Reason1/LeadSection"
-import BackArrow from "../components/Shared/BackArrow"
+import LeadSection from "../components/Website/WhatWeDo/Reason1/LeadSection";
+import DesignStatementSection from "../components/Website/WhatWeDo/Reason1/DesignStatementSection";
+import TimerSection from "../components/Website/WhatWeDo/Reason1/TimerSection";
 
 const WorkoutsForBusyWomen = () => {
   return (
     <>
-      <BackArrow />
       <LeadSection />
+      <DesignStatementSection />
+      <TimerSection />
     </>
-  )
-}
+  );
+};
 
-export default WorkoutsForBusyWomen
+export default WorkoutsForBusyWomen;

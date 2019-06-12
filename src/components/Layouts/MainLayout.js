@@ -22,6 +22,6 @@ const Main = styled.div`
   width: 100vw;
   overflow: hidden;
   ${above.ultraWide`
-    margin: 80px 0 0 0;
+    margin: 78px 0 0 0;
   `}
 `

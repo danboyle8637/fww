@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
+import { setMarginTop } from "./Reusables";
 
 const sharedBodyText = css`
   margin: 0 0 20px 0;
@@ -8,16 +9,18 @@ const sharedBodyText = css`
   &:last-child {
     margin-bottom: 0;
   }
-`
+`;
 
 const BodyText = styled.p`
   ${sharedBodyText}
-`
+  ${setMarginTop}
+`;
 
 const SetBodyText = styled.div`
   width: 100%;
   & p {
     ${sharedBodyText}
+    ${setMarginTop}
   }
   & ul {
     list-style: none;
@@ -44,6 +47,6 @@ const SetBodyText = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
-`
+`;
 
-export { BodyText, SetBodyText }
+export { BodyText, SetBodyText };

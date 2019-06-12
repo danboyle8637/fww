@@ -9,7 +9,13 @@ const Headline2 = () => {
       <Header3 secondary mobileMedium>
         A New Workout
       </Header3>
-      <Header3 secondary mobileMedium setMLineHeight={1.4}>
+      <Header3
+        secondary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setDLineHeight={1.4}
+      >
         design for
       </Header3>
       <Header3 primary upper mobileLarge>
