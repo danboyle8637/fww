@@ -4,12 +4,11 @@ import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
-import IgniteLogo from "../../../../svgs/IgniteLogo";
-import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
-import IgniteCopy from "./Copy/IgniteCopy";
+import BBCLogo from "../../../../svgs/BodyBurnChallengesLogo";
+import BBCCopy from "./Copy/BBCCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 
-const IgniteSection = () => {
+const BBCSection = () => {
   const query = graphql`
     query {
       mobile: file(
@@ -57,35 +56,25 @@ const IgniteSection = () => {
 
   return (
     <SectionGrid>
-      <Divider />
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />
-        <IgniteCopy />
+        <BBCCopy />
       </ContentWrapper>
     </SectionGrid>
   );
 };
 
-export default IgniteSection;
+export default BBCSection;
 
-const Logo = styled(IgniteLogo)`
-  width: 220px;
-`;
-
-const Divider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  z-index: 1;
-  transform: translateY(-45px);
+const Logo = styled(BBCLogo)`
+  width: 320px;
 `;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 16px;
+  margin: 80px 0 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;

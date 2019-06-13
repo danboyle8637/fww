@@ -4,12 +4,12 @@ import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
-import IgniteLogo from "../../../../svgs/IgniteLogo";
+import StrongLogo from "../../../../svgs/StrongLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
-import IgniteCopy from "./Copy/IgniteCopy";
+import StrongCopy from "./Copy/StrongCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 
-const IgniteSection = () => {
+const StrongSection = () => {
   const query = graphql`
     query {
       mobile: file(
@@ -63,25 +63,25 @@ const IgniteSection = () => {
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />
-        <IgniteCopy />
+        <StrongCopy />
       </ContentWrapper>
     </SectionGrid>
   );
 };
 
-export default IgniteSection;
+export default StrongSection;
 
-const Logo = styled(IgniteLogo)`
-  width: 220px;
+const Logo = styled(StrongLogo)`
+  width: 320px;
 `;
 
 const Divider = styled(DividerMarkerTriangle)`
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 200%;
   z-index: 1;
-  transform: translateY(-45px);
+  transform: translate(-60px, 15px) rotate(180deg);
 `;
 
 const ContentWrapper = styled.div`
