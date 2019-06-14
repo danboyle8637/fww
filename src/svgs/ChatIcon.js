@@ -12,7 +12,7 @@ const ChatIcon = ({ width, height, className }) => {
     >
       <defs>
         <linearGradient
-          id="chatDotGradient"
+          id="chatDotGradient1"
           x1="39.23"
           y1="51.36"
           x2="55.27"
@@ -25,20 +25,20 @@ const ChatIcon = ({ width, height, className }) => {
           <stop offset="1" stopColor="#b44cff" />
         </linearGradient>
         <linearGradient
-          id="linear-gradient-2"
+          id="chatDotGradient2"
           x1="66.84"
           y1="51.28"
           x2="82.75"
           y2="59.69"
-          xlinkHref="#chatDotGradient"
+          xlinkHref="#chatDotGradient1"
         />
         <linearGradient
-          id="linear-gradient-3"
+          id="chatDotGradient3"
           x1="94.22"
           y1="51.36"
           x2="110.27"
           y2="59.53"
-          xlinkHref="#chatDotGradient"
+          xlinkHref="#chatDotGradient1"
         />
       </defs>
       <path
@@ -62,21 +62,21 @@ const ChatIcon = ({ width, height, className }) => {
         cx="46.37"
         cy="55"
         r="9"
-        fill="url(#linear-gradient)"
+        fill="url(#chatDotGradient1)"
       />
       <circle
         id="middle-dot"
         cx="73.87"
         cy="55"
         r="9"
-        fill="url(#linear-gradient-2)"
+        fill="url(#chatDotGradient2)"
       />
       <circle
         id="right-dot"
         cx="101.37"
         cy="55"
         r="9"
-        fill="url(#linear-gradient-3)"
+        fill="url(#chatDotGradient3)"
       />
     </svg>
   );

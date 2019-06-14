@@ -53,7 +53,9 @@ const MicroHITSection = () => {
         </HeadlineContainer>
 
         <ElementContainer setMobileMarginTop={60}>
-          <InnerButton to={"/"}>What's your fitness level?</InnerButton>
+          <InnerButton to={"/beginner-workouts-to-advanced"}>
+            What's your fitness level?
+          </InnerButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

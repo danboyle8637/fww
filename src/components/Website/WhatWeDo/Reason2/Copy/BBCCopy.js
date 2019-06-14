@@ -28,10 +28,19 @@ const BBCCopy = () => {
 
   return (
     <ElementContainer column setMobileMarginTop={20}>
-      <Header3 primary mobileMedium setMLineHeight={1.4}>
+      <Header3
+        primary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
         {headline}
       </Header3>
-      <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
+      <SetBodyText
+        setMobileMarginTop={12}
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
     </ElementContainer>
   );
 };

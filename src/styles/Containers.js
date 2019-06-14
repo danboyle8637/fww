@@ -103,7 +103,10 @@ const ContentContainer = styled.div`
     if (props.fullWidth) return 0;
     return "1rem";
   }};
-  width: 100%;
+  width: ${headlineWidths.mobile};
+  ${above.mobile`
+    max-width: ${headlineWidths.tablet};
+  `}
   ${above.tablet`
     max-width: ${headlineWidths.laptop};
   `}

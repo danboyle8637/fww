@@ -6,16 +6,40 @@ import Image from "gatsby-image";
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import DividerMarker1 from "../../../../svgs/DividerMarker1";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
+import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import { above } from "../../../../styles/Theme";
 
 const KindalAlex = () => {
   const query = graphql`
     query {
-      kindalAlex2: file(
+      kindalAlexMobile: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
-        name: { eq: "kindal-alex-600x1300-2" }
+        name: { eq: "kindal-alex-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
+      kindalAlexTablet: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-alex-834x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
+      kindalAlexLaptop: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-alex-1440x900" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
             aspectRatio
           }
@@ -25,13 +49,17 @@ const KindalAlex = () => {
   `;
 
   const images = useStaticQuery(query);
-  const image2 = images.kindalAlex2.childImageSharp.fluid;
+  const mobile = images.kindalAlexMobile;
+  const tablet = images.kindalAlexTablet;
+  const laptop = images.kindalAlexLaptop;
+
+  const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={image2} />
+        <Image fluid={background} />
       </BackgroundAsset>
       <BottomDivider />
     </SectionGrid>
@@ -46,6 +74,13 @@ const TopDivider = styled(DividerMarker1)`
   left: 0;
   width: 200%;
   z-index: 1;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(-40px);
+  `}
+  ${above.tablet`
+    transform: translateY(-60px);
+  `}
 `;
 
 const BottomDivider = styled(DividerMarkerTriangle)`
@@ -54,5 +89,9 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   right: 0;
   width: 200%;
   z-index: 1;
-  transform: translateX(80px) rotate(180deg);
+  transform: translate(80px, 1px) rotate(180deg);
+  ${above.mobile`
+    width: 100%;
+    transform: translate(0px, 50px) rotate(180deg);
+  `}
 `;

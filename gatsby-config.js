@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   siteMetadata: {
@@ -29,6 +29,13 @@ module.exports = {
       options: {
         name: `WhatWeDoCopy`,
         path: `${__dirname}/src/content/WhatWeDo`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `BBCCopy`,
+        path: `${__dirname}/src/content/BodyBurnChallenges`,
       },
     },
     {
@@ -72,4 +79,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

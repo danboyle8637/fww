@@ -8,6 +8,7 @@ import IgniteLogo from "../../../../svgs/IgniteLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import IgniteCopy from "./Copy/IgniteCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import { above } from "../../../../styles/Theme";
 
 const IgniteSection = () => {
   const query = graphql`
@@ -73,6 +74,12 @@ export default IgniteSection;
 
 const Logo = styled(IgniteLogo)`
   width: 220px;
+  ${above.mobile`
+    width: 260px;
+  `}
+  ${above.tablet`
+    width: 340px;
+  `}
 `;
 
 const Divider = styled(DividerMarkerTriangle)`
@@ -82,6 +89,12 @@ const Divider = styled(DividerMarkerTriangle)`
   width: 200%;
   z-index: 1;
   transform: translateY(-45px);
+  ${above.mobile`
+    width: 100%;
+  `}
+  ${above.tablet`
+    transform: translateY(-85px);
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -94,4 +107,12 @@ const ContentWrapper = styled.div`
   align-items: flex-start;
   width: 70%;
   z-index: 1;
+  ${above.mobile`
+    margin: 140px 0 0 120px;
+    width: 40%;
+  `}
+  ${above.tablet`
+    margin: 140px 0 0 240px;
+    width: 30%;
+  `}
 `;

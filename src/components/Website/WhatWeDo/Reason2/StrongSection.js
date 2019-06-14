@@ -8,6 +8,7 @@ import StrongLogo from "../../../../svgs/StrongLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import StrongCopy from "./Copy/StrongCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import { above } from "../../../../styles/Theme";
 
 const StrongSection = () => {
   const query = graphql`
@@ -73,6 +74,12 @@ export default StrongSection;
 
 const Logo = styled(StrongLogo)`
   width: 320px;
+  ${above.mobile`
+    width: 440px;
+  `}
+  ${above.tablet`
+    width: 560px;
+  `}
 `;
 
 const Divider = styled(DividerMarkerTriangle)`
@@ -82,6 +89,13 @@ const Divider = styled(DividerMarkerTriangle)`
   width: 200%;
   z-index: 1;
   transform: translate(-60px, 15px) rotate(180deg);
+  ${above.mobile`
+    width: 100%;
+    transform: translate(0px, 15px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translate(0px, 65px) rotate(180deg);
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -94,4 +108,11 @@ const ContentWrapper = styled.div`
   align-items: flex-start;
   width: 70%;
   z-index: 1;
+  ${above.mobile`
+    margin: 160px 0 0 40px;
+    width: 40%;
+  `}
+  ${above.tablet`
+    margin: 160px 0 0 80px;
+  `}
 `;
