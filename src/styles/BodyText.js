@@ -23,6 +23,7 @@ const SetBodyText = styled.div`
     ${sharedBodyText}
   }
   & ul {
+    padding: ${props => (props.setPadding ? "40px 0 26px 0;" : null)};
     list-style: none;
   }
   & li {
@@ -46,6 +47,9 @@ const SetBodyText = styled.div`
     color: ${props => props.theme.primaryAccent};
     text-decoration: none;
     cursor: pointer;
+  }
+  & strong {
+    color: #aff8ff;
   }
 `;
 

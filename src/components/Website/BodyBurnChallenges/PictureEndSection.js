@@ -1,21 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import BBCLogo from "../../../svgs/BodyBurnChallengesLogo";
-import HeadlineCopy from "./Copy/HeadlineCopy";
-import ScrollDownArrow from "../../Shared/ScrollDownArrow";
+import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
-const HeadlineSection = () => {
+const PictureEndSection = () => {
   const query = graphql`
     query {
-      bbcMobile: file(
+      bbcWorkoutMobile: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "mobile-600x1300" }
+        name: { regex: "/mobile/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,9 +22,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      bbcTablet: file(
+      bbcWorkoutTablet: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "tablet-834x1112" }
+        name: { regex: "/tablet/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,9 +33,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      bbcLaptop: file(
+      bbcWorkoutLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "desktop-1440x900" }
+        name: { regex: "/desktop/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -50,49 +48,45 @@ const HeadlineSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.bbcMobile;
-  const tablet = images.bbcTablet;
-  const laptop = images.bbcLaptop;
+  const mobile = images.bbcWorkoutMobile;
+  const tablet = images.bbcWorkoutTablet;
+  const laptop = images.bbcWorkoutLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
   return (
     <SectionGrid>
+      <TopDivider />
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <ContentWrapper>
-        <Logo />
-        <HeadlineCopy />
-        <ScrollDownArrow />
-      </ContentWrapper>
+      <ContentWrapper />
     </SectionGrid>
   );
 };
 
-export default HeadlineSection;
+export default PictureEndSection;
 
 const ContentWrapper = styled.div`
-  padding: 90px 16px 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  z-index: 1;
-  ${above.mobile`
-    margin: 160px 0 0 16px;
-    padding: 0;
-    width: 70%;
-  `}
-  ${above.tablet`
-    margin: 160px 0 0 100px;
-    padding: 0;
-    width: 50%;
-  `}
+  justify-content: space-between;
 `;
 
-const Logo = styled(BBCLogo)`
-  width: 100%;
+const TopDivider = styled(DividerMarker2)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180%;
+  z-index: 1;
+  transform: translateY(-15px);
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(-15px);
+  `}
+  ${above.tablet`
+    transform: translateY(-35px);
+  `}
 `;
