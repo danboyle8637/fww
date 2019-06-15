@@ -31,7 +31,12 @@ const VideoPreviewSection = () => {
       <VideoWrapper>
         <Image fluid={fluid} />
       </VideoWrapper>
-      <ElementContainer setMobileMarginTop={40} setMobileWidth={"90%"}>
+      <ElementContainer
+        column
+        alignCenter
+        setMobileMarginTop={40}
+        setMobileWidth={"90%"}
+      >
         <InnerButton to={"/"}>Sign Up for the BBC Reset!</InnerButton>
       </ElementContainer>
     </SectionContainer>
@@ -42,4 +47,6 @@ export default VideoPreviewSection;
 
 const VideoWrapper = styled.div`
   width: 100%;
+  max-width: 50rem;
+  box-shadow: 0 3px 12px 8px rgba(0, 0, 0, 0.4);
 `;
