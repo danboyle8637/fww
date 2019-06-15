@@ -15,7 +15,10 @@ const BodyBurnChallenges = () => {
       <LeadSection />
       <PictureMiddleSection />
       <BenefitsSection />
-      <VideoPreviewSection />
+      <VideoPreviewSection
+        program={"bbc"}
+        buttonText={"Sign up for the 7 day BBC Reset"}
+      />
       <ResetSection />
       <PictureEndSection />
     </>

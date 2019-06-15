@@ -4,7 +4,8 @@ import { Link } from "gatsby";
 const InnerButton = styled(Link)`
   margin: 0;
   padding: 8px 12px;
-  background: ${props => props.theme.primaryAccent};
+  background: ${props =>
+    props.kettlebell ? props.theme.tertiaryAccent : props.theme.primaryAccent};
   border-radius: 6px;
   text-decoration: none;
   text-align: center;

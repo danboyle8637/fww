@@ -2,4 +2,12 @@
 id: strong_lead
 ---
 
-Two programs in one… a kettlebell coaching program to teach you kettlebell training the correct way… and metabolic kettlebell workouts to build insane strength while burning serious body fat.
+Metabolic strength training with kettlebells.
+
+This is high intensity (very fast paced) style of workout.
+
+Your heart rate will spike and you’ll be breathing hard... at the same time you’ll have to use insane strength and focus as you fling a kettlebell around your body in a variety of tough exercises.
+
+**There is NOTHING like full blast kettlebell workouts**.
+
+And you’ll get the perfect start with Strong... my Level 1 kettlebell program.
