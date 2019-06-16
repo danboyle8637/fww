@@ -31,13 +31,24 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
           }
         }
       }
+      igniteWorkoutPreview: file(
+        sourceInstanceName: { eq: "BBCImages" }
+        name: { eq: "ignite-video-preview" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 800, maxHeight: 450, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
     }
   `;
 
   const image = useStaticQuery(query);
   const bbc = image.bbcWorkoutPreview.childImageSharp.fluid;
   const strong = image.strongWorkoutPreview.childImageSharp.fluid;
-  const ignite = image.strongWorkoutPreview.childImageSharp.fluid;
+  const ignite = image.igniteWorkoutPreview.childImageSharp.fluid;
 
   return (
     <SectionContainer>

@@ -4,15 +4,15 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
+import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
-import Headline2 from "./Headlines/Headline2";
 import { above } from "../../../styles/Theme";
 
-const KBClinicPictureSection = () => {
+const PictureMiddleSection = () => {
   const query = graphql`
     query {
-      kbClinicMobile: file(
+      igniteWorkoutMobile: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/mobile/" }
       ) {
@@ -23,7 +23,7 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicTablet: file(
+      igniteWorkoutTablet: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/tablet/" }
       ) {
@@ -34,7 +34,7 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicLaptop: file(
+      igniteWorkoutLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/desktop/" }
       ) {
@@ -49,9 +49,9 @@ const KBClinicPictureSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.kbClinicMobile;
-  const tablet = images.kbClinicTablet;
-  const laptop = images.kbClinicLaptop;
+  const mobile = images.igniteWorkoutMobile;
+  const tablet = images.igniteWorkoutTablet;
+  const laptop = images.igniteWorkoutLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
@@ -62,25 +62,24 @@ const KBClinicPictureSection = () => {
         <Image fluid={background} />
       </BackgroundAsset>
       <ContentWrapper>
-        <Headline2 />
+        <InnerButton to={"/"}>Join the Ignite 7 Day Reset</InnerButton>
       </ContentWrapper>
       <BottomDivider />
     </SectionGrid>
   );
 };
 
-export default KBClinicPictureSection;
+export default PictureMiddleSection;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 20px;
+  margin: 0 0 80px 0;
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  z-index: 1;
-  ${above.tablet`
-    margin: 80px 0 0 160px;
-  `}
+  justify-content: flex-end;
+  z-index: 2;
 `;
 
 const TopDivider = styled(DividerMarkerTriangle)`
@@ -89,13 +88,14 @@ const TopDivider = styled(DividerMarkerTriangle)`
   left: 0;
   width: 180%;
   z-index: 1;
-  transform: translate(-20px, -35px) rotateY(180deg) rotateZ(6deg);
+  transform: translate(-20px, -15px) rotate(4deg);
   ${above.mobile`
     width: 100%;
-    transform: translateY(-35px) rotateY(180deg);
+    transform: translateY(-45px);
   `}
   ${above.tablet`
-    transform: translateY(-85px) rotateY(180deg);
+    width: 100%;
+    transform: translateY(-95px);
   `}
 `;
 
@@ -105,13 +105,13 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   left: 0;
   width: 180%;
   z-index: 1;
-  transform: translateY(45px) rotate(-180deg) rotateY(180deg);
+  transform: translateY(15px) rotate(-180deg);
   ${above.mobile`
     width: 100%;
-    transform: translateY(50px) rotate(-180deg) rotateY(180deg);
+    transform: translateY(45px) rotate(-180deg);
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(100px) rotate(-180deg) rotateY(180deg);
+    transform: translateY(95px) rotate(-180deg);
   `}
 `;

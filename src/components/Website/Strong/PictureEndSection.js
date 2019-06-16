@@ -5,14 +5,13 @@ import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
-import Headline2 from "./Headlines/Headline2";
+import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
-const KBClinicPictureSection = () => {
+const PictureEndSection = () => {
   const query = graphql`
     query {
-      kbClinicMobile: file(
+      bbcWorkoutMobile: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/mobile/" }
       ) {
@@ -23,7 +22,7 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicTablet: file(
+      bbcWorkoutTablet: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/tablet/" }
       ) {
@@ -34,7 +33,7 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicLaptop: file(
+      bbcWorkoutLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { regex: "/desktop/" }
       ) {
@@ -49,9 +48,9 @@ const KBClinicPictureSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.kbClinicMobile;
-  const tablet = images.kbClinicTablet;
-  const laptop = images.kbClinicLaptop;
+  const mobile = images.bbcWorkoutMobile;
+  const tablet = images.bbcWorkoutTablet;
+  const laptop = images.bbcWorkoutLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
@@ -61,57 +60,33 @@ const KBClinicPictureSection = () => {
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <ContentWrapper>
-        <Headline2 />
-      </ContentWrapper>
-      <BottomDivider />
+      <ContentWrapper />
     </SectionGrid>
   );
 };
 
-export default KBClinicPictureSection;
+export default PictureEndSection;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 20px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  z-index: 1;
-  ${above.tablet`
-    margin: 80px 0 0 160px;
-  `}
+  justify-content: space-between;
 `;
 
-const TopDivider = styled(DividerMarkerTriangle)`
+const TopDivider = styled(DividerMarker2)`
   position: absolute;
   top: 0;
   left: 0;
   width: 180%;
   z-index: 1;
-  transform: translate(-20px, -35px) rotateY(180deg) rotateZ(6deg);
+  transform: translateY(-15px);
   ${above.mobile`
     width: 100%;
-    transform: translateY(-35px) rotateY(180deg);
+    transform: translateY(-15px);
   `}
   ${above.tablet`
-    transform: translateY(-85px) rotateY(180deg);
-  `}
-`;
-
-const BottomDivider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 180%;
-  z-index: 1;
-  transform: translateY(45px) rotate(-180deg) rotateY(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(50px) rotate(-180deg) rotateY(180deg);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(100px) rotate(-180deg) rotateY(180deg);
+    transform: translateY(-35px);
   `}
 `;

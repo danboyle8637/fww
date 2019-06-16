@@ -1,20 +1,21 @@
 import React from "react";
-import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
+import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
-import Headline2 from "./Headlines/Headline2";
+import IgniteLogo from "../../../svgs/IgniteLogo";
+import HeadlineCopy from "./Copy/HeadlineCopy";
+import ScrollDownArrow from "../../Shared/ScrollDownArrow";
 import { above } from "../../../styles/Theme";
 
-const KBClinicPictureSection = () => {
+const HeadlineSection = () => {
   const query = graphql`
     query {
-      kbClinicMobile: file(
+      igniteMobile: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        name: { eq: "mobile-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -23,9 +24,9 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicTablet: file(
+      igniteTablet: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        name: { eq: "tablet-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -34,9 +35,9 @@ const KBClinicPictureSection = () => {
           }
         }
       }
-      kbClinicLaptop: file(
+      igniteLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        name: { eq: "desktop-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -49,69 +50,49 @@ const KBClinicPictureSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.kbClinicMobile;
-  const tablet = images.kbClinicTablet;
-  const laptop = images.kbClinicLaptop;
+  const mobile = images.igniteMobile;
+  const tablet = images.igniteTablet;
+  const laptop = images.igniteLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
   return (
     <SectionGrid>
-      <TopDivider />
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
       <ContentWrapper>
-        <Headline2 />
+        <Logo />
+        <HeadlineCopy />
+        <ScrollDownArrow />
       </ContentWrapper>
-      <BottomDivider />
     </SectionGrid>
   );
 };
 
-export default KBClinicPictureSection;
+export default HeadlineSection;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 20px;
+  padding: 90px 0 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
   z-index: 1;
+  ${above.mobile`
+    margin: 160px 0 0 16px;
+    padding: 0;
+    width: 60%;
+  `}
   ${above.tablet`
-    margin: 80px 0 0 160px;
+    margin: 160px 0 0 100px;
+    padding: 0;
+    width: 40%;
   `}
 `;
 
-const TopDivider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 180%;
-  z-index: 1;
-  transform: translate(-20px, -35px) rotateY(180deg) rotateZ(6deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-35px) rotateY(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(-85px) rotateY(180deg);
-  `}
-`;
-
-const BottomDivider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 180%;
-  z-index: 1;
-  transform: translateY(45px) rotate(-180deg) rotateY(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(50px) rotate(-180deg) rotateY(180deg);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(100px) rotate(-180deg) rotateY(180deg);
-  `}
+const Logo = styled(IgniteLogo)`
+  width: 100%;
 `;

@@ -8,6 +8,7 @@ import WorkoutsPictureSection from "../components/Website/Strong/WorkoutsPicture
 import WorkoutsSection from "../components/Website/Strong/WorkoutsSection";
 import VideoPreviewSection from "../components/Shared/VideoPreviewSection";
 import ResetSection from "../components/Website/Strong/ResetSection";
+import PictureEndSection from "../components/Website/Strong/PictureEndSection";
 
 const StrongKettlebellTraining = () => {
   return (
@@ -24,6 +25,7 @@ const StrongKettlebellTraining = () => {
         kettlebell={true}
       />
       <ResetSection />
+      <PictureEndSection />
     </>
   );
 };
