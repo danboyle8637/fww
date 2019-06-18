@@ -14,8 +14,8 @@ const HeadlineSection = () => {
   const query = graphql`
     query {
       bbcMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "mobile-600x1300" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-beast-squat-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,8 +25,8 @@ const HeadlineSection = () => {
         }
       }
       bbcTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "tablet-834x1112" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-beast-squat-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -36,8 +36,8 @@ const HeadlineSection = () => {
         }
       }
       bbcLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "desktop-1440x900" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-beast-squat-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -82,7 +82,7 @@ const ContentWrapper = styled.div`
   width: 100%;
   z-index: 1;
   ${above.mobile`
-    margin: 160px 0 0 16px;
+    margin: 100px 0 0 16px;
     padding: 0;
     width: 70%;
   `}

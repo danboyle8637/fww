@@ -14,8 +14,8 @@ const HeadlineSection = () => {
   const query = graphql`
     query {
       igniteMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "mobile-600x1300" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-box-pushup-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,8 +25,8 @@ const HeadlineSection = () => {
         }
       }
       igniteTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "tablet-834x1112" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-box-pushup-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -36,8 +36,8 @@ const HeadlineSection = () => {
         }
       }
       igniteLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { eq: "desktop-1440x900" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-box-pushup-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -73,26 +73,32 @@ const HeadlineSection = () => {
 export default HeadlineSection;
 
 const ContentWrapper = styled.div`
-  padding: 90px 0 0 16px;
+  padding: 20px 0 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 70%;
+  width: 80%;
   z-index: 1;
   ${above.mobile`
-    margin: 160px 0 0 16px;
+    margin: 60px 0 0 60px;
     padding: 0;
-    width: 60%;
+    width: 46%;
   `}
   ${above.tablet`
-    margin: 160px 0 0 100px;
+    margin: 120px 0 0 100px;
     padding: 0;
     width: 40%;
   `}
 `;
 
 const Logo = styled(IgniteLogo)`
-  width: 100%;
+  width: 80%;
+  ${above.mobile`
+    width: 100%;
+  `}
+  ${above.tablet`
+    width: 80%;
+  `}
 `;

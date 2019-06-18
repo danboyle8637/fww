@@ -1,21 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import StrongLogo from "../../../svgs/StrongLogo";
 import HeadlineCopy from "./Copy/HeadlineCopy";
+import Headline1 from "./Headlines/Headline1";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
-import { above } from "../../../styles/Theme";
 
 const HeadlineSection = () => {
   const query = graphql`
     query {
-      strongMobile: file(
-        sourceInstanceName: { eq: "ProgramImages" }
-        name: { eq: "strong-half-getup-600x1300" }
+      mobile: file(
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/mobile/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,9 +23,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      strongTablet: file(
-        sourceInstanceName: { eq: "ProgramImages" }
-        name: { eq: "strong-half-getup-834x1112" }
+      tablet: file(
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/tablet/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,9 +34,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      strongLaptop: file(
-        sourceInstanceName: { eq: "ProgramImages" }
-        name: { eq: "strong-half-getup-1440x900" }
+      laptop: file(
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/desktop/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -50,9 +49,9 @@ const HeadlineSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.strongMobile;
-  const tablet = images.strongTablet;
-  const laptop = images.strongLaptop;
+  const mobile = images.mobile;
+  const tablet = images.tablet;
+  const laptop = images.laptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
@@ -61,38 +60,24 @@ const HeadlineSection = () => {
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <ContentWrapper>
-        <Logo />
+      <ContentContainer>
+        <Headline1 />
         <HeadlineCopy />
         <ScrollDownArrow />
-      </ContentWrapper>
+      </ContentContainer>
     </SectionGrid>
   );
 };
 
 export default HeadlineSection;
 
-const ContentWrapper = styled.div`
-  padding: 50px 16px 0 16px;
+const ContentContainer = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  padding: 80px 16px 0 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: 80%;
   z-index: 1;
-  ${above.mobile`
-    margin: 160px 0 0 16px;
-    padding: 0;
-    width: 60%;
-  `}
-  ${above.tablet`
-    margin: 160px 0 0 100px;
-    padding: 0;
-    width: 40%;
-  `}
-`;
-
-const Logo = styled(StrongLogo)`
-  width: 100%;
 `;

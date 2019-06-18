@@ -13,6 +13,7 @@ const SectionGrid = styled.section`
 const BackgroundAsset = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  z-index: 1;
 `;
 
 const ContentContainer = styled.div`

@@ -8,8 +8,8 @@ const HeadlineCopy = () => {
   const query = graphql`
     query {
       headlineCopy: file(
-        sourceInstanceName: { eq: "StrongCopy" }
-        name: { eq: "StrongHeadline" }
+        sourceInstanceName: { eq: "TheAppCopy" }
+        name: { eq: "TheAppHeadline" }
       ) {
         childMarkdownRemark {
           html
@@ -22,7 +22,7 @@ const HeadlineCopy = () => {
   const body = copy.headlineCopy.childMarkdownRemark.html;
 
   return (
-    <ElementContainer setMobileMarginTop={16} setMobileWidth={"50%"}>
+    <ElementContainer setMobileMarginTop={16}>
       <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
     </ElementContainer>
   );

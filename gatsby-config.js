@@ -60,6 +60,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `ProgramImages`,
+        path: `${__dirname}/src/images/Programs`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `TheAppCopy`,
+        path: `${__dirname}/src/content/TheApp`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)
