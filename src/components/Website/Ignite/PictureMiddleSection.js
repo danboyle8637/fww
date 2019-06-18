@@ -13,8 +13,8 @@ const PictureMiddleSection = () => {
   const query = graphql`
     query {
       igniteWorkoutMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-bent-over-row-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,8 +24,8 @@ const PictureMiddleSection = () => {
         }
       }
       igniteWorkoutTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-bent-over-row-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,8 +35,8 @@ const PictureMiddleSection = () => {
         }
       }
       igniteWorkoutLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-bent-over-row-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -78,6 +78,7 @@ const ContentWrapper = styled.div`
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-end;
   z-index: 2;
 `;
@@ -87,7 +88,7 @@ const TopDivider = styled(DividerMarkerTriangle)`
   top: 0;
   left: 0;
   width: 180%;
-  z-index: 1;
+  z-index: 2;
   transform: translate(-20px, -15px) rotate(4deg);
   ${above.mobile`
     width: 100%;

@@ -12,8 +12,8 @@ const PictureEndSection = () => {
   const query = graphql`
     query {
       igniteEndMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-seated-band-row-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -23,8 +23,8 @@ const PictureEndSection = () => {
         }
       }
       igniteEndTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-seated-band-row-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -34,8 +34,8 @@ const PictureEndSection = () => {
         }
       }
       igniteEndLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-seated-band-row-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -80,7 +80,7 @@ const TopDivider = styled(DividerMarker2)`
   top: 0;
   left: 0;
   width: 180%;
-  z-index: 1;
+  z-index: 2;
   transform: translateY(-15px);
   ${above.mobile`
     width: 100%;
