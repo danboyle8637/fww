@@ -9,7 +9,7 @@ import { above } from "../../../../styles/Theme";
 const Headline2 = () => {
   return (
     <ElementContainer column>
-      <ElementContainer moveTabletX={124}>
+      <ElementContainer moveMobileX={72} moveTabletX={110} moveLaptopX={124}>
         <Header3
           upper
           primary
@@ -31,6 +31,9 @@ export default Headline2;
 const ClinicLogo = styled(KettlebellClinicLogo)`
   width: 300px;
   ${above.mobile`
+    width: 440px;
+  `}
+  ${above.tablet`
     width: 500px;
   `}
 `;

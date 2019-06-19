@@ -11,9 +11,9 @@ import { above } from "../../../styles/Theme";
 const PictureEndSection = () => {
   const query = graphql`
     query {
-      bbcWorkoutMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+      strongWorkoutMobile: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-double-rack-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -22,9 +22,9 @@ const PictureEndSection = () => {
           }
         }
       }
-      bbcWorkoutTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+      strongWorkoutTablet: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-double-rack-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -33,9 +33,9 @@ const PictureEndSection = () => {
           }
         }
       }
-      bbcWorkoutLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+      strongWorkoutLaptop: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-double-rack-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -48,9 +48,9 @@ const PictureEndSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.bbcWorkoutMobile;
-  const tablet = images.bbcWorkoutTablet;
-  const laptop = images.bbcWorkoutLaptop;
+  const mobile = images.strongWorkoutMobile;
+  const tablet = images.strongWorkoutTablet;
+  const laptop = images.strongWorkoutLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
@@ -80,7 +80,7 @@ const TopDivider = styled(DividerMarker2)`
   top: 0;
   left: 0;
   width: 180%;
-  z-index: 1;
+  z-index: 2;
   transform: translateY(-15px);
   ${above.mobile`
     width: 100%;

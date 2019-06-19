@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
+import { ElementContainer } from "../../../styles/Containers";
+import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
@@ -12,8 +14,8 @@ const PictureEndSection = () => {
   const query = graphql`
     query {
       bbcWorkoutMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-kneeling-db-press-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -23,8 +25,8 @@ const PictureEndSection = () => {
         }
       }
       bbcWorkoutTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-kneeling-db-press-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -34,8 +36,8 @@ const PictureEndSection = () => {
         }
       }
       bbcWorkoutLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-kneeling-db-press-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -60,7 +62,11 @@ const PictureEndSection = () => {
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <ContentWrapper />
+      <ContentWrapper>
+        <ElementContainer column alignCenter>
+          <InnerButton to={"/"}>Join the 7 Day BBC Reset!</InnerButton>
+        </ElementContainer>
+      </ContentWrapper>
     </SectionGrid>
   );
 };
@@ -68,11 +74,14 @@ const PictureEndSection = () => {
 export default PictureEndSection;
 
 const ContentWrapper = styled.div`
+  margin: 0 0 40px 0;
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  z-index: 2;
 `;
 
 const TopDivider = styled(DividerMarker2)`
@@ -80,7 +89,7 @@ const TopDivider = styled(DividerMarker2)`
   top: 0;
   left: 0;
   width: 180%;
-  z-index: 1;
+  z-index: 2;
   transform: translateY(-15px);
   ${above.mobile`
     width: 100%;

@@ -85,7 +85,33 @@ module.exports = {
         // GitHub Flavored Markdown mode (default: true)
         gfm: true,
         // Plugins configs
-        plugins: [],
+        plugins: [
+          {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              // defaults to false
+              usePrefix: false,
+              providers: {
+                include: ["Vimeo"],
+                exclude: [
+                  "Reddit",
+                  "Instagram",
+                  "Flickr",
+                  "Twitter",
+                  "YouTube",
+                  "CodePen",
+                  "Twitch",
+                  "SoundCloud",
+                ],
+                settings: {
+                  Vimeo: {
+                    responsive: true,
+                  },
+                },
+              },
+            },
+          },
+        ],
       },
     },
     {

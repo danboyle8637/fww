@@ -13,8 +13,8 @@ const WorkoutsPictureSection = () => {
   const query = graphql`
     query {
       bbcWorkoutMobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-invert-press-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,8 +24,8 @@ const WorkoutsPictureSection = () => {
         }
       }
       bbcWorkoutTablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-invert-press-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,8 +35,8 @@ const WorkoutsPictureSection = () => {
         }
       }
       bbcWorkoutLaptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-invert-press-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -77,7 +77,7 @@ const ContentWrapper = styled.div`
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
   ${above.tablet`
     margin: 80px 0 0 280px;
   `}
@@ -88,7 +88,7 @@ const TopDivider = styled(DividerMarkerTriangle)`
   top: 0;
   left: 0;
   width: 180%;
-  z-index: 1;
+  z-index: 2;
   transform: translate(-20px, -35px) rotateY(180deg) rotateZ(6deg);
   ${above.mobile`
     width: 100%;

@@ -1,61 +1,58 @@
 import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
-import Image from "gatsby-image";
 
 import { SectionContainer, ElementContainer } from "../../styles/Containers";
 import { InnerButton } from "../../styles/Buttons";
+import { above } from "../../styles/Theme";
 
 const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
   const query = graphql`
     query {
       bbcWorkoutPreview: file(
-        sourceInstanceName: { eq: "BBCImages" }
-        name: { eq: "bbc-video-preview" }
+        sourceInstanceName: { eq: "BBCCopy" }
+        name: { eq: "BBCPreviewVideo" }
       ) {
-        childImageSharp {
-          fluid(maxWidth: 800, maxHeight: 450, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
+        childMarkdownRemark {
+          html
         }
       }
       strongWorkoutPreview: file(
-        sourceInstanceName: { eq: "BBCImages" }
-        name: { eq: "strong-video-preview" }
+        sourceInstanceName: { eq: "StrongCopy" }
+        name: { eq: "StrongPreviewVideo" }
       ) {
-        childImageSharp {
-          fluid(maxWidth: 800, maxHeight: 450, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
+        childMarkdownRemark {
+          html
         }
       }
-      igniteWorkoutPreview: file(
-        sourceInstanceName: { eq: "BBCImages" }
-        name: { eq: "ignite-video-preview" }
+      igniteVideoPreview: file(
+        sourceInstanceName: { eq: "IgniteCopy" }
+        name: { eq: "IgnitePreviewVideo" }
       ) {
-        childImageSharp {
-          fluid(maxWidth: 800, maxHeight: 450, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
+        childMarkdownRemark {
+          html
         }
       }
     }
   `;
 
-  const image = useStaticQuery(query);
-  const bbc = image.bbcWorkoutPreview.childImageSharp.fluid;
-  const strong = image.strongWorkoutPreview.childImageSharp.fluid;
-  const ignite = image.igniteWorkoutPreview.childImageSharp.fluid;
+  const videoLink = useStaticQuery(query);
+  const bbc = videoLink.bbcWorkoutPreview.childMarkdownRemark.html;
+  const strong = videoLink.strongWorkoutPreview.childMarkdownRemark.html;
+  const ignite = videoLink.igniteVideoPreview.childMarkdownRemark.html;
 
   return (
     <SectionContainer>
       <VideoWrapper>
-        {program === "bbc" ? <Image fluid={bbc} /> : null}
-        {program === "strong" ? <Image fluid={strong} /> : null}
-        {program === "ignite" ? <Image fluid={ignite} /> : null}
+        {program === "ignite" ? (
+          <VideoWrapper dangerouslySetInnerHTML={{ __html: ignite }} />
+        ) : null}
+        {program === "bbc" ? (
+          <VideoWrapper dangerouslySetInnerHTML={{ __html: bbc }} />
+        ) : null}
+        {program === "strong" ? (
+          <VideoWrapper dangerouslySetInnerHTML={{ __html: strong }} />
+        ) : null}
       </VideoWrapper>
       <ElementContainer
         column
@@ -74,7 +71,18 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
 export default VideoPreviewSection;
 
 const VideoWrapper = styled.div`
+  margin: 0;
+  padding: 0;
   width: 100%;
   max-width: 50rem;
   box-shadow: 0 3px 12px 8px rgba(0, 0, 0, 0.4);
+  ${above.tablet`
+    border-radius: 8px;
+    & iframe {
+      border-radius: 8px;
+    }
+  `}
+  & p {
+    display: none;
+  }
 `;

@@ -9,7 +9,7 @@ import { above } from "../../../styles/Theme";
 
 const BenefitsSection = () => {
   return (
-    <SectionContainer setTabletMarginTop={"60px"}>
+    <SectionContainer setMobileMarginTop={"20px"} setTabletMarginTop={"60px"}>
       <ContentContainer>
         <Headline2 />
         <BulletsContainer>
