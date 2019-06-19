@@ -3,7 +3,7 @@ module.exports = {
     homeLinks: [
       { id: 1, path: "/what-we-do", name: "what we do" },
       { id: 2, path: "/", name: "who we are" },
-      { id: 3, path: "/", name: "the app" },
+      { id: 3, path: "/the-app", name: "the app" },
       { id: 4, path: "/programs", name: "programs" },
       { id: 5, path: "/", name: "follow me" },
       { id: 6, path: "/", name: "blog" },
