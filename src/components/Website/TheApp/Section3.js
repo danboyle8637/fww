@@ -7,6 +7,7 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import BenefitCard from "./BenefitCard";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
+import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import { above } from "../../../styles/Theme";
 
 const Section3 = () => {
@@ -49,6 +50,28 @@ const Section3 = () => {
           }
         }
       }
+      tabletBackground: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "theapp-kneeling-alt-press-834x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
+      laptopBackground: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "theapp-kneeling-alt-press-1440x900" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
     }
   `;
 
@@ -68,13 +91,17 @@ const Section3 = () => {
     data.benefit7.childMarkdownRemark.frontmatter.bottomHeadline;
   const benefit7Body = data.benefit7.childMarkdownRemark.html;
 
-  const mobileBackground = data.mobileBackground.childImageSharp.fluid;
+  const mobile = data.mobileBackground;
+  const tablet = data.tabletBackground;
+  const laptop = data.laptopBackground;
+
+  const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={mobileBackground} />
+        <Image fluid={background} />
       </BackgroundAsset>
       <BenefitCardWrapper>
         <BenefitCard
@@ -110,7 +137,12 @@ const BenefitCardWrapper = styled.div`
   justify-items: center;
   z-index: 1;
   ${above.mobile`
+    margin: 200px 0 0 120px;
     row-gap: 120px;
+    justify-items: start;
+  `}
+  ${above.tablet`
+    justify-items: center;
   `}
 `;
 
@@ -121,6 +153,13 @@ const TopDivider = styled(DividerMarker1)`
   width: 200%;
   transform: translateY(-36px);
   z-index: 2;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(-26px);
+  `}
+  ${above.tablet`
+    transform: translateY(-66px);
+  `}
 `;
 
 const BottomDivider = styled(DividerMarkerTriangle)`
@@ -130,4 +169,11 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   width: 180%;
   transform: translate(0, 30px) rotate(180deg);
   z-index: 2;
+  ${above.mobile`
+    width: 100%;
+    transform: translate(0, 40px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translate(0, 70px) rotate(180deg);
+  `}
 `;

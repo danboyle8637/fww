@@ -5,17 +5,15 @@ import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import HeadlineCopy from "./Copy/HeadlineCopy";
-import Headline1 from "./Headlines/Headline1";
-import ScrollDownArrow from "../../Shared/ScrollDownArrow";
+import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
-const HeadlineSection = () => {
+const Section5 = () => {
   const query = graphql`
     query {
-      mobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+      nutritionMobile: file(
+        sourceInstanceName: { eq: "NutritionImages" }
+        name: { eq: "steak-salad-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,9 +22,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      tablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+      nutritionTablet: file(
+        sourceInstanceName: { eq: "NutritionImages" }
+        name: { eq: "steak-salad-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,9 +33,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      laptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+      nutritionLaptop: file(
+        sourceInstanceName: { eq: "NutritionImages" }
+        name: { eq: "steak-salad-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -50,43 +48,47 @@ const HeadlineSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.mobile;
-  const tablet = images.tablet;
-  const laptop = images.laptop;
+  const mobile = images.nutritionMobile;
+  const tablet = images.nutritionTablet;
+  const laptop = images.nutritionLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
   return (
     <SectionGrid>
+      <TopDivider />
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
-      <ContentContainer>
-        <Headline1 />
-        <HeadlineCopy />
-        <ScrollDownArrow />
-      </ContentContainer>
+      <BottomDivider />
     </SectionGrid>
   );
 };
 
-export default HeadlineSection;
+export default Section5;
 
-const ContentContainer = styled.div`
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  margin: 80px 16px 0 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 80%;
-  z-index: 1;
+const TopDivider = styled(DividerMarker2)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180%;
+  z-index: 2;
+  transform: translateY(-30px);
   ${above.mobile`
-    margin: 160px 0 0 80px;
-    width: 50%;
+    width: 100%;
+    transform: translateY(-30px);
   `}
-  ${above.tablet`
-    margin: 220px 0 0 160px;
-    width: 36%;
+`;
+
+const BottomDivider = styled(DividerMarker2)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 180%;
+  z-index: 2;
+  transform: translateY(10px) rotate(180deg);
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(10px) rotate(180deg);
   `}
 `;
