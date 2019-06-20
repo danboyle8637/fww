@@ -32,6 +32,30 @@ const BenefitCard = ({
       title: "progress_indicator",
       component: <Progress gradientId={gradientId} />,
     },
+    {
+      title: "numbers",
+      component: <FitNumber />,
+    },
+    {
+      title: "heart_kettlebell",
+      component: <Kettlebell />,
+    },
+    {
+      title: "exercise_database",
+      component: <Exercises />,
+    },
+    {
+      title: "spoon_fork_knife",
+      component: <Spoon />,
+    },
+    {
+      title: "menu",
+      component: <Menu />,
+    },
+    {
+      title: "upgrade",
+      component: <Upgrade />,
+    },
   ];
 
   const showIcon = iconArray.find(iconElement => {
@@ -105,4 +129,28 @@ const Progress = styled(ProgressIcon)`
   margin: 0 0 20px 0;
   width: 78px;
   align-self: center;
+`;
+
+const Kettlebell = styled(KettlebellHeartIcon)`
+  width: 48px;
+`;
+
+const Exercises = styled(ExerciseDatabaseIcon)`
+  width: 48px;
+`;
+
+const Spoon = styled(SpoonFormKnifeIcon)`
+  width: 48px;
+`;
+
+const Menu = styled(PersonalMenuIcon)`
+  width: 48px;
+`;
+
+const Upgrade = styled(UpgradeIcon)`
+  width: 48px;
+`;
+
+const FitNumber = styled(FitnessNumberIcon)`
+  width: 48px;
 `;
