@@ -95,7 +95,7 @@ const CardContainer = styled.div`
   flex-direction: column;
   width: 100%;
   ${above.mobile`
-    width: 326px;
+    max-width: 326px;
   `}
 `;
 
@@ -127,7 +127,7 @@ const Pen = styled(PenIcon)`
 
 const Progress = styled(ProgressIcon)`
   margin: 0 0 20px 0;
-  width: 78px;
+  width: 100px;
   align-self: center;
 `;
 
