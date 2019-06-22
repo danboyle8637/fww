@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { SectionContainer, ContentContainer } from "../../../styles/Containers";
 import FollowMeCard from "./FollowMeCard";
 import { above } from "../../../styles/Theme";
+import "./follow-me.css";
 
 const CardSection = () => {
   const query = graphql`
