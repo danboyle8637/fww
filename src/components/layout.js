@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled, { ThemeProvider } from "styled-components"
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { ThemeProvider } from "styled-components";
 
-import Global from "../styles/Global"
-import { above, darkTheme } from "../styles/Theme"
-import { ScreenWidthStore } from "../context/ScreenWidthContext"
-import Header from "./header"
-import FooterSection from "../components/Website/Footer/FooterSection"
+import Global from "../styles/Global";
+import { above, darkTheme } from "../styles/Theme";
+import { ScreenWidthStore } from "../context/ScreenWidthContext";
+import Header from "./header";
+import FooterSection from "../components/Website/Footer/FooterSection";
 
 const Layout = ({ children }) => (
   <>
@@ -19,13 +19,13 @@ const Layout = ({ children }) => (
       </ScreenWidthStore>
     </ThemeProvider>
   </>
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
 
 const Main = styled.main`
   width: 100%;
@@ -37,4 +37,4 @@ const Main = styled.main`
     border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
     border-radius: 6px;
   `}
-`
+`;
