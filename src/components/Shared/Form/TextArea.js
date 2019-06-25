@@ -2,18 +2,28 @@ import React from "react";
 import styled from "styled-components";
 
 import { ElementContainer } from "../../../styles/Containers";
+import FormCheck from "../../../svgs/FormCheck";
 
 const TextArea = props => {
-  const { labelFor, labelName } = props;
+  const { labelFor, labelName, labelInstructions, labelError } = props;
 
   const isError = !props.initial && !props.valid;
   const isValid = !props.touched && props.valid;
+  const isTouched = props.touched;
 
   return (
     <ElementContainer>
       <InputContainer touched={props.touched} error={isError} valid={isValid}>
         <InputLabel labelFor={labelFor}>
-          <span>{labelName}</span>
+          {isTouched ? (
+            <span>{labelInstructions}</span>
+          ) : isError && !isTouched ? (
+            <span>{labelError}</span>
+          ) : isValid ? (
+            <CheckMark />
+          ) : (
+            <span>{labelName}</span>
+          )}
           <Area isValid={isValid} rows="4" {...props} />
         </InputLabel>
       </InputContainer>
@@ -60,4 +70,8 @@ const Area = styled.textarea`
   color: ${props =>
     props.isValid ? props.theme.accentBackgroundColor : props.theme.bodyText};
   width: 100%;
+`;
+
+const CheckMark = styled(FormCheck)`
+  width: 22px;
 `;

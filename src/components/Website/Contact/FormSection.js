@@ -1,17 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-import { SectionContainer, ContentContainer } from "../../../styles/Containers";
+import {
+  SectionContainer,
+  ContentContainer,
+  ElementContainer,
+} from "../../../styles/Containers";
+import { OutterButton } from "../../../styles/Buttons";
 import TextInput from "../../Shared/Form/TextInput";
 import TextArea from "../../Shared/Form/TextArea";
 import RadioInput from "../../Shared/Form/RadioInput";
 import { useFormStore } from "../../../context/FormContext";
 import useContactFormControls from "../../../hooks/useContactFormControls";
+import { above } from "../../../styles/Theme";
 
 const FormSection = () => {
   // eslint-disable-next-line
   const [formState, dispatch] = useFormStore();
   const { updateFormValue, updateFormOptions } = useContactFormControls();
+
+  const handleFormSubmit = () => {
+    console.log("Form needs to be submitted!");
+  };
 
   return (
     <SectionContainer>
@@ -38,7 +48,7 @@ const FormSection = () => {
             name="emailAddress"
             labelName="email:"
             labelFor="emailAddress"
-            labelInstructions="Where should I send my answer?"
+            labelInstructions="What email should I respond to?"
             labelError="Please use a valid email address..."
             value={formState.emailAddressValue.value}
             valid={formState.emailAddressValue.valid}
@@ -72,6 +82,11 @@ const FormSection = () => {
             onFocus={updateFormOptions}
             onBlur={updateFormOptions}
           />
+          <ElementContainer justifyCenter>
+            <OutterButton type="submit" disabled onClick={handleFormSubmit}>
+              Help Me Kindal!
+            </OutterButton>
+          </ElementContainer>
         </ContactForm>
       </ContentContainer>
     </SectionContainer>
@@ -87,4 +102,11 @@ const ContactForm = styled.form`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
   row-gap: 30px;
+  width: 100%;
+  ${above.mobile`
+    max-width: 33rem;
+  `}
+  ${above.tablet`
+    max-width: 44rem;
+  `}
 `;

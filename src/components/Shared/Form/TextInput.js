@@ -5,16 +5,25 @@ import { ElementContainer } from "../../../styles/Containers";
 import FormCheck from "../../../svgs/FormCheck";
 
 const TextInput = props => {
-  const { labelName, labelFor } = props;
+  const { labelName, labelFor, labelInstructions, labelError } = props;
 
   const isError = !props.initial && !props.valid;
   const isValid = !props.touched && props.valid;
+  const isTouched = props.touched;
 
   return (
     <ElementContainer>
       <InputContainer touched={props.touched} error={isError} valid={isValid}>
         <InputLabel htmlFor={labelFor}>
-          <span>{labelName}</span>
+          {isTouched ? (
+            <span>{labelInstructions}</span>
+          ) : isError && !isTouched ? (
+            <span>{labelError}</span>
+          ) : isValid ? (
+            <CheckMark />
+          ) : (
+            <span>{labelName}</span>
+          )}
           <Input isValid={isValid} {...props} />
         </InputLabel>
       </InputContainer>
