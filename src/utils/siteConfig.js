@@ -2,28 +2,28 @@ module.exports = {
   home: {
     homeLinks: [
       { id: 1, path: "/what-we-do", name: "what we do" },
-      { id: 2, path: "/", name: "who we are" },
+      { id: 2, path: "/about", name: "who we are" },
       { id: 3, path: "/the-app", name: "the app" },
       { id: 4, path: "/programs", name: "programs" },
-      { id: 5, path: "/", name: "follow me" },
+      { id: 5, path: "/follow-me", name: "follow me" },
       { id: 6, path: "/", name: "blog" },
     ],
   },
   footerLinks: {
     group1: [
-      { id: 1, path: "/", name: "what we do" },
-      { id: 2, path: "/", name: "who we are" },
-      { id: 3, path: "/", name: "the app" },
+      { id: 1, path: "/what-we-do", name: "what we do" },
+      { id: 2, path: "/about", name: "who we are" },
+      { id: 3, path: "/the-app", name: "the app" },
     ],
     group2: [
-      { id: 4, path: "/", name: "follow me" },
+      { id: 4, path: "/follow-me", name: "follow me" },
       { id: 5, path: "/", name: "blog" },
       { id: 6, path: "/", name: "podcast" },
     ],
     group3: [
-      { id: 7, path: "/", name: "programs" },
+      { id: 7, path: "/programs", name: "programs" },
       { id: 8, path: "/", name: "7 day reset" },
-      { id: 9, path: "/", name: "contact" },
+      { id: 9, path: "/contact", name: "contact" },
     ],
     group4: [
       { id: 10, path: "/", name: "privacy" },

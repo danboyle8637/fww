@@ -4,17 +4,17 @@ import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import KindalHeadline from "./Headlines/KindalHeadline";
+import DanHeadline from "./Headlines/DanHeadline";
 import Certifications from "./Certifications";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import { above } from "../../../styles/Theme";
 
-const Kindal = () => {
+const Dan = () => {
   const query = graphql`
     query {
-      kindalMobile: file(
+      danMobile: file(
         sourceInstanceName: { eq: "AboutImages" }
         name: { eq: "kindal-600x1300" }
       ) {
@@ -25,7 +25,7 @@ const Kindal = () => {
           }
         }
       }
-      kindalTablet: file(
+      danTablet: file(
         sourceInstanceName: { eq: "AboutImages" }
         name: { eq: "kindal-834x1112" }
       ) {
@@ -36,7 +36,7 @@ const Kindal = () => {
           }
         }
       }
-      kindalLaptop: file(
+      danLaptop: file(
         sourceInstanceName: { eq: "AboutImages" }
         name: { eq: "kindal-1440x900" }
       ) {
@@ -51,9 +51,9 @@ const Kindal = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.kindalMobile;
-  const tablet = images.kindalTablet;
-  const laptop = images.kindalLaptop;
+  const mobile = images.danMobile;
+  const tablet = images.danTablet;
+  const laptop = images.danLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 
@@ -64,15 +64,15 @@ const Kindal = () => {
         <Image fluid={background} />
       </BackgroundAsset>
       <ContentWrapper>
-        <KindalHeadline />
-        <Certifications kindal={true} />
+        <DanHeadline />
+        <Certifications dan={true} />
       </ContentWrapper>
       <BottomDivider />
     </SectionGrid>
   );
 };
 
-export default Kindal;
+export default Dan;
 
 const ContentWrapper = styled.div`
   margin: 80px 0 0 20px;
@@ -81,7 +81,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 245px;
+  width: 240px;
   z-index: 1;
   ${above.mobile`
     margin: 120px 0 0 160px;
@@ -94,7 +94,7 @@ const ContentWrapper = styled.div`
 const TopDivider = styled(DividerMarker1)`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 180%;
   transform: translateY(-36px);
   z-index: 2;
