@@ -14,8 +14,8 @@ const DesignStatementSection = () => {
   const query = graphql`
     query {
       mobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-jumping-rope-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,8 +25,8 @@ const DesignStatementSection = () => {
         }
       }
       tablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-jumping-rope-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -36,8 +36,8 @@ const DesignStatementSection = () => {
         }
       }
       desktop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-jumping-rope-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {

@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-import { ElementContainer } from "../../../../styles/Containers"
-import { Header1 } from "../../../../styles/Headlines"
+import { ElementContainer } from "../../../../styles/Containers";
+import { Header1, Header2 } from "../../../../styles/Headlines";
 
 const Headline1 = () => {
   return (
@@ -14,9 +14,9 @@ const Headline1 = () => {
       moveTabletX={160}
       moveLaptopX={400}
     >
-      <Header1 primary>We're like a</Header1>
+      <Header1 secondary>We're like a</Header1>
       <Header1
-        secondary
+        primary
         upper
         mobileLarge
         setMLineHeight={1.0}
@@ -26,7 +26,7 @@ const Headline1 = () => {
         Personal
       </Header1>
       <Header1
-        secondary
+        primary
         upper
         mobileLarge
         setMLineHeight={1.0}
@@ -35,8 +35,17 @@ const Headline1 = () => {
       >
         Assistant
       </Header1>
+      <Header2
+        secondary
+        mobileSmall
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        (fitness style)
+      </Header2>
     </ElementContainer>
-  )
-}
+  );
+};
 
-export default Headline1
+export default Headline1;

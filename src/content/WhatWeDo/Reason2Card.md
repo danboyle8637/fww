@@ -1,5 +1,8 @@
 ---
 id: reason2_card
+headline: reason2
+buttonText: Customized? Tell Me More!
+path: /beginner-workouts-to-advanced/
 ---
 
-Discover the workout built for your fitness level to get stronger… more toned… burn fat… and see results FASTER.
+Get stronger... burn more fat... **see restuls FASTER** by doing workouts built for your fitness level.

@@ -74,6 +74,14 @@ const flex = css`
   flex-direction: ${props => (props.column ? "column" : "row")};
 `;
 
+const positionSelf = css`
+  align-self: ${props => {
+    if (props.alignSelfCenter) return "center";
+    else if (props.alignSelfRight) return "flex-end";
+    return "flex-start";
+  }};
+`;
+
 /******  ******/
 
 const SectionContainer = styled.section`
@@ -125,6 +133,7 @@ const HeadlineContainer = styled.div`
 const ElementContainer = styled.div`
   ${setMarginTop}
   ${flex}
+  ${positionSelf}
   ${setWidth}
   ${moveX}
 `;

@@ -3,19 +3,19 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
-import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
-import IgniteLogo from "../../../../svgs/IgniteLogo";
-import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
-import IgniteCopy from "./Copy/IgniteCopy";
-import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
-import { above } from "../../../../styles/Theme";
+import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
+import Headline1 from "./Headlines/Headline1";
+import HeadlineCopy from "./Copy/HeadlineCopy";
+import ScrollDownArrow from "../../Shared/ScrollDownArrow";
+import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import { above } from "../../../styles/Theme";
 
-const IgniteSection = () => {
+const HeadlineSection = () => {
   const query = graphql`
     query {
       mobile: file(
-        sourceInstanceName: { eq: "WhatWeDoImages" }
-        name: { eq: "ignite-crab-touch-600x1300" }
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/mobile/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,8 +25,8 @@ const IgniteSection = () => {
         }
       }
       tablet: file(
-        sourceInstanceName: { eq: "WhatWeDoImages" }
-        name: { eq: "ignite-crab-touch-834x1112" }
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/tablet/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -36,8 +36,8 @@ const IgniteSection = () => {
         }
       }
       laptop: file(
-        sourceInstanceName: { eq: "WhatWeDoImages" }
-        name: { eq: "ignite-crab-touch-1440x900" }
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { regex: "/desktop/" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -58,61 +58,34 @@ const IgniteSection = () => {
 
   return (
     <SectionGrid>
-      <Divider />
       <BackgroundAsset>
         <Image fluid={background} />
       </BackgroundAsset>
       <ContentWrapper>
-        <Logo />
-        <IgniteCopy />
+        <Headline1 />
+        <HeadlineCopy />
+        <ScrollDownArrow />
       </ContentWrapper>
     </SectionGrid>
   );
 };
 
-export default IgniteSection;
-
-const Logo = styled(IgniteLogo)`
-  width: 220px;
-  ${above.mobile`
-    width: 260px;
-  `}
-  ${above.tablet`
-    width: 340px;
-  `}
-`;
-
-const Divider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  z-index: 2;
-  transform: translateY(-45px);
-  ${above.mobile`
-    width: 100%;
-  `}
-  ${above.tablet`
-    transform: translateY(-90px);
-  `}
-`;
+export default HeadlineSection;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 16px;
+  margin: 80px 0 0 20px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 90%;
+  align-items: center;
+  width: 50%;
   z-index: 1;
   ${above.mobile`
-    margin: 140px 0 0 80px;
-    width: 40%;
+    margin: 120px 0 0 60px;
   `}
   ${above.tablet`
-    margin: 140px 0 0 240px;
+    margin: 200px 0 0 80px;
     width: 30%;
   `}
 `;

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { ElementContainer } from "../../../../../styles/Containers";
-import { Header3 } from "../../../../../styles/Headlines";
+import { ElementContainer } from "../../../../styles/Containers";
+import { Header3 } from "../../../../styles/Headlines";
 
-const Headline3 = () => {
+const Headline2 = () => {
   return (
     <ElementContainer column>
       <Header3
@@ -13,13 +13,16 @@ const Headline3 = () => {
         setTLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        I call this
+        What's the
       </Header3>
       <Header3 upper primary mobileLarge>
-        Design:
+        Status
+      </Header3>
+      <Header3 upper primary mobileLarge>
+        Quo?
       </Header3>
     </ElementContainer>
   );
 };
 
-export default Headline3;
+export default Headline2;

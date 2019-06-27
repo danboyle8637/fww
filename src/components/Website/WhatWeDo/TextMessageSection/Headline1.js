@@ -1,9 +1,10 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
-import { ElementContainer } from "../../../../styles/Containers"
-import { Header3 } from "../../../../styles/Headlines"
-import { above } from "../../../../styles/Theme"
+import { ElementContainer } from "../../../../styles/Containers";
+import { Header3 } from "../../../../styles/Headlines";
+import FormCheck from "../../../../svgs/FormCheck";
+import { above } from "../../../../styles/Theme";
 
 const Headline1 = () => {
   return (
@@ -17,36 +18,68 @@ const Headline1 = () => {
       >
         When you need a
       </Header3>
-      <ElementContainer column>
-        <Header3 mobileLarge primary upper>
-          Workout
-        </Header3>
-        <Header3 mobileLarge primary upper>
-          Meal plan
-        </Header3>
-        <Header3 mobileLarge primary upper>
-          Coaching
-        </Header3>
-        <Header3 mobileLarge primary upper>
-          Pick me up
-        </Header3>
+      <ElementContainer column alignSelfCenter setMobileMarginTop={40}>
+        <HeadlineCheckWrapper>
+          <Check />
+          <Header3 mobileMedium tabletLarge primary upper>
+            Workout
+          </Header3>
+        </HeadlineCheckWrapper>
+        <HeadlineCheckWrapper>
+          <Check />
+          <Header3 mobileMedium tabletLarge primary upper>
+            Meal Planning
+          </Header3>
+        </HeadlineCheckWrapper>
+        <HeadlineCheckWrapper>
+          <Check />
+          <Header3 mobileMedium tabletLarge primary upper>
+            Coaching
+          </Header3>
+        </HeadlineCheckWrapper>
+        <HeadlineCheckWrapper>
+          <Check />
+          <Header3 mobileMedium tabletLarge primary upper>
+            A Pick Me Up
+          </Header3>
+        </HeadlineCheckWrapper>
+        <HeadlineCheckWrapper>
+          <Check />
+          <Header3 mobileMedium tabletLarge primary upper>
+            Motivation
+          </Header3>
+        </HeadlineCheckWrapper>
       </ElementContainer>
     </HeadlineContainer>
-  )
-}
+  );
+};
 
-export default Headline1
+export default Headline1;
 
 const HeadlineContainer = styled.div`
   margin: 80px 0 0 0;
-  align-self: start;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
+`;
+
+const HeadlineCheckWrapper = styled.div`
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   ${above.mobile`
-    align-self: center;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
-    column-gap: 10px;
+    gap: 20px;
   `}
-`
+`;
+
+const Check = styled(FormCheck)`
+  width: 24px;
+  ${above.mobile`
+    width: 40px;
+  `}
+`;

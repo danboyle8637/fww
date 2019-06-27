@@ -1,15 +1,17 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+
+import { above } from "../../../../styles/Theme";
 
 const TextBubbles = ({ children, client, align }) => {
   return (
     <Bubble client={client} align={align}>
       <BubbleText>{children}</BubbleText>
     </Bubble>
-  )
-}
+  );
+};
 
-export default TextBubbles
+export default TextBubbles;
 
 const Bubble = styled.div`
   margin: 0 0 20px 0;
@@ -21,12 +23,15 @@ const Bubble = styled.div`
     props.client ? props.theme.bodyText : props.theme.tertiaryAccent};
   border-radius: 8px;
   align-self: ${props => {
-    if (props.align === "left") return "flex-start"
-    if (props.align === "right") return "flex-end"
-    return "center"
+    if (props.align === "left") return "flex-start";
+    if (props.align === "right") return "flex-end";
+    return "center";
   }};
   max-width: 280px;
-`
+  ${above.tablet`
+    max-width: 320px;
+  `}
+`;
 
 const BubbleText = styled.p`
   margin: 0;
@@ -35,4 +40,4 @@ const BubbleText = styled.p`
   font-weight: 600;
   letter-spacing: 0.15rem;
   color: ${props => props.theme.whiteText};
-`
+`;

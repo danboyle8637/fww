@@ -1,15 +1,15 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 import {
   SectionContainer,
   ElementContainer,
   ContentContainer,
-} from "../../../../styles/Containers"
-import TextBubbles from "./TextBubbles"
-import Headline1 from "./Headline1"
-import Headline2 from "./Headline2"
-import FWWLogo from "../../../../svgs/FWWLogo"
+} from "../../../../styles/Containers";
+import TextBubbles from "./TextBubbles";
+import Headline1 from "./Headline1";
+import Headline2 from "./Headline2";
+import FWWLogo from "../../../../svgs/FWWLogo";
 
 const TextMessageSection = () => {
   return (
@@ -54,19 +54,19 @@ const TextMessageSection = () => {
         <Headline2 />
       </ContentContainer>
     </SectionContainer>
-  )
-}
+  );
+};
 
-export default TextMessageSection
+export default TextMessageSection;
 
 const TextMessageContainer = styled.div`
   padding: 0 1rem;
   width: 100%;
-  max-width: 30rem;
-`
+  max-width: 34rem;
+`;
 
 const Logo = styled(FWWLogo)`
-  margin: 40px 0;
+  margin: 80px 0;
   width: 180px;
   align-self: center;
-`
+`;

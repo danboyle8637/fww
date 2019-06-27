@@ -1,11 +1,11 @@
 import React from "react";
 
-import { ElementContainer } from "../../../../../styles/Containers";
-import { Header3 } from "../../../../../styles/Headlines";
+import { ElementContainer } from "../../../../styles/Containers";
+import { Header3 } from "../../../../styles/Headlines";
 
 const Headline3 = () => {
   return (
-    <ElementContainer column>
+    <ElementContainer column setMobileMarginTop={60} setMobileMarginBottom={60}>
       <Header3
         secondary
         mobileMedium
@@ -13,10 +13,10 @@ const Headline3 = () => {
         setTLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        I call this
+        We're going to
       </Header3>
       <Header3 upper primary mobileLarge>
-        Design:
+        Smash It!
       </Header3>
     </ElementContainer>
   );

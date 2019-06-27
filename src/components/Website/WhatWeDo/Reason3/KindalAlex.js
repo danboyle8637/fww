@@ -73,7 +73,7 @@ const TopDivider = styled(DividerMarker1)`
   top: 0;
   left: 0;
   width: 200%;
-  z-index: 1;
+  z-index: 2;
   ${above.mobile`
     width: 100%;
     transform: translateY(-40px);
@@ -93,5 +93,8 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   ${above.mobile`
     width: 100%;
     transform: translate(0px, 50px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translate(0px, 97px) rotate(180deg);
   `}
 `;

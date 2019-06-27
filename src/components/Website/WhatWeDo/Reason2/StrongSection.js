@@ -14,8 +14,8 @@ const StrongSection = () => {
   const query = graphql`
     query {
       mobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "strong-kneeling-press-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,8 +25,8 @@ const StrongSection = () => {
         }
       }
       tablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "strong-kneeling-press-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -36,8 +36,8 @@ const StrongSection = () => {
         }
       }
       laptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "strong-kneeling-press-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -87,14 +87,14 @@ const Divider = styled(DividerMarkerTriangle)`
   bottom: 0;
   left: 0;
   width: 200%;
-  z-index: 1;
+  z-index: 2;
   transform: translate(-60px, 15px) rotate(180deg);
   ${above.mobile`
     width: 100%;
     transform: translate(0px, 15px) rotate(180deg);
   `}
   ${above.tablet`
-    transform: translate(0px, 65px) rotate(180deg);
+    transform: translate(0px, 95px) rotate(180deg);
   `}
 `;
 
@@ -106,7 +106,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 70%;
+  width: 64%;
   z-index: 1;
   ${above.mobile`
     margin: 160px 0 0 40px;
