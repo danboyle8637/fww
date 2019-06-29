@@ -13,9 +13,9 @@ import { above } from "../../../styles/Theme";
 const HeadlineSection = () => {
   const query = graphql`
     query {
-      mobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+      aboutMobile: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "smashing-status-quo-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -24,9 +24,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      tablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+      aboutTablet: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "smashing-status-quo-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,9 +35,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      laptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+      aboutLaptop: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "smashing-status-quo-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -49,10 +49,10 @@ const HeadlineSection = () => {
     }
   `;
 
-  const images = useStaticQuery(query);
-  const mobile = images.mobile;
-  const tablet = images.tablet;
-  const laptop = images.laptop;
+  const image = useStaticQuery(query);
+  const mobile = image.aboutMobile;
+  const tablet = image.aboutTablet;
+  const laptop = image.aboutLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop);
 

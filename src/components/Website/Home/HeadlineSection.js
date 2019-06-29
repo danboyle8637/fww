@@ -1,26 +1,26 @@
-import React from "react"
-import styled from "styled-components"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import styled from "styled-components";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import Image from "gatsby-image";
 
 import {
   SectionGrid,
   BackgroundAsset,
   HeadlineContainer,
-} from "../../../styles/GridContainer"
-import { ElementContainer } from "../../../styles/Containers"
-import Headline from "./Headline"
-import FWWLogo from "../../../svgs/FWWLogo"
-import siteConfig from "../../../utils/siteConfig"
-import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage"
-import { above } from "../../../styles/Theme"
+} from "../../../styles/GridContainer";
+import { ElementContainer } from "../../../styles/Containers";
+import Headline from "./Headline";
+import FWWLogo from "../../../svgs/FWWLogo";
+import siteConfig from "../../../utils/siteConfig";
+import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import { above } from "../../../styles/Theme";
 
 const HeadlineSection = () => {
   const query = graphql`
     query {
-      mobile: file(
+      homeMobile: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+        name: { eq: "walking-dark-kettlebells-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -29,9 +29,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      tablet: file(
+      homeTablet: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+        name: { eq: "walking-dark-kettlebells-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -40,9 +40,9 @@ const HeadlineSection = () => {
           }
         }
       }
-      desktop: file(
+      homeLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+        name: { eq: "walking-dark-kettlebells-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -52,26 +52,26 @@ const HeadlineSection = () => {
         }
       }
     }
-  `
+  `;
 
-  const image = useStaticQuery(query)
-  const mobile = image.mobile
-  const tablet = image.tablet
-  const desktop = image.desktop
+  const image = useStaticQuery(query);
+  const mobile = image.homeMobile;
+  const tablet = image.homeTablet;
+  const desktop = image.homeLaptop;
 
   // make sure you pass the whole data object
-  const background = useRenderBackgroundImage(mobile, tablet, desktop)
+  const background = useRenderBackgroundImage(mobile, tablet, desktop);
 
   const homeButtons = siteConfig.home.homeLinks.map(button => {
-    const id = button.id
-    const path = button.path
-    const name = button.name
+    const id = button.id;
+    const path = button.path;
+    const name = button.name;
     return (
       <HomeButton key={id} to={path}>
         {name}
       </HomeButton>
-    )
-  })
+    );
+  });
 
   return (
     <SectionGrid>
@@ -88,21 +88,21 @@ const HeadlineSection = () => {
         </ElementContainer>
       </HeadlineContainer>
     </SectionGrid>
-  )
-}
+  );
+};
 
-export default HeadlineSection
+export default HeadlineSection;
 
 const Logo = styled(FWWLogo)`
   width: 160px;
-`
+`;
 
 const HeadlineWrapper = styled.div`
   margin-left: 20px;
   ${above.mobile`
     margin-left: 0;
   `}
-`
+`;
 
 const HomeButton = styled(Link)`
   margin: 0 0 20px 0;
@@ -131,4 +131,4 @@ const HomeButton = styled(Link)`
       transform: translateX(20px);
     }
   `}
-`
+`;

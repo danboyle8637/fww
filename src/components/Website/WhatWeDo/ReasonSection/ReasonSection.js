@@ -14,6 +14,7 @@ const ReasonSection = () => {
           sourceInstanceName: { eq: "WhatWeDoCopy" }
           name: { regex: "/[1-3]Card/" }
         }
+        sort: { fields: birthTime }
       ) {
         nodes {
           id

@@ -32,6 +32,7 @@ const Main = styled.main`
   max-width: 1440px;
   background-color: ${props => props.theme.mainBackgroundColor};
   border-radius: 6px;
+  overflow: hidden;
   ${above.ultraWide`
     margin-bottom: 80px;
     border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
