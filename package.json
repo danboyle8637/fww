@@ -6,6 +6,7 @@
   "author": "Never Back Down",
   "dependencies": {
     "@raae/gatsby-remark-oembed": "0.0.7",
+    "@sanity/block-content-to-react": "^2.0.6",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.8.4",
     "gatsby-image": "^2.1.2",
@@ -16,6 +17,8 @@
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-typography": "^2.2.13",
     "gatsby-source-filesystem": "^2.0.38",
+    "gatsby-source-graphql": "^2.1.0",
+    "gatsby-source-sanity": "^5.0.0",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.21",
     "prop-types": "^15.7.2",

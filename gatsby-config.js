@@ -1,5 +1,9 @@
 const path = require("path");
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Fit Women's Weekly`,
@@ -109,6 +113,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `BlogImages`,
+        path: `${__dirname}/src/images/Blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `BlogCopy`,
+        path: `${__dirname}/src/content/Blog`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)
@@ -147,6 +165,14 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: process.env.SANITY_PROJECTID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN,
       },
     },
     {

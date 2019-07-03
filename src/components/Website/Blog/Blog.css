@@ -1,0 +1,9 @@
+#left-cross,
+#right-cross {
+}
+
+#left-ring,
+#right-ring,
+#middle-ring {
+  visibility: hidden;
+}

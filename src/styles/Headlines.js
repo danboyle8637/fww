@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import { above } from "../styles/Theme"
+import styled, { css } from "styled-components";
+import { above } from "../styles/Theme";
 
 const baseHeadline = css`
   margin: 0;
@@ -37,18 +37,22 @@ const baseHeadline = css`
         : props.laptopSmall && "22px"};
     line-height: ${props => props.setLLineHeight || 1.0};
   `}
-`
+`;
 
 const Header1 = styled.h1`
   ${baseHeadline}
-`
+`;
 
 const Header2 = styled.h2`
   ${baseHeadline}
-`
+`;
 
 const Header3 = styled.h3`
   ${baseHeadline}
-`
+`;
 
-export { Header1, Header2, Header3 }
+const Header4 = styled.h4`
+  ${baseHeadline}
+`;
+
+export { Header1, Header2, Header3, Header4 };
