@@ -5,6 +5,7 @@ const sharedBodyText = css`
   margin: 0 0 20px 0;
   padding: 0;
   font-size: 16px;
+  font-weight: 500;
   color: ${props => props.theme.bodyText};
   &:last-child {
     margin-bottom: 0;

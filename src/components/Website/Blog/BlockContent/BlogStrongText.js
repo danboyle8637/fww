@@ -12,5 +12,5 @@ const StrongText = styled.p`
   padding: 0;
   font-size: 16px;
   font-weight: 600;
-  color: ${props => props.theme.primaryAccent};
+  color: ${props => props.theme.tertiaryAccent};
 `;
