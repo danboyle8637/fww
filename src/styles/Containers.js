@@ -4,16 +4,24 @@ import { above, headlineWidths } from "./Theme";
 
 /******  ******/
 
-const setMarginTop = css`
+const setMargin = css`
   margin-top: ${props => `${props.setMobileMarginTop}px` || 0};
   margin-bottom: ${props => `${props.setMobileMarginBottom}px` || 0};
   ${above.mobile`
     margin-top: ${props => `${props.setTabletMarginTop}px` || 0};
     margin-bottom: ${props => `${props.setTabletMarginBottom}px` || 0};
   `}
-  ${above.laptop`
+  ${above.tablet`
+    margin-top: ${props => `${props.setIPadProMarginTop}px` || 0};
+    margin-bottom: ${props => `${props.setIPadProMarginBottom}px` || 0};
+  `}
+  ${above.ipadPro`
     margin-top: ${props => `${props.setLaptopMarginTop}px` || 0};
     margin-bottom: ${props => `${props.setLaptopMarginBottom}px` || 0};
+  `}
+  ${above.laptop`
+    margin-top: ${props => `${props.setWideScreenMarginTop}px` || 0};
+    margin-bottom: ${props => `${props.setWideScreenMarginBottom}px` || 0};
   `}
 `;
 
@@ -97,6 +105,10 @@ const SectionContainer = styled.section`
     margin-top: ${props => props.setTabletMarginTop || "7.5rem"};
     margin-bottom: ${props => props.setTabletMarginBottom || "7.5rem"};
   `}
+  ${above.tablet`
+    margin-top: ${props => props.setIpadProMarginTop || "7.5rem"};
+    margin-bottom: ${props => props.setIpadProMarginBottom || "7.5rem"};
+  `}
 `;
 
 const ContentContainer = styled.div`
@@ -131,7 +143,7 @@ const HeadlineContainer = styled.div`
 `;
 
 const ElementContainer = styled.div`
-  ${setMarginTop}
+  ${setMargin}
   ${flex}
   ${positionSelf}
   ${setWidth}
@@ -145,6 +157,14 @@ const AppContentContainer = styled.div`
   border-radius: 6px;
 `;
 
+const BlogContainer = styled.div`
+  ${setMargin}
+  padding: 0 16px;
+  ${above.mobile`
+    padding: 0 40px;
+  `}
+`;
+
 export {
   AppContentContainer,
   ContentContainer,
@@ -152,4 +172,5 @@ export {
   SectionContainer,
   flex,
   HeadlineContainer,
+  BlogContainer,
 };

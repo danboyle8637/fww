@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import { above } from "../styles/Theme"
+import { createGlobalStyle } from "styled-components";
+import { above } from "../styles/Theme";
 
 const Global = createGlobalStyle`
   html {
@@ -14,10 +14,13 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${props => props.theme.mainBackgroundColor};
+    ${above.ipadPro`
+      background-color: ${props => props.theme.baseBackgroundColor};
+    `}
     ${above.laptop`
       background-color: ${props => props.theme.baseBackgroundColor};
     `}
   }
-`
+`;
 
-export default Global
+export default Global;

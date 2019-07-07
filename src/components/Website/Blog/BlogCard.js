@@ -3,28 +3,34 @@ import styled from "styled-components";
 import Image from "gatsby-image";
 
 import { ElementContainer } from "../../../styles/Containers";
-import { OutterButton } from "../../../styles/Buttons";
+import { InnerButton } from "../../../styles/Buttons";
 import BlogMoreIcon from "../../../svgs/BlogMoreIcon";
 import "./Blog.css";
 
 const BlogCard = ({
   featureImage,
+  altText,
   headline,
-  description,
+  teaserCopy,
   buttonText,
   tags,
+  slug,
 }) => {
-  const tagList = tags.map(tag => <BlogTags key={tag}>{tag}</BlogTags>);
+  const tagList = tags.map(tag => (
+    <BlogTags key={tag.title}>{tag.title}</BlogTags>
+  ));
 
   return (
     <BlogCardContainer>
-      <FeatureImage fluid={featureImage} />
+      <FeatureImage alt={altText} fluid={featureImage} />
       <ContentWrapper>
         <BlogCardHeadline>{headline}</BlogCardHeadline>
-        <BlogDescription dangerouslySetInnerHTML={{ __html: description }} />
+        <BlogDescription dangerouslySetInnerHTML={{ __html: teaserCopy }} />
         <TagWrapper>{tagList}</TagWrapper>
         <ElementContainer justifyCenter>
-          <OutterButton kettlebell={true}>{buttonText}</OutterButton>
+          <InnerButton kettlebell to={`/blog/${slug}`}>
+            {buttonText}
+          </InnerButton>
         </ElementContainer>
       </ContentWrapper>
       <OpenCloseWrapper>
@@ -69,7 +75,7 @@ const BlogCardHeadline = styled.h2`
   letter-spacing: 1.2px;
 `;
 
-const BlogDescription = styled.p`
+const BlogDescription = styled.div`
   margin: 12px 0 0 0;
   padding: 0;
   font-size: 14px;
@@ -77,15 +83,19 @@ const BlogDescription = styled.p`
 `;
 
 const TagWrapper = styled.div`
-  margin: 12px 0 26px 0;
-  display: flex;
-  justify-content: flex-start;
-  gap: 6px;
+  margin: 18px 0 26px 0;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: 1fr;
+  gap: 10px;
+  justify-content: start;
+  width: 100%;
 `;
 
 const BlogTags = styled.p`
   margin: 0;
   padding: 2px 8px;
+  justify-self: center;
   font-size: 13px;
   background: rgba(25, 25, 28, 0.3);
   border-radius: 25px;

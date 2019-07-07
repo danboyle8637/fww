@@ -8,18 +8,20 @@ import { ScreenWidthStore } from "../context/ScreenWidthContext";
 import Header from "./header";
 import FooterSection from "../components/Website/Footer/FooterSection";
 
-const Layout = ({ children }) => (
-  <>
-    <ThemeProvider theme={darkTheme}>
-      <ScreenWidthStore>
-        <Global />
-        <Header />
-        <Main>{children}</Main>
-        <FooterSection />
-      </ScreenWidthStore>
-    </ThemeProvider>
-  </>
-);
+const Layout = ({ children, isBlogPage }) => {
+  return (
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <ScreenWidthStore>
+          <Global />
+          <Header />
+          <Main isBlog={isBlogPage}>{children}</Main>
+          <FooterSection />
+        </ScreenWidthStore>
+      </ThemeProvider>
+    </>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -28,14 +30,24 @@ Layout.propTypes = {
 export default Layout;
 
 const Main = styled.main`
-  width: 100%;
-  max-width: 1440px;
-  background-color: ${props => props.theme.mainBackgroundColor};
+  background-color: ${props =>
+    props.isBlog
+      ? props.theme.baseBackgroundColor
+      : props.theme.mainBackgroundColor};
   border-radius: 6px;
+  width: 100%;
+  max-width: ${props => (props.isBlog ? "980px" : "1440px")};
   overflow: hidden;
+  ${above.ipadPro`
+    margin-bottom: ${props => (props.isBlog ? "80px" : "0")};
+    max-width: ${props => (props.isBlog ? "800px" : "1440px")};
+  `}
+  ${above.laptop`
+    max-width: ${props => (props.isBlog ? "980px" : "1440px")};
+  `}
   ${above.ultraWide`
     margin-bottom: 80px;
-    border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
+    border: 21px solid ${props => props.isBlog ? 'none' : props.theme.mainBackgroundBorderColor};
     border-radius: 6px;
   `}
 `;

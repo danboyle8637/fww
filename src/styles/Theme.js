@@ -1,11 +1,14 @@
 import { css } from "styled-components";
-import { getRems } from "../utils/helpers";
+import siteConfig from "../utils/siteConfig";
+
+const { breakPoints } = siteConfig;
 
 const sizes = {
-  mobile: getRems(600),
-  tablet: getRems(960),
-  laptop: getRems(1440),
-  ultraWide: getRems(1460),
+  mobile: breakPoints.mobile,
+  tablet: breakPoints.tablet,
+  ipadPro: breakPoints.ipadPro,
+  laptop: breakPoints.laptop,
+  ultraWide: breakPoints.ultraWide,
 };
 
 const headlineWidths = {
@@ -36,6 +39,7 @@ const darkTheme = {
   headlineSecondary: "#4D5D7E",
   bodyText: "#B3B6E1",
   whiteText: "#f8f8f8",
+  strongBodyText: "#aff8ff",
   primaryAccent: "#5AFDF2",
   secondaryAccent: "#8B53F6",
   tertiaryAccent: "#B44CFF",

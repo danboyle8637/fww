@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BaseBlockContent from "@sanity/block-content-to-react";
 
-import BlogNormalText from "./BlogNormalText";
 import BlogFormTipIcon from "../../../../svgs/BlogFormTipIcon";
 import BlogIntensityIcon from "../../../../svgs/BlogIntensityIcon";
 import BlogNutritionIcon from "../../../../svgs/BlogNutritionIcon";
+import BlogShamelessPlugIcon from "../../../../svgs/BlogShamelessPlugIcon";
 import { above } from "../../../../styles/Theme";
 
 const serializers = {
   types: {
     block: props => {
-      return <BlogNormalText>{props.children}</BlogNormalText>;
+      return <TipBodyText>{props.children}</TipBodyText>;
     },
   },
 };
@@ -39,6 +39,11 @@ const BlogTipCard = ({ type, headline, tipBody }) => {
       setIcon(<NutritionTipIcon />);
       setTipType("Nutrition Tip");
     }
+
+    if (type === "shamelessPlug") {
+      setIcon(<ShamelessPlugIcon />);
+      setTipType("Shameless Plug");
+    }
   }, [type]);
 
   return (
@@ -58,14 +63,16 @@ const BlogTipCard = ({ type, headline, tipBody }) => {
 export default BlogTipCard;
 
 const BlogTipContainer = styled.div`
-  padding: 12px;
+  margin: 60px 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background: ${props => props.theme.mainBackgroundBorderColor};
   border-radius: 6px;
-  width: 100%;
-  max-width: 43rem;
+  ${above.mobile`
+    margin: 60px 40px;
+  `}
 `;
 
 const TipTypeWrapper = styled.div`
@@ -87,12 +94,16 @@ const NutritionTipIcon = styled(BlogNutritionIcon)`
   width: 54px;
 `;
 
+const ShamelessPlugIcon = styled(BlogShamelessPlugIcon)`
+  width: 54px;
+`;
+
 const TipType = styled.h4`
   margin: 0 0 0 12px;
   padding: 0;
   font-size: 32px;
   text-transform: uppercase;
-  color: ${props => props.theme.bodyText};
+  color: ${props => props.theme.primaryAccent};
 `;
 
 const TipBodyWrapper = styled.div`
@@ -108,4 +119,15 @@ const TipHeadline = styled.h4`
   font-size: 28px;
   text-transform: uppercase;
   color: ${props => props.theme.headlineSecondary};
+`;
+
+const TipBodyText = styled.p`
+  margin: 30px 0 0 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: ${props => props.theme.bodyText};
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;

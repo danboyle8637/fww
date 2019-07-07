@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { setMarginTop } from "./Reusables";
+import { setMargin } from "./Reusables";
 
 const sharedBodyText = css`
   margin: 0 0 20px 0;
@@ -14,11 +14,11 @@ const sharedBodyText = css`
 
 const BodyText = styled.p`
   ${sharedBodyText}
-  ${setMarginTop}
+  ${setMargin}
 `;
 
 const SetBodyText = styled.div`
-  ${setMarginTop}
+  ${setMargin}
   width: 100%;
   & p {
     ${sharedBodyText}
@@ -50,7 +50,7 @@ const SetBodyText = styled.div`
     cursor: pointer;
   }
   & strong {
-    color: #aff8ff;
+    color: ${props => props.theme.strongBodyText};
   }
 `;
 

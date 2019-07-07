@@ -1,3 +1,4 @@
+import React from "react";
 import { getFluidGatsbyImage } from "gatsby-source-sanity";
 
 import PrimarySubhead from "./PrimarySubhead";
@@ -11,6 +12,8 @@ import BlogStrongText from "./BlogStrongText";
 import BlogBlockQuote from "./BlogBlockQuote";
 import ExternalLink from "./ExternalLink";
 import InternalLink from "./InternalLink";
+import BlogImage from "./BlogImage";
+import Spacer from "./Spacer";
 
 const sanityConfig = {
   projectId: process.env.SANITY_PROJECTID,
@@ -30,7 +33,7 @@ const serializers = {
         case "listSubhead": {
           return <ListSubhead>{props.children}</ListSubhead>;
         }
-        case "blockQuote": {
+        case "blockquote": {
           return <BlogBlockQuote>{props.children}</BlogBlockQuote>;
         }
         case "normal": {
@@ -40,30 +43,6 @@ const serializers = {
           return <BlogNormalText>{props.children}</BlogNormalText>;
         }
       }
-    },
-    listItem: props => {
-      switch (props.node.listItem) {
-        case "bullet": {
-          return <UnorderedListItem>{props.children}</UnorderedListItem>;
-        }
-        case "number": {
-          return <OrderedListItem>{props.children}</OrderedListItem>;
-        }
-        default: {
-          return <UnorderedListItem>{props.children}</UnorderedListItem>;
-        }
-      }
-    },
-    marks: {
-      strong: props => {
-        return <BlogStrongText>{props.children}</BlogStrongText>;
-      },
-      externalLink: props => {
-        return <ExternalLink>{props.children}</ExternalLink>;
-      },
-      internalLink: props => {
-        return <InternalLink>{props.children}</InternalLink>;
-      },
     },
     detailedImage: props => {
       const imageAssetId = props.node.asset._ref;
@@ -92,6 +71,42 @@ const serializers = {
       const headline = props.node.headline;
       const tipBody = props.node.content;
       return <BlogTipCard type={type} headline={headline} tipBody={tipBody} />;
+    },
+    shamelessPlug: props => {
+      const type = props.node._type;
+      const headline = props.node.headline;
+      const tipBody = props.node.content;
+      return <BlogTipCard type={type} headline={headline} tipBody={tipBody} />;
+    },
+    spacer: props => {
+      const space = props.node.space;
+      return <Spacer space={space} />;
+    },
+  },
+  listItem: props => {
+    switch (props.node.listItem) {
+      case "bullet": {
+        return <UnorderedListItem>{props.children}</UnorderedListItem>;
+      }
+      case "number": {
+        return <OrderedListItem>{props.children}</OrderedListItem>;
+      }
+      default: {
+        return <UnorderedListItem>{props.children}</UnorderedListItem>;
+      }
+    }
+  },
+  marks: {
+    strong: props => {
+      return <BlogStrongText>{props.children}</BlogStrongText>;
+    },
+    externalLink: props => {
+      const link = props.mark.href;
+      return <ExternalLink link={link}>{props.children}</ExternalLink>;
+    },
+    internalLink: props => {
+      const to = props.mark.href;
+      return <InternalLink to={to}>{props.children}</InternalLink>;
     },
   },
 };

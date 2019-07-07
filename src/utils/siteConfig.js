@@ -1,4 +1,13 @@
+const helpers = require("./helpers");
+
 module.exports = {
+  breakPoints: {
+    mobile: helpers.getRems(600),
+    tablet: helpers.getRems(960),
+    ipadPro: helpers.getRems(1024),
+    laptop: helpers.getRems(1440),
+    ultraWide: helpers.getRems(1460),
+  },
   home: {
     homeLinks: [
       { id: 1, path: "/what-we-do", name: "what we do" },
@@ -6,7 +15,7 @@ module.exports = {
       { id: 3, path: "/the-app", name: "the app" },
       { id: 4, path: "/programs", name: "programs" },
       { id: 5, path: "/follow-me", name: "follow me" },
-      { id: 6, path: "/", name: "blog" },
+      { id: 6, path: "/blog", name: "blog" },
     ],
   },
   footerLinks: {

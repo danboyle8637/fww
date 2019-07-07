@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import ExternalLinkIcon from "../../../../svgs/ExternalLinkIcon";
 
-const ExternalLink = ({ children }) => {
+const ExternalLink = ({ link, children }) => {
   return (
     <LinkContainer>
-      <Text>{children}</Text>
+      <Text href={link}>{children}</Text>
       <LinkIcon />
     </LinkContainer>
   );
@@ -14,18 +14,19 @@ const ExternalLink = ({ children }) => {
 
 export default ExternalLink;
 
-const LinkContainer = styled.div`
-  display: flex;
+const LinkContainer = styled.span`
+  display: inline-flex;
   align-items: flex-start;
 `;
 
-const Text = styled.p`
+const Text = styled.a`
   position: relative;
   margin: 0 0 20px 0;
   padding: 0;
   font-size: 16px;
   font-weight: 500;
-  color: ${props => props.theme.primaryAccent};
+  color: ${props => props.theme.tertiaryAccent};
+  text-decoration: none;
   cursor: pointer;
   &::after {
     position: absolute;
@@ -34,7 +35,7 @@ const Text = styled.p`
     left: 0;
     width: 100%;
     height: 1px;
-    background: ${props => props.theme.primaryAccent};
+    background: ${props => props.theme.tertiaryAccent};
     transform: translateY(-2px);
   }
   &:last-child {
@@ -45,4 +46,5 @@ const Text = styled.p`
 const LinkIcon = styled(ExternalLinkIcon)`
   margin: 5px 0 0 8px;
   width: 20px;
+  height: 20px;
 `;

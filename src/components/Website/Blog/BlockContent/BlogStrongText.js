@@ -7,10 +7,10 @@ const BlogStrongText = ({ children }) => {
 
 export default BlogStrongText;
 
-const StrongText = styled.p`
+const StrongText = styled.span`
   margin: 0;
   padding: 0;
   font-size: 16px;
   font-weight: 600;
-  color: ${props => props.theme.tertiaryAccent};
+  color: ${props => props.theme.strongBodyText};
 `;

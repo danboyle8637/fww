@@ -1,11 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
+import { above } from "../../../../styles/Theme";
+
 const UnorderedListItem = ({ children }) => {
-  return <ListItem>{children}</ListItem>;
+  return (
+    <BulletList>
+      <ListItem>{children}</ListItem>
+    </BulletList>
+  );
 };
 
 export default UnorderedListItem;
+
+const BulletList = styled.ul`
+  margin: 0 0 0 40px;
+  padding: 0;
+  list-style: none;
+  ${above.mobile`
+    margin: 0 0 0 80px;
+  `}
+`;
 
 const ListItem = styled.li`
   margin: 0 0 20px 0;

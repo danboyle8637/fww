@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 import InternalLinkIcon from "../../../../svgs/InternalLinkIcon";
 
-const InternalLink = ({ children }) => {
+const InternalLink = ({ to, children }) => {
   return (
     <LinkContainer>
-      <Text>{children}</Text>
+      <Text to={to}>{children}</Text>
       <LinkIcon />
     </LinkContainer>
   );
@@ -14,17 +15,18 @@ const InternalLink = ({ children }) => {
 
 export default InternalLink;
 
-const LinkContainer = styled.div`
-  display: flex;
+const LinkContainer = styled.span`
+  display: inline-flex;
   align-items: flex-start;
 `;
 
-const Text = styled.p`
+const Text = styled(Link)`
   position: relative;
   margin: 0 0 20px 0;
   padding: 0;
   font-size: 16px;
   font-weight: 500;
+  text-decoration: none;
   color: ${props => props.theme.primaryAccent};
   cursor: pointer;
   &::after {
