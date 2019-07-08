@@ -4,26 +4,17 @@ import styled from "styled-components";
 import { above } from "../../../../styles/Theme";
 
 const OrderedListItem = ({ children }) => {
-  return (
-    <NumberedList>
-      <ListItem>{children}</ListItem>
-    </NumberedList>
-  );
+  return <ListItem>{children}</ListItem>;
 };
 
 export default OrderedListItem;
 
-const NumberedList = styled.ol`
-  margin: 0 40px 0 40px;
-  padding: 0;
-  ${above.mobile`
-    margin: 0 0 0 80px;
-  `}
-`;
-
 const ListItem = styled.li`
-  margin: 0 0 20px 0;
+  margin: 0 16px 20px 16px;
   position: relative;
   font-size: 16px;
   color: ${props => props.theme.bodyText};
+  ${above.mobile`
+    margin: 0 40px 20px 40px; 
+  `}
 `;

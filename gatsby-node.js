@@ -8,6 +8,7 @@
 
 const path = require("path");
 
+// Creating the blog list page and blog post pages.
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -71,4 +72,18 @@ exports.createPages = ({ graphql, actions }) => {
       resolve();
     });
   });
+};
+
+// Create the client side routing side of the app
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions;
+
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = "/app/*";
+
+    // Update the page.
+    createPage(page);
+  }
 };

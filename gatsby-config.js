@@ -113,20 +113,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `BlogImages`,
-        path: `${__dirname}/src/images/Blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `BlogCopy`,
-        path: `${__dirname}/src/content/Blog`,
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)
