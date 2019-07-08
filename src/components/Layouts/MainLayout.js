@@ -8,6 +8,7 @@ import { above } from "../../styles/Theme";
 
 const MainLayout = ({ children, location }) => {
   const [isBlogPage, setIsBlogPage] = useState(false);
+  const [isApp, setIsApp] = useState(false);
 
   useEffect(() => {
     const pathName = location.pathname;
@@ -17,11 +18,20 @@ const MainLayout = ({ children, location }) => {
     } else {
       setIsBlogPage(false);
     }
+
+    if (pathName.match(/^\/app/)) {
+      console.log("You're in the app part now!");
+      setIsApp(true);
+    } else {
+      setIsApp(false);
+    }
   }, [location.pathname]);
 
   return (
     <Main isBlogPage={isBlogPage}>
-      <Layout isBlogPage={isBlogPage}>{children}</Layout>
+      <Layout isBlogPage={isBlogPage} isApp={isApp}>
+        {children}
+      </Layout>
     </Main>
   );
 };

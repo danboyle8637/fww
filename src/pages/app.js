@@ -10,15 +10,15 @@ const App = () => {
   return (
     <SectionContainer>
       <nav>
-        <Link to={"app/reset"}>Dashboard</Link>
-        <Link to={"app/reset/ignite"}>Reset Program</Link>
-        <Link to={"app/reset/workout/workout1"}>Workout Page</Link>
+        <Link to={"app/"}>Dashboard</Link>
+        <Link to={"app/ignite"}>Reset Program</Link>
+        <Link to={"app/workout/workout1"}>Workout Page</Link>
       </nav>
       <ContentContainer>
         <Router>
-          <Dashboard path={"app/reset"} />
-          <ResetProgram path={"app/reset/:programName"} />
-          <Workout path={"app/reset/workout/:workoutId"} />
+          <Dashboard path={"app/"} />
+          <ResetProgram path={"app/:programName"} />
+          <Workout path={"app/workout/:workoutId"} />
         </Router>
       </ContentContainer>
     </SectionContainer>

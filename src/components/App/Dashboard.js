@@ -3,7 +3,7 @@ import React from "react";
 import { SectionContainer, ContentContainer } from "../../styles/Containers";
 import { BodyText } from "../../styles/BodyText";
 
-const Dashboard = () => {
+const Dashboard = props => {
   return (
     <SectionContainer>
       <ContentContainer>
