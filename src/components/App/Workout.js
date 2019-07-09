@@ -1,16 +1,16 @@
 import React from "react";
 
-import { SectionContainer, ContentContainer } from "../../styles/Containers";
-import { BodyText } from "../../styles/BodyText";
+import { SectionContainer } from "../../styles/Containers";
+import CoachingVideo from "./WorkoutPage/CoachingVideo";
+import WorkoutVideo from "./WorkoutPage/WorkoutVideo";
+import WarmCoolVideos from "./WorkoutPage/WarmCoolVideos";
 
-const Workout = ({ programName, workoutId }) => {
+const Workout = () => {
   return (
     <SectionContainer>
-      <ContentContainer>
-        <BodyText>
-          Workout Page for {programName} and workout {workoutId}
-        </BodyText>
-      </ContentContainer>
+      <CoachingVideo />
+      <WorkoutVideo />
+      <WarmCoolVideos />
     </SectionContainer>
   );
 };
