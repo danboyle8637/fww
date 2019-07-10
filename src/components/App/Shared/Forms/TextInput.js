@@ -4,7 +4,13 @@ import styled from "styled-components";
 import FormCheck from "../../../../svgs/FormCheck";
 
 const TextInput = props => {
-  const { labelName, labelFor, labelInstructions, labelError } = props;
+  const {
+    labelName,
+    labelFor,
+    labelInstructions,
+    labelError,
+    labelSuccess,
+  } = props;
 
   const isError = !props.initial && !props.valid;
   const isValid = !props.touched && props.valid;
@@ -12,18 +18,19 @@ const TextInput = props => {
 
   return (
     <InputLabel htmlFor={labelFor}>
-      <Input isValid={isValid} {...props} />
+      <Input valid={isValid} error={isError} touched={isTouched} {...props} />
       <TextLabel>
         {isTouched ? (
           <span>{labelInstructions}</span>
         ) : isError && !isTouched ? (
           <span>{labelError}</span>
         ) : isValid ? (
-          <CheckMark />
+          <span>{labelSuccess}</span>
         ) : (
           <span>{labelName}</span>
         )}
       </TextLabel>
+      {isValid ? <CheckMark /> : null}
     </InputLabel>
   );
 };
@@ -50,6 +57,7 @@ const TextLabel = styled.p`
 `;
 
 const Input = styled.input`
+  position: relative;
   margin: 0;
   padding: 8px;
   background-color: ${props =>
@@ -78,5 +86,9 @@ const Input = styled.input`
 `;
 
 const CheckMark = styled(FormCheck)`
+  position: absolute;
+  top: 50%;
+  left: 20px;
   width: 22px;
+  transform: translateY(-50%);
 `;

@@ -47,6 +47,6 @@ const emailValidator = value => {
   return re.test(String(value).toLowerCase());
 };
 
-const numberValidator = value => isNaN(value);
+const numberValidator = value => !isNaN(value);
 
 export default validate;

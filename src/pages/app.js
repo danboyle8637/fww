@@ -6,6 +6,7 @@ import { formState, formReducer } from "../reducers/formReducer";
 import Dashboard from "../components/App/Dashboard";
 import ResetProgram from "../components/App/ResetProgram";
 import Workout from "../components/App/Workout";
+import WorkoutDetails from "../components/App/WorkoutPage/WorkoutDetails";
 
 const App = () => {
   return (
@@ -14,7 +15,9 @@ const App = () => {
         <Router>
           <Dashboard path={"app/"} />
           <ResetProgram path={"app/:programName"} />
-          <Workout path={"app/:programName/:workoutId"} />
+          <Workout path={"app/:programName/:workoutId"}>
+            <WorkoutDetails path={"details"} />
+          </Workout>
         </Router>
       </FormStore>
     </>

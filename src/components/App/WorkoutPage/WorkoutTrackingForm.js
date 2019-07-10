@@ -19,6 +19,7 @@ const WorkoutTrackingForm = () => {
         labelFor="workoutGoal"
         labelInstructions="..."
         labelError="Remember ONLY numbers!"
+        labelSuccess="Awesome post it!"
         value={formState.workoutGoalValue.value}
         valid={formState.workoutGoalValue.valid}
         initial={formState.workoutGoalOptions.initial}

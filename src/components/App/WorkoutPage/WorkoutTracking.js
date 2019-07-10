@@ -8,7 +8,7 @@ import WorkoutTrackingForm from "./WorkoutTrackingForm";
 const WorkoutTracking = () => {
   return (
     <GoalContainer>
-      <Header3 upper mobileMedium primary>
+      <Header3 upper mobileMedium secondary>
         Track It:
       </Header3>
       <BodyText setMobileMarginTop={10}>
