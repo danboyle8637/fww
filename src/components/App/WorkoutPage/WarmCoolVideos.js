@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import PlayButtonIcon from "../../../svgs/PlayButtonIcon";
+import WorkoutLabel from "./WorkoutLabel";
 
 const WarmCoolVideos = () => {
   const query = graphql`
@@ -44,12 +45,14 @@ const WarmCoolVideos = () => {
         <ContentWrapper>
           <PlayButton />
         </ContentWrapper>
+        <WorkoutLabel>Warm Up</WorkoutLabel>
       </SectionGrid>
       <SectionGrid>
         <WorkoutBackground fluid={coolDown} />
         <ContentWrapper>
           <PlayButton />
         </ContentWrapper>
+        <WorkoutLabel>Cool Down</WorkoutLabel>
       </SectionGrid>
     </VideoContainer>
   );
@@ -64,6 +67,7 @@ const VideoContainer = styled.div`
 `;
 
 const SectionGrid = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

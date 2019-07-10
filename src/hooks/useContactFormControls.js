@@ -38,6 +38,13 @@ const useContactFormControls = () => {
         });
         break;
       }
+      case "workoutGoal": {
+        dispatch({
+          type: "workoutGoalValue",
+          value: inputValue,
+        });
+        break;
+      }
       default: {
         throw new Error("None of your actions were picked up.");
       }
@@ -63,6 +70,10 @@ const useContactFormControls = () => {
       }
       case "tellMeMore": {
         dispatch({ type: "tellMeMoreOptions" });
+        break;
+      }
+      case "workoutGoal": {
+        dispatch({ type: "workoutGoalOptions" });
         break;
       }
       default: {

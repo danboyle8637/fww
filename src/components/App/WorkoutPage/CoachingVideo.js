@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import CoachingMoreIcon from "../../../svgs/CoachingMoreIcon";
+import WorkoutLabel from "./WorkoutLabel";
 
 const CoachingVideo = () => {
   const query = graphql`
@@ -31,6 +32,7 @@ const CoachingVideo = () => {
       <ContentWrapper>
         <MoreIcon />
       </ContentWrapper>
+      <WorkoutLabel>Coaching Video</WorkoutLabel>
     </SectionGrid>
   );
 };
@@ -38,6 +40,7 @@ const CoachingVideo = () => {
 export default CoachingVideo;
 
 const SectionGrid = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

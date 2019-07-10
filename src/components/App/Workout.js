@@ -4,6 +4,7 @@ import { SectionContainer } from "../../styles/Containers";
 import CoachingVideo from "./WorkoutPage/CoachingVideo";
 import WorkoutVideo from "./WorkoutPage/WorkoutVideo";
 import WarmCoolVideos from "./WorkoutPage/WarmCoolVideos";
+import WorkoutTracking from "./WorkoutPage/WorkoutTracking";
 
 const Workout = () => {
   return (
@@ -11,6 +12,7 @@ const Workout = () => {
       <CoachingVideo />
       <WorkoutVideo />
       <WarmCoolVideos />
+      <WorkoutTracking />
     </SectionContainer>
   );
 };

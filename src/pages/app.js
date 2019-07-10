@@ -1,6 +1,8 @@
 import React from "react";
 import { Router } from "@reach/router";
 
+import { FormStore } from "../context/FormContext";
+import { formState, formReducer } from "../reducers/formReducer";
 import Dashboard from "../components/App/Dashboard";
 import ResetProgram from "../components/App/ResetProgram";
 import Workout from "../components/App/Workout";
@@ -8,11 +10,13 @@ import Workout from "../components/App/Workout";
 const App = () => {
   return (
     <>
-      <Router>
-        <Dashboard path={"app/"} />
-        <ResetProgram path={"app/:programName"} />
-        <Workout path={"app/:programName/:workoutId"} />
-      </Router>
+      <FormStore initialState={formState} reducer={formReducer}>
+        <Router>
+          <Dashboard path={"app/"} />
+          <ResetProgram path={"app/:programName"} />
+          <Workout path={"app/:programName/:workoutId"} />
+        </Router>
+      </FormStore>
     </>
   );
 };

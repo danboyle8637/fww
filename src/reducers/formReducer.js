@@ -20,6 +20,12 @@ const tellMeMoreValidationRules = {
   isRequired: false,
 };
 
+const workoutGoalValidation = {
+  maxLength: 4,
+  isNumber: true,
+  isRequired: false,
+};
+
 // Initial Form State
 const formState = {
   firstNameValue: {
@@ -69,6 +75,15 @@ const formState = {
   },
   howCanIHelpOptions: {
     initial: true,
+  },
+  workoutGoalValue: {
+    value: "",
+    valid: false,
+  },
+  workoutGoalOptions: {
+    initial: true,
+    touched: false,
+    showInstructions: false,
   },
 };
 
@@ -174,6 +189,27 @@ const formReducer = (state, action) => {
           initial: false,
           touched: !state.tellMeMoreOptions.touched,
           showInstructions: !state.tellMeMoreOptions.showInstructions,
+        },
+      };
+    }
+    case "workoutGoalValue": {
+      //const valueNumber = Number(action.value);
+      const valid = validate(action.value, workoutGoalValidation);
+      return {
+        ...state,
+        workoutGoalValue: {
+          value: action.value,
+          valid: valid,
+        },
+      };
+    }
+    case "workoutGoalOptions": {
+      return {
+        ...state,
+        workoutGoalOptions: {
+          initial: false,
+          touched: !state.workoutGoalOptions.touched,
+          showInstructions: !state.workoutGoalOptions.showInstructions,
         },
       };
     }
