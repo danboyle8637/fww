@@ -14,7 +14,7 @@ const StrongResetLogo = ({ width, height, className }) => {
         d="M157.28 133.25l-55.9 123.64H63.81l57.73-125.28H43V101h114.28z"
         transform="translate(-42.96 -100.99)"
         fill="#8b53f6"
-        id="seven"
+        id="strong-reset-seven"
       />
       <g id="day" fill="#f8f8f8">
         <path

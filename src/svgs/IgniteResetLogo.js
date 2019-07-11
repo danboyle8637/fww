@@ -57,12 +57,12 @@ const IgniteResetLogo = ({ width, height, className }) => {
           <stop offset=".97" stopColor="#8b53f6" />
         </linearGradient>
       </defs>
-      <g id="day-reset">
+      <g id="ignite-reset">
         <path
           d="M206.3 126.21l-40.43 89.43H138.7L180.46 125h-56.84v-22.12h82.68z"
           transform="translate(-31.39 -102.88)"
           fill="#b44cff"
-          id="seven"
+          id="ignite-reset-seven"
         />
         <g id="day" fill="#0e0e10">
           <path

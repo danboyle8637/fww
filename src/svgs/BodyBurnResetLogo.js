@@ -53,7 +53,7 @@ const BodyBurnResetLogo = ({ width, height, className }) => {
           transform="translate(-39.96 -115.99)"
         />
       </g>
-      <g id="seven">
+      <g id="body-burn-reset-seven">
         <path
           id="seven-outline"
           d="M154.28 148.25l-55.9 123.64H60.81l57.73-125.28H40V116h114.28z"

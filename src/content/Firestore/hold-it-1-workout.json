@@ -1,0 +1,31 @@
+{
+  "title": "Hold It 1",
+  "description": "5 mini timed circuits. Two will be holds two will be rep based. Are you ready to brace hard?",
+  "circuits": [
+    {
+      "id": "c1",
+      "directions": "2 rounds 30 second HOLDS",
+      "exercises": ["Pushup hold", "Squat hold"]
+    },
+    {
+      "id": "c2",
+      "directions": "2 rounds 30 second REPS",
+      "exercises": ["Pushups (for reps)", "Squats (for reps"]
+    },
+    {
+      "id": "c3",
+      "directions": "2 rounds 30 second HOLDS",
+      "exercises": ["Plank (from forearms)", "Hollow hold"]
+    },
+    {
+      "id": "c4",
+      "directions": "2 rounds 30 second REPS",
+      "exercises": ["Thrusters (for reps)", "Hollow leg raises (for reps"]
+    },
+    {
+      "id": "c5",
+      "directions": "2 rounds 30 second HOLDS",
+      "exercises": ["Pushup hold", "Squat hold"]
+    }
+  ]
+}
