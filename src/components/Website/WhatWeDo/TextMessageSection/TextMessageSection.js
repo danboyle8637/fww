@@ -7,6 +7,7 @@ import {
   ContentContainer,
 } from "../../../../styles/Containers";
 import TextBubbles from "./TextBubbles";
+import Headline3 from "./Headline3";
 import Headline1 from "./Headline1";
 import Headline2 from "./Headline2";
 import FWWLogo from "../../../../svgs/FWWLogo";
@@ -14,6 +15,9 @@ import FWWLogo from "../../../../svgs/FWWLogo";
 const TextMessageSection = () => {
   return (
     <SectionContainer>
+      <ContentContainer>
+        <Headline3 />
+      </ContentContainer>
       <TextMessageContainer>
         <ElementContainer column>
           <TextBubbles align={"left"} client={true}>

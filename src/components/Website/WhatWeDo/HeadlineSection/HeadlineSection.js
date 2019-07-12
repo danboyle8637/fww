@@ -15,7 +15,7 @@ const HeadlineSection = () => {
     query {
       assistantMobile: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
-        name: { eq: "personal-assistant-600x1300" }
+        name: { eq: "personal-assistant2-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {

@@ -1,14 +1,12 @@
 import React from "react";
 
-import { SectionContainer, ContentContainer } from "../../styles/Containers";
-import { BodyText } from "../../styles/BodyText";
+import { SectionContainer } from "../../styles/Containers";
+import DashboardHeader from "./Dashboard/DashboardHeader";
 
 const Dashboard = props => {
   return (
     <SectionContainer>
-      <ContentContainer>
-        <BodyText>Dashboard</BodyText>
-      </ContentContainer>
+      <DashboardHeader />
     </SectionContainer>
   );
 };

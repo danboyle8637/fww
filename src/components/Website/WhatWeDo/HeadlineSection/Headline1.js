@@ -42,7 +42,7 @@ const Headline1 = () => {
         setTLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        (fitness style)
+        (fitness & nutrition style!)
       </Header2>
     </ElementContainer>
   );
