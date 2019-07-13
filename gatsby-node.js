@@ -87,3 +87,49 @@ exports.onCreatePage = async ({ page, actions }) => {
     createPage(page);
   }
 };
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    module: {
+      rules:
+        stage === "build-html"
+          ? [
+              {
+                test: /ThrowPropsPlugin/,
+                use: loaders.null(),
+              },
+              {
+                test: /DrawSVGPlugin/,
+                use: loaders.null(),
+              },
+            ]
+          : [],
+    },
+    resolve: {
+      alias: {
+        TweenLite: path.resolve(
+          "node_modules",
+          "gsap/src/uncompressed/TweenLite.js"
+        ),
+        TweenMax: path.resolve(
+          "node_modules",
+          "gsap/src/uncompressed/TweenMax.js"
+        ),
+        TimelineLite: path.resolve(
+          "node_modules",
+          "gsap/src/uncompressed/TimelineLite.js"
+        ),
+        TimelineMax: path.resolve(
+          "node_modules",
+          "gsap/src/uncompressed/TimelineMax.js"
+        ),
+      },
+    },
+  });
+};

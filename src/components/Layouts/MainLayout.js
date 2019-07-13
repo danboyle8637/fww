@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Layout from "../layout";
+import { MenuStore } from "../../context/MenuContext";
+import { menuState, menuReducer } from "../../reducers/menuReducer";
 import { above } from "../../styles/Theme";
 // MainLayout wraps the whole window and centers the
 // ContentLayout.
@@ -29,9 +31,11 @@ const MainLayout = ({ children, location }) => {
 
   return (
     <Main isBlogPage={isBlogPage}>
-      <Layout isBlogPage={isBlogPage} isApp={isApp}>
-        {children}
-      </Layout>
+      <MenuStore initialState={menuState} reducer={menuReducer}>
+        <Layout isBlogPage={isBlogPage} isApp={isApp}>
+          {children}
+        </Layout>
+      </MenuStore>
     </Main>
   );
 };

@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+import React from "react";
+
+export const onRenderBody = ({ setPostBodyComponents }) => {
+  setPostBodyComponents([
+    <div key={"reusable_portal"} id={"reusable_portal"} />,
+  ]);
+};
