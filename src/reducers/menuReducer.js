@@ -1,6 +1,6 @@
 const menuState = {
   isOpen: false,
-  rightPosition: 0,
+  xPercent: 0,
   leftPosition: 0,
   menuWidth: 0,
 };
@@ -22,7 +22,7 @@ const menuReducer = (state, action) => {
     case "setMenuWidth": {
       return {
         ...state,
-        rightPosition: action.positions.rightPosition,
+        xPercent: action.positions.xPercent,
         leftPosition: action.positions.leftPosition,
         menuWidth: action.positions.menuWidth,
       };

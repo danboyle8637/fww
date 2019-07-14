@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import MainMenuIcon from "../../../svgs/MainMenuIcon";
 import "./Menu.css";
+import MenuDrawer from "./MenuDrawer";
 import { useMenuContext } from "../../../context/MenuContext";
 
 const MenuChicklet = () => {
@@ -16,6 +17,7 @@ const MenuChicklet = () => {
   return (
     <Chicklet onClick={handleToggleMenu}>
       <MenuIcon />
+      <MenuDrawer />
     </Chicklet>
   );
 };

@@ -10,15 +10,65 @@ import { ScreenWidthStore } from "../context/ScreenWidthContext";
 import Header from "./header";
 import FooterSection from "../components/Website/Footer/FooterSection";
 import { useMenuContext } from "../context/MenuContext";
+import siteConfig from "../utils/siteConfig";
 
 const Layout = ({ children, isBlogPage, isApp }) => {
-  // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
   const viewRef = useRef(null);
 
   useEffect(() => {
-    console.log(menuState.isOpen);
-  }, [menuState.isOpen]);
+    const screenWidth = window.innerWidth;
+    const { mobile, laptop } = siteConfig.breakPoints;
+
+    const calculateDrawerWidth = (width, leftPosition) => {
+      return width - (width * parseInt(leftPosition)) / 100;
+    };
+
+    if (screenWidth <= mobile * 16) {
+      const xPercent = 80;
+      const leftPosition = 20;
+      const drawerWidth = calculateDrawerWidth(screenWidth, leftPosition);
+
+      dispatch({
+        type: "setMenuWidth",
+        positions: {
+          xPercent: xPercent,
+          leftPosition: leftPosition,
+          menuWidth: drawerWidth,
+        },
+      });
+    }
+
+    if (screenWidth > mobile * 16 && screenWidth < laptop * 16) {
+      const xPercent = 40;
+      const leftPosition = 60;
+      const drawerWidth = calculateDrawerWidth(screenWidth, leftPosition);
+
+      dispatch({
+        type: "setMenuWidth",
+        positions: {
+          xPercent: xPercent,
+          leftPosition: leftPosition,
+          menuWidth: drawerWidth,
+        },
+      });
+    }
+
+    if (screenWidth >= laptop * 16) {
+      const xPercent = 20;
+      const leftPosition = 80;
+      const drawerWidth = calculateDrawerWidth(screenWidth, leftPosition);
+
+      dispatch({
+        type: "setMenuWidth",
+        positions: {
+          xPercent: xPercent,
+          leftPosition: leftPosition,
+          menuWidth: drawerWidth,
+        },
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -32,12 +82,12 @@ const Layout = ({ children, isBlogPage, isApp }) => {
               addEndListener={(node, done) => {
                 if (menuState.isOpen) {
                   TweenMax.to(node, 0.5, {
-                    x: -60,
+                    xPercent: `-${menuState.xPercent}%`,
                     onComplete: done,
                   });
                 } else {
                   TweenMax.to(node, 0.5, {
-                    x: 0,
+                    xPercent: 0,
                     onComplete: done,
                   });
                 }
