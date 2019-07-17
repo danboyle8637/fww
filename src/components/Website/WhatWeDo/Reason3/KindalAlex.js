@@ -7,6 +7,8 @@ import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import DividerMarker1 from "../../../../svgs/DividerMarker1";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
 import { above } from "../../../../styles/Theme";
 
 const KindalAlex = () => {
@@ -53,13 +55,18 @@ const KindalAlex = () => {
   const tablet = images.kindalAlexTablet;
   const laptop = images.kindalAlexLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <BottomDivider />
     </SectionGrid>

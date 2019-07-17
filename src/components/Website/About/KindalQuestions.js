@@ -7,6 +7,7 @@ import {
   ContentContainer,
   ElementContainer,
 } from "../../../styles/Containers";
+import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { InnerButton } from "../../../styles/Buttons";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
@@ -46,8 +47,9 @@ const KindalQuestions = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id="get-to-know-kindal" />
         <Headline4 />
-        <DraggableContainer>{cards}</DraggableContainer>
+        <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>
         </ElementContainer>

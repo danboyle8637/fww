@@ -8,41 +8,50 @@ import StrongLogo from "../../../../svgs/StrongLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import StrongCopy from "./Copy/StrongCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
 import { above } from "../../../../styles/Theme";
 
 const StrongSection = () => {
   const query = graphql`
     query {
-      mobile: file(
+      strongMobile: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "strong-kneeling-press-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      tablet: file(
+      strongTablet: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "strong-kneeling-press-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      laptop: file(
+      strongIpadPro: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "strong-kneeling-press-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      strongLaptop: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "strong-kneeling-press-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -50,17 +59,23 @@ const StrongSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.mobile;
-  const tablet = images.tablet;
-  const laptop = images.laptop;
+  const mobile = images.strongMobile;
+  const tablet = images.strongTablet;
+  const ipadPro = images.strongIpadPro;
+  const laptop = images.strongLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <Divider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />
@@ -91,10 +106,13 @@ const Divider = styled(DividerMarkerTriangle)`
   transform: translate(-60px, 15px) rotate(180deg);
   ${above.mobile`
     width: 100%;
-    transform: translate(0px, 15px) rotate(180deg);
+    transform: translateY(35px) rotate(180deg);
   `}
   ${above.tablet`
-    transform: translate(0px, 95px) rotate(180deg);
+    transform: translateY(65px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(95px) rotate(180deg);
   `}
 `;
 

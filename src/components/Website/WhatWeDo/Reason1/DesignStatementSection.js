@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import Headline2 from "./Headlines/Headline2";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
 import DividerMarker1 from "../../../../svgs/DividerMarker1";
 import DividerMarker2 from "../../../../svgs/DividerMarker2";
 import { above } from "../../../../styles/Theme";
@@ -13,7 +15,7 @@ import { above } from "../../../../styles/Theme";
 const DesignStatementSection = () => {
   const query = graphql`
     query {
-      mobile: file(
+      missionMobile: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "kindal-jumping-rope-600x1300" }
       ) {
@@ -24,7 +26,7 @@ const DesignStatementSection = () => {
           }
         }
       }
-      tablet: file(
+      missionTablet: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "kindal-jumping-rope-834x1112" }
       ) {
@@ -35,7 +37,18 @@ const DesignStatementSection = () => {
           }
         }
       }
-      desktop: file(
+      missionIpadPro: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "kindal-jumping-rope-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
+      missionLaptop: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "kindal-jumping-rope-1440x900" }
       ) {
@@ -50,21 +63,23 @@ const DesignStatementSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobileImage = images.mobile;
-  const tabletImage = images.tablet;
-  const desktopImage = images.desktop;
+  const mobile = images.missionMobile;
+  const tablet = images.missionTablet;
+  const ipadPro = images.missionIpadPro;
+  const laptop = images.missionLaptop;
 
-  const backgroundImage = useRenderBackgroundImage(
-    mobileImage,
-    tabletImage,
-    desktopImage
-  );
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <DividerTop />
       <BackgroundAsset>
-        <Image fluid={backgroundImage} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <HeadlineWrapper>
         <Headline2 />
@@ -99,11 +114,19 @@ const DividerTop = styled(DividerMarker1)`
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%;
-  transform: translateY(-30px);
+  width: 240%;
+  transform: translateY(-40px);
   z-index: 2;
   ${above.mobile`
+    width: 140%;
+    transform: translateY(-50px);
+  `}
+  ${above.tablet`
     width: 100%;
+    transform: translateY(-60px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-100px);
   `}
 `;
 
@@ -116,6 +139,12 @@ const DividerBottom = styled(DividerMarker2)`
   z-index: 2;
   ${above.mobile`
     width: 100%;
-    transform: translateY(3px) rotate(180deg);
+    transform: translateY(30px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translateY(40px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(64px) rotate(180deg);
   `}
 `;

@@ -35,6 +35,15 @@ const baseHeadline = css`
         : props.laptopMedium
         ? "32px"
         : props.laptopSmall && "22px"};
+    line-height: ${props => props.setIpadLineHeight || 1.0};
+  `}
+  ${above.ipadPro`
+    font-size: ${props =>
+      props.laptopLarge
+        ? "52px"
+        : props.laptopMedium
+        ? "32px"
+        : props.laptopSmall && "22px"};
     line-height: ${props => props.setLLineHeight || 1.0};
   `}
 `;

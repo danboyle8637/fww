@@ -27,11 +27,13 @@ const Certifications = ({ kindal, dan }) => {
       return <Certs key={id}>{certification}</Certs>;
     });
 
+  const scrollId = kindal ? "get-to-know-kindal" : "get-to-know-dan";
+
   return (
     <ElementContainer column setMobileMarginTop={8}>
       {kindal && kindalCerts}
       {dan && danCerts}
-      <ScrollDownArrow />
+      <ScrollDownArrow scrollId={scrollId} />
     </ElementContainer>
   );
 };

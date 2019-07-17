@@ -16,6 +16,7 @@ const TextMessageSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id="what-we-do-lead" />
         <Headline3 />
       </ContentContainer>
       <TextMessageContainer>
@@ -64,6 +65,7 @@ const TextMessageSection = () => {
 export default TextMessageSection;
 
 const TextMessageContainer = styled.div`
+  margin: 80px 0 0 0;
   padding: 0 1rem;
   width: 100%;
   max-width: 34rem;

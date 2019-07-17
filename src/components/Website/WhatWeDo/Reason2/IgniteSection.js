@@ -8,41 +8,50 @@ import IgniteLogo from "../../../../svgs/IgniteLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import IgniteCopy from "./Copy/IgniteCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
 import { above } from "../../../../styles/Theme";
 
 const IgniteSection = () => {
   const query = graphql`
     query {
-      mobile: file(
+      igniteMobile: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "ignite-crab-touch-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      tablet: file(
+      igniteTablet: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "ignite-crab-touch-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      laptop: file(
+      igniteIpadPro: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "ignite-crab-touch-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      igniteLaptop: file(
         sourceInstanceName: { eq: "WhatWeDoImages" }
         name: { eq: "ignite-crab-touch-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -50,17 +59,23 @@ const IgniteSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.mobile;
-  const tablet = images.tablet;
-  const laptop = images.laptop;
+  const mobile = images.igniteMobile;
+  const tablet = images.igniteTablet;
+  const ipadPro = images.igniteIpadPro;
+  const laptop = images.igniteLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <Divider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />
@@ -93,7 +108,10 @@ const Divider = styled(DividerMarkerTriangle)`
     width: 100%;
   `}
   ${above.tablet`
-    transform: translateY(-90px);
+    transform: translateY(-80px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-100px);
   `}
 `;
 
@@ -112,6 +130,10 @@ const ContentWrapper = styled.div`
     width: 40%;
   `}
   ${above.tablet`
+    margin: 140px 0 0 60px;
+    width: 30%;
+  `}
+  ${above.ipadPro`
     margin: 140px 0 0 240px;
     width: 30%;
   `}

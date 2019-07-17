@@ -46,6 +46,7 @@ const DanQuestions = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id="get-to-know-dan" />
         <Headline4 />
         <DraggableContainer>{cards}</DraggableContainer>
         <ElementContainer justifyCenter setMobileMarginTop={60}>

@@ -4,7 +4,7 @@ import { TweenMax } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import NavArrow from "../../svgs/NavigationArrow";
-import scrollDownTween from "../../Animations/Tweens/scrollDownTween";
+import bounceScrollArrow from "../../Animations/Tweens/bounceScrollArrow";
 
 const ScrollDownArrow = ({ scrollId }) => {
   const arrowRef = useRef(null);
@@ -12,10 +12,13 @@ const ScrollDownArrow = ({ scrollId }) => {
   const scroll = ScrollToPlugin;
 
   useEffect(() => {
-    scrollDownTween(arrowRef.current, false);
+    // Takes the ref and whether to kill the Tween
+    bounceScrollArrow(arrowRef.current, false);
 
     return () => {
-      scrollDownTween(arrowRef.current, true);
+      // Kills the tween when component unmounts
+      bounceScrollArrow(arrowRef.current, true);
+      TweenMax.killTweensOf(window);
     };
   }, []);
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
 
 import { SectionContainer } from "../../../../styles/Containers";
 import Headline1 from "./Headlines/Headline1";
 import ReasonCard from "./ReasonCard";
+import DraggableRow from "../../../../Animations/Tweens/DraggableRow";
 
 const ReasonSection = () => {
   const query = graphql`
@@ -54,14 +54,9 @@ const ReasonSection = () => {
   return (
     <SectionContainer>
       <Headline1 />
-      <DraggableContainer>{cards}</DraggableContainer>
+      <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
     </SectionContainer>
   );
 };
 
 export default ReasonSection;
-
-const DraggableContainer = styled.div`
-  margin: 60px 0 0 0;
-  display: flex;
-`;

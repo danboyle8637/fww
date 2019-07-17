@@ -12,7 +12,14 @@ const Headline2 = () => {
       <Header3 upper tertiary mobileLarge>
         Intense
       </Header3>
-      <Header3 primary mobileMedium setMLineHeight={1.4}>
+      <Header3
+        primary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
         workout sessions
       </Header3>
       <Header3 upper tertiary mobileLarge>
@@ -21,8 +28,15 @@ const Headline2 = () => {
       <Header3 upper tertiary mobileLarge>
         Combine
       </Header3>
-      <Header3 primary mobileMedium setMLineHeight={1.4}>
-        to create a
+      <Header3
+        primary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        to create
       </Header3>
       <Header3 upper tertiary mobileLarge>
         10...
@@ -33,11 +47,25 @@ const Headline2 = () => {
       <Header3 upper tertiary mobileLarge>
         30...
       </Header3>
-      <Header3 primary mobileMedium setMLineHeight={1.4}>
-        minute +
+      <Header3
+        primary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        minute
       </Header3>
-      <Header3 primary mobileMedium setMLineHeight={1.4}>
-        workout to
+      <Header3
+        primary
+        mobileMedium
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        workouts to
       </Header3>
       <Header3 upper tertiary mobileLarge>
         Fit

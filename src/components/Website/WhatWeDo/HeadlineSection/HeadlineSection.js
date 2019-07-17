@@ -76,7 +76,7 @@ const HeadlineSection = () => {
       </BackgroundAsset>
       <ContentContainer>
         <Headline1 />
-        <ScrollDownArrow id={"what-we-do-lead"} />
+        <ScrollDownArrow scrollId="what-we-do-lead" />
       </ContentContainer>
     </SectionGrid>
   );
