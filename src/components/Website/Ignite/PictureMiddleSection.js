@@ -6,6 +6,8 @@ import Image from "gatsby-image";
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
 import { above } from "../../../styles/Theme";
 
@@ -53,13 +55,18 @@ const PictureMiddleSection = () => {
   const tablet = images.igniteWorkoutTablet;
   const laptop = images.igniteWorkoutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <InnerButton to={"/"}>Join the Ignite 7 Day Reset</InnerButton>

@@ -6,6 +6,8 @@ import Image from "gatsby-image";
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import { ElementContainer } from "../../../styles/Containers";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
 import { InnerButton } from "../../../styles/Buttons";
 import { above } from "../../../styles/Theme";
@@ -54,13 +56,18 @@ const PictureMiddleSection = () => {
   const tablet = images.bbcWorkoutTablet;
   const laptop = images.bbcWorkoutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <ElementContainer column alignCenter>

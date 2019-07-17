@@ -5,6 +5,8 @@ import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import HeadlineCopy from "./Copy/HeadlineCopy";
 import Headline1 from "./Headlines/Headline1";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
@@ -13,36 +15,43 @@ import { above } from "../../../styles/Theme";
 const HeadlineSection = () => {
   const query = graphql`
     query {
-      mobile: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/mobile/" }
+      theAppMobile: file(
+        sourceInstanceName: { eq: "TheAppImages" }
+        name: { eq: "phone-kettlebells-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      tablet: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/tablet/" }
+      theAppTablet: file(
+        sourceInstanceName: { eq: "TheAppImages" }
+        name: { eq: "phone-kettlebells-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
-      laptop: file(
-        sourceInstanceName: { eq: "HomeImages" }
-        name: { regex: "/desktop/" }
+      theAppIpadPro: file(
+        sourceInstanceName: { eq: "TheAppImages" }
+        name: { eq: "phone-kettlebells-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      theAppLaptop: file(
+        sourceInstanceName: { eq: "TheAppImages" }
+        name: { eq: "phone-kettlebells-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -50,16 +59,22 @@ const HeadlineSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.mobile;
-  const tablet = images.tablet;
-  const laptop = images.laptop;
+  const mobile = images.theAppMobile;
+  const tablet = images.theAppTablet;
+  const ipadPro = images.theAppIpadPro;
+  const laptop = images.theAppLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentContainer>
         <Headline1 />

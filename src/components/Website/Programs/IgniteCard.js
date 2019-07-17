@@ -8,6 +8,8 @@ import { SetBodyText } from "../../../styles/BodyText";
 import { InnerButton } from "../../../styles/Buttons";
 import Logo from "../../../svgs/IgniteLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const IgniteProgramCard = () => {
@@ -63,11 +65,16 @@ const IgniteProgramCard = () => {
   const laptop = data.igniteLaptopBackground;
   const body = data.igniteDescription.childMarkdownRemark.html;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <CardGrid>
-      <IgniteBackground fluid={background} />
+      {backgroundReady ? (
+        <IgniteBackground fluid={background} />
+      ) : (
+        <BackgroundImageLoader />
+      )}
       <ContentContainer>
         <LogoDescriptionWrapper>
           <IgniteLogo />

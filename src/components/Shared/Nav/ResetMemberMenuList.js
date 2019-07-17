@@ -6,10 +6,9 @@ import { TimelineMax, Back } from "gsap";
 import { Header4 } from "../../../styles/Headlines";
 import siteConfig from "../../../utils/siteConfig";
 import { MenuContext } from "../../../context/MenuContext";
-import "./Menu.css";
 import { above } from "../../../styles/Theme";
 
-class PublicMenuList extends Component {
+class ResetMemberMenuList extends Component {
   static contextType = MenuContext;
 
   constructor(props) {
@@ -54,18 +53,13 @@ class PublicMenuList extends Component {
   }
 
   render() {
-    const menuItems = siteConfig.publicMenu.map(item => {
+    const menuItems = siteConfig.resetMemberMenu.map(item => {
       const id = item.id;
       const title = item.title;
       const path = item.path;
 
       return (
-        <MenuItemWrapper
-          ref={this.setMenuItemArray}
-          key={id}
-          to={path}
-          activeClassName="active-menu-item"
-        >
+        <MenuItemWrapper ref={this.setMenuItemArray} key={id} to={path}>
           <Header4 upper mobileSmall tertiary>
             {title}
           </Header4>
@@ -77,7 +71,7 @@ class PublicMenuList extends Component {
   }
 }
 
-export default PublicMenuList;
+export default ResetMemberMenuList;
 
 const MenuItemWrapper = styled(Link)`
   display: flex;

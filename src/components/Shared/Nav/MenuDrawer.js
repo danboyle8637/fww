@@ -6,6 +6,7 @@ import { Transition } from "react-transition-group";
 import Portal from "../Portal/Portal";
 import PublicMenuList from "./PublicMenuList";
 import { useMenuContext } from "../../../context/MenuContext";
+import MenuDrawerAni from "../../../Animations/Nav/MenuDrawerAni";
 
 const MenuDrawer = () => {
   // eslint-disable-next-line
@@ -13,36 +14,11 @@ const MenuDrawer = () => {
 
   return (
     <Portal>
-      <Transition
-        in={menuState.isOpen}
-        mountOnEnter={true}
-        unmountOnExit={true}
-        addEndListener={(node, done) => {
-          if (menuState.isOpen) {
-            TweenMax.fromTo(
-              node,
-              0.5,
-              {
-                left: "100%",
-                onComplete: done,
-              },
-              {
-                left: `${menuState.leftPosition}%`,
-                onComplete: done,
-              }
-            );
-          } else {
-            TweenMax.to(node, 0.5, {
-              left: "100%",
-              onComplete: done,
-            });
-          }
-        }}
-      >
+      <MenuDrawerAni>
         <Drawer width={menuState.xPercent}>
           <PublicMenuList />
         </Drawer>
-      </Transition>
+      </MenuDrawerAni>
     </Portal>
   );
 };

@@ -8,6 +8,8 @@ import Headline1 from "./Headlines/Headline1";
 import HeadlineCopy from "./Copy/HeadlineCopy";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const HeadlineSection = () => {
@@ -20,7 +22,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -31,7 +32,16 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      aboutIpadPro: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "smashing-status-quo-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -42,7 +52,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -52,19 +61,25 @@ const HeadlineSection = () => {
   const image = useStaticQuery(query);
   const mobile = image.aboutMobile;
   const tablet = image.aboutTablet;
+  const ipadPro = image.aboutIpadPro;
   const laptop = image.aboutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <Headline1 />
         <HeadlineCopy />
-        <ScrollDownArrow />
+        <ScrollDownArrow scrollId="about-lead" />
       </ContentWrapper>
     </SectionGrid>
   );

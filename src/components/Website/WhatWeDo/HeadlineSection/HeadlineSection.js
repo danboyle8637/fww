@@ -1,14 +1,15 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
+import styled from "styled-components";
 
-import {
-  SectionGrid,
-  BackgroundAsset,
-  ContentContainer,
-} from "../../../../styles/GridContainer";
+import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import Headline1 from "./Headline1";
+import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
+import ScrollDownArrow from "../../../Shared/ScrollDownArrow";
+import { above } from "../../../../styles/Theme";
 
 const HeadlineSection = () => {
   const query = graphql`
@@ -20,7 +21,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -31,7 +31,16 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      assistantIpadPro: file(
+        sourceInstanceName: { eq: "WhatWeDoImages" }
+        name: { eq: "personal-assistant-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -42,7 +51,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -52,19 +60,46 @@ const HeadlineSection = () => {
   const images = useStaticQuery(query);
   const mobile = images.assistantMobile;
   const tablet = images.assistantTablet;
+  const ipadPro = images.assistantIpadPro;
   const laptop = images.assistantLaptop;
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentContainer>
         <Headline1 />
+        <ScrollDownArrow id={"what-we-do-lead"} />
       </ContentContainer>
     </SectionGrid>
   );
 };
 
 export default HeadlineSection;
+
+const ContentContainer = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  z-index: 1;
+  ${above.mobile`
+    width: 80%;
+  `}
+  ${above.tablet`
+    width: 60%;
+  `}
+  ${above.ipadPro`
+    width: 75%;
+  `}
+`;

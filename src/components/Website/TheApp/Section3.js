@@ -95,7 +95,7 @@ const Section3 = () => {
   const tablet = data.tabletBackground;
   const laptop = data.laptopBackground;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
 
   return (
     <SectionGrid>

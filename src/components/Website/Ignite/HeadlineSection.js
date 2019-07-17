@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import IgniteLogo from "../../../svgs/IgniteLogo";
 import HeadlineCopy from "./Copy/HeadlineCopy";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
@@ -20,7 +22,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -31,7 +32,16 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      igniteIpadPro: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-box-pushup-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -42,7 +52,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -52,14 +61,20 @@ const HeadlineSection = () => {
   const images = useStaticQuery(query);
   const mobile = images.igniteMobile;
   const tablet = images.igniteTablet;
+  const ipadPro = images.igniteIpadPro;
   const laptop = images.igniteLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />

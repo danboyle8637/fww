@@ -16,7 +16,7 @@ const Headline3 = () => {
         Get on our
       </Header3>
       <Header3 upper tertiary mobileLarge>
-        Beta List
+        Beta Test List
       </Header3>
     </ElementContainer>
   );

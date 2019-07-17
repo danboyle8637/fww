@@ -10,6 +10,7 @@ const LeadSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id="about-lead" />
         <Headline2 />
         <LeadCopy1 />
         <Headline3 />

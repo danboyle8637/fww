@@ -5,6 +5,7 @@ import ScreenWidthContent from "../context/ScreenWidthContext";
 const useRenderBackgroundImage = (
   mobileBackground,
   tabletBackground,
+  ipadProBackground,
   desktopBackground
 ) => {
   const device = useContext(ScreenWidthContent);
@@ -19,7 +20,11 @@ const useRenderBackgroundImage = (
       setBackground(tabletBackground.childImageSharp.fluid);
     }
 
-    if (device === "laptop") {
+    if (device === "ipadPro") {
+      setBackground(ipadProBackground.childImageSharp.fluid);
+    }
+
+    if (device === "laptop" || device === "ultraWide") {
       setBackground(desktopBackground.childImageSharp.fluid);
     }
   }, [device]);

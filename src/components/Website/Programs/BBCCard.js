@@ -8,6 +8,8 @@ import { SetBodyText } from "../../../styles/BodyText";
 import { InnerButton } from "../../../styles/Buttons";
 import Logo from "../../../svgs/BodyBurnChallengesLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const BBCCard = () => {
@@ -63,11 +65,16 @@ const BBCCard = () => {
   const laptop = data.bbcLaptopBackground;
   const body = data.bbcDescription.childMarkdownRemark.html;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <CardGrid>
-      <BBCBackground fluid={background} />
+      {backgroundReady ? (
+        <BBCBackground fluid={background} />
+      ) : (
+        <BackgroundImageLoader />
+      )}
       <ContentContainer>
         <LogoDescriptionWrapper>
           <BBCLogo />

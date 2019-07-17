@@ -9,6 +9,8 @@ import Certifications from "./Certifications";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const Kindal = () => {
@@ -21,7 +23,6 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -32,7 +33,16 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      kindalIpadPro: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "kindal-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -43,7 +53,6 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -53,15 +62,21 @@ const Kindal = () => {
   const images = useStaticQuery(query);
   const mobile = images.kindalMobile;
   const tablet = images.kindalTablet;
+  const ipadPro = images.kindalIpadPro;
   const laptop = images.kindalLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <KindalHeadline />

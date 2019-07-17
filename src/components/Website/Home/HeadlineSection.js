@@ -13,6 +13,8 @@ import Headline from "./Headline";
 import FWWLogo from "../../../svgs/FWWLogo";
 import siteConfig from "../../../utils/siteConfig";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const HeadlineSection = () => {
@@ -40,6 +42,17 @@ const HeadlineSection = () => {
           }
         }
       }
+      homeIpadPro: file(
+        sourceInstanceName: { eq: "HomeImages" }
+        name: { eq: "walking-dark-kettlebells-1024x1366" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1366, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
       homeLaptop: file(
         sourceInstanceName: { eq: "HomeImages" }
         name: { eq: "walking-dark-kettlebells-1440x900" }
@@ -57,10 +70,12 @@ const HeadlineSection = () => {
   const image = useStaticQuery(query);
   const mobile = image.homeMobile;
   const tablet = image.homeTablet;
+  const ipadPro = image.homeIpadPro;
   const desktop = image.homeLaptop;
 
   // make sure you pass the whole data object
-  const background = useRenderBackgroundImage(mobile, tablet, desktop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, desktop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   const homeButtons = siteConfig.home.homeLinks.map(button => {
     const id = button.id;
@@ -76,7 +91,11 @@ const HeadlineSection = () => {
   return (
     <SectionGrid>
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <HeadlineContainer column>
         <HeadlineWrapper>

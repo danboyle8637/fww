@@ -9,6 +9,8 @@ import Certifications from "./Certifications";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const Dan = () => {
@@ -16,34 +18,41 @@ const Dan = () => {
     query {
       danMobile: file(
         sourceInstanceName: { eq: "AboutImages" }
-        name: { eq: "kindal-600x1300" }
+        name: { eq: "dan-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
       danTablet: file(
         sourceInstanceName: { eq: "AboutImages" }
-        name: { eq: "kindal-834x1112" }
+        name: { eq: "dan-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      danIpadPro: file(
+        sourceInstanceName: { eq: "AboutImages" }
+        name: { eq: "dan-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
       danLaptop: file(
         sourceInstanceName: { eq: "AboutImages" }
-        name: { eq: "kindal-1440x900" }
+        name: { eq: "dan-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -53,15 +62,21 @@ const Dan = () => {
   const images = useStaticQuery(query);
   const mobile = images.danMobile;
   const tablet = images.danTablet;
+  const ipadPro = images.danIpadPro;
   const laptop = images.danLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <DanHeadline />

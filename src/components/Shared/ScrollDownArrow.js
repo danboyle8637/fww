@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
+import { TweenMax } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import NavArrow from "../../svgs/NavigationArrow";
+import scrollDownTween from "../../Animations/Tweens/scrollDownTween";
 
-const ScrollDownArrow = () => {
+const ScrollDownArrow = ({ scrollId }) => {
+  const arrowRef = useRef(null);
+  // eslint-disable-next-line
+  const scroll = ScrollToPlugin;
+
+  useEffect(() => {
+    scrollDownTween(arrowRef.current, false);
+
+    return () => {
+      scrollDownTween(arrowRef.current, true);
+    };
+  }, []);
+
   const handleScroll = () => {
-    console.log("Scroll down clicked");
+    if (typeof window !== undefined) {
+      TweenMax.to(window, 1, { scrollTo: `#${scrollId}` });
+    }
   };
 
   return (
-    <CircleBackground onClick={handleScroll}>
+    <CircleBackground ref={arrowRef} onClick={handleScroll}>
       <Arrow />
     </CircleBackground>
   );

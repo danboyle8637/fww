@@ -7,6 +7,8 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import { ElementContainer } from "../../../styles/Containers";
 import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
@@ -54,13 +56,18 @@ const PictureEndSection = () => {
   const tablet = images.bbcWorkoutTablet;
   const laptop = images.bbcWorkoutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <ContentWrapper>
         <ElementContainer column alignCenter>

@@ -52,7 +52,7 @@ const Section5 = () => {
   const tablet = images.nutritionTablet;
   const laptop = images.nutritionLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
 
   return (
     <SectionGrid>

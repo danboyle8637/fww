@@ -4,7 +4,7 @@ module.exports = {
   breakPoints: {
     mobile: helpers.getRems(600),
     tablet: helpers.getRems(960),
-    ipadPro: helpers.getRems(1024),
+    ipadPro: helpers.getRems(1100),
     laptop: helpers.getRems(1440),
     ultraWide: helpers.getRems(1460),
   },
@@ -18,7 +18,15 @@ module.exports = {
     { id: 7, title: "Follow Me", path: "/follow-me" },
     { id: 8, title: "Blog", path: "/blog" },
     { id: 9, title: "Podcast", path: "/" },
-    { id: 10, title: "Contact", path: "/contact" },
+    { id: 10, title: "Login", path: "/" },
+  ],
+  resetMemberMenu: [
+    { id: 1, title: "Dashboard", path: "/app/" },
+    { id: 2, title: "Ignite Reset", path: "/app/ignite-reset" },
+    { id: 3, title: "Body Burn Reset", path: "/app/body-burn-reset" },
+    { id: 4, title: "Strong Reset", path: "/app/strong-reset" },
+    { id: 5, title: "My Account", path: "/app/my-account" },
+    { id: 6, title: "Logout", path: "/app/logout" },
   ],
   home: {
     homeLinks: [

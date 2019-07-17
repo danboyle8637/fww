@@ -8,6 +8,8 @@ import { SetBodyText } from "../../../styles/BodyText";
 import { InnerButton } from "../../../styles/Buttons";
 import Logo from "../../../svgs/StrongLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const StrongCard = () => {
@@ -63,11 +65,16 @@ const StrongCard = () => {
   const laptop = data.strongLaptopBackground;
   const body = data.strongDescription.childMarkdownRemark.html;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <CardGrid>
-      <StrongBackground fluid={background} />
+      {backgroundReady ? (
+        <StrongBackground fluid={background} />
+      ) : (
+        <BackgroundImageLoader />
+      )}
       <ContentContainer>
         <LogoDescriptionWrapper>
           <StrongLogo />

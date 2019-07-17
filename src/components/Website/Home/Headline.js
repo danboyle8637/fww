@@ -1,13 +1,14 @@
-import React from "react"
+import React from "react";
 
-import { Header1 } from "../../../styles/Headlines"
-import { ElementContainer } from "../../../styles/Containers"
+import { Header1 } from "../../../styles/Headlines";
+import { ElementContainer } from "../../../styles/Containers";
 
 const Headline = () => {
   return (
     <ElementContainer
       setMobileWidth={"220px"}
-      setTabletWidth={"390px"}
+      setTabletWidth={"360px"}
+      setIpadProWidth={"400px"}
       setLaptopWidth={"600px"}
       setTabletMarginTop={20}
       setLaptopMarginTop={20}
@@ -26,7 +27,7 @@ const Headline = () => {
         day, busy women.
       </Header1>
     </ElementContainer>
-  )
-}
+  );
+};
 
-export default Headline
+export default Headline;

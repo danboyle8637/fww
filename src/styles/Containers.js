@@ -31,6 +31,9 @@ const setWidth = css`
     width: ${props => props.setTabletWidth || "100%"};
   `}
   ${above.tablet`
+    width: ${props => props.setIpadProWidth || "100%"};
+  `}
+  ${above.ipadPro`
     width: ${props => props.setLaptopWidth || "100%"};
   `}
 `;
@@ -43,6 +46,9 @@ const moveX = css`
     transform: ${props => moveHeadline(props.moveTabletX)};
   `}
   ${above.tablet`
+    transform: ${props => moveHeadline(props.moveIpadProX)};
+  `}
+  ${above.ipadPro`
     transform: ${props => moveHeadline(props.moveLaptopX)};
   `}
 `;
