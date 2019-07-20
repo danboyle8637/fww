@@ -8,6 +8,7 @@ const LeadSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id={"the-app-lead"} />
         <Headline2 />
         <LeadCopy />
       </ContentContainer>

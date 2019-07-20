@@ -79,7 +79,7 @@ const HeadlineSection = () => {
       <ContentWrapper>
         <Logo />
         <HeadlineCopy />
-        <ScrollDownArrow />
+        <ScrollDownArrow scrollId={"strong-program-lead"} />
       </ContentWrapper>
     </SectionGrid>
   );

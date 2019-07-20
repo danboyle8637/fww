@@ -38,7 +38,7 @@ const FollowMeCard = ({ icon, headline, body }) => {
 
   return (
     <CardContainer>
-      <div>{header.component}</div>
+      <SocialBanner>{header.component}</SocialBanner>
       <ContentWrapper>
         <div>
           <CardHeadline headline={headline} />
@@ -63,6 +63,10 @@ const CardContainer = styled.div`
   align-items: center;
   background: ${props => props.theme.baseBackgroundColor};
   border-radius: 8px;
+`;
+
+const SocialBanner = styled.div`
+  width: 100%;
 `;
 
 const ContentWrapper = styled.div`

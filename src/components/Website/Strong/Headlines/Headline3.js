@@ -8,12 +8,12 @@ import { above } from "../../../../styles/Theme";
 
 const Headline3 = () => {
   return (
-    <ElementContainer column>
-      <Header3 upper primary mobileLarge setMLineHeight={1.4}>
+    <ElementContainer column moveIpadProX={-160}>
+      <Header3 upper primary mobileLarge>
         Part 2:
       </Header3>
       <Logo />
-      <Header3 tertiary mobileMedium setMLineHeight={1.4}>
+      <Header3 tertiary mobileMedium>
         Workouts
       </Header3>
     </ElementContainer>
@@ -26,5 +26,8 @@ const Logo = styled(StrongLogo)`
   width: 330px;
   ${above.mobile`
     width: 480px;
+  `}
+  ${above.tablet`
+    width: 540px;
   `}
 `;

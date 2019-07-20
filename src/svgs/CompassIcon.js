@@ -1,8 +1,18 @@
 import React from "react";
+//import { TweenMax } from "gsap/TweenMax";
+
+import compassIconAni from "../Animations/Tweens/compassIconAni";
+import useSVGObserver from "../hooks/useSVGObserver";
 
 const CompassIcon = ({ width, height, className }) => {
+  const [setSVGNode, setInnerElement] = useSVGObserver({
+    rootMargin: "0px 0px -200px 0px",
+    animation: compassIconAni,
+  });
+
   return (
     <svg
+      ref={setSVGNode}
       id="compass-icon"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -51,6 +61,7 @@ const CompassIcon = ({ width, height, className }) => {
           fill="#2b2c3a"
         />
         <path
+          ref={setInnerElement}
           id="main-needle"
           fill="url(#compassGradient)"
           d="M87.16 87.16l-37.92 58.59 58.6-37.91 37.91-58.6-58.59 37.92z"

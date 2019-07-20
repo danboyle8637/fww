@@ -15,6 +15,7 @@ const Headline1 = () => {
         mobileMedium
         setMLineHeight={1.4}
         setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
         Bug you and...
@@ -28,6 +29,7 @@ const Headline1 = () => {
           mobileMedium
           setMLineHeight={1.1}
           setTLineHeight={1.1}
+          setIpadLineHeight={1.1}
           setLLineHeight={1.1}
         >
           on
@@ -41,6 +43,7 @@ const Headline1 = () => {
         mobileMedium
         setMLineHeight={1.4}
         setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
         You

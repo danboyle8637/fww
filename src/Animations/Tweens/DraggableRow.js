@@ -29,7 +29,7 @@ class DraggableRow extends Component {
       screenWidth: width,
     });
 
-    console.log(`setDraggable: ${this.draggableElement.clientWidth}`);
+    // console.log(`setDraggable: ${this.draggableElement.clientWidth}`);
 
     TweenMax.set(this.draggableElement, {
       x: -960,

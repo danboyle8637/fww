@@ -1,37 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { TweenMax } from "gsap";
 
 import MainMenuIcon from "../../../svgs/MainMenuIcon";
+import RightMenuDrawer from "./RightMenuDrawer";
+import LeftMenuDrawer from "./LeftMenuDrawer";
+import MenuMarkerBorder from "./MenuMarkerBorder";
 import "./Menu.css";
 import { useMenuContext } from "../../../context/MenuContext";
 
 const MenuChicklet = () => {
   // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
-  const [screenWidth, setScreenWidth] = useState(0);
   const chickletRef = useRef(null);
-
-  useEffect(() => {
-    const screenWidth = window.innerWidth;
-    setScreenWidth(screenWidth);
-  }, []);
-
-  useEffect(() => {
-    if (screenWidth === 1440 && menuState.isOpen) {
-      TweenMax.to(chickletRef.current, 0.3, {
-        x: 110,
-      });
-    } else {
-      TweenMax.to(chickletRef.current, 0.3, {
-        x: 0,
-      });
-    }
-
-    return () => {
-      TweenMax.killTweensOf(chickletRef.current);
-    };
-  }, [screenWidth, menuState.isOpen]);
 
   const handleToggleMenu = () => {
     dispatch({ type: "toggleMenu" });
@@ -40,6 +21,9 @@ const MenuChicklet = () => {
   return (
     <Chicklet ref={chickletRef} onClick={handleToggleMenu}>
       <MenuIcon />
+      <RightMenuDrawer />
+      <LeftMenuDrawer />
+      <MenuMarkerBorder />
     </Chicklet>
   );
 };

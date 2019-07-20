@@ -8,14 +8,20 @@ import { above } from "../../../../styles/Theme";
 
 const Headline2 = () => {
   return (
-    <ElementContainer column>
-      <ElementContainer moveMobileX={72} moveTabletX={110} moveLaptopX={124}>
+    <ElementContainer column moveIpadProX={-100}>
+      <ElementContainer
+        moveMobileX={73}
+        moveTabletX={110}
+        moveIpadProX={124}
+        moveLaptopX={135}
+      >
         <Header3
           upper
           primary
           mobileLarge
           setMLineHeight={1.4}
           setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
           setLLineHeight={1.4}
         >
           Part 1:
@@ -35,5 +41,8 @@ const ClinicLogo = styled(KettlebellClinicLogo)`
   `}
   ${above.tablet`
     width: 500px;
+  `}
+  ${above.ipadPro`
+    width: 540px;
   `}
 `;

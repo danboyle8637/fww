@@ -1,8 +1,18 @@
 import React from "react";
 
+import penIconAni from "../Animations/Tweens/penIconAni";
+import useSVGObserver from "../hooks/useSVGObserver";
+
 const PenIcon = ({ width, height, className }) => {
+  // eslint-disable-next-line
+  const [setSVGNode, setInnerElement] = useSVGObserver({
+    rootMargin: "0px 0px -200px 0px",
+    animation: penIconAni,
+  });
+
   return (
     <svg
+      ref={setSVGNode}
       id="pen-icon"
       xmlns="http://www.w3.org/2000/svg"
       className={className}

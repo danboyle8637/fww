@@ -8,17 +8,33 @@ module.exports = {
     laptop: helpers.getRems(1440),
     ultraWide: helpers.getRems(1460),
   },
-  publicMenu: [
-    { id: 1, title: "Home", path: "/" },
-    { id: 2, title: "What We Do", path: "/what-we-do" },
-    { id: 3, title: "Who We Are", path: "/about" },
-    { id: 4, title: "The App", path: "/the-app" },
-    { id: 5, title: "Programs", path: "/programs" },
-    { id: 6, title: "7 Day Reset", path: "/" },
-    { id: 7, title: "Follow Me", path: "/follow-me" },
-    { id: 8, title: "Blog", path: "/blog" },
-    { id: 9, title: "Podcast", path: "/" },
-    { id: 10, title: "Login", path: "/" },
+  publicNavMenu: {
+    aboutGroup: [
+      { id: 2, title: "What We Do", path: "/what-we-do" },
+      { id: 3, title: "Who We Are", path: "/about" },
+    ],
+    workoutsGroup: [
+      { id: 4, title: "The App", path: "/the-app" },
+      { id: 5, title: "Programs", path: "/programs" },
+      { id: 6, title: "7 Day Reset", path: "/" },
+    ],
+    coachingGroup: [
+      { id: 7, title: "Follow Me", path: "/follow-me" },
+      { id: 8, title: "Blog", path: "/blog" },
+      { id: 9, title: "Podcast", path: "/" },
+    ],
+    helpGroup: [
+      { id: 8, title: "Contact", path: "/contact" },
+      {
+        id: 9,
+        title: "Help Desk",
+        path: "https://fitwomensweekly.zendesk.com/hc/en-us",
+      },
+    ],
+  },
+  publicLoginMenu: [
+    { id: 0, title: "Login", path: "/" },
+    { id: 1, title: "Join", path: "/" },
   ],
   resetMemberMenu: [
     { id: 1, title: "Dashboard", path: "/app/" },

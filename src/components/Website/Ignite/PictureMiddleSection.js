@@ -21,7 +21,6 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -32,7 +31,16 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      igniteWorkoutIpadPro: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "ignite-bent-over-row-1024x1024" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1024, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -43,7 +51,6 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -53,9 +60,10 @@ const PictureMiddleSection = () => {
   const images = useStaticQuery(query);
   const mobile = images.igniteWorkoutMobile;
   const tablet = images.igniteWorkoutTablet;
+  const ipadPro = images.igniteWorkoutIpadPro;
   const laptop = images.igniteWorkoutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
@@ -103,7 +111,10 @@ const TopDivider = styled(DividerMarkerTriangle)`
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(-95px);
+    transform: translateY(-75px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-105px);
   `}
 `;
 
@@ -115,11 +126,14 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   z-index: 1;
   transform: translateY(15px) rotate(-180deg);
   ${above.mobile`
-    width: 100%;
+    width: 160%;
     transform: translateY(45px) rotate(-180deg);
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(95px) rotate(-180deg);
+    transform: translateY(75px) rotate(-180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(105px) rotate(-180deg);
   `}
 `;

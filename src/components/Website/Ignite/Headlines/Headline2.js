@@ -8,7 +8,12 @@ import { above } from "../../../../styles/Theme";
 
 const Headline2 = () => {
   return (
-    <ElementContainer column setTabletWidth={"400px"} setLaptopWidth={"400px"}>
+    <ElementContainer
+      column
+      setTabletWidth={"400px"}
+      setIpadProWidth={"500px"}
+      setLaptopWidth={"400px"}
+    >
       <HeadlineWrapper>
         <Header3 tertiary mobileMedium laptopLarge>
           Get the
@@ -19,6 +24,7 @@ const Headline2 = () => {
           laptopLarge
           setMLineHeight={1.4}
           setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
           setLLineHeight={1.4}
         >
           facts about
@@ -41,6 +47,9 @@ const HeadlineWrapper = styled.div`
     transform: translate(-80px, 60px) rotate(-7deg);
   `}
   ${above.tablet`
+    transform: translate(0px, 80px) rotate(-7deg);
+  `}
+  ${above.ipadPro`
     transform: translate(40px, 60px) rotate(-7deg);
   `}
 `;

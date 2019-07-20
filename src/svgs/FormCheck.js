@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
+import checkMarkAni from "../Animations/Tweens/checkMarkAni";
 
 const FormCheck = ({ width, height, className }) => {
+  const checkRef = useRef(null);
+
+  useEffect(() => {
+    checkMarkAni(checkRef.current);
+  }, [checkRef.current]);
+
   return (
     <svg
       id="form-check"
@@ -11,6 +19,7 @@ const FormCheck = ({ width, height, className }) => {
       viewBox="0 0 163.92 126.59"
     >
       <path
+        ref={checkRef}
         id="check"
         fill="none"
         stroke="#8b53f6"

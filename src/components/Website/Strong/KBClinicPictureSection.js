@@ -21,7 +21,6 @@ const KBClinicPictureSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -32,7 +31,16 @@ const KBClinicPictureSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      kbClinicIpadPro: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "strong-swing-1024x1024" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1024, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -43,7 +51,6 @@ const KBClinicPictureSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -53,9 +60,10 @@ const KBClinicPictureSection = () => {
   const images = useStaticQuery(query);
   const mobile = images.kbClinicMobile;
   const tablet = images.kbClinicTablet;
+  const ipadPro = images.kbClinicIpadPro;
   const laptop = images.kbClinicLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
@@ -96,13 +104,16 @@ const TopDivider = styled(DividerMarkerTriangle)`
   left: 0;
   width: 180%;
   z-index: 2;
-  transform: translate(-20px, -35px) rotateY(180deg) rotateZ(6deg);
+  transform: translate(-20px, -55px) rotateY(180deg) rotateZ(6deg);
   ${above.mobile`
     width: 100%;
-    transform: translateY(-35px) rotateY(180deg);
+    transform: translateY(-55px) rotateY(180deg);
   `}
   ${above.tablet`
-    transform: translateY(-85px) rotateY(180deg);
+    transform: translateY(-75px) rotateY(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-105px) rotateY(180deg);
   `}
 `;
 
@@ -114,11 +125,14 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   z-index: 1;
   transform: translateY(45px) rotate(-180deg) rotateY(180deg);
   ${above.mobile`
-    width: 100%;
-    transform: translateY(50px) rotate(-180deg) rotateY(180deg);
+    width: 160%;
+    transform: translateY(70px) rotate(-180deg) rotateY(180deg);
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(100px) rotate(-180deg) rotateY(180deg);
+    transform: translateY(80px) rotate(-180deg) rotateY(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(110px) rotate(-180deg) rotateY(180deg);
   `}
 `;

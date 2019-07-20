@@ -8,6 +8,8 @@ import BenefitCard from "./BenefitCard";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import { above } from "../../../styles/Theme";
 
 const Section3 = () => {
@@ -39,7 +41,7 @@ const Section3 = () => {
           }
         }
       }
-      mobileBackground: file(
+      appMobile: file(
         sourceInstanceName: { eq: "ProgramImages" }
         name: { eq: "theapp-kneeling-alt-press-600x1800" }
       ) {
@@ -50,7 +52,7 @@ const Section3 = () => {
           }
         }
       }
-      tabletBackground: file(
+      appTablet: file(
         sourceInstanceName: { eq: "ProgramImages" }
         name: { eq: "theapp-kneeling-alt-press-834x1112" }
       ) {
@@ -61,7 +63,18 @@ const Section3 = () => {
           }
         }
       }
-      laptopBackground: file(
+      appIpadPro: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "theapp-kneeling-alt-press-1024x1112" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
+            ...GatsbyImageSharpFluid
+            aspectRatio
+          }
+        }
+      }
+      appLaptop: file(
         sourceInstanceName: { eq: "ProgramImages" }
         name: { eq: "theapp-kneeling-alt-press-1440x900" }
       ) {
@@ -91,17 +104,23 @@ const Section3 = () => {
     data.benefit7.childMarkdownRemark.frontmatter.bottomHeadline;
   const benefit7Body = data.benefit7.childMarkdownRemark.html;
 
-  const mobile = data.mobileBackground;
-  const tablet = data.tabletBackground;
-  const laptop = data.laptopBackground;
+  const mobile = data.appMobile;
+  const tablet = data.appTablet;
+  const ipadPro = data.appIpadPro;
+  const laptop = data.appLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <BenefitCardWrapper>
         <BenefitCard
@@ -142,6 +161,9 @@ const BenefitCardWrapper = styled.div`
     justify-items: start;
   `}
   ${above.tablet`
+    justify-items: start;
+  `}
+  ${above.ipadPro`
     justify-items: center;
   `}
 `;
@@ -158,6 +180,9 @@ const TopDivider = styled(DividerMarker1)`
     transform: translateY(-26px);
   `}
   ${above.tablet`
+    transform: translateY(-36px);
+  `}
+  ${above.ipadPro`
     transform: translateY(-66px);
   `}
 `;
@@ -174,6 +199,9 @@ const BottomDivider = styled(DividerMarkerTriangle)`
     transform: translate(0, 40px) rotate(180deg);
   `}
   ${above.tablet`
+    transform: translate(0, 70px) rotate(180deg);
+  `}
+  ${above.ipadPro`
     transform: translate(0, 70px) rotate(180deg);
   `}
 `;

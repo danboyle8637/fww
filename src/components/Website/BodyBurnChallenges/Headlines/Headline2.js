@@ -14,6 +14,7 @@ const Headline2 = () => {
         mobileMedium
         setMLineHeight={1.6}
         setTLineHeight={1.8}
+        setIpadLineHeight={1.8}
         setLLineHeight={1.8}
       >
         Get the facts about:

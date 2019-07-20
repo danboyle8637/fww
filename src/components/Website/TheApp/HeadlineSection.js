@@ -79,7 +79,7 @@ const HeadlineSection = () => {
       <ContentContainer>
         <Headline1 />
         <HeadlineCopy />
-        <ScrollDownArrow />
+        <ScrollDownArrow scrollId={"the-app-lead"} />
       </ContentContainer>
     </SectionGrid>
   );

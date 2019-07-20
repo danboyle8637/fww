@@ -38,6 +38,11 @@ const Main = styled.main`
   max-width: ${props =>
     props.isBlog ? "980px" : props.isApp ? "1200px" : "1440px"};
   overflow: hidden;
+  ${above.tablet`
+    margin-bottom: ${props => (props.isBlog ? "80px" : "0")};
+    max-width: ${props =>
+      props.isBlog ? "900px" : props.isApp ? "1200px" : "1440px"};
+  `}
   ${above.ipadPro`
     margin-bottom: ${props => (props.isBlog ? "80px" : "0")};
     max-width: ${props =>

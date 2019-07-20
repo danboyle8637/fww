@@ -94,6 +94,9 @@ const TopDivider = styled(DividerMarker2)`
     transform: translateY(-15px);
   `}
   ${above.tablet`
-    transform: translateY(-35px);
+    transform: translateY(-45px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-65px);
   `}
 `;

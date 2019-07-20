@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import {
@@ -11,8 +11,21 @@ import Headline3 from "./Headline3";
 import Headline1 from "./Headline1";
 import Headline2 from "./Headline2";
 import FWWLogo from "../../../../svgs/FWWLogo";
+import trainerTextMessageAni from "../../../../Animations/Tweens/trainerTextMessageAni";
+import clientTextMessageAni from "../../../../Animations/Tweens/clientTextMessageAni";
 
 const TextMessageSection = () => {
+  const trainerMessageRef = useRef(null);
+  const clientMessageRef = useRef(null);
+
+  useEffect(() => {
+    clientTextMessageAni(clientMessageRef.current);
+  }, [clientMessageRef]);
+
+  useEffect(() => {
+    trainerTextMessageAni(trainerMessageRef.current);
+  }, [trainerMessageRef]);
+
   return (
     <SectionContainer>
       <ContentContainer>
@@ -21,10 +34,10 @@ const TextMessageSection = () => {
       </ContentContainer>
       <TextMessageContainer>
         <ElementContainer column>
-          <TextBubbles align={"left"} client={true}>
+          <TextBubbles ref={clientMessageRef} align={"left"} client={true}>
             I need a workout
           </TextBubbles>
-          <TextBubbles align={"right"} client={false}>
+          <TextBubbles ref={trainerMessageRef} align={"right"} client={false}>
             I have just the one
           </TextBubbles>
         </ElementContainer>

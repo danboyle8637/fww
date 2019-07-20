@@ -5,6 +5,8 @@ import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
+import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
@@ -53,12 +55,17 @@ const Section5 = () => {
   const laptop = images.nutritionLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
   return (
     <SectionGrid>
       <TopDivider />
       <BackgroundAsset>
-        <Image fluid={background} />
+        {backgroundReady ? (
+          <Image fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
       </BackgroundAsset>
       <BottomDivider />
     </SectionGrid>
@@ -78,6 +85,12 @@ const TopDivider = styled(DividerMarker2)`
     width: 100%;
     transform: translateY(-30px);
   `}
+  ${above.tablet`
+    transform: translateY(-40px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-70px);
+  `}
 `;
 
 const BottomDivider = styled(DividerMarker2)`
@@ -90,5 +103,11 @@ const BottomDivider = styled(DividerMarker2)`
   ${above.mobile`
     width: 100%;
     transform: translateY(10px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translateY(30px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(60px) rotate(180deg);
   `}
 `;

@@ -8,6 +8,7 @@ const LeadSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
+        <div id="bbc-program-lead" />
         <Headline1 />
         <LeadCopy />
       </ContentContainer>

@@ -82,11 +82,16 @@ const TopDivider = styled(DividerMarker1)`
   width: 200%;
   z-index: 2;
   ${above.mobile`
-    width: 100%;
-    transform: translateY(-40px);
+    width: 180%;
+    transform: translateY(-66px);
   `}
   ${above.tablet`
-    transform: translateY(-60px);
+    width: 160%;
+    transform: translateY(-80px);
+  `}
+  ${above.ipadPro`
+    width: 100%;
+    transform: translateY(-70px);
   `}
 `;
 
@@ -102,6 +107,9 @@ const BottomDivider = styled(DividerMarkerTriangle)`
     transform: translate(0px, 50px) rotate(180deg);
   `}
   ${above.tablet`
-    transform: translate(0px, 97px) rotate(180deg);
+    transform: translate(0px, 70px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translate(0px, 94px) rotate(180deg);
   `}
 `;

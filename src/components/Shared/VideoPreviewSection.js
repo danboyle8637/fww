@@ -75,7 +75,7 @@ const VideoWrapper = styled.div`
   padding: 0;
   width: 100%;
   max-width: 50rem;
-  box-shadow: 0 3px 12px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 16px 6px rgba(0, 0, 0, 0.2);
   ${above.tablet`
     border-radius: 8px;
     & iframe {

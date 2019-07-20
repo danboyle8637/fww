@@ -22,7 +22,6 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -33,7 +32,16 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+          }
+        }
+      }
+      bbcWorkoutIpadPro: file(
+        sourceInstanceName: { eq: "ProgramImages" }
+        name: { eq: "bbc-split-squat-1024x1024" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1024, maxHeight: 1024, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -44,7 +52,6 @@ const PictureMiddleSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -54,9 +61,10 @@ const PictureMiddleSection = () => {
   const images = useStaticQuery(query);
   const mobile = images.bbcWorkoutMobile;
   const tablet = images.bbcWorkoutTablet;
+  const ipadPro = images.bbcWorkoutIpadPro;
   const laptop = images.bbcWorkoutLaptop;
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
@@ -98,14 +106,17 @@ const TopDivider = styled(DividerMarkerTriangle)`
   left: 0;
   width: 180%;
   z-index: 2;
-  transform: translate(-20px, -15px) rotate(4deg);
+  transform: translate(-20px, -25px) rotate(4deg);
   ${above.mobile`
-    width: 100%;
-    transform: translateY(-45px);
+    width: 160%;
+    transform: translateY(-85px);
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(-95px);
+    transform: translateY(-65px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-105px);
   `}
 `;
 
@@ -115,13 +126,16 @@ const BottomDivider = styled(DividerMarkerTriangle)`
   left: 0;
   width: 180%;
   z-index: 1;
-  transform: translateY(15px) rotate(-180deg);
+  transform: translateY(65px) rotate(-180deg);
   ${above.mobile`
-    width: 100%;
-    transform: translateY(45px) rotate(-180deg);
+    width: 160%;
+    transform: translateY(105px) rotate(-180deg);
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(95px) rotate(-180deg);
+    transform: translateY(75px) rotate(-180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(105px) rotate(-180deg);
   `}
 `;

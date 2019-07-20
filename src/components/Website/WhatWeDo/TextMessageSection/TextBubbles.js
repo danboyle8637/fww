@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 import { above } from "../../../../styles/Theme";
 
-const TextBubbles = ({ children, client, align }) => {
+const TextBubbles = React.forwardRef(({ children, client, align }, ref) => {
   return (
-    <Bubble client={client} align={align}>
+    <Bubble ref={ref} client={client} align={align}>
       <BubbleText>{children}</BubbleText>
     </Bubble>
   );
-};
+});
 
 export default TextBubbles;
 
