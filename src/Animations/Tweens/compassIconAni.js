@@ -7,16 +7,15 @@ const compassIconAni = (node, isIntersecting) => {
     ease: Power2.easeOut,
     yoyo: true,
     yoyoEase: Power2.easeOut,
-    repeat: 12,
   });
 
   if (isIntersecting) {
-    animation.play(0);
-  }
-
-  if (!isIntersecting) {
-    animation.kill(node);
-    animation.progress(0);
+    console.log("Play compass animation");
+    animation.repeat(8);
+  } else {
+    console.log("Pause compass animation");
+    animation.pause();
+    animation.time(0);
   }
 };
 

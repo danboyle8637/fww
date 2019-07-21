@@ -32,7 +32,7 @@ class DraggableRow extends Component {
     // console.log(`setDraggable: ${this.draggableElement.clientWidth}`);
 
     TweenMax.set(this.draggableElement, {
-      x: -960,
+      x: 731,
     });
 
     Draggable.create(this.draggableElement, {
@@ -48,9 +48,10 @@ class DraggableRow extends Component {
   }
 
   snapX = endValue => {
-    const snapValue = Math.round(endValue / 338) * 338;
-    console.log(`endValue: ${endValue}`);
-    //const activeCard = snapValue / this.state.screenWidth;
+    const screenWidth = this.state.screenWidth;
+    const snapValue = Math.round(endValue / screenWidth) * screenWidth;
+    const activeCard = snapValue / screenWidth;
+    console.log(`snapValue: ${endValue}`);
     return snapValue;
   };
 
@@ -66,6 +67,6 @@ class DraggableRow extends Component {
 export default DraggableRow;
 
 const DraggableContainer = styled.div`
-  margin: 60px 0 0 0;
+  margin: 8px 0 0 0;
   display: flex;
 `;

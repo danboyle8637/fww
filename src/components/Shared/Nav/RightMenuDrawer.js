@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { TweenMax } from "gsap";
 import { Transition } from "react-transition-group";
@@ -12,12 +12,23 @@ const RightMenuDrawer = () => {
   // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
 
-  const showRightMenu = () => {
-    console.log("Animate the menu in.");
+  const showRightMenu = (node, isAppearing) => {
+    TweenMax.fromTo(
+      node,
+      0.5,
+      {
+        x: "100%",
+      },
+      {
+        x: "0%",
+      }
+    );
   };
 
-  const exitRightMenu = () => {
-    console.log("Animate the menu out.");
+  const exitRightMenu = node => {
+    TweenMax.to(node, 0.5, {
+      x: "100%",
+    });
   };
 
   return (
@@ -27,8 +38,10 @@ const RightMenuDrawer = () => {
         mountOnEnter={true}
         unmountOnExit={true}
         timeout={500}
-        onEnter={showRightMenu}
-        onExit={exitRightMenu}
+        onEnter={(node, isAppearing) => {
+          showRightMenu(node, isAppearing);
+        }}
+        onExit={node => exitRightMenu(node)}
       >
         <RightDrawer>
           <PublicLoginMenu />

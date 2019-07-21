@@ -18,13 +18,17 @@ const useSVGObserver = ({
 
   const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
-      console.log(entry);
+      //console.log(entry.boundingClientRect.y);
       if (entry.isIntersecting && innerElement) {
         animation(innerElement, entry.isIntersecting);
       }
 
       if (entry.isIntersecting && !innerElement) {
         animation(svgNode);
+      }
+
+      if (!entry.isIntersecting && innerElement) {
+        animation(innerElement, entry.isIntersecting);
       }
     });
   };

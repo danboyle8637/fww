@@ -28,12 +28,10 @@ const TextMessageSection = () => {
 
   return (
     <SectionContainer>
-      <ContentContainer>
+      <TextMessageContainer>
         <div id="what-we-do-lead" />
         <Headline3 />
-      </ContentContainer>
-      <TextMessageContainer>
-        <ElementContainer column>
+        <ElementContainer column setMobileMarginTop={60}>
           <TextBubbles ref={clientMessageRef} align={"left"} client={true}>
             I need a workout
           </TextBubbles>
@@ -78,7 +76,6 @@ const TextMessageSection = () => {
 export default TextMessageSection;
 
 const TextMessageContainer = styled.div`
-  margin: 80px 0 0 0;
   padding: 0 1rem;
   width: 100%;
   max-width: 34rem;

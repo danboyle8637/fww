@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { TweenMax } from "gsap";
+import { TweenMax } from "gsap/TweenMax";
 import { Transition } from "react-transition-group";
 
 import Portal from "../Portal/Portal";
@@ -12,12 +12,23 @@ const LeftMenuDrawer = () => {
   // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
 
-  const showLeftMenu = () => {
-    console.log("Animate the menu in.");
+  const showLeftMenu = (node, isAppearing) => {
+    TweenMax.fromTo(
+      node,
+      0.5,
+      {
+        x: "-100%",
+      },
+      {
+        x: "0%",
+      }
+    );
   };
 
-  const exitLeftMenu = () => {
-    console.log("Animate the menu out.");
+  const exitLeftMenu = node => {
+    TweenMax.to(node, 0.5, {
+      x: "-100%",
+    });
   };
 
   return (
@@ -27,8 +38,10 @@ const LeftMenuDrawer = () => {
         mountOnEnter={true}
         unmountOnExit={true}
         timeout={500}
-        onEnter={showLeftMenu}
-        onExit={exitLeftMenu}
+        onEnter={(node, isAppearing) => {
+          showLeftMenu(node, isAppearing);
+        }}
+        onExit={node => exitLeftMenu(node)}
       >
         <LeftDrawer>
           <PublicNavMenu />
@@ -49,7 +62,7 @@ const LeftDrawer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 56%;
+  width: 54%;
   height: 100vh;
   padding: 20px;
   overflow: hidden;

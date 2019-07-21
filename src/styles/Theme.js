@@ -44,7 +44,7 @@ const darkTheme = {
   secondaryAccent: "#8B53F6",
   tertiaryAccent: "#B44CFF",
   footerBackground: "#26243E",
-  footerAddressText: "#19191C",
+  footerAddressText: "#4d4b65",
   formErrorBackground: "#E14075",
 };
 
