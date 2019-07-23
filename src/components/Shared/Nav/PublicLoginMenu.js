@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import siteConfig from "../../../utils/siteConfig";
+import { above } from "../../../styles/Theme";
 
 const PublicLoginMenu = () => {
   const loginItems = siteConfig.publicLoginMenu.map(item => {
@@ -39,22 +40,35 @@ const MenuContainer = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 100vh;
+  ${above.ipadPro`
+    margin: 0;
+    flex-direction: row;
+    justify-content: center;
+  `}
 `;
 
 const MembersLabel = styled.h3`
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 0;
   font-size: 82px;
   font-weight: 800;
   text-transform: uppercase;
   color: #000000;
   transform: rotate(-90deg);
-`;
-
-const MenuItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  ${above.mobile`
+    font-size: 120px;
+    transform: translateY(40px) rotate(-90deg);
+  `}
+  ${above.tablet`
+    font-size: 160px;
+  `}
+  ${above.ipadPro`
+    font-size: 140px;
+    transform: rotate(-90deg);
+  `}
+  ${above.laptop`
+    font-size: 180px;
+  `}
 `;
 
 const MenuList = styled.ul`
@@ -64,6 +78,13 @@ const MenuList = styled.ul`
   flex-direction: column;
   align-items: center;
   list-style: none;
+  ${above.ipadPro`
+    margin: 0;
+    transform: translateX(-240px);
+  `}
+  ${above.laptop`
+    transform: translateX(-280px);
+  `}
 `;
 
 const MenuItem = styled.li`
@@ -83,6 +104,16 @@ const JoinLink = styled(Link)`
   color: ${props => props.theme.primaryAccent};
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  ${above.mobile`
+    font-size: 32px;
+  `}
+  ${above.tablet`
+    font-size: 46px;
+  `}
+  ${above.laptop`
+    font-size: 56px;
+  `}
 `;
 
 const LoginLink = styled(Link)`
@@ -94,4 +125,14 @@ const LoginLink = styled(Link)`
   color: ${props => props.theme.headlinePrimary};
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  ${above.mobile`
+    font-size: 32px;
+  `}
+  ${above.tablet`
+    font-size: 46px;
+  `}
+  ${above.laptop`
+    font-size: 56px;
+  `}
 `;

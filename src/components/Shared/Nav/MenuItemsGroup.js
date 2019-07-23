@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 
 import { Header3 } from "../../../styles/Headlines";
+//import { useMenuContext } from "../../../context/MenuContext";
+import { above } from "../../../styles/Theme";
 
 const MenuItemsGroup = ({ title, menuItems }) => {
+  // const [closeMenu, setCloseMenu] = useState(false);
+  // // eslint-disable-next-line
+  // const [menuState, dispatch] = useMenuContext();
+
   const items = menuItems.map(item => {
     const id = item.id;
     const title = item.title;
@@ -12,8 +18,8 @@ const MenuItemsGroup = ({ title, menuItems }) => {
 
     return (
       <MenuItem key={id}>
-        {id !== 9 ? (
-          <MenuLink to={path}>{title}</MenuLink>
+        {id !== 11 ? (
+          <MenuLink onClick={() => onMenuClick(id, path)}>{title}</MenuLink>
         ) : (
           <HelpDeskLink href={path}>{title}</HelpDeskLink>
         )}
@@ -21,9 +27,49 @@ const MenuItemsGroup = ({ title, menuItems }) => {
     );
   });
 
+  const onMenuClick = (id, path) => {
+    if (id === 2) navigate(path);
+    if (id === 3) navigate(path);
+    if (id === 4) navigate(path);
+    if (id === 5) navigate(path);
+    if (id === 6) navigate(path);
+    if (id === 7) navigate(path);
+    if (id === 8) navigate(path);
+    if (id === 9) navigate(path);
+    if (id === 10) navigate(path);
+    if (id === 11) navigate(path);
+
+    // setCloseMenu(true);
+  };
+
+  // const delayCloseMenu = () => {
+  //   setTimeout(() => {
+  //     dispatch({ type: "closeMenu" });
+  //   }, 300);
+  // };
+
+  // useEffect(() => {
+  //   if (closeMenu) {
+  //     delayCloseMenu();
+  //   }
+
+  //   setCloseMenu(false);
+
+  //   return () => {
+  //     clearTimeout(delayCloseMenu);
+  //   };
+  // }, [closeMenu]);
+
   return (
     <GroupContainer>
-      <Header3 upper mobileSmall primary>
+      <Header3
+        upper
+        mobileSmall
+        tabletMedium
+        laptopMedium
+        ultraWideLarge
+        primary
+      >
         {title}
       </Header3>
       <MenuList>{items}</MenuList>
@@ -53,13 +99,20 @@ const MenuItem = styled.li`
   }
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled.a`
   font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 16px;
   color: ${props => props.theme.bodyText};
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  ${above.mobile`
+    font-size: 24px;
+  `}
+  ${above.laptop`
+    font-size: 36px;
+  `}
 `;
 
 const HelpDeskLink = styled.a`
@@ -69,4 +122,11 @@ const HelpDeskLink = styled.a`
   color: ${props => props.theme.bodyText};
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  ${above.mobile`
+    font-size: 24px;
+  `}
+  ${above.laptop`
+    font-size: 36px;
+  `}
 `;

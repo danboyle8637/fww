@@ -27,7 +27,7 @@ const MainLayout = ({ children, location }) => {
     } else {
       setIsApp(false);
     }
-  }, [location.pathname]);
+  }, [location]);
 
   return (
     <Main isBlogPage={isBlogPage}>
@@ -49,10 +49,13 @@ const Main = styled.div`
   align-items: center;
   width: 100vw;
   overflow: hidden;
-  ${above.tablet`
-    margin: ${props => (props.isBlogPage ? "78px 0 0 0" : "0")};
+  /* ${above.tablet`
+    padding: ${props => (props.isBlogPage ? "78px 0 0 0" : "0")};
+  `}
+  ${above.ipadPro`
+    padding: ${props => (props.isApp ? "78px 0 0 0" : "0")};
   `}
   ${above.ultraWide`
-    margin: 78px 0 0 0;
-  `}
+    padding: 78px 0 0 0;
+  `} */
 `;

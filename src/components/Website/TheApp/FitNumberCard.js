@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import FitNumberIndicator from "../../../svgs/ProgressIcon";
+import ProgressFitNumber from "../../../svgs/ProgressFitNumber";
 import { SetBodyText } from "../../../styles/BodyText";
+import useCounter from "../../../hooks/useCounter";
+import useSVGObserver from "../../../hooks/useSVGObserver";
 
 const FitNumberCard = ({ fitNumber, description }) => {
+  const [setDuration, setMaxCount, setPlay, setCounter, count] = useCounter();
+  const [setSVGNode, runAnimation] = useSVGObserver({
+    rootMargin: "0px 0px -100px 0px",
+  });
+
+  useEffect(() => {
+    setDuration(100);
+    setMaxCount(fitNumber);
+  }, []);
+
+  useEffect(() => {
+    if (runAnimation) {
+      setPlay(true);
+    } else {
+      setCounter(0);
+    }
+  }, [runAnimation]);
+
   return (
-    <FitNumberContainer>
+    <FitNumberContainer ref={setSVGNode}>
       <FitNumberGrid>
-        <BackgroundFitNumber />
-        <FitNumber>{fitNumber}</FitNumber>
+        <BackgroundFitNumber gradientId={fitNumber} fitNumber={fitNumber} />
+        <FitNumber>{count}</FitNumber>
       </FitNumberGrid>
       <SetBodyText dangerouslySetInnerHTML={{ __html: description }} />
     </FitNumberContainer>
@@ -32,7 +52,7 @@ const FitNumberGrid = styled.div`
   grid-template-rows: 1fr;
 `;
 
-const BackgroundFitNumber = styled(FitNumberIndicator)`
+const BackgroundFitNumber = styled(ProgressFitNumber)`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   justify-self: center;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
 
 import Global from "../styles/Global";
@@ -23,10 +22,6 @@ const Layout = ({ children, isBlogPage, isApp }) => {
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default Layout;
 
 const Main = styled.main`
@@ -39,21 +34,27 @@ const Main = styled.main`
     props.isBlog ? "980px" : props.isApp ? "1200px" : "1440px"};
   overflow: hidden;
   ${above.tablet`
-    margin-bottom: ${props => (props.isBlog ? "80px" : "0")};
+    margin-bottom: ${props => (props.isBlog ? "120px" : "0")};
     max-width: ${props =>
       props.isBlog ? "900px" : props.isApp ? "1200px" : "1440px"};
   `}
   ${above.ipadPro`
-    margin-bottom: ${props => (props.isBlog ? "80px" : "0")};
+    margin-top: ${props => (props.isApp ? "78px" : "0")};
+    margin-bottom: ${props => (props.isBlog || props.isApp ? "120px" : "0")};
     max-width: ${props =>
       props.isBlog ? "800px" : props.isApp ? "1200px" : "1440px"};
   `}
   ${above.laptop`
     max-width: ${props =>
       props.isBlog ? "980px" : props.isApp ? "1200px" : "1440px"};
+    border: ${props =>
+      props.isApp
+        ? `21px solid ${props.theme.mainBackgroundBorderColor}`
+        : "none"}
   `}
   ${above.ultraWide`
-    margin-bottom: 80px;
+    margin-top: 78px;
+    margin-bottom: 120px;
     border: 21px solid ${props =>
       props.isBlog ? "none" : props.theme.mainBackgroundBorderColor};
     border-radius: 14px;

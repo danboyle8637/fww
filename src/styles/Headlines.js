@@ -30,11 +30,11 @@ const baseHeadline = css`
   `}
   ${above.tablet`
     font-size: ${props =>
-      props.laptopLarge
+      props.ipadProLarge
         ? "52px"
-        : props.laptopMedium
+        : props.ipadProMedium
         ? "32px"
-        : props.laptopSmall && "22px"};
+        : props.ipadProSmall && "22px"};
     line-height: ${props => props.setIpadLineHeight || 1.0};
   `}
   ${above.ipadPro`
@@ -45,6 +45,15 @@ const baseHeadline = css`
         ? "32px"
         : props.laptopSmall && "22px"};
     line-height: ${props => props.setLLineHeight || 1.0};
+  `}
+  ${above.laptop`
+    font-size: ${props =>
+      props.ultraWideLarge
+        ? "52px"
+        : props.ultraWideMedium
+        ? "32px"
+        : props.ultraWideSmall && "22px"};
+    line-height: ${props => props.setUWLineHeight || 1.0};
   `}
 `;
 

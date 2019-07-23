@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
-import { TweenMax } from "gsap/TweenMax";
+import { useEffect, useState, useRef } from "react";
 
-const useSVGObserver = ({
-  root = null,
-  rootMargin,
-  threshold = 1,
-  animation,
-}) => {
+const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
+  const [ratio, setRatio] = useState(0);
+  const [previousRatio, setPreviousRatio] = useState(0);
+  const [runAnimation, setRunAnimation] = useState(false);
   const [svgNode, setSVGNode] = useState(null);
-  const [innerElement, setInnerElement] = useState(null);
 
   const options = {
     root: root,
@@ -16,39 +12,56 @@ const useSVGObserver = ({
     threshold: threshold,
   };
 
-  const startAnimation = (entries, observer) => {
-    entries.forEach(entry => {
-      //console.log(entry.boundingClientRect.y);
-      if (entry.isIntersecting && innerElement) {
-        animation(innerElement, entry.isIntersecting);
+  // Callback sets the intersection ratio so you can start
+  // comparing it to it's previous value.
+  const startAnimation = entries => {
+    entries.forEach(singleEntry => {
+      if (singleEntry.intersectionRatio === 0) {
+        //console.log("Setting the entry in state.");
+        setRatio(singleEntry.intersectionRatio);
       }
 
-      if (entry.isIntersecting && !innerElement) {
-        animation(svgNode);
-      }
-
-      if (!entry.isIntersecting && innerElement) {
-        animation(innerElement, entry.isIntersecting);
+      if (singleEntry.isIntersecting) {
+        //console.log("Node is intersecting, Update values!");
+        setRatio(singleEntry.intersectionRatio);
+      } else {
+        setRatio(singleEntry.intersectionRatio);
       }
     });
   };
 
-  const observer = new IntersectionObserver(startAnimation, options);
+  const observer = useRef(new IntersectionObserver(startAnimation, options));
 
+  // This effect sets the observer when the node is passed in.
   useEffect(() => {
+    const currentObserver = observer.current;
+
     if (svgNode) {
-      observer.observe(svgNode);
+      currentObserver.observe(svgNode);
     }
 
     return () => {
-      observer.disconnect();
-      TweenMax.killTweensOf(svgNode);
-      TweenMax.killTweensOf(innerElement);
-      console.log("Oberserver is not observing anymore.");
+      currentObserver.disconnect();
     };
   }, [svgNode, observer]);
 
-  return [setSVGNode, setInnerElement];
+  // When the callback runs the ratio is set and this effect runs to track
+  // previous ratio vs new ratio and whether the node is on screen.
+  useEffect(() => {
+    setPreviousRatio(ratio);
+
+    if (ratio > previousRatio) {
+      //console.log("Icon is on screen");
+      setRunAnimation(true);
+    }
+
+    if (ratio < previousRatio) {
+      //console.log("Icon is off screen");
+      setRunAnimation(false);
+    }
+  }, [ratio, previousRatio]);
+
+  return [setSVGNode, runAnimation];
 };
 
 export default useSVGObserver;

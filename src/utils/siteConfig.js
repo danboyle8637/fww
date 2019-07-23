@@ -5,7 +5,7 @@ module.exports = {
     mobile: helpers.getRems(600),
     tablet: helpers.getRems(960),
     ipadPro: helpers.getRems(1100),
-    laptop: helpers.getRems(1440),
+    laptop: helpers.getRems(1450),
     ultraWide: helpers.getRems(1460),
   },
   publicNavMenu: {
@@ -24,9 +24,9 @@ module.exports = {
       { id: 9, title: "Podcast", path: "/" },
     ],
     helpGroup: [
-      { id: 8, title: "Contact", path: "/contact" },
+      { id: 10, title: "Contact", path: "/contact" },
       {
-        id: 9,
+        id: 11,
         title: "Help Desk",
         path: "https://fitwomensweekly.zendesk.com/hc/en-us",
       },

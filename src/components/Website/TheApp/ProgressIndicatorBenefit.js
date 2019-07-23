@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import IphoneX from "../../../svgs/IphoneX";
 import BenefitCard from "./BenefitCard";
+import { Header4 } from "../../../styles/Headlines";
+import useCounter from "../../../hooks/useCounter";
+import useSVGObserver from "../../../hooks/useSVGObserver";
 
 const ProgressIndicatorBenefit = () => {
   const query = graphql`
@@ -33,8 +36,31 @@ const ProgressIndicatorBenefit = () => {
     benefit.progressBenefit.childMarkdownRemark.frontmatter.bottomHeadline;
   const benefit3Body = benefit.progressBenefit.childMarkdownRemark.html;
 
+  const [setSVGNode, runAnimation] = useSVGObserver({
+    rootMargin: "0px 0px -150px 0px",
+  });
+  const [setDuration, setMaxCount, setPlay, setCounter, counter] = useCounter();
+
+  useEffect(() => {
+    setDuration(10);
+    setMaxCount(100);
+  }, []);
+
+  useEffect(() => {
+    if (runAnimation) {
+      setPlay(true);
+    } else {
+      setCounter(0);
+    }
+  }, [runAnimation]);
+
   return (
     <BenefitGrid>
+      <Counter ref={setSVGNode}>
+        <Header4 secondary mobileSmall>
+          {counter}%
+        </Header4>
+      </Counter>
       <BackgroundIphone />
       <BenefitWrapper>
         <BenefitCard
@@ -42,7 +68,7 @@ const ProgressIndicatorBenefit = () => {
           topHeadline={benefit3TopHeadline}
           bottomHeadline={benefit3BottomHeadline}
           body={benefit3Body}
-          gradientId={"progressBenefit3"}
+          gradientNum={"1"}
           column={true}
         />
       </BenefitWrapper>
@@ -74,4 +100,13 @@ const BenefitWrapper = styled.div`
   align-self: center;
   z-index: 1;
   width: 78%;
+`;
+
+const Counter = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: center;
+  align-self: center;
+  transform: translateY(-115px);
+  z-index: 3;
 `;

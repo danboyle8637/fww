@@ -1,6 +1,5 @@
 import React from "react";
 
-import { SectionContainer } from "../../styles/Containers";
 import CoachingVideo from "./WorkoutPage/CoachingVideo";
 import WorkoutVideo from "./WorkoutPage/WorkoutVideo";
 import WarmCoolVideos from "./WorkoutPage/WarmCoolVideos";
@@ -11,7 +10,7 @@ import DownloadWorkout from "./WorkoutPage/DownloadWorkout";
 
 const Workout = () => {
   return (
-    <SectionContainer>
+    <>
       <CoachingVideo />
       <WorkoutVideo />
       <WarmCoolVideos />
@@ -19,7 +18,7 @@ const Workout = () => {
       <WorkoutHistory />
       <CompleteWorkout />
       <DownloadWorkout />
-    </SectionContainer>
+    </>
   );
 };
 

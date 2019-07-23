@@ -1,37 +1,39 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { TweenMax } from "gsap";
 
 import MainMenuIcon from "../../../svgs/MainMenuIcon";
 import RightMenuDrawer from "./RightMenuDrawer";
 import LeftMenuDrawer from "./LeftMenuDrawer";
 import MenuMarkerBorder from "./MenuMarkerBorder";
+import Portal from "../Portal/Portal";
 import "./Menu.css";
 import { useMenuContext } from "../../../context/MenuContext";
 
 const MenuChicklet = () => {
   // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
-  const chickletRef = useRef(null);
 
   const handleToggleMenu = () => {
     dispatch({ type: "toggleMenu" });
   };
 
   return (
-    <Chicklet ref={chickletRef} onClick={handleToggleMenu}>
-      <MenuIcon />
-      <RightMenuDrawer />
-      <LeftMenuDrawer />
-      <MenuMarkerBorder />
-    </Chicklet>
+    <>
+      <Chicklet onClick={handleToggleMenu}>
+        <MenuIcon />
+      </Chicklet>
+      <Portal>
+        <RightMenuDrawer />
+        <LeftMenuDrawer />
+        <MenuMarkerBorder />
+      </Portal>
+    </>
   );
 };
 
 export default MenuChicklet;
 
 const Chicklet = styled.div`
-  margin-top: 5px;
   background: transparent;
 `;
 

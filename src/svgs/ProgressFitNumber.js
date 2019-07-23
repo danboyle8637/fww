@@ -5,89 +5,90 @@ import DrawSVG from "../greensock/DrawSVGPlugin";
 
 import useSVGObserver from "../hooks/useSVGObserver";
 
-const ProgressIcon = ({
+const ProgressFitNumber = ({
   width,
   height,
   className,
-  gradientId = "progressIconGradient",
+  gradientId,
+  fitNumber,
 }) => {
-  const progressBarRef = useRef(null);
+  const numberLoaderRef = useRef(null);
   const [setSVGNode, runAnimation] = useSVGObserver({
-    rootMargin: "-200px 0px -200px 0px",
+    rootMargin: "0px 0px -100px 0px",
   });
 
   useEffect(() => {
-    const progressBar = progressBarRef.current;
+    const numberLoader = numberLoaderRef.current;
     // eslint-disable-next-line
     const drawSVG = DrawSVG;
     const tl = new TimelineMax({ paused: false });
 
     if (runAnimation) {
-      tl.to(progressBar, 4, {
-        drawSVG: "100%",
+      tl.to(numberLoader, 4, {
+        drawSVG: `${fitNumber * 10}%`,
         ease: Power4.easeOut,
       });
     } else {
-      tl.to(progressBar, 4, {
+      tl.to(numberLoader, 4, {
         drawSVG: "0%",
         ease: Power4.easeOut,
       });
     }
 
     return () => {
-      tl.kill(null, progressBar);
+      tl.kill(null, numberLoader);
     };
   }, [runAnimation]);
 
   return (
     <svg
       ref={setSVGNode}
-      id="progress-icon"
+      id="progress-loader"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       width={width}
       height={height}
-      viewBox="0 0 219.2 219.2"
+      viewBox="0 0 171 171"
     >
       <defs>
         <linearGradient
-          id={gradientId}
-          x1="15.9"
-          y1="125.5"
-          x2="235.1"
-          y2="125.5"
+          id={`fitNumberGradient${gradientId}`}
+          x1="17"
+          y1="99.5"
+          x2="182"
+          y2="99.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#b44cff" />
-          <stop offset=".45" stopColor="#88a2f9" />
-          <stop offset=".83" stopColor="#67e4f4" />
-          <stop offset="1" stopColor="#5afdf2" />
+          <stop offset="0" stopColor="#b3b6e1" />
+          <stop offset=".08" stopColor="#afade3" />
+          <stop offset=".71" stopColor="#956cf1" />
+          <stop offset="1" stopColor="#8b53f6" />
         </linearGradient>
       </defs>
       <circle
-        id="loader-background"
-        cx="109.6"
-        cy="109.6"
-        r="92.5"
+        id="progress-background"
+        cx="85.5"
+        cy="85.5"
+        r="69.5"
         fill="none"
-        stroke="#101010"
+        stroke="#0e0e0f"
         strokeLinecap="round"
         strokeLinejoin="bevel"
-        strokeWidth="34.2"
+        strokeWidth="32"
       />
       <path
-        ref={progressBarRef}
-        id="loader-path"
-        d="M125.5 33A92.5 92.5 0 1 1 33 125.5"
-        transform="translate(-15.9 -15.9)"
+        ref={numberLoaderRef}
+        id="progress"
+        d="M100.08 30a69.47 69.47 0 1 1-1.23 0"
+        transform="translate(-14 -14)"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="bevel"
-        strokeWidth="34.2"
-        stroke={`url(#${gradientId})`}
+        strokeWidth="26"
+        stroke={`url(#fitNumberGradient${gradientId})`}
       />
     </svg>
   );
 };
 
-export default ProgressIcon;
+export default ProgressFitNumber;

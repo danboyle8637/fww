@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import MenuItemsGroup from "./MenuItemsGroup";
 import siteConfig from "../../../utils/siteConfig";
+import { above } from "../../../styles/Theme";
 
 const PublicNavMenu = () => {
   const aboutGroup = siteConfig.publicNavMenu.aboutGroup;
@@ -29,4 +30,16 @@ const MenuContainer = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 100vh;
+  ${above.mobile`
+    height: 90%;
+  `}
+  ${above.tablet`
+    height: 80%;
+  `}
+  ${above.ipadPro`
+    height: 100vh;
+  `}
+  ${above.laptop`
+    height: 86%;
+  `}
 `;

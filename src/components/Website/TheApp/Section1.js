@@ -115,7 +115,7 @@ const Section1Container = styled.div`
   ${above.mobile`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 30px;
+    gap: 100px;
   `}
 `;
 

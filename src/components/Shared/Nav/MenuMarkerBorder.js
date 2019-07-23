@@ -1,22 +1,47 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { TweenMax } from "gsap/TweenMax";
 import { Transition } from "react-transition-group";
 
 import DividerMenuMarker from "../../../svgs/DividerMenuMarker";
 import { useMenuContext } from "../../../context/MenuContext";
+import ScreenWidthContext from "../../../context/ScreenWidthContext";
 import { above } from "../../../styles/Theme";
 
 const MenuMarkerBorder = () => {
+  const device = useContext(ScreenWidthContext);
+  const [x, setX] = useState(0);
   // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
+
+  useEffect(() => {
+    if (device === "mobile") {
+      setX(200);
+    }
+
+    if (device === "tablet") {
+      setX(300);
+    }
+
+    if (device === "ipadPro") {
+      setX(300);
+    }
+
+    if (device === "laptop") {
+      setX(560);
+    }
+
+    if (device === "ultraWide") {
+      setX(580);
+    }
+  }, [device]);
 
   const showBorder = (node, isAppearing) => {
     TweenMax.fromTo(
       node,
       0.5,
       {
-        x: "-200%",
+        x: `-${x}%`,
       },
       {
         x: "0%",
@@ -26,7 +51,7 @@ const MenuMarkerBorder = () => {
 
   const exitBorder = node => {
     TweenMax.to(node, 0.5, {
-      x: "-200%",
+      x: `-${x}%`,
     });
   };
 
@@ -54,6 +79,9 @@ const MenuRightBorder = styled(DividerMenuMarker)`
   left: 50%;
   height: 100%;
   z-index: 6;
+  ${above.mobile`
+    left: 54%;
+  `}
   ${above.ipadPro`
     left: 50%;
   `}

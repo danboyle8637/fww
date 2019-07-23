@@ -13,7 +13,7 @@ import SpoonFormKnifeIcon from "../../../svgs/SpoonForkKnifeIcon";
 import PersonalMenuIcon from "../../../svgs/PersonalMenuIcon";
 import UpgradeIcon from "../../../svgs/UpgradeIcon";
 import FitnessNumberIcon from "../../../svgs/FitnessNumberIcon";
-import ProgressIcon from "../../../svgs/ProgressIcon";
+import ProgressLoader from "../../../svgs/ProgressLoader";
 import { above } from "../../../styles/Theme";
 
 const BenefitCard = ({
@@ -21,7 +21,7 @@ const BenefitCard = ({
   topHeadline,
   bottomHeadline,
   body,
-  gradientId,
+  gradientNum,
   column,
 }) => {
   const iconArray = [
@@ -30,7 +30,7 @@ const BenefitCard = ({
     { title: "pen", component: <Pen /> },
     {
       title: "progress_indicator",
-      component: <Progress gradientId={gradientId} />,
+      component: <Progress gradientNum={gradientNum} />,
     },
     {
       title: "numbers",
@@ -125,9 +125,9 @@ const Pen = styled(PenIcon)`
   width: 48px;
 `;
 
-const Progress = styled(ProgressIcon)`
+const Progress = styled(ProgressLoader)`
   margin: 0 0 20px 0;
-  width: 100px;
+  width: 160px;
   align-self: center;
 `;
 
