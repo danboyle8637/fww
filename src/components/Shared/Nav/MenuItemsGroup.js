@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { navigate } from "gatsby";
 
 import { Header3 } from "../../../styles/Headlines";
-//import { useMenuContext } from "../../../context/MenuContext";
+import { useMenuContext } from "../../../context/MenuContext";
 import { above } from "../../../styles/Theme";
 
 const MenuItemsGroup = ({ title, menuItems }) => {
-  // const [closeMenu, setCloseMenu] = useState(false);
-  // // eslint-disable-next-line
-  // const [menuState, dispatch] = useMenuContext();
+  const [closeMenu, setCloseMenu] = useState(false);
+  // eslint-disable-next-line
+  const [menuState, dispatch] = useMenuContext();
 
   const items = menuItems.map(item => {
     const id = item.id;
@@ -19,7 +19,13 @@ const MenuItemsGroup = ({ title, menuItems }) => {
     return (
       <MenuItem key={id}>
         {id !== 11 ? (
-          <MenuLink onClick={() => onMenuClick(id, path)}>{title}</MenuLink>
+          <MenuLink
+            pathName={menuState.pathName}
+            path={path}
+            onClick={() => onMenuClick(id, path)}
+          >
+            {title}
+          </MenuLink>
         ) : (
           <HelpDeskLink href={path}>{title}</HelpDeskLink>
         )}
@@ -39,26 +45,27 @@ const MenuItemsGroup = ({ title, menuItems }) => {
     if (id === 10) navigate(path);
     if (id === 11) navigate(path);
 
-    // setCloseMenu(true);
+    setCloseMenu(true);
   };
 
-  // const delayCloseMenu = () => {
-  //   setTimeout(() => {
-  //     dispatch({ type: "closeMenu" });
-  //   }, 300);
-  // };
+  const menuTimeout = () => {
+    const timeoutId = setTimeout(() => {
+      dispatch({ type: "closeMenu" });
+    }, 300);
 
-  // useEffect(() => {
-  //   if (closeMenu) {
-  //     delayCloseMenu();
-  //   }
+    return timeoutId;
+  };
 
-  //   setCloseMenu(false);
+  useEffect(() => {
+    if (closeMenu) {
+      menuTimeout();
+      setCloseMenu(false);
+    }
 
-  //   return () => {
-  //     clearTimeout(delayCloseMenu);
-  //   };
-  // }, [closeMenu]);
+    return () => {
+      clearTimeout(menuTimeout);
+    };
+  }, [closeMenu]);
 
   return (
     <GroupContainer>
@@ -103,7 +110,10 @@ const MenuLink = styled.a`
   font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 16px;
-  color: ${props => props.theme.bodyText};
+  color: ${props =>
+    props.pathName === props.path
+      ? props.theme.primaryAccent
+      : props.theme.bodyText};
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;

@@ -1,8 +1,6 @@
 const menuState = {
   isOpen: false,
-  xPercent: 0,
-  leftPosition: 0,
-  menuWidth: 0,
+  pathName: "",
 };
 
 const menuReducer = (state, action) => {
@@ -19,12 +17,10 @@ const menuReducer = (state, action) => {
         isOpen: false,
       };
     }
-    case "setMenuWidth": {
+    case "setPathName": {
       return {
         ...state,
-        xPercent: action.positions.xPercent,
-        leftPosition: action.positions.leftPosition,
-        menuWidth: action.positions.menuWidth,
+        pathName: action.value,
       };
     }
     default: {

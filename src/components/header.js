@@ -6,17 +6,24 @@ import { getRems } from "../utils/helpers";
 import FWWLogo from "../svgs/FWWLogo";
 import MenuChicklet from "./Shared/Nav/MenuChicklet";
 import ScreenWidthContext from "../context/ScreenWidthContext";
+import { useMenuContext } from "../context/MenuContext";
 import { above } from "../styles/Theme";
 
-const Header = () => {
+const Header = ({ location }) => {
   const device = useContext(ScreenWidthContext);
   const [showLogo, setShowLogo] = useState(true);
+  // eslint-disable-next-line
+  const [menuStore, dispatch] = useMenuContext();
 
   useEffect(() => {
     if (device === "mobile") {
       setShowLogo(false);
     }
   }, [device]);
+
+  useEffect(() => {
+    dispatch({ type: "setPathName", value: location.pathname });
+  }, [location]);
 
   return (
     <HeaderBar maxWidth={getRems(1200)}>

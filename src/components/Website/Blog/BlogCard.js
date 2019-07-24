@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Image from "gatsby-image";
+import TimelineMax from "gsap/TimelineMax";
+import { TweenMax } from "gsap/TweenMax";
 
 import { ElementContainer } from "../../../styles/Containers";
 import { InnerButton } from "../../../styles/Buttons";
@@ -16,6 +18,24 @@ const BlogCard = ({
   tags,
   slug,
 }) => {
+  const [cardOpen, toggleCardOpen] = useState(false);
+  const blogCardRef = useRef(null);
+  const blogControlsRef = useRef(null);
+
+  useEffect(() => {
+    const blogCard = blogCardRef.current;
+    const blogControls = blogControlsRef.current;
+    const cardHeight = blogCard.clientHeight;
+
+    TweenMax.set(blogCard, { transformOrigin: "50% 0%", scaleY: 0 });
+    TweenMax.set(blogControls, { y: -cardHeight });
+
+    TweenMax.to(blogCard, 1, {
+      scaleY: 1,
+    });
+    TweenMax.to(blogControls, 1, { y: 0 });
+  });
+
   const tagList = tags.map(tag => (
     <BlogTags key={tag.title}>{tag.title}</BlogTags>
   ));
@@ -23,7 +43,7 @@ const BlogCard = ({
   return (
     <BlogCardContainer>
       <FeatureImage alt={altText} fluid={featureImage} />
-      <ContentWrapper>
+      <ContentWrapper ref={blogCardRef}>
         <BlogCardHeadline>{headline}</BlogCardHeadline>
         <BlogDescription dangerouslySetInnerHTML={{ __html: teaserCopy }} />
         <TagWrapper>{tagList}</TagWrapper>
@@ -33,7 +53,7 @@ const BlogCard = ({
           </InnerButton>
         </ElementContainer>
       </ContentWrapper>
-      <OpenCloseWrapper>
+      <OpenCloseWrapper ref={blogControlsRef}>
         <MoreAndCloseIcon />
         <MoreCloseLabel>CLOSE</MoreCloseLabel>
       </OpenCloseWrapper>
@@ -47,8 +67,6 @@ const BlogCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${props => props.theme.bodyText};
-  border-radius: 6px;
   width: 100%;
 `;
 
@@ -62,6 +80,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background: ${props => props.theme.bodyText};
   width: 100%;
 `;
 
@@ -103,12 +122,14 @@ const BlogTags = styled.p`
 `;
 
 const OpenCloseWrapper = styled.div`
-  margin: 16px 0;
-  padding: 0 12px 0 0;
-  align-self: flex-end;
+  padding: 0 24px 0 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  background: ${props => props.theme.bodyText};
+  border-radius: 0 0 6px 6px;
+  width: 100%;
+  height: 60px;
 `;
 
 const MoreCloseLabel = styled.p`

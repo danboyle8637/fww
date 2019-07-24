@@ -1,23 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 
 import Global from "../styles/Global";
 import { above, darkTheme } from "../styles/Theme";
 import { ScreenWidthStore } from "../context/ScreenWidthContext";
+import { MenuStore } from "../context/MenuContext";
+import { menuState, menuReducer } from "../reducers/menuReducer";
 import Header from "./header";
 import FooterSection from "../components/Website/Footer/FooterSection";
 
-const Layout = ({ children, isBlogPage, isApp }) => {
+const Layout = ({ children, location }) => {
+  const [isBlogPage, setIsBlogPage] = useState(false);
+  const [isApp, setIsApp] = useState(false);
+
+  useEffect(() => {
+    const pathName = location.pathname;
+
+    if (pathName.includes("blog")) {
+      setIsBlogPage(true);
+    } else {
+      setIsBlogPage(false);
+    }
+
+    if (pathName.match(/^\/app/)) {
+      console.log("You're in the app part now!");
+      setIsApp(true);
+    } else {
+      setIsApp(false);
+    }
+  }, [location]);
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <ScreenWidthStore>
-        <Global />
-        <Header />
-        <Main isBlog={isBlogPage} isApp={isApp}>
-          {children}
-        </Main>
-        <FooterSection />
-      </ScreenWidthStore>
+      <MenuStore initialState={menuState} reducer={menuReducer}>
+        <ScreenWidthStore>
+          <Global />
+          <Header location={location} />
+          <Main isBlog={isBlogPage} isApp={isApp}>
+            {children}
+          </Main>
+          <FooterSection />
+        </ScreenWidthStore>
+      </MenuStore>
     </ThemeProvider>
   );
 };
