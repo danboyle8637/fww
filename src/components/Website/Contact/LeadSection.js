@@ -37,7 +37,12 @@ const ChatBubble = styled(ChatTextIcon)`
     transform: translate(100px, 0px);
   `}
   ${above.tablet`
-    transform: translate(20px, 0px);
+    width: 240px;
+    transform: translate(40px, 0px);
+  `}
+  ${above.ipadPro`
+    width: 400px;
+    transform: translate(60px, 40px) rotate(6deg);
   `}
 `;
 

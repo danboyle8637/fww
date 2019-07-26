@@ -19,10 +19,10 @@ const TextInput = props => {
     <ElementContainer>
       <InputContainer touched={props.touched} error={isError} valid={isValid}>
         <FormInstructions isTouched={isTouched}>
-          <InputLabel htmlFor={labelFor}>{labelInstructions}</InputLabel>
+          <HelpLabel htmlFor={labelFor}>{labelInstructions}</HelpLabel>
         </FormInstructions>
         <FormInstructions isTouched={isError && !isTouched}>
-          <InputLabel htmlFor={labelFor}>{labelError}</InputLabel>
+          <HelpLabel htmlFor={labelFor}>{labelError}</HelpLabel>
         </FormInstructions>
         <MainLabelTransition isTouched={isNormal}>
           <InputLabel htmlFor={labelFor}>{labelName}</InputLabel>
@@ -67,10 +67,14 @@ const InputLabel = styled.label`
   letter-spacing: 1.4px;
   color: ${props => props.theme.whiteText};
   background: ${props => props.theme.mainBackgroundColor};
-  border: 1px solid red;
   text-transform: uppercase;
-  pointer-events: auto;
-  transform: translate(50%, -50%);
+  pointer-events: none;
+  transform: translate(10%, -50%);
+`;
+
+const HelpLabel = styled(InputLabel)`
+  font-size: 13px;
+  color: ${props => props.theme.bodyText};
 `;
 
 const Input = styled.input`
@@ -84,8 +88,13 @@ const Input = styled.input`
   color: ${props =>
     props.isValid ? props.theme.accentBackgroundColor : props.theme.bodyText};
   width: 100%;
+  outline: none;
 `;
 
 const CheckMark = styled(FormCheck)`
+  position: absolute;
+  top: 50%;
+  right: 5%;
   width: 22px;
+  transform: translate(0, -50%);
 `;

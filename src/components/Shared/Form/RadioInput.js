@@ -35,9 +35,7 @@ const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: ${props => props.theme.accentBackgroundColor};
   border-radius: 6px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
 `;
 
@@ -69,7 +67,9 @@ const FormRadioInput = styled.div`
   height: 24px;
   background: ${props =>
     props.checked
-      ? props.theme.primaryAccent
+      ? props.theme.secondaryAccent
       : props.theme.mainBackgroundColor};
   border-radius: 12px;
+  border: 2px solid;
+  border-color: ${props => props.theme.strongBodyText};
 `;

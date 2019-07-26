@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Transition } from "react-transition-group";
 import { TweenMax, Power2 } from "gsap/TweenMax";
 
-const FormInstructions = ({ isTouched, children }) => {
+const FormInstructions = ({ isTouched, isTextArea, children }) => {
+  const [yPosition, setYPosition] = useState(-37);
+
+  useEffect(() => {
+    if (isTextArea) {
+      setYPosition(-12);
+    }
+  }, [isTextArea]);
+
   return (
     <Transition
       in={isTouched}
@@ -15,28 +23,23 @@ const FormInstructions = ({ isTouched, children }) => {
             0.5,
             {
               x: -300,
+              y: yPosition,
               autoAlpha: 0,
             },
             {
-              x: 0,
+              x: 13,
+              y: yPosition,
               autoAlpha: 1,
               onComplete: done,
             }
           );
         } else {
-          TweenMax.fromTo(
-            node,
-            0.5,
-            {
-              x: 0,
-              autoAlpha: 1,
-            },
-            {
-              x: 300,
-              autoAlpha: 0,
-              onComplete: done,
-            }
-          );
+          TweenMax.to(node, 0.5, {
+            x: 300,
+            y: yPosition,
+            autoAlpha: 0,
+            onComplete: done,
+          });
         }
       }}
     >

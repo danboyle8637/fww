@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header3 } from "../../../../styles/Headlines";
-import FormCheck from "../../../../svgs/FormCheck";
+import PageCheck from "../../../../svgs/PageCheck";
 import { above } from "../../../../styles/Theme";
 
 const Headline1 = () => {
@@ -77,7 +77,7 @@ const HeadlineCheckWrapper = styled.div`
   `}
 `;
 
-const Check = styled(FormCheck)`
+const Check = styled(PageCheck)`
   width: 24px;
   ${above.mobile`
     width: 40px;

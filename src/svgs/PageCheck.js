@@ -1,33 +1,31 @@
 import React, { useEffect, useRef } from "react";
-import { TweenMax } from "gsap/TweenMax";
-import drawSVG from "../greensock/DrawSVGPlugin";
 
-const FormCheck = ({ width, height, className }) => {
+import checkMarkAni from "../Animations/Tweens/checkMarkAni";
+import useSVGObserver from "../hooks/useSVGObserver";
+
+const PageCheck = ({ width, height, className }) => {
   const checkRef = useRef(null);
-  // eslint-disable-next-line
-  const useDrawSVG = drawSVG;
+  const [setNode, runAnimation] = useSVGObserver({
+    rootMargin: "0% 0% -50% 0%",
+  });
 
   useEffect(() => {
-    const checkmark = checkRef.current;
+    const check = checkRef.current;
 
-    TweenMax.fromTo(
-      checkmark,
-      0.5,
-      {
-        drawSVG: "100% 100%",
-      },
-      {
-        drawSVG: "100% 0%",
-      }
-    );
+    checkMarkAni(check, runAnimation, false);
+  }, [runAnimation]);
+
+  useEffect(() => {
+    const check = checkRef.current;
 
     return () => {
-      TweenMax.killTweensOf(checkmark);
+      checkMarkAni(check, runAnimation, true);
     };
   }, []);
 
   return (
     <svg
+      ref={setNode}
       id="form-check"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -49,4 +47,4 @@ const FormCheck = ({ width, height, className }) => {
   );
 };
 
-export default FormCheck;
+export default PageCheck;
