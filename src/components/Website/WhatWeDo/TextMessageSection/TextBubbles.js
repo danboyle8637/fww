@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import { above } from "../../../../styles/Theme";
+import textMessageAni from "../../../../Animations/Tweens/textMessageAni";
+import useSVGObserver from "../../../../hooks/useSVGObserver";
 
-const TextBubbles = React.forwardRef(({ children, client, align }, ref) => {
+const TextBubbles = ({ children, client }) => {
+  const textMessageRef = useRef(null);
+
+  const [setNode, runAnimation] = useSVGObserver({
+    rootMargin: "0px 0px -100px 0px",
+  });
+
+  useEffect(() => {
+    textMessageAni(textMessageRef.current, client, runAnimation, false);
+  }, [runAnimation, client, textMessageRef]);
+
+  useEffect(() => {
+    return () => {
+      textMessageAni(textMessageRef.current, client, runAnimation, true);
+    };
+  }, []);
+
   return (
-    <Bubble ref={ref} client={client} align={align}>
-      <BubbleText>{children}</BubbleText>
-    </Bubble>
+    <BubbleWrapper ref={setNode} client={client}>
+      <Bubble ref={textMessageRef} client={client}>
+        <BubbleText>{children}</BubbleText>
+      </Bubble>
+    </BubbleWrapper>
   );
-});
+};
 
 export default TextBubbles;
+
+const BubbleWrapper = styled.div`
+  align-self: ${props => (props.client ? "flex-start" : "flex-end")};
+`;
 
 const Bubble = styled.div`
   margin: 0 0 20px 0;
@@ -22,11 +46,6 @@ const Bubble = styled.div`
   border-color: ${props =>
     props.client ? props.theme.bodyText : props.theme.tertiaryAccent};
   border-radius: 8px;
-  align-self: ${props => {
-    if (props.align === "left") return "flex-start";
-    if (props.align === "right") return "flex-end";
-    return "center";
-  }};
   max-width: 280px;
   ${above.tablet`
     max-width: 320px;

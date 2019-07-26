@@ -1,16 +1,28 @@
 import { TweenMax } from "gsap/TweenMax";
 import drawSVG from "../../greensock/DrawSVGPlugin";
 
-const checkMarkAni = node => {
+const checkMarkAni = (checkmark, runAnimation, kill) => {
   // eslint-disable-next-line
   const useDrawSVG = drawSVG;
 
-  TweenMax.set(node, { drawSVG: "100% 100%" });
-  TweenMax.to(node, 0.3, {
-    drawSVG: "0% 100%",
-    delay: 3,
-    onComplete: () => TweenMax.killTweensOf(node),
-  });
+  TweenMax.set(checkmark, { drawSVG: "100% 100%" });
+
+  if (runAnimation) {
+    TweenMax.fromTo(
+      checkmark,
+      0.5,
+      {
+        drawSVG: "100% 100%",
+      },
+      {
+        drawSVG: "100% 0%",
+      }
+    );
+  }
+
+  if (kill) {
+    TweenMax.killTweensOf(checkmark);
+  }
 };
 
 export default checkMarkAni;

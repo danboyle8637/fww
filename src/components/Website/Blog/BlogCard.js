@@ -5,11 +5,12 @@ import TimelineMax from "gsap/TimelineMax";
 import { TweenMax } from "gsap/TweenMax";
 
 import { ElementContainer } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
+import { BlogButton } from "../../../styles/Buttons";
 import BlogMoreIcon from "../../../svgs/BlogMoreIcon";
 import "./Blog.css";
 
 const BlogCard = ({
+  id,
   featureImage,
   altText,
   headline,
@@ -18,23 +19,84 @@ const BlogCard = ({
   tags,
   slug,
 }) => {
-  const [cardOpen, toggleCardOpen] = useState(false);
-  const blogCardRef = useRef(null);
-  const blogControlsRef = useRef(null);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [cardDetailsHeight, setCardDetailsHeight] = useState(0);
+  const cardContainerRef = useRef(null);
+  const cardDescriptoinWrapperRef = useRef(null);
+  const cardControlsRef = useRef(null);
+  const headlineRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const tagsRef = useRef(null);
+  const descriptionButtonRef = useRef(null);
+  const controlsButtonRef = useRef(null);
 
   useEffect(() => {
-    const blogCard = blogCardRef.current;
-    const blogControls = blogControlsRef.current;
-    const cardHeight = blogCard.clientHeight;
+    const cardDescription = cardDescriptoinWrapperRef.current;
+    const cardControls = cardControlsRef.current;
+    const headline = headlineRef.current;
+    const description = descriptionRef.current;
+    const tags = tagsRef.current;
+    const descriptionButton = descriptionButtonRef.current;
+    const controlsButton = controlsButtonRef.current;
+    const descriptionHeight = cardDescription.clientHeight;
+    setCardDetailsHeight(descriptionHeight);
 
-    TweenMax.set(blogCard, { transformOrigin: "50% 0%", scaleY: 0 });
-    TweenMax.set(blogControls, { y: -cardHeight });
-
-    TweenMax.to(blogCard, 1, {
-      scaleY: 1,
+    TweenMax.set(cardDescription, { transformOrigin: "50% 0%", scaleY: 0 });
+    TweenMax.set(cardControls, { y: -descriptionHeight });
+    TweenMax.set(controlsButton, { x: 0, autoAlpha: 1 });
+    TweenMax.set([headline, description, tags, descriptionButton], {
+      y: -20,
+      autoAlpha: 0,
     });
-    TweenMax.to(blogControls, 1, { y: 0 });
-  });
+
+    const tl = new TimelineMax({ paused: true });
+
+    const animation = tl
+      .to(cardDescription, 0.3, {
+        scaleY: 1,
+      })
+      .to(
+        cardControls,
+        0.3,
+        {
+          y: 0,
+        },
+        "-=0.3"
+      )
+      .to(
+        controlsButton,
+        0.4,
+        {
+          x: -200,
+          autoAlpha: 0,
+        },
+        "-=0.3"
+      )
+      .staggerTo(
+        [headline, description, tags, descriptionButton],
+        0.5,
+        {
+          y: 0,
+          autoAlpha: 1,
+        },
+        0.08
+      );
+
+    if (detailsOpen) {
+      animation.play(0);
+    } else {
+      animation.reverse(1);
+    }
+
+    return () => {
+      tl.clear(true);
+      tl.kill();
+    };
+  }, [detailsOpen]);
+
+  const handleDetailsClick = () => {
+    setDetailsOpen(!detailsOpen);
+  };
 
   const tagList = tags.map(tag => (
     <BlogTags key={tag.title}>{tag.title}</BlogTags>
@@ -43,20 +105,29 @@ const BlogCard = ({
   return (
     <BlogCardContainer>
       <FeatureImage alt={altText} fluid={featureImage} />
-      <ContentWrapper ref={blogCardRef}>
-        <BlogCardHeadline>{headline}</BlogCardHeadline>
-        <BlogDescription dangerouslySetInnerHTML={{ __html: teaserCopy }} />
-        <TagWrapper>{tagList}</TagWrapper>
-        <ElementContainer justifyCenter>
-          <InnerButton kettlebell to={`/blog/${slug}`}>
-            {buttonText}
-          </InnerButton>
+      <ContentWrapper ref={cardDescriptoinWrapperRef}>
+        <BlogCardHeadline ref={headlineRef}>{headline}</BlogCardHeadline>
+        <BlogDescription
+          ref={descriptionRef}
+          dangerouslySetInnerHTML={{ __html: teaserCopy }}
+        />
+        <TagWrapper ref={tagsRef}>{tagList}</TagWrapper>
+        <ElementContainer ref={descriptionButtonRef} justifyCenter>
+          <BlogButton to={`/blog/${slug}`}>{buttonText}</BlogButton>
         </ElementContainer>
       </ContentWrapper>
-      <OpenCloseWrapper ref={blogControlsRef}>
-        <MoreAndCloseIcon />
-        <MoreCloseLabel>CLOSE</MoreCloseLabel>
-      </OpenCloseWrapper>
+      <ControlsContainer
+        ref={cardControlsRef}
+        initialHeight={cardDetailsHeight}
+      >
+        <BlogButton ref={controlsButtonRef} to={`/blog/${slug}`}>
+          Read Post
+        </BlogButton>
+        <OpenCloseWrapper onClick={handleDetailsClick}>
+          <MoreCloseLabel>Details</MoreCloseLabel>
+          <MoreAndCloseIcon />
+        </OpenCloseWrapper>
+      </ControlsContainer>
     </BlogCardContainer>
   );
 };
@@ -81,7 +152,6 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   background: ${props => props.theme.bodyText};
-  width: 100%;
 `;
 
 const BlogCardHeadline = styled.h2`
@@ -121,22 +191,32 @@ const BlogTags = styled.p`
   color: ${props => props.theme.whiteText};
 `;
 
-const OpenCloseWrapper = styled.div`
-  padding: 0 24px 0 0;
-  display: flex;
-  justify-content: flex-end;
+// Blog Card controls section at bottom
+
+const ControlsContainer = styled.div`
+  padding: 8px 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
   align-items: center;
   background: ${props => props.theme.bodyText};
   border-radius: 0 0 6px 6px;
+  overflow: hidden;
+`;
+
+const OpenCloseWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  height: 60px;
 `;
 
 const MoreCloseLabel = styled.p`
-  margin: 0 0 0 12px;
+  margin: 0 8px 0 0;
   padding: 0;
   font-size: 14px;
   color: ${props => props.theme.mainBackgroundColor};
+  text-transform: uppercase;
 `;
 
 const MoreAndCloseIcon = styled(BlogMoreIcon)`

@@ -21,6 +21,7 @@ const BlogPostList = ({ data }) => {
     return (
       <BlogCard
         key={id}
+        id={id}
         headline={headline}
         featureImage={featureImage}
         altText={featureImageAltText}

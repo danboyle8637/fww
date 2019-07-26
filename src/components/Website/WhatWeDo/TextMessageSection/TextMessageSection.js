@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import {
@@ -11,55 +11,38 @@ import Headline3 from "./Headline3";
 import Headline1 from "./Headline1";
 import Headline2 from "./Headline2";
 import FWWLogo from "../../../../svgs/FWWLogo";
-import trainerTextMessageAni from "../../../../Animations/Tweens/trainerTextMessageAni";
-import clientTextMessageAni from "../../../../Animations/Tweens/clientTextMessageAni";
 
 const TextMessageSection = () => {
-  const trainerMessageRef = useRef(null);
-  const clientMessageRef = useRef(null);
-
-  useEffect(() => {
-    clientTextMessageAni(clientMessageRef.current);
-  }, [clientMessageRef]);
-
-  useEffect(() => {
-    trainerTextMessageAni(trainerMessageRef.current);
-  }, [trainerMessageRef]);
-
   return (
     <SectionContainer>
       <TextMessageContainer>
         <div id="what-we-do-lead" />
         <Headline3 />
         <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles ref={clientMessageRef} align={"left"} client={true}>
-            I need a workout
-          </TextBubbles>
-          <TextBubbles ref={trainerMessageRef} align={"right"} client={false}>
-            I have just the one
-          </TextBubbles>
+          <TextBubbles client={true}>I need a workout</TextBubbles>
+          <TextBubbles client={false}>I have just the one</TextBubbles>
         </ElementContainer>
         <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles align={"left"} client={true}>
+          <TextBubbles client={true}>
             I need a healthy, FAST, breakfast
           </TextBubbles>
-          <TextBubbles align={"right"} client={false}>
+          <TextBubbles client={false}>
             The ##### breakfast is perfect. You'll love this!
           </TextBubbles>
         </ElementContainer>
         <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles align={"left"} client={true}>
+          <TextBubbles client={true}>
             I only have 12 minutes to workout. Help!?!
           </TextBubbles>
-          <TextBubbles align={"right"} client={false}>
+          <TextBubbles client={false}>
             Get one round of Switch done. It's better than skipping.
           </TextBubbles>
         </ElementContainer>
         <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles align={"left"} client={true}>
+          <TextBubbles client={true}>
             I need a good strength workout today.
           </TextBubbles>
-          <TextBubbles align={"right"} client={false}>
+          <TextBubbles client={false}>
             Awesome. Let's do a kettlebell workout!
           </TextBubbles>
         </ElementContainer>

@@ -4,12 +4,15 @@ import { TweenMax, Power2 } from "gsap/TweenMax";
 const followMeAni = (socialIcon, socialName, runAnimation, kill) => {
   const tl = new TimelineMax();
 
-  if (runAnimation) {
+  const setForwardSocialName = () => {
     TweenMax.set(socialName, {
       transformOrigin: "50% 50%",
       scale: 0,
       autoAlpha: 0,
     });
+  };
+
+  const setForwardSocialIcon = () => {
     TweenMax.set(socialIcon, {
       transformOrigin: "50% 50%",
       scale: 0.8,
@@ -17,7 +20,28 @@ const followMeAni = (socialIcon, socialName, runAnimation, kill) => {
       x: -200,
       y: -60,
     });
+  };
 
+  const setReverseSocialName = () => {
+    TweenMax.set(socialName, {
+      transformOrigin: "50% 50%",
+      scale: 1,
+      autoAlpha: 1,
+    });
+  };
+
+  const setReverseSocialIcon = () => {
+    TweenMax.set(socialIcon, {
+      transformOrigin: "50% 50%",
+      scale: 2,
+      rotation: 0,
+      autoAlpha: 0,
+      x: 0,
+      y: 0,
+    });
+  };
+
+  const forwardTween = () => {
     tl.to(socialIcon, 1, {
       scale: 1,
       rotation: 0,
@@ -45,21 +69,9 @@ const followMeAni = (socialIcon, socialName, runAnimation, kill) => {
         },
         "-=0.6"
       );
-  } else {
-    TweenMax.set(socialName, {
-      transformOrigin: "50% 50%",
-      scale: 1,
-      autoAlpha: 1,
-    });
-    TweenMax.set(socialIcon, {
-      transformOrigin: "50% 50%",
-      scale: 2,
-      rotation: 0,
-      autoAlpha: 0,
-      x: 0,
-      y: 0,
-    });
+  };
 
+  const reverseTween = () => {
     tl.to(socialName, 1, {
       scale: 0,
       autoAlpha: 0,
@@ -87,6 +99,16 @@ const followMeAni = (socialIcon, socialName, runAnimation, kill) => {
         },
         "-=0.5"
       );
+  };
+
+  if (runAnimation) {
+    setForwardSocialName();
+    setForwardSocialIcon();
+    forwardTween();
+  } else {
+    setReverseSocialName();
+    setReverseSocialIcon();
+    reverseTween();
   }
 
   if (kill) {

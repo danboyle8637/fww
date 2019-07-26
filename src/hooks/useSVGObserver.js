@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
   const [ratio, setRatio] = useState(0);
+  //const [target, setTarget] = useState({});
   const [previousRatio, setPreviousRatio] = useState(0);
   const [runAnimation, setRunAnimation] = useState(false);
   const [svgNode, setSVGNode] = useState(null);
@@ -18,6 +19,7 @@ const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
     entries.forEach(singleEntry => {
       if (singleEntry.intersectionRatio === 0) {
         //console.log("Setting the entry in state.");
+        //setTarget(singleEntry.target);
         setRatio(singleEntry.intersectionRatio);
       }
 
