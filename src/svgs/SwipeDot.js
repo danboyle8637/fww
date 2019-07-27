@@ -2,7 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { TimelineMax } from "gsap/TimelineMax";
 import { TweenMax, Power2 } from "gsap/TweenMax";
 
-const SwipeDot = ({ width, height, className }) => {
+import { useIsTweeningContext } from "../context/IsTweeningContent";
+
+const SwipeDot = ({ width, height, className, swipeFill }) => {
+  const [{ tweenCount }, dispatch] = useIsTweeningContext();
+
   const pressOutlineRef = useRef(null);
   const pressActiveRef = useRef(null);
   const pressPulseRef = useRef(null);
@@ -13,80 +17,83 @@ const SwipeDot = ({ width, height, className }) => {
   const letterSRef = useRef(null);
 
   useEffect(() => {
-    const tl = new TimelineMax({ repeat: -1 });
-    const letterArray = [
-      letterERef.current,
-      letterPRef.current,
-      letterIRef.current,
-      letterWRef.current,
-      letterSRef.current,
-    ];
+    const pressOutline = pressOutlineRef.current;
+    const pressActive = pressActiveRef.current;
+    const pressPulse = pressPulseRef.current;
+    const letterE = letterERef.current;
+    const letterP = letterPRef.current;
+    const letterI = letterIRef.current;
+    const letterW = letterWRef.current;
+    const letterS = letterSRef.current;
+
+    const tl = new TimelineMax({ repeat: 3 });
+    const letterArray = [letterE, letterP, letterI, letterW, letterS];
 
     // Set all letter to opacity 0
-    TweenMax.set(
-      [
-        letterERef.current,
-        letterPRef.current,
-        letterIRef.current,
-        letterWRef.current,
-        letterSRef.current,
-      ],
-      { autoAlpha: 0 }
-    );
+    TweenMax.set([letterE, letterP, letterI, letterW, letterS], {
+      autoAlpha: 0,
+    });
 
     // Set press dot to right
-    TweenMax.set(pressActiveRef.current, {
+    TweenMax.set(pressActive, {
       transformOrigin: "50% 50%",
       scale: 0,
       x: 140,
     });
-    TweenMax.set([pressOutlineRef.current, pressPulseRef.current], {
+    TweenMax.set([pressOutline, pressPulse], {
       transformOrigin: "50% 50%",
       x: 140,
     });
 
-    tl.to(pressActiveRef.current, 0.5, { scale: 1, ease: Power2.easeOut })
+    tl.to(pressActive, 0.5, { scale: 1, ease: Power2.easeOut })
       .to(
-        pressPulseRef.current,
+        pressPulse,
         1,
         { scale: 1.4, autoAlpha: 0, ease: Power2.easeOut },
-        0.5
+        "-=0.5"
       )
       .staggerTo(
-        [pressOutlineRef.current, pressActiveRef.current],
+        [pressOutline, pressActive],
         1,
         { x: 0, ease: Power2.easeOut },
         0
       )
       .staggerTo(
         letterArray,
-        1.5,
+        0.2,
         { autoAlpha: 1, ease: Power2.easeOut },
-        0.3,
-        0.8
+        0.09,
+        "-=0.95"
       )
-      .staggerTo(letterArray, 0.5, { autoAlpha: 0, ease: Power2.easeOut }, 0.1)
-      .to(pressActiveRef.current, 0.4, {
+      .staggerTo(
+        letterArray,
+        0.2,
+        { autoAlpha: 0, ease: Power2.easeOut, delay: 0.3 },
+        0.09,
+        "-=0.01"
+      )
+      .to(pressActive, 0.4, {
         scale: 1.4,
         autoAlpha: 0,
         ease: Power2.easeOut,
       })
-      .to(pressOutlineRef.current, 0.3, { x: 140, ease: Power2.easeOut });
+      .to(pressOutline, 0.3, { x: 140, ease: Power2.easeOut });
+
+    tl.addCallback(() => {
+      dispatch({ type: "incrementTweenCount" });
+    }, 1);
 
     return () => {
       tl.clear();
       tl.kill();
     };
-  }, [
-    pressActiveRef,
-    pressOutlineRef,
-    pressPulseRef,
-    letterERef,
-    letterIRef,
-    letterPRef,
-    letterSRef,
-    letterWRef,
-  ]);
+  }, []);
+
+  useEffect(() => {
+    if (tweenCount > 3) {
+      dispatch({ type: "toggleTweening" });
+    }
+  }, [tweenCount]);
 
   return (
     <svg
@@ -97,7 +104,7 @@ const SwipeDot = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 275 79"
     >
-      <g id="swipe" fill="#4d5d7e">
+      <g id="swipe" fill={swipeFill || "#4d5d7e"}>
         <path
           ref={letterSRef}
           id="letter-s"

@@ -102,7 +102,11 @@ const CardGrid = styled.div`
   grid-template-rows: 1fr;
   background: ${props => props.theme.mainBackgroundBorderColor};
   border-radius: 6px;
+  width: 100vw;
   overflow: hidden;
+  ${above.mobile`
+    width: 100%;
+  `}
 `;
 
 const ContentContainer = styled.div`

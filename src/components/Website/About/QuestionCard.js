@@ -19,7 +19,6 @@ const QuestionCard = ({ body, question }) => {
 export default QuestionCard;
 
 const CardContainer = styled.div`
-  margin: 0 20px;
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
@@ -28,7 +27,7 @@ const CardContainer = styled.div`
   border-bottom: 3px solid;
   border-color: ${props => props.theme.secondaryAccent};
   border-radius: 6px;
-  width: 90vw;
+  width: 100vw;
   transition: transform, box-shadow, 200ms ease-in-out;
   ${above.mobile`
     width: 80vw;

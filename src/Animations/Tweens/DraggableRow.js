@@ -7,7 +7,7 @@ import "../../greensock/ThrowPropsPlugin";
 
 const DraggableRow = ({ numberOfCards, children }) => {
   const [screenWidth, setScreenWidth] = useState(0);
-  //const [endValue, setEndValue] = useState(0);
+  //const [prevEndValue, setPrevEndValue] = useState(0);
   const draggableContainerRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const DraggableRow = ({ numberOfCards, children }) => {
     const setStartPosition = Math.round((numberOfCards / 2) * screenWidth);
 
     TweenMax.set(draggable, {
-      x: setStartPosition,
+      x: -setStartPosition,
     });
 
     Draggable.create(draggable, {
@@ -37,8 +37,14 @@ const DraggableRow = ({ numberOfCards, children }) => {
 
   const snapX = endValue => {
     if (numberOfCards % 2 === 0) {
-      console.log(endValue);
       let snap;
+
+      // TODO: Figure out how you can smoothly change the sign for a smooth scroll
+      // When you start at a postive value and scroll to cards on the right
+      // The + needs to be - for a really smooth scroll.
+      // When you start at a negative value and scroll to cards on left
+      // the + needs to stay plus for a really smooth scroll
+      // Maybe try a when or something like that.
       if (endValue >= 0) {
         snap =
           Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
@@ -46,15 +52,16 @@ const DraggableRow = ({ numberOfCards, children }) => {
 
       if (endValue <= 0) {
         snap =
-          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+          Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
       }
+      // const activeCard = snap / screenWidth;
 
       return snap;
     } else {
       const snap = Math.round(endValue / screenWidth) * screenWidth;
+      // const activeCard = snap / screenWidth;
       return snap;
     }
-    //const activeCard = snapValue / screenWidth;
   };
 
   return (
@@ -67,6 +74,5 @@ const DraggableRow = ({ numberOfCards, children }) => {
 export default DraggableRow;
 
 const DraggableContainer = styled.div`
-  margin: 8px 0 0 0;
   display: flex;
 `;

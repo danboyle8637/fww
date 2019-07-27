@@ -7,8 +7,13 @@ import Headline1 from "./Headlines/Headline1";
 import ReasonCard from "./ReasonCard";
 import DraggableRow from "../../../../Animations/Tweens/DraggableRow";
 import SwipeDot from "../../../../svgs/SwipeDot";
+import { useIsTweeningContext } from "../../../../context/IsTweeningContent";
+import DismissSwipeIcon from "../../../../Animations/ReactTransitions/DismissSwipeIcon";
 
 const ReasonSection = () => {
+  // eslint-disable-next-line
+  const [{ isTweening }, dispatch] = useIsTweeningContext();
+
   const query = graphql`
     query {
       reasonCards: allFile(
@@ -56,7 +61,11 @@ const ReasonSection = () => {
   return (
     <SectionContainer>
       <Headline1 />
-      <Swipe />
+      <SwipeWrapper>
+        <DismissSwipeIcon isTweening={isTweening}>
+          <Swipe />
+        </DismissSwipeIcon>
+      </SwipeWrapper>
       <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
     </SectionContainer>
   );
@@ -64,7 +73,11 @@ const ReasonSection = () => {
 
 export default ReasonSection;
 
+const SwipeWrapper = styled.div`
+  margin: 20px 0 0 0;
+  height: 60px;
+`;
+
 const Swipe = styled(SwipeDot)`
-  margin: 40px 0 0 0;
   width: 140px;
 `;
