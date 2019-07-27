@@ -1,68 +1,68 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Draggable } from "gsap/Draggable";
 import { TweenMax } from "gsap/TweenMax";
 import styled from "styled-components";
 
 import "../../greensock/ThrowPropsPlugin";
 
-class DraggableRow extends Component {
-  constructor(props) {
-    super(props);
+const DraggableRow = ({ numberOfCards, children }) => {
+  const [screenWidth, setScreenWidth] = useState(0);
+  //const [endValue, setEndValue] = useState(0);
+  const draggableContainerRef = useRef(null);
 
-    this.state = {
-      screenWidth: 0,
-    };
-
-    this.draggableElement = null;
-
-    this.setDraggableElement = element => {
-      this.draggableElement = element;
-    };
-  }
-
-  componentDidMount() {
-    const { numberOfCards } = this.props;
+  useEffect(() => {
     const width = window.innerWidth;
-    const setDraggable = Math.round((numberOfCards / 2) * width);
+    setScreenWidth(width);
+  }, []);
 
-    this.setState({
-      screenWidth: width,
+  useEffect(() => {
+    const draggable = draggableContainerRef.current;
+    const setStartPosition = Math.round((numberOfCards / 2) * screenWidth);
+
+    TweenMax.set(draggable, {
+      x: setStartPosition,
     });
 
-    // console.log(`setDraggable: ${this.draggableElement.clientWidth}`);
-
-    TweenMax.set(this.draggableElement, {
-      x: 731,
-    });
-
-    Draggable.create(this.draggableElement, {
+    Draggable.create(draggable, {
       type: "x",
       throwProps: true,
       bounds: window,
       cursor: "grab",
       activeCursor: "grabbing",
-      dragResistance: 0.5,
+      dragResistance: 0.2,
       edgeResistance: 0.6,
-      snap: this.snapX,
+      snap: snapX,
     });
-  }
+  }, [screenWidth]);
 
-  snapX = endValue => {
-    const screenWidth = this.state.screenWidth;
-    const snapValue = Math.round(endValue / screenWidth) * screenWidth;
-    const activeCard = snapValue / screenWidth;
-    console.log(`snapValue: ${endValue}`);
-    return snapValue;
+  const snapX = endValue => {
+    if (numberOfCards % 2 === 0) {
+      console.log(endValue);
+      let snap;
+      if (endValue >= 0) {
+        snap =
+          Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
+      }
+
+      if (endValue <= 0) {
+        snap =
+          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+      }
+
+      return snap;
+    } else {
+      const snap = Math.round(endValue / screenWidth) * screenWidth;
+      return snap;
+    }
+    //const activeCard = snapValue / screenWidth;
   };
 
-  render() {
-    return (
-      <DraggableContainer ref={this.setDraggableElement}>
-        {this.props.children}
-      </DraggableContainer>
-    );
-  }
-}
+  return (
+    <DraggableContainer ref={draggableContainerRef}>
+      {children}
+    </DraggableContainer>
+  );
+};
 
 export default DraggableRow;
 

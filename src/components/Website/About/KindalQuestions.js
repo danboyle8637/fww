@@ -20,6 +20,7 @@ const KindalQuestions = () => {
           sourceInstanceName: { eq: "AboutCopy" }
           name: { regex: "/KindalQuestion/" }
         }
+        sort: { fields: birthtime }
       ) {
         nodes {
           id
@@ -59,8 +60,3 @@ const KindalQuestions = () => {
 };
 
 export default KindalQuestions;
-
-const DraggableContainer = styled.div`
-  margin: 60px 0 0 0;
-  display: flex;
-`;

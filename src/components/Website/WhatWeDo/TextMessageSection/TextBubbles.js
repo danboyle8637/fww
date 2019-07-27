@@ -10,6 +10,7 @@ const TextBubbles = ({ children, client }) => {
 
   const [setNode, runAnimation] = useSVGObserver({
     rootMargin: "0px 0px -100px 0px",
+    threshold: 0.5,
   });
 
   useEffect(() => {

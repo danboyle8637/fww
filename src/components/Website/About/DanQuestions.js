@@ -10,6 +10,7 @@ import {
 import { InnerButton } from "../../../styles/Buttons";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
+import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 
 const DanQuestions = () => {
   const query = graphql`
@@ -19,6 +20,7 @@ const DanQuestions = () => {
           sourceInstanceName: { eq: "AboutCopy" }
           name: { regex: "/DanQuestion/" }
         }
+        sort: { fields: birthtime }
       ) {
         nodes {
           id
@@ -48,7 +50,7 @@ const DanQuestions = () => {
       <ContentContainer>
         <div id="get-to-know-dan" />
         <Headline4 />
-        <DraggableContainer>{cards}</DraggableContainer>
+        <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>
         </ElementContainer>
@@ -58,8 +60,3 @@ const DanQuestions = () => {
 };
 
 export default DanQuestions;
-
-const DraggableContainer = styled.div`
-  margin: 60px 0 0 0;
-  display: flex;
-`;
