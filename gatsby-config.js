@@ -192,12 +192,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-source-google-cloud-storage`,
-      options: {
-        key: "123456",
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-google-cloud-storage`,
+    //   options: {
+    //     key: "123456",
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
