@@ -4,9 +4,6 @@ plugins/
 #Google Cloud Stuff
 google-cloud/
 
-#env file
-.env
-
 # Logs
 logs
 *.log
