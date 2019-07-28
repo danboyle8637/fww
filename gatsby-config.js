@@ -193,6 +193,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-google-cloud-storage`,
+      options: {
+        key: "123456",
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `fit-womens-weekly`,
