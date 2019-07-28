@@ -1,8 +1,47 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react";
+
+import footerIconAni from "../Animations/Tweens/footerIconAni";
 
 const InstagramIcon = ({ width, height, className }) => {
+  const [isClicked, setIsClicked] = useState(false);
+  const instagramIconRef = useRef(null);
+  const instagramPathRef = useRef(null);
+
+  useEffect(() => {
+    const instagramIcon = instagramIconRef.current;
+    const instagramPath = instagramPathRef.current;
+
+    footerIconAni(
+      instagramIcon,
+      instagramPath,
+      isClicked,
+      isClickedFalse,
+      false
+    );
+
+    return () => {
+      footerIconAni(
+        instagramIcon,
+        instagramPath,
+        isClicked,
+        isClickedFalse,
+        true
+      );
+    };
+  }, [isClicked]);
+
+  const isClickedFalse = () => {
+    setIsClicked(false);
+  };
+
+  const handleIconClicked = () => {
+    setIsClicked(true);
+  };
+
   return (
     <svg
+      ref={instagramIconRef}
+      onClick={handleIconClicked}
       id="instagram-icon"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -11,6 +50,7 @@ const InstagramIcon = ({ width, height, className }) => {
       viewBox="0 0 222 222"
     >
       <rect
+        ref={instagramPathRef}
         id="camera-outline"
         x="6"
         y="6"
@@ -40,7 +80,7 @@ const InstagramIcon = ({ width, height, className }) => {
         fill="#5afdf2"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default InstagramIcon
+export default InstagramIcon;

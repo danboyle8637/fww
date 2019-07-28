@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { SectionContainer, ElementContainer } from "../../styles/Containers";
+import {
+  SectionContainer,
+  ContentContainer,
+  ElementContainer,
+} from "../../styles/Containers";
 import { InnerButton } from "../../styles/Buttons";
 import { above } from "../../styles/Theme";
 
@@ -54,16 +58,11 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
           <VideoWrapper dangerouslySetInnerHTML={{ __html: strong }} />
         ) : null}
       </VideoWrapper>
-      <ElementContainer
-        column
-        alignCenter
-        setMobileMarginTop={40}
-        setMobileWidth={"90%"}
-      >
-        <InnerButton kettlebell={kettlebell} to={"/"}>
-          {buttonText}
-        </InnerButton>
-      </ElementContainer>
+      <ContentContainer>
+        <ElementContainer justifyCenter setMobileMarginTop={40}>
+          <InnerButton to={"/"}>{buttonText}</InnerButton>
+        </ElementContainer>
+      </ContentContainer>
     </SectionContainer>
   );
 };

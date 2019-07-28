@@ -1,12 +1,12 @@
 const tweeningState = {
   tweenCount: 0,
-  isTweening: true,
+  isTweening: false,
 };
 
 const tweeningReducer = (state, action) => {
   switch (action.type) {
     case "toggleTweening": {
-      return { ...state, isTweening: false };
+      return { ...state, isTweening: !state.isTweening };
     }
     case "incrementTweenCount": {
       return { ...state, tweenCount: state.tweenCount + 1 };

@@ -4,8 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import { ElementContainer } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -69,11 +67,7 @@ const PictureEndSection = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
-      <ContentWrapper>
-        <ElementContainer column alignCenter>
-          <InnerButton to={"/"}>Join the 7 Day BBC Reset!</InnerButton>
-        </ElementContainer>
-      </ContentWrapper>
+      <ContentWrapper />
     </SectionGrid>
   );
 };

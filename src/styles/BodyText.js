@@ -24,6 +24,7 @@ const SetBodyText = styled.div`
     ${sharedBodyText}
   }
   & ul {
+    margin-bottom: 0;
     padding: ${props => (props.setPadding ? "40px 0 26px 0;" : null)};
     list-style: none;
   }

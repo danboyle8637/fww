@@ -6,4 +6,4 @@ No more stress or anxiety over fitting a long workout into your busy day.
 
 No more feeling guilty for pushing a workout off.
 
-Rather, get the workout you can fit into your day DONE. Even if it's only 10 minutes long.
+Rather, get the workout that fits your day... DONE. Even if it's only 10 minutes long.

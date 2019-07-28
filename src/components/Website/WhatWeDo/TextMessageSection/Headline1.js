@@ -16,13 +16,13 @@ const Headline1 = () => {
         setTLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        When you need a
+        When you need
       </Header3>
       <ElementContainer column alignSelfCenter setMobileMarginTop={40}>
         <HeadlineCheckWrapper>
           <Check />
           <Header3 mobileMedium tabletLarge primary upper>
-            Workout
+            Workouts
           </Header3>
         </HeadlineCheckWrapper>
         <HeadlineCheckWrapper>

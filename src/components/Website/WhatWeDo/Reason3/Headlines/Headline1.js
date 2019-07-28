@@ -46,7 +46,7 @@ const Headline1 = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        You
+        of You
       </Header1>
     </ElementContainer>
   );

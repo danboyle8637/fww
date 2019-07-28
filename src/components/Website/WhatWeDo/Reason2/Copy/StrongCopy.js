@@ -27,7 +27,7 @@ const StrongCopy = () => {
   const body = copy.file.childMarkdownRemark.html;
 
   return (
-    <ElementContainer column setMobileMarginTop={5}>
+    <ElementContainer column setMobileMarginTop={5} setMobileWidth={"90%"}>
       <Header3
         primary
         mobileMedium

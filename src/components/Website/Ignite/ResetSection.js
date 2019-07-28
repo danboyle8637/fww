@@ -15,12 +15,7 @@ const ResetSection = () => {
       <ContentContainer>
         <Headline3 />
         <ResetCopy />
-        <ElementContainer
-          column
-          alignCenter
-          setMobileMarginTop={60}
-          setMobileWidth={"90%"}
-        >
+        <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/"}>Join the 7 Day Ignite Reset!</InnerButton>
         </ElementContainer>
       </ContentContainer>

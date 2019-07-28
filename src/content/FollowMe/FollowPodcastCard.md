@@ -1,6 +1,6 @@
 ---
 id: follow_me_podcast
-headline: Subscribe to Podcast
+headline: Subscribe to the Podcast
 icon: podcast
 ---
 

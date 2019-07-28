@@ -13,10 +13,8 @@ const KBClinicSection = () => {
     <SectionContainer>
       <ContentContainer>
         <KBClinicCopy />
-        <ElementContainer setMobileMarginTop={60}>
-          <InnerButton kettlebell={true} to={"/"}>
-            Join the 7 Day Strong Reset
-          </InnerButton>
+        <ElementContainer justifyCenter setMobileMarginTop={60}>
+          <InnerButton to={"/"}>Join the 7 Day Strong Reset</InnerButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

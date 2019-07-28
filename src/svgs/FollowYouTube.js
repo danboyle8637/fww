@@ -9,6 +9,7 @@ const FollowYouTube = ({ width, height, className }) => {
 
   const [setSVGNode, runAnimation] = useSVGObserver({
     rootMargin: "0% 0% -50% 0%",
+    threshold: 0.5,
   });
 
   useEffect(() => {

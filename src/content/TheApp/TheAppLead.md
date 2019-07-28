@@ -12,7 +12,7 @@ We'll get to build EXACTLY what you need to get results.
 
 It’s going to help you do **the two most important things**:
 
-- Staying consistent
-- Having fun!
+- Stay consistent
+- Have fun!
 
 Here’s what we’re building to this point:

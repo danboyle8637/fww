@@ -3,9 +3,14 @@ import { TimelineMax } from "gsap/TimelineMax";
 import { TweenMax, Power2 } from "gsap/TweenMax";
 
 import { useIsTweeningContext } from "../context/IsTweeningContent";
+import useSVGObserver from "../hooks/useSVGObserver";
 
 const SwipeDot = ({ width, height, className, swipeFill }) => {
-  const [{ tweenCount }, dispatch] = useIsTweeningContext();
+  const [{ tweenCount, isTweening }, dispatch] = useIsTweeningContext();
+  const [setNode, runAnimation] = useSVGObserver({
+    rootMargin: "0px 0px -50px 0px",
+    threshold: 0.5,
+  });
 
   const pressOutlineRef = useRef(null);
   const pressActiveRef = useRef(null);
@@ -26,7 +31,7 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
     const letterW = letterWRef.current;
     const letterS = letterSRef.current;
 
-    const tl = new TimelineMax({ repeat: 3 });
+    const tl = new TimelineMax({ repeat: 3, paused: true });
     const letterArray = [letterE, letterP, letterI, letterW, letterS];
 
     // Set all letter to opacity 0
@@ -45,6 +50,7 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
       x: 140,
     });
 
+    // The timeline setup.
     tl.to(pressActive, 0.5, { scale: 1, ease: Power2.easeOut })
       .to(
         pressPulse,
@@ -83,11 +89,20 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
       dispatch({ type: "incrementTweenCount" });
     }, 1);
 
+    if (runAnimation) {
+      dispatch({ type: "toggleTweening" });
+      tl.play(0);
+    }
+
+    if (!isTweening) {
+      tl.pause(0);
+    }
+
     return () => {
       tl.clear();
       tl.kill();
     };
-  }, []);
+  }, [runAnimation]);
 
   useEffect(() => {
     if (tweenCount > 3) {
@@ -97,6 +112,7 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
 
   return (
     <svg
+      ref={setNode}
       id="swipe-icon"
       xmlns="http://www.w3.org/2000/svg"
       className={className}

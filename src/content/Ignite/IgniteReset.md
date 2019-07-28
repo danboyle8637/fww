@@ -10,7 +10,7 @@ It's five workouts and a small training plan to help you get them done.
 
 - Learn the right way to squat and brace.
 - Progress with your pushups the right way.
-- Improve balance so you can lunge with coordinatino.
+- Improve balance so you can lunge with coordination.
 - Blast your core and focus on building ab strength.
 - And some fun exercises you've never tried before.
 

@@ -8,7 +8,8 @@ const FollowFacebook = ({ width, height, className }) => {
   const facebookIconRef = useRef(null);
 
   const [setSVGNode, runAnimation] = useSVGObserver({
-    rootMargin: "0% 0% -60% 0%",
+    rootMargin: "0% 0% -50% 0%",
+    threshold: 0.5,
   });
 
   useEffect(() => {

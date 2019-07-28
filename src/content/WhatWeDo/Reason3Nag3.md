@@ -4,4 +4,4 @@ headline: If you’re breaking personal strength records…
 icon: celebrate
 ---
 
-I’ll celebrate with you can encourage you to keep going big!
+I’ll celebrate with you and encourage you to keep going bigger!

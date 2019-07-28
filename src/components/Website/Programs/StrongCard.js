@@ -78,10 +78,9 @@ const StrongCard = () => {
       <ContentContainer>
         <LogoDescriptionWrapper>
           <StrongLogo />
-          <SetBodyText
-            setMobileMarginTop={20}
-            dangerouslySetInnerHTML={{ __html: body }}
-          />
+          <ElementContainer setMobileWidth={"50%"}>
+            <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
+          </ElementContainer>
         </LogoDescriptionWrapper>
         <ElementContainer>
           <InnerButton to={"/strong-kettlebell-training"}>

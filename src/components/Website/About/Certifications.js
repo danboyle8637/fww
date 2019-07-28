@@ -8,9 +8,10 @@ const Certifications = ({ kindal, dan }) => {
   const certs = [
     { id: 1, person: "both", cert: "NASM Certified Trainer" },
     { id: 2, person: "kindal", cert: "NASM Weight Loss Specialist" },
-    { id: 3, person: "kindal", cert: "Women's Fitness Specialist" },
-    { id: 4, person: "both", cert: "Kettlebell Athletics Coach" },
-    { id: 5, person: "kindal", cert: "RKC Coach" },
+    { id: 3, person: "kindal", cert: "NASM Nutrition Coach" },
+    { id: 4, person: "kindal", cert: "Women's Fitness Specialist" },
+    { id: 5, person: "both", cert: "Kettlebell Athletics Coach" },
+    { id: 6, person: "kindal", cert: "RKC Coach" },
   ];
 
   const kindalCerts = certs.map(cert => {

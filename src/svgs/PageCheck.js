@@ -6,7 +6,8 @@ import useSVGObserver from "../hooks/useSVGObserver";
 const PageCheck = ({ width, height, className }) => {
   const checkRef = useRef(null);
   const [setNode, runAnimation] = useSVGObserver({
-    rootMargin: "0% 0% -50% 0%",
+    rootMargin: "0% 0% -20% 0%",
+    threshold: 0.5,
   });
 
   useEffect(() => {
