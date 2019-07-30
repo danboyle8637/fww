@@ -6,6 +6,13 @@ import Kindal from "../components/Website/About/Kindal";
 import Dan from "../components/Website/About/Dan";
 import KindalQuestions from "../components/Website/About/KindalQuestions";
 import DanQuestions from "../components/Website/About/DanQuestions";
+import { ActiveCardStore } from "../context/ActiveSlideContext";
+import {
+  activeCardReducer,
+  activeCardState,
+} from "../reducers/activeCardReducer";
+import { IsTweeningStore } from "../context/IsTweeningContext";
+import { tweeningReducer, tweeningState } from "../reducers/isTweeningReducer";
 
 const About = () => {
   return (
@@ -13,9 +20,16 @@ const About = () => {
       <HeadlineSection />
       <LeadSection />
       <Kindal />
-      <KindalQuestions />
-      <Dan />
-      <DanQuestions />
+      <ActiveCardStore
+        reducer={activeCardReducer}
+        initialState={activeCardState}
+      >
+        <IsTweeningStore reducer={tweeningReducer} initialState={tweeningState}>
+          <KindalQuestions />
+          <Dan />
+          <DanQuestions />
+        </IsTweeningStore>
+      </ActiveCardStore>
     </>
   );
 };

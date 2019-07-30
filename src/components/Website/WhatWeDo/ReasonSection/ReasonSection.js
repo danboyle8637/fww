@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
@@ -7,12 +7,17 @@ import Headline1 from "./Headlines/Headline1";
 import ReasonCard from "./ReasonCard";
 import DraggableRow from "../../../../Animations/Tweens/DraggableRow";
 import SwipeDot from "../../../../svgs/SwipeDot";
-import { useIsTweeningContext } from "../../../../context/IsTweeningContent";
+import { useIsTweeningContext } from "../../../../context/IsTweeningContext";
 import DismissSwipeIcon from "../../../../Animations/ReactTransitions/DismissSwipeIcon";
+import { useActiveCardContext } from "../../../../context/ActiveSlideContext";
+import ScreenWidthContext from "../../../../context/ScreenWidthContext";
 
 const ReasonSection = () => {
   // eslint-disable-next-line
   const [{ isTweening }, dispatch] = useIsTweeningContext();
+  // eslint-disable-next-line
+  const [{ activeCard }, dispatch2] = useActiveCardContext();
+  const device = useContext(ScreenWidthContext);
 
   const query = graphql`
     query {
@@ -61,12 +66,22 @@ const ReasonSection = () => {
   return (
     <SectionContainer>
       <Headline1 />
-      <SwipeWrapper>
-        <DismissSwipeIcon isTweening={isTweening}>
-          <Swipe />
-        </DismissSwipeIcon>
-      </SwipeWrapper>
-      <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
+      {device === "laptop" || device === "ultraWide" ? (
+        <>
+          <SwipeWrapper />
+          <LaptopCardWrapper>{cards}</LaptopCardWrapper>
+        </>
+      ) : (
+        <>
+          <SwipeWrapper>
+            <DismissSwipeIcon isTweening={isTweening}>
+              <Swipe />
+            </DismissSwipeIcon>
+          </SwipeWrapper>
+          <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
+          {activeCard}
+        </>
+      )}
     </SectionContainer>
   );
 };
@@ -80,4 +95,9 @@ const SwipeWrapper = styled.div`
 
 const Swipe = styled(SwipeDot)`
   width: 140px;
+`;
+
+const LaptopCardWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;

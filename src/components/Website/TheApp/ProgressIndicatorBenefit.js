@@ -7,6 +7,7 @@ import BenefitCard from "./BenefitCard";
 import { Header4 } from "../../../styles/Headlines";
 import useCounter from "../../../hooks/useCounter";
 import useSVGObserver from "../../../hooks/useSVGObserver";
+import { above } from "../../../styles/Theme";
 
 const ProgressIndicatorBenefit = () => {
   const query = graphql`
@@ -109,4 +110,13 @@ const Counter = styled.div`
   align-self: center;
   transform: translateY(-115px);
   z-index: 3;
+  ${above.mobile`
+    transform: translateY(-145px);
+  `}
+  ${above.tablet`
+    transform: translateY(-125px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-130px);
+  `}
 `;

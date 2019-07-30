@@ -23,6 +23,7 @@ const Headline2 = () => {
           mobileMedium
           setMLineHeight={1.4}
           setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
           setLLineHeight={1.4}
         >
           We'll take care of it so you can
@@ -47,6 +48,7 @@ const Headline2 = () => {
               tertiary
               mobileMedium
               setTLineHeight={1.5}
+              setIpadLineHeight={1.5}
               setLLineHeight={1.5}
             >
               on everything else
@@ -59,6 +61,7 @@ const Headline2 = () => {
             mobileMedium
             setMLineHeight={1.4}
             setTLineHeight={1.4}
+            setIpadLineHeight={1.4}
             setLLineHeight={1.4}
           >
             everything else
@@ -70,6 +73,7 @@ const Headline2 = () => {
             mobileMedium
             setMLineHeight={1.2}
             setTLineHeight={1.5}
+            setIpadLineHeight={1.5}
             setLLineHeight={1.5}
           >
             that
@@ -79,6 +83,7 @@ const Headline2 = () => {
             mobileLarge
             upper
             setTLineHeight={1.2}
+            setIpadLineHeight={1.2}
             setLLineHeight={1.2}
           >
             Matters
@@ -89,6 +94,7 @@ const Headline2 = () => {
           mobileMedium
           setMLineHeight={1.4}
           setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
           setLLineHeight={1.4}
         >
           in your life!

@@ -4,4 +4,4 @@ headline: If you’re following an active plan…
 icon: chat
 ---
 
-I’ll message you on your workout days and remind you to get it done.
+I’ll message you on your workout days to remind you to get it done.

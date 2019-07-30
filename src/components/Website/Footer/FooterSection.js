@@ -6,6 +6,7 @@ import FooterNavMenu from "./FooterNavMenu";
 import SocialIcons from "./SocialIcons";
 import FooterAddress from "./FooterAddress";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
+import { above } from "../../../styles/Theme";
 
 const FooterSection = () => {
   return (
@@ -40,9 +41,20 @@ const Logo = styled(FWWLogo)`
 const FooterDivider = styled(DividerMarker1)`
   position: absolute;
   bottom: 100%;
-  left: 0;
-  width: 100%;
-  transform: translateY(70px) rotate(180deg);
+  right: 0;
+  width: 140%;
+  transform: translateY(10px) rotate(180deg);
   pointer-events: none;
   z-index: 1;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(20px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translateY(40px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    width: 100%;
+    transform: translateY(70px) rotate(180deg);
+  `}
 `;

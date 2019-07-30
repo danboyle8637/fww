@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
 import {
@@ -11,8 +10,13 @@ import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { InnerButton } from "../../../styles/Buttons";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
+import AboveCardSwipe from "../../Shared/AboveCardsSwipe";
+import { useActiveCardContext } from "../../../context/ActiveSlideContext";
 
 const KindalQuestions = () => {
+  // eslint-disable-next-line
+  const [{ activeCard }, dispatch] = useActiveCardContext();
+
   const query = graphql`
     query {
       kindalCards: allFile(
@@ -50,8 +54,10 @@ const KindalQuestions = () => {
       <ContentContainer>
         <div id="get-to-know-kindal" />
         <Headline4 />
+        <AboveCardSwipe />
         <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
+          {activeCard}
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>
         </ElementContainer>
       </ContentContainer>

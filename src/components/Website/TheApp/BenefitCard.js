@@ -129,6 +129,9 @@ const Progress = styled(ProgressLoader)`
   margin: 0 0 20px 0;
   width: 160px;
   align-self: center;
+  ${above.mobile`
+    width: 120px;
+  `}
 `;
 
 const Kettlebell = styled(KettlebellHeartIcon)`

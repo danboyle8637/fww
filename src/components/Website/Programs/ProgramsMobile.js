@@ -7,7 +7,7 @@ import BBCCard from "./BBCCard";
 import StrongCard from "./StrongCard";
 import SwipeDot from "../../../svgs/SwipeDot";
 import DraggableRow from "../../../Animations/Tweens/DraggableRow";
-import { useIsTweeningContext } from "../../../context/IsTweeningContent";
+import { useIsTweeningContext } from "../../../context/IsTweeningContext";
 import DismissSwipeIcon from "../../../Animations/ReactTransitions/DismissSwipeIcon";
 
 const ProgramsMobile = () => {

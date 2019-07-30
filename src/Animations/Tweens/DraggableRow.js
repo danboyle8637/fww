@@ -4,23 +4,27 @@ import { TweenMax } from "gsap/TweenMax";
 import styled from "styled-components";
 
 import "../../greensock/ThrowPropsPlugin";
+import { useActiveCardContext } from "../../context/ActiveSlideContext";
+import { above } from "../../styles/Theme";
 
 const DraggableRow = ({ numberOfCards, children }) => {
   const [screenWidth, setScreenWidth] = useState(0);
-  //const [prevEndValue, setPrevEndValue] = useState(0);
+  const [startPosition, setStartPosition] = useState(0);
   const draggableContainerRef = useRef(null);
+  const prevEndValueRef = useRef(1500);
+  // eslint-disable-next-line
+  const [activeCardState, dispatch] = useActiveCardContext();
 
   useEffect(() => {
     const width = window.innerWidth;
     setScreenWidth(width);
+    setStartPosition(Math.floor(numberOfCards / 2) * width);
   }, []);
 
   useEffect(() => {
     const draggable = draggableContainerRef.current;
-    const setStartPosition = Math.round((numberOfCards / 2) * screenWidth);
-
     TweenMax.set(draggable, {
-      x: -setStartPosition,
+      x: startPosition,
     });
 
     Draggable.create(draggable, {
@@ -29,37 +33,45 @@ const DraggableRow = ({ numberOfCards, children }) => {
       bounds: window,
       cursor: "grab",
       activeCursor: "grabbing",
-      dragResistance: 0.2,
+      dragResistance: 0.5,
       edgeResistance: 0.6,
       snap: snapX,
     });
-  }, [screenWidth]);
+  }, [startPosition]);
 
   const snapX = endValue => {
     if (numberOfCards % 2 === 0) {
       let snap;
 
-      // TODO: Figure out how you can smoothly change the sign for a smooth scroll
-      // When you start at a postive value and scroll to cards on the right
-      // The + needs to be - for a really smooth scroll.
-      // When you start at a negative value and scroll to cards on left
-      // the + needs to stay plus for a really smooth scroll
-      // Maybe try a when or something like that.
-      if (endValue >= 0) {
+      if (endValue > 0 && endValue <= prevEndValueRef.current) {
+        snap =
+          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+      }
+
+      if (endValue > 0 && endValue >= prevEndValueRef.current) {
         snap =
           Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
       }
 
-      if (endValue <= 0) {
+      if (endValue < 0 && endValue >= prevEndValueRef.current) {
         snap =
           Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
       }
-      // const activeCard = snap / screenWidth;
+
+      if (endValue < 0 && endValue <= prevEndValueRef.current) {
+        snap =
+          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+      }
+
+      const activeCard = snap / screenWidth;
+      dispatch({ type: "setActiveCard", value: activeCard });
+      prevEndValueRef.current = endValue;
 
       return snap;
     } else {
       const snap = Math.round(endValue / screenWidth) * screenWidth;
-      // const activeCard = snap / screenWidth;
+      const activeCard = snap / screenWidth;
+      dispatch({ type: "setActiveCard", value: activeCard });
       return snap;
     }
   };

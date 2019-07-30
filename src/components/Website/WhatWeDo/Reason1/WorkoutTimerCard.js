@@ -12,7 +12,14 @@ const WorkoutTimerCard = ({ timerId, headline, body }) => {
     <TimerContainer>
       <WorkoutTimer timerId={timerId} />
       <ElementContainer>
-        <Header3 secondary mobileSmall setMLineHeight={1.4}>
+        <Header3
+          secondary
+          mobileSmall
+          setMLineHeight={1.4}
+          setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
+          setLLineHeight={1.4}
+        >
           {headline}
         </Header3>
         <SetBodyText
@@ -41,7 +48,7 @@ const TimerContainer = styled.div`
 `;
 
 const WorkoutTimer = styled(WorkoutTimerIcon)`
-  width: 80px;
+  width: 120px;
   ${above.mobile`
     justify-self: center;
   `}

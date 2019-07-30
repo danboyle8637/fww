@@ -20,13 +20,15 @@ const ReasonCard = ({ body, buttonText, headlineId, path }) => {
 
   return (
     <CardContainer>
-      {headline.component}
-      <ContentWrapper>
-        <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
-        <ElementContainer setMobileMarginTop={30}>
-          <InnerButton to={path}>{buttonText}</InnerButton>
-        </ElementContainer>
-      </ContentWrapper>
+      <CardWrapper>
+        {headline.component}
+        <ContentWrapper>
+          <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
+          <ElementContainer setMobileMarginTop={30}>
+            <InnerButton to={path}>{buttonText}</InnerButton>
+          </ElementContainer>
+        </ContentWrapper>
+      </CardWrapper>
     </CardContainer>
   );
 };
@@ -34,7 +36,16 @@ const ReasonCard = ({ body, buttonText, headlineId, path }) => {
 export default ReasonCard;
 
 const CardContainer = styled.div`
-  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  ${above.ipadPro`
+    margin: 0 25px;
+    width: 100%;
+  `}
+`;
+
+const CardWrapper = styled.div`
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
@@ -43,14 +54,17 @@ const CardContainer = styled.div`
   border-bottom: 3px solid;
   border-color: ${props => props.theme.secondaryAccent};
   border-radius: 6px;
-  width: 90vw;
+  width: 90%;
   transition: transform, box-shadow, 200ms ease-in-out;
   ${above.mobile`
     flex-direction: row;
     align-items: center;
-    width: 90vw;
+    width: 90%;
   `}
   ${above.tablet`
+    width: 70%;
+  `}
+  ${above.ipadPro`
     flex-direction: column;
     align-items: flex-start;
     width: 345px;
@@ -64,9 +78,9 @@ const CardContainer = styled.div`
 const ContentWrapper = styled.div`
   margin: 30px 0 0 0;
   ${above.mobile`
-    margin: 0;
+    margin: 0 0 0 12px;
   `}
-  ${above.tablet`
+  ${above.ipadPro`
     margin: 30px 0 0 0;
   `}
 `;

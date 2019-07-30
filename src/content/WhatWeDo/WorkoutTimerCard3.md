@@ -2,7 +2,7 @@
 id: workout_timer_card3
 order: 3
 timerId: 30
-headline: Ready to Cool Down?
+headline: Want Even More?
 ---
 
-Add in a stretch or trigger ball routine to workout knots and relax your muscles.
+Do three rounds... a different workout... a stretch routine. This is your time!

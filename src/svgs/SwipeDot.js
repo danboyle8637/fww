@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from "react";
 import { TimelineMax } from "gsap/TimelineMax";
 import { TweenMax, Power2 } from "gsap/TweenMax";
 
-import { useIsTweeningContext } from "../context/IsTweeningContent";
+import { useIsTweeningContext } from "../context/IsTweeningContext";
 import useSVGObserver from "../hooks/useSVGObserver";
 
 const SwipeDot = ({ width, height, className, swipeFill }) => {
+  // eslint-disable-next-line
   const [{ tweenCount, isTweening }, dispatch] = useIsTweeningContext();
-  const [setNode, runAnimation] = useSVGObserver({
+  const [setSVGNode, runAnimation] = useSVGObserver({
     rootMargin: "0px 0px -50px 0px",
     threshold: 0.5,
   });
@@ -31,71 +32,68 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
     const letterW = letterWRef.current;
     const letterS = letterSRef.current;
 
-    const tl = new TimelineMax({ repeat: 3, paused: true });
+    const tl = new TimelineMax({ repeat: -1 });
     const letterArray = [letterE, letterP, letterI, letterW, letterS];
 
-    // Set all letter to opacity 0
-    TweenMax.set([letterE, letterP, letterI, letterW, letterS], {
-      autoAlpha: 0,
-    });
-
-    // Set press dot to right
-    TweenMax.set(pressActive, {
-      transformOrigin: "50% 50%",
-      scale: 0,
-      x: 140,
-    });
-    TweenMax.set([pressOutline, pressPulse], {
-      transformOrigin: "50% 50%",
-      x: 140,
-    });
-
     // The timeline setup.
-    tl.to(pressActive, 0.5, { scale: 1, ease: Power2.easeOut })
-      .to(
-        pressPulse,
-        1,
-        { scale: 1.4, autoAlpha: 0, ease: Power2.easeOut },
-        "-=0.5"
-      )
-      .staggerTo(
-        [pressOutline, pressActive],
-        1,
-        { x: 0, ease: Power2.easeOut },
-        0
-      )
-      .staggerTo(
-        letterArray,
-        0.2,
-        { autoAlpha: 1, ease: Power2.easeOut },
-        0.09,
-        "-=0.95"
-      )
-      .staggerTo(
-        letterArray,
-        0.2,
-        { autoAlpha: 0, ease: Power2.easeOut, delay: 0.3 },
-        0.09,
-        "-=0.01"
-      )
-      .to(pressActive, 0.4, {
-        scale: 1.4,
-        autoAlpha: 0,
-        ease: Power2.easeOut,
-      })
-      .to(pressOutline, 0.3, { x: 140, ease: Power2.easeOut });
-
-    tl.addCallback(() => {
-      dispatch({ type: "incrementTweenCount" });
-    }, 1);
-
     if (runAnimation) {
-      dispatch({ type: "toggleTweening" });
-      tl.play(0);
-    }
+      tl.to(pressActive, 0.5, { scale: 1, ease: Power2.easeOut })
+        .to(
+          pressPulse,
+          1,
+          { scale: 1.4, autoAlpha: 0, ease: Power2.easeOut },
+          "-=0.5"
+        )
+        .staggerTo(
+          [pressOutline, pressActive],
+          1,
+          { x: 0, ease: Power2.easeOut },
+          0
+        )
+        .staggerTo(
+          letterArray,
+          0.2,
+          { autoAlpha: 1, ease: Power2.easeOut },
+          0.09,
+          "-=0.95"
+        )
+        .staggerTo(
+          letterArray,
+          0.2,
+          { autoAlpha: 0, ease: Power2.easeOut, delay: 0.3 },
+          0.09,
+          "-=0.01"
+        )
+        .to(pressActive, 0.4, {
+          scale: 1.4,
+          autoAlpha: 0,
+          ease: Power2.easeOut,
+        })
+        .to(pressOutline, 0.3, { x: 140, ease: Power2.easeOut });
 
-    if (!isTweening) {
-      tl.pause(0);
+      tl.eventCallback(
+        "onRepeat",
+        () => {
+          dispatch({ type: "incrementTweenCount" });
+        },
+        []
+      );
+    } else {
+      // Set all letter to opacity 0
+      TweenMax.set([letterE, letterP, letterI, letterW, letterS], {
+        autoAlpha: 0,
+      });
+
+      // Set press dot to right
+      TweenMax.set(pressActive, {
+        transformOrigin: "50% 50%",
+        scale: 0,
+        x: 140,
+      });
+      TweenMax.set([pressOutline, pressPulse], {
+        transformOrigin: "50% 50%",
+        x: 140,
+      });
     }
 
     return () => {
@@ -112,7 +110,7 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
 
   return (
     <svg
-      ref={setNode}
+      ref={setSVGNode}
       id="swipe-icon"
       xmlns="http://www.w3.org/2000/svg"
       className={className}

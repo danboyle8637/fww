@@ -123,10 +123,10 @@ const DividerTop = styled(DividerMarker1)`
   `}
   ${above.tablet`
     width: 100%;
-    transform: translateY(-60px);
+    transform: translateY(-50px);
   `}
   ${above.ipadPro`
-    transform: translateY(-100px);
+    transform: translateY(-70px);
   `}
 `;
 

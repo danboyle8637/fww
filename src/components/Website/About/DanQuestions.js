@@ -10,6 +10,7 @@ import {
 import { InnerButton } from "../../../styles/Buttons";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
+import AboveCardSwipe from "../../Shared/AboveCardsSwipe";
 import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 
 const DanQuestions = () => {
@@ -50,6 +51,7 @@ const DanQuestions = () => {
       <ContentContainer>
         <div id="get-to-know-dan" />
         <Headline4 />
+        <AboveCardSwipe />
         <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>

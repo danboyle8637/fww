@@ -8,6 +8,7 @@ import { MenuStore } from "../context/MenuContext";
 import { menuState, menuReducer } from "../reducers/menuReducer";
 import Header from "./header";
 import FooterSection from "../components/Website/Footer/FooterSection";
+//import PageTransition from "../Animations/ReactTransitions/PageTransition";
 
 const Layout = ({ children, location }) => {
   const [isBlogPage, setIsBlogPage] = useState(false);
@@ -54,6 +55,7 @@ const Main = styled.main`
       ? props.theme.baseBackgroundColor
       : props.theme.mainBackgroundColor};
   width: 100%;
+  height: 100%;
   max-width: ${props =>
     props.isBlog ? "980px" : props.isApp ? "1200px" : "1440px"};
   overflow: hidden;
