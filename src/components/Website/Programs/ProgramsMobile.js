@@ -6,16 +6,21 @@ import IgniteCard from "./IgniteCard";
 import BBCCard from "./BBCCard";
 import StrongCard from "./StrongCard";
 import SwipeDot from "../../../svgs/SwipeDot";
+import DraggableLocationDots from "../../Shared/DraggableLocationDots";
 import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { useIsTweeningContext } from "../../../context/IsTweeningContext";
+import { useActiveCardContext } from "../../../context/ActiveSlideContext";
 import DismissSwipeIcon from "../../../Animations/ReactTransitions/DismissSwipeIcon";
+import "./Program.css";
 
 const ProgramsMobile = () => {
   // eslint-disable-next-line
   const [{ isTweening }, dispatch] = useIsTweeningContext();
+  // eslint-disable-next-line
+  const [{ activeCard }, dispatch2] = useActiveCardContext();
 
   return (
-    <SectionContainer setMobileMarginTop={"0"} setMobileMarginBottom={"0"}>
+    <SectionContainer setMobileMarginTop={"60px"} setMobileMarginBottom={"0"}>
       <ProgramGrid>
         <DismissSwipeIcon isTweening={isTweening}>
           <SwipeWrapper>
@@ -30,6 +35,8 @@ const ProgramsMobile = () => {
           </DraggableRow>
         </ContentWrapper>
       </ProgramGrid>
+      <DraggableLocationDots numDots={5} />
+      {activeCard}
     </SectionContainer>
   );
 };

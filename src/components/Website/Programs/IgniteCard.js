@@ -69,31 +69,43 @@ const IgniteProgramCard = () => {
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
-    <CardGrid>
-      {backgroundReady ? (
-        <IgniteBackground fluid={background} />
-      ) : (
-        <BackgroundImageLoader />
-      )}
-      <ContentContainer>
-        <LogoDescriptionWrapper>
-          <IgniteLogo />
-          <SetBodyText
-            setMobileMarginTop={12}
-            dangerouslySetInnerHTML={{ __html: body }}
-          />
-        </LogoDescriptionWrapper>
-        <ElementContainer>
-          <InnerButton to={"/ignite-strength-for-beginners"}>
-            Learn More About Ignite
-          </InnerButton>
-        </ElementContainer>
-      </ContentContainer>
-    </CardGrid>
+    <CardContainer>
+      <CardGrid>
+        {backgroundReady ? (
+          <IgniteBackground fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
+        <ContentContainer>
+          <LogoDescriptionWrapper>
+            <IgniteLogo />
+            <SetBodyText
+              setFontSize={"14px"}
+              setMobileMarginTop={12}
+              dangerouslySetInnerHTML={{ __html: body }}
+            />
+          </LogoDescriptionWrapper>
+          <ElementContainer>
+            <InnerButton to={"/ignite-strength-for-beginners"}>
+              Learn More About Ignite
+            </InnerButton>
+          </ElementContainer>
+        </ContentContainer>
+      </CardGrid>
+    </CardContainer>
   );
 };
 
 export default IgniteProgramCard;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  ${above.mobile`
+    width: 100%;
+  `}
+`;
 
 const CardGrid = styled.div`
   position: relative;
@@ -101,7 +113,10 @@ const CardGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   background: ${props => props.theme.mainBackgroundBorderColor};
-  width: 100vw;
+  width: 90%;
+  height: 90%;
+  border-radius: 12px;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   ${above.mobile`
     margin: 0 0 40px 0;
@@ -111,7 +126,7 @@ const CardGrid = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  padding: 20px 16px 40px 16px;
+  padding: 20px 16px 30px 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
@@ -131,7 +146,7 @@ const IgniteBackground = styled(Image)`
   margin: 0;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  border-radius: 0;
+  border-radius: 12px;
   ${above.mobile`
     margin: 8px;
     border-radius: 6px;

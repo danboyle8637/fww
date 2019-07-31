@@ -69,31 +69,43 @@ const BBCCard = () => {
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
-    <CardGrid>
-      {backgroundReady ? (
-        <BBCBackground fluid={background} />
-      ) : (
-        <BackgroundImageLoader />
-      )}
-      <ContentContainer>
-        <LogoDescriptionWrapper>
-          <BBCLogo />
-          <SetBodyText
-            setMobileMarginTop={20}
-            dangerouslySetInnerHTML={{ __html: body }}
-          />
-        </LogoDescriptionWrapper>
-        <ElementContainer>
-          <InnerButton to={"/body-burn-challenges"}>
-            Learn More About BBC
-          </InnerButton>
-        </ElementContainer>
-      </ContentContainer>
-    </CardGrid>
+    <CardContainer>
+      <CardGrid>
+        {backgroundReady ? (
+          <BBCBackground fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
+        <ContentContainer>
+          <LogoDescriptionWrapper>
+            <BBCLogo />
+            <SetBodyText
+              setFontSize={"14px"}
+              setMobileMarginTop={20}
+              dangerouslySetInnerHTML={{ __html: body }}
+            />
+          </LogoDescriptionWrapper>
+          <ElementContainer>
+            <InnerButton to={"/body-burn-challenges"}>
+              Learn More About BBC
+            </InnerButton>
+          </ElementContainer>
+        </ContentContainer>
+      </CardGrid>
+    </CardContainer>
   );
 };
 
 export default BBCCard;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  ${above.mobile`
+    width: 100%;
+  `}
+`;
 
 const CardGrid = styled.div`
   position: relative;
@@ -101,8 +113,10 @@ const CardGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   background: ${props => props.theme.mainBackgroundBorderColor};
-  border-radius: 6px;
-  width: 100vw;
+  border-radius: 12px;
+  width: 90%;
+  height: 90%;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   ${above.mobile`
     margin: 0 0 40px 0;
@@ -111,7 +125,7 @@ const CardGrid = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  padding: 70px 16px 40px 16px;
+  padding: 40px 16px 30px 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
@@ -131,7 +145,7 @@ const BBCBackground = styled(Image)`
   margin: 0;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  border-radius: 0;
+  border-radius: 12px;
   ${above.mobile`
     margin: 8px;
     border-radius: 6px;

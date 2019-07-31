@@ -1,28 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { SectionContainer } from "../styles/Containers";
-import ProgramsMobile from "../components/Website/Programs/ProgramsMobile";
-import ProgramsAboveMobile from "../components/Website/Programs/ProgramsAboveMobile";
-import ScreenWidthContent from "../context/ScreenWidthContext";
-import { IsTweeningStore } from "../context/IsTweeningContext";
-import { tweeningReducer, tweeningState } from "../reducers/isTweeningReducer";
+import LeadSection from "../components/Website/Programs/LeadSection";
+import ResetCardsSection from "../components/Website/Programs/ResetCardsSection";
+import BigThreeCardsSection from "../components/Website/Programs/BigThreeCardsSection";
 
 const Programs = () => {
-  const device = useContext(ScreenWidthContent);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (device === "mobile") {
-      setIsMobile(true);
-    }
-  }, [device]);
-
   return (
-    <SectionContainer setMobileMarginTop={"0"} setMobileMarginBottom={"0"}>
-      <IsTweeningStore initialState={tweeningState} reducer={tweeningReducer}>
-        {isMobile ? <ProgramsMobile /> : <ProgramsAboveMobile />}
-      </IsTweeningStore>
-    </SectionContainer>
+    <>
+      <LeadSection />
+      <ResetCardsSection />
+      <BigThreeCardsSection />
+    </>
   );
 };
 

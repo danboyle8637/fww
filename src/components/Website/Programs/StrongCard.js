@@ -69,30 +69,44 @@ const StrongCard = () => {
   const backgroundReady = useIsBackgroundReady(background);
 
   return (
-    <CardGrid>
-      {backgroundReady ? (
-        <StrongBackground fluid={background} />
-      ) : (
-        <BackgroundImageLoader />
-      )}
-      <ContentContainer>
-        <LogoDescriptionWrapper>
-          <StrongLogo />
-          <ElementContainer setMobileWidth={"50%"}>
-            <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
+    <CardContainer>
+      <CardGrid>
+        {backgroundReady ? (
+          <StrongBackground fluid={background} />
+        ) : (
+          <BackgroundImageLoader />
+        )}
+        <ContentContainer>
+          <LogoDescriptionWrapper>
+            <StrongLogo />
+            <ElementContainer setMobileWidth={"50%"}>
+              <SetBodyText
+                setFontSize={"14px"}
+                dangerouslySetInnerHTML={{ __html: body }}
+              />
+            </ElementContainer>
+          </LogoDescriptionWrapper>
+          <ElementContainer>
+            <InnerButton to={"/strong-kettlebell-training"}>
+              Learn More About Strong
+            </InnerButton>
           </ElementContainer>
-        </LogoDescriptionWrapper>
-        <ElementContainer>
-          <InnerButton to={"/strong-kettlebell-training"}>
-            Learn More About Strong
-          </InnerButton>
-        </ElementContainer>
-      </ContentContainer>
-    </CardGrid>
+        </ContentContainer>
+      </CardGrid>
+    </CardContainer>
   );
 };
 
 export default StrongCard;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  ${above.mobile`
+    width: 100%;
+  `}
+`;
 
 const CardGrid = styled.div`
   position: relative;
@@ -100,8 +114,10 @@ const CardGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   background: ${props => props.theme.mainBackgroundBorderColor};
-  border-radius: 6px;
-  width: 100vw;
+  border-radius: 12px;
+  width: 90%;
+  height: 90%;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   ${above.mobile`
     width: 100%;
@@ -109,7 +125,7 @@ const CardGrid = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  padding: 70px 16px 40px 16px;
+  padding: 30px 16px 30px 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
@@ -129,7 +145,7 @@ const StrongBackground = styled(Image)`
   margin: 0;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  border-radius: 0;
+  border-radius: 12px;
   ${above.mobile`
     margin: 8px;
     border-radius: 6px;

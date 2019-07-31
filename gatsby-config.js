@@ -129,6 +129,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `ProgramsCopy`,
+        path: `${__dirname}/src/content/Programs`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `Firestore`,
         path: `${__dirname}/src/content/Firestore`,
       },
