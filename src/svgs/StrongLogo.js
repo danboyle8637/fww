@@ -51,7 +51,7 @@ class StrongLogo extends Component {
             transform="translate(-10.77 -28.75)"
           />
         </g>
-        <g id="kettlebell">
+        <g id="kettlebellLogo">
           <path
             transform="rotate(-66.24 228.122 31.424)"
             fill="#8b53f6"

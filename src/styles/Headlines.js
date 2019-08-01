@@ -53,7 +53,7 @@ const baseHeadline = css`
         : props.ultraWideMedium
         ? "32px"
         : props.ultraWideSmall && "22px"};
-    line-height: ${props => props.setUWLineHeight || 1.0};
+    line-height: ${props => props.setUWLineHeight};
   `}
 `;
 

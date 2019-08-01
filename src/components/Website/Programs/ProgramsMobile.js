@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { SectionContainer } from "../../../styles/Containers";
+import { SectionContainer, ElementContainer } from "../../../styles/Containers";
 import IgniteCard from "./IgniteCard";
 import BBCCard from "./BBCCard";
 import StrongCard from "./StrongCard";
 import SwipeDot from "../../../svgs/SwipeDot";
-import DraggableLocationDots from "../../Shared/DraggableLocationDots";
+import LocationDot from "../../Shared/LocationDot";
 import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { useIsTweeningContext } from "../../../context/IsTweeningContext";
 import { useActiveCardContext } from "../../../context/ActiveSlideContext";
@@ -16,8 +16,11 @@ import "./Program.css";
 const ProgramsMobile = () => {
   // eslint-disable-next-line
   const [{ isTweening }, dispatch] = useIsTweeningContext();
-  // eslint-disable-next-line
   const [{ activeCard }, dispatch2] = useActiveCardContext();
+
+  useEffect(() => {
+    dispatch2({ type: "setActiveCard", value: 1 });
+  }, []);
 
   return (
     <SectionContainer setMobileMarginTop={"60px"} setMobileMarginBottom={"0"}>
@@ -35,8 +38,11 @@ const ProgramsMobile = () => {
           </DraggableRow>
         </ContentWrapper>
       </ProgramGrid>
-      <DraggableLocationDots numDots={5} />
-      {activeCard}
+      <ElementContainer justifyCenter>
+        <LocationDot active={activeCard >= 1 ? true : false} />
+        <LocationDot active={activeCard === 0 ? true : false} />
+        <LocationDot active={activeCard <= -1 ? true : false} />
+      </ElementContainer>
     </SectionContainer>
   );
 };

@@ -14,6 +14,7 @@ const CardSection = () => {
           sourceInstanceName: { eq: "FollowMeCopy" }
           name: { regex: "/Card/" }
         }
+        sort: { fields: birthtime }
       ) {
         nodes {
           childMarkdownRemark {
@@ -22,6 +23,7 @@ const CardSection = () => {
             frontmatter {
               headline
               icon
+              link
             }
           }
         }
@@ -36,9 +38,16 @@ const CardSection = () => {
     const body = card.childMarkdownRemark.html;
     const headline = card.childMarkdownRemark.frontmatter.headline;
     const icon = card.childMarkdownRemark.frontmatter.icon;
+    const link = card.childMarkdownRemark.frontmatter.link;
 
     return (
-      <FollowMeCard key={id} icon={icon} headline={headline} body={body} />
+      <FollowMeCard
+        key={id}
+        icon={icon}
+        headline={headline}
+        body={body}
+        link={link}
+      />
     );
   });
 

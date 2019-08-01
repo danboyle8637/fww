@@ -55,7 +55,6 @@ const Main = styled.main`
       ? props.theme.baseBackgroundColor
       : props.theme.mainBackgroundColor};
   width: 100%;
-  height: 100%;
   max-width: ${props =>
     props.isBlog ? "980px" : props.isApp ? "1200px" : "1440px"};
   overflow: hidden;
@@ -69,6 +68,7 @@ const Main = styled.main`
     margin-bottom: ${props => (props.isBlog || props.isApp ? "120px" : "0")};
     max-width: ${props =>
       props.isBlog ? "800px" : props.isApp ? "1200px" : "1440px"};
+    min-height: 900px;
   `}
   ${above.laptop`
     max-width: ${props =>

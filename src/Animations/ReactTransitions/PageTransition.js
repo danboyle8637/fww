@@ -4,7 +4,7 @@ import { TweenMax, Power3 } from "gsap/TweenMax";
 
 const PageTransition = ({ children, location }) => {
   const enter = node => {
-    TweenMax.from(node, 1, {
+    TweenMax.from(node, 0.5, {
       x: "-100vw",
       ease: Power3.easeOut,
       autoAlpha: 0,
@@ -20,7 +20,7 @@ const PageTransition = ({ children, location }) => {
   };
 
   const entered = node => {
-    TweenMax.to(node, 1, {
+    TweenMax.to(node, 0.5, {
       x: 0,
       autoAlpha: 1,
       ease: Power3.easeOut,
@@ -42,8 +42,8 @@ const PageTransition = ({ children, location }) => {
       <Transition
         key={location.key}
         timeout={{
-          appear: 1000,
-          enter: 1000,
+          appear: 500,
+          enter: 500,
           exit: 1000,
         }}
         mountOnEnter={true}

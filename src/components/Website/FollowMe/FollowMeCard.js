@@ -10,7 +10,7 @@ import FollowYouTube from "../../../svgs/FollowYouTube";
 import FollowFacebook from "../../../svgs/FollowFacebook";
 import CardHeadline from "./Headlines/CardHeadline";
 
-const FollowMeCard = ({ icon, headline, body }) => {
+const FollowMeCard = ({ icon, headline, body, link }) => {
   const socialBanners = [
     {
       socialBanner: "instagram",
@@ -48,7 +48,13 @@ const FollowMeCard = ({ icon, headline, body }) => {
           />
         </div>
         <ElementContainer setMobileMarginTop={40}>
-          <OutterButton href="">{header.buttonText}</OutterButton>
+          <OutterButton
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            {header.buttonText}
+          </OutterButton>
         </ElementContainer>
       </ContentWrapper>
     </CardContainer>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import {
@@ -10,12 +10,17 @@ import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { InnerButton } from "../../../styles/Buttons";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
+import LocationDot from "../../Shared/LocationDot";
 import AboveCardSwipe from "../../Shared/AboveCardsSwipe";
 import { useActiveCardContext } from "../../../context/ActiveSlideContext";
 
 const KindalQuestions = () => {
   // eslint-disable-next-line
   const [{ activeCard }, dispatch] = useActiveCardContext();
+
+  useEffect(() => {
+    dispatch({ type: "setActiveCard", value: 3.5 });
+  }, []);
 
   const query = graphql`
     query {
@@ -56,8 +61,15 @@ const KindalQuestions = () => {
         <Headline4 />
         <AboveCardSwipe />
         <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
+        <ElementContainer justifyCenter setMobileMarginTop={40}>
+          <LocationDot active={activeCard >= 2.5 ? true : false} />
+          <LocationDot active={activeCard === 1.5 ? true : false} />
+          <LocationDot active={activeCard === 0.5 ? true : false} />
+          <LocationDot active={activeCard === -0.5 ? true : false} />
+          <LocationDot active={activeCard === -1.5 ? true : false} />
+          <LocationDot active={activeCard <= -2.5 ? true : false} />
+        </ElementContainer>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          {activeCard}
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>
         </ElementContainer>
       </ContentContainer>

@@ -78,7 +78,7 @@ const MenuRightBorder = styled(DividerMenuMarker)`
   top: 0;
   left: 50%;
   height: 100%;
-  z-index: 1002;
+  z-index: 1010;
   ${above.mobile`
     left: 54%;
   `}

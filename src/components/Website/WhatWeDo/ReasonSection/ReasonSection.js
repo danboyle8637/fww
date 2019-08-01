@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
-import { SectionContainer } from "../../../../styles/Containers";
+import {
+  SectionContainer,
+  ElementContainer,
+} from "../../../../styles/Containers";
 import Headline1 from "./Headlines/Headline1";
 import ReasonCard from "./ReasonCard";
 import DraggableRow from "../../../../Animations/Tweens/DraggableRow";
 import SwipeDot from "../../../../svgs/SwipeDot";
+import LocationDot from "../../../Shared/LocationDot";
 import { useIsTweeningContext } from "../../../../context/IsTweeningContext";
 import DismissSwipeIcon from "../../../../Animations/ReactTransitions/DismissSwipeIcon";
 import { useActiveCardContext } from "../../../../context/ActiveSlideContext";
@@ -18,6 +22,10 @@ const ReasonSection = () => {
   // eslint-disable-next-line
   const [{ activeCard }, dispatch2] = useActiveCardContext();
   const device = useContext(ScreenWidthContext);
+
+  useEffect(() => {
+    dispatch2({ type: "setActiveCard", value: 1 });
+  }, []);
 
   const query = graphql`
     query {
@@ -79,7 +87,11 @@ const ReasonSection = () => {
             </DismissSwipeIcon>
           </SwipeWrapper>
           <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
-          {activeCard}
+          <ElementContainer justifyCenter setMobileMarginTop={40}>
+            <LocationDot active={activeCard >= 1 ? true : false} />
+            <LocationDot active={activeCard === 0 ? true : false} />
+            <LocationDot active={activeCard <= -1 ? true : false} />
+          </ElementContainer>
         </>
       )}
     </SectionContainer>

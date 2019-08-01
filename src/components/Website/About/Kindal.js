@@ -102,6 +102,9 @@ const ContentWrapper = styled.div`
     margin: 120px 0 0 160px;
   `}
   ${above.tablet`
+    margin: 200px 0 0 200px;
+  `}
+  ${above.ipadPro`
     margin: 200px 0 0 400px;
   `}
 `;
@@ -118,6 +121,10 @@ const TopDivider = styled(DividerMarker1)`
   `}
   ${above.tablet`
     width: 100%;
+    transform: translateY(-46px);
+  `}
+  ${above.ipadPro`
+    width: 100%;
     transform: translateY(-66px);
   `}
 `;
@@ -133,6 +140,10 @@ const BottomDivider = styled(DividerMarker2)`
     width: 120%;
   `}
   ${above.tablet`
+    width: 100%;
+    transform: translateY(46px) rotate(180deg);
+  `}
+  ${above.ipadPro`
     width: 100%;
     transform: translateY(66px) rotate(180deg);
   `}

@@ -68,7 +68,7 @@ const RightDrawer = styled.div`
   width: 44%;
   padding: 20px;
   overflow: hidden;
-  z-index: 1001;
+  z-index: 1009;
   ${above.ipadPro`
     width: 50%;
   `}

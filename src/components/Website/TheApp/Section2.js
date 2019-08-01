@@ -15,6 +15,7 @@ const Section2 = () => {
           sourceInstanceName: { eq: "TheAppCopy" }
           name: { regex: "/FitNumber/" }
         }
+        sort: { fields: name }
       ) {
         nodes {
           childMarkdownRemark {
