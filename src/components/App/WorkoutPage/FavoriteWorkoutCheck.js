@@ -7,7 +7,7 @@ import "./WorkoutPage.css";
 const FavoriteWorkoutCheck = () => {
   return (
     <WorkoutFavoriteRow>
-      <FavoriteLabel>Mark Completed:</FavoriteLabel>
+      <FavoriteLabel>Mark Favorite?</FavoriteLabel>
       <CheckmarkWrapper>
         <CheckCircle />
       </CheckmarkWrapper>

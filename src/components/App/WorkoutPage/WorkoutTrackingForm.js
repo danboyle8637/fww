@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import TextInput from "../Shared/Forms/TextInput";
+import TextInput from "../../Shared/Form/TextInput";
 import { useFormStore } from "../../../context/FormContext";
 import useContactFormControls from "../../../hooks/useContactFormControls";
+import { above } from "../../../styles/Theme";
 
 const WorkoutTrackingForm = () => {
   // eslint-disable-next-line
@@ -15,11 +16,11 @@ const WorkoutTrackingForm = () => {
       <TextInput
         type="text"
         name="workoutGoal"
-        labelName="Only enter numbers"
+        labelName="Enter here"
         labelFor="workoutGoal"
-        labelInstructions="..."
-        labelError="Remember ONLY numbers!"
-        labelSuccess="Awesome post it!"
+        labelInstructions="How'd you do?"
+        labelError="ONLY numbers!"
+        labelSuccess="Post it!"
         value={formState.workoutGoalValue.value}
         valid={formState.workoutGoalValue.valid}
         initial={formState.workoutGoalOptions.initial}

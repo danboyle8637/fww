@@ -13,7 +13,8 @@ const CompleteWorkout = () => {
         Complete It:
       </Header3>
       <BodyText setMobileMarginTop={10}>
-        When you’ve completed the workout, check it off your list!
+        When you’ve completed the workout, check it completed. Try for three
+        checks!
       </BodyText>
       <CompleteWorkoutCheck />
       <FavoriteWorkoutCheck />

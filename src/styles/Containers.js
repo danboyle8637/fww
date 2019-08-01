@@ -157,10 +157,11 @@ const ElementContainer = styled.div`
 `;
 
 const AppContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
   width: 100%;
-  max-width: 1200px;
-  border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
-  border-radius: 6px;
 `;
 
 const BlogContainer = styled.div`
@@ -172,11 +173,11 @@ const BlogContainer = styled.div`
 `;
 
 export {
-  AppContentContainer,
   ContentContainer,
   ElementContainer,
   SectionContainer,
   flex,
   HeadlineContainer,
   BlogContainer,
+  AppContentContainer,
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Header3 } from "../../../styles/Headlines";
 import NavigationArrow from "../../../svgs/NavigationArrow";
+import AppButton from "../../../svgs/AppButton";
 import WorkoutCardHeader from "../Shared/WorkoutProgramCard/WorkoutCardHeader";
 import ProgramCardHeader from "../Shared/WorkoutProgramCard/ProgramCardHeader";
 import WorkoutCardInfoFooter from "./WorkoutProgramCard/WorkoutCardInfoFooter";
@@ -10,28 +11,15 @@ import ProgramInfoFooter from "../Shared/WorkoutProgramCard/ProgramInfoFooter";
 import { above } from "../../../styles/Theme";
 
 const WorkoutCard = ({ workoutCard, programCard }) => {
-  // When you convert to Typescript, switch this to an enum
-  const [cardType, setCardType] = useState("workout");
-
-  useEffect(() => {
-    if (workoutCard) {
-      setCardType("workout");
-    }
-
-    if (programCard) {
-      setCardType("program");
-    }
-  }, [cardType]);
-
   return (
     <WorkoutCardGrid>
-      {cardType === "workout" && <WorkoutCardHeader />}
-      {cardType === "program" && <ProgramCardHeader />}
+      {workoutCard && <WorkoutCardHeader />}
+      {programCard && <ProgramCardHeader />}
       <ContentWrapper>
         <DescriptionWrapper>
           <TextWrapper>
             <Header3 mobileSmall primary>
-              Workout 1: Pushups
+              7 Day Body Burn Reset
             </Header3>
             <Description>
               Let’s perfect and practice our pushups with this sweaty... tough
@@ -40,8 +28,8 @@ const WorkoutCard = ({ workoutCard, programCard }) => {
           </TextWrapper>
           <ArrowButton />
         </DescriptionWrapper>
-        {cardType === "workout" && <WorkoutCardInfoFooter />}
-        {cardType === "program" && <ProgramInfoFooter />}
+        {workoutCard && <WorkoutCardInfoFooter />}
+        {programCard && <ProgramInfoFooter />}
       </ContentWrapper>
     </WorkoutCardGrid>
   );
@@ -56,8 +44,17 @@ const WorkoutCardGrid = styled.div`
   grid-template-rows: auto 1fr;
   gap: 5px;
   background: ${props => props.theme.mainBackgroundBorderColor};
-  border-radius: 6px;
-  width: 95%;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: none;
+  transform: translateY(0);
+  transition: box-shadow, transform, 200ms ease-in-out;
+  &:hover {
+    box-shadow: 2px 2px 12px 4px rgba(71, 74, 221, 0.3);
+    transform: translateY(-2%);
+    cursor: pointer;
+  }
   ${above.mobile`
     width: 100%;
   `}
@@ -94,9 +91,9 @@ const Description = styled.p`
   color: ${props => props.theme.bodyText};
 `;
 
-const ArrowButton = styled(NavigationArrow)`
-  margin: 0 30px 0 0;
-  width: 20px;
+const ArrowButton = styled(AppButton)`
+  margin: 0 0 0 0;
+  width: 50px;
   align-self: center;
   justify-self: center;
 `;

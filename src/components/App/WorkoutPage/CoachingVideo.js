@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import CoachingMoreIcon from "../../../svgs/CoachingMoreIcon";
+import PlayButtonIcon from "../../../svgs/PlayButtonIcon";
 import WorkoutLabel from "./WorkoutLabel";
 
 const CoachingVideo = () => {
@@ -26,11 +27,15 @@ const CoachingVideo = () => {
   const background = useStaticQuery(query);
   const image = background.coachingBackground.childImageSharp.fluid;
 
+  const handleShowVideo = () => {
+    console.log("Trigger Coaching Video Blow Up!");
+  };
+
   return (
     <SectionGrid>
       <CoachingBackground fluid={image} />
-      <ContentWrapper>
-        <MoreIcon />
+      <ContentWrapper onClick={handleShowVideo}>
+        <PlayButton />
       </ContentWrapper>
       <WorkoutLabel>Coaching Video</WorkoutLabel>
     </SectionGrid>
@@ -45,6 +50,8 @@ const SectionGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100%;
+  border-bottom: ${props =>
+    `6px solid ${props.theme.mainBackgroundBorderColor}`};
 `;
 
 const ContentWrapper = styled.div`
@@ -62,6 +69,6 @@ const CoachingBackground = styled(Image)`
   grid-row: 1 / -1;
 `;
 
-const MoreIcon = styled(CoachingMoreIcon)`
-  width: 40px;
+const PlayButton = styled(PlayButtonIcon)`
+  width: 60px;
 `;

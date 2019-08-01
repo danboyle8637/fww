@@ -26,10 +26,14 @@ const WorkoutVideo = () => {
   const image = useStaticQuery(query);
   const background = image.workoutBackground.childImageSharp.fluid;
 
+  const handleShowVideo = () => {
+    console.log("Trigger Workout Video Blow Up!");
+  };
+
   return (
     <SectionGrid>
       <WorkoutBackground fluid={background} />
-      <ContentWrapper>
+      <ContentWrapper onClick={handleShowVideo}>
         <PlayButton />
       </ContentWrapper>
       <WorkoutLabel>Workout Video</WorkoutLabel>
@@ -45,6 +49,8 @@ const SectionGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100%;
+  border-bottom: ${props =>
+    `6px solid ${props.theme.mainBackgroundBorderColor}`};
 `;
 
 const ContentWrapper = styled.div`

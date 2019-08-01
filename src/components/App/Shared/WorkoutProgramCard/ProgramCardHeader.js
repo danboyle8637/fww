@@ -45,7 +45,7 @@ const HeaderGrid = styled.div`
 const WorkoutHeaderImage = styled(Image)`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  border-radius: 6px 6px 0 0;
+  border-radius: 10px 10px 0 0;
 `;
 
 const Logo = styled(BodyBurnResetLogo)`

@@ -1,14 +1,37 @@
 import React from "react";
+import styled from "styled-components";
 
-import { SectionContainer } from "../../styles/Containers";
+import { SectionContainer, AppContentContainer } from "../../styles/Containers";
 import DashboardHeader from "./Dashboard/DashboardHeader";
+import WorkoutCard from "./Shared/WorkoutCard";
+import { above } from "../../styles/Theme";
 
 const Dashboard = props => {
   return (
     <SectionContainer>
-      <DashboardHeader />
+      <AppContentContainer>
+        <DashboardHeader />
+        <ProgramCardGrid>
+          <WorkoutCard programCard />
+          <WorkoutCard programCard />
+          <WorkoutCard programCard />
+        </ProgramCardGrid>
+      </AppContentContainer>
     </SectionContainer>
   );
 };
 
 export default Dashboard;
+
+const ProgramCardGrid = styled.div`
+  margin: 60px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  ${above.mobile`
+    grid-template-columns: 1fr 1fr;
+  `}
+  ${above.ipadPro`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
+`;

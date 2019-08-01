@@ -38,18 +38,22 @@ const WarmCoolVideos = () => {
   const warmUp = images.warmUpBackground.childImageSharp.fluid;
   const coolDown = images.coolDownBackground.childImageSharp.fluid;
 
+  const handleShowVideo = () => {
+    console.log("Trigger Warm Up or Cool Down Video Blow Up!");
+  };
+
   return (
     <VideoContainer>
-      <SectionGrid>
+      <SectionGrid borderRight>
         <WorkoutBackground fluid={warmUp} />
-        <ContentWrapper>
+        <ContentWrapper onClick={handleShowVideo}>
           <PlayButton />
         </ContentWrapper>
         <WorkoutLabel>Warm Up</WorkoutLabel>
       </SectionGrid>
-      <SectionGrid>
+      <SectionGrid borderLeft>
         <WorkoutBackground fluid={coolDown} />
-        <ContentWrapper>
+        <ContentWrapper onClick={handleShowVideo}>
           <PlayButton />
         </ContentWrapper>
         <WorkoutLabel>Cool Down</WorkoutLabel>
@@ -72,6 +76,10 @@ const SectionGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100%;
+  border-left: ${props =>
+    props.borderLeft && `3px solid ${props.theme.mainBackgroundBorderColor}`};
+  border-right: ${props =>
+    props.borderRight && `3px solid ${props.theme.mainBackgroundBorderColor}`};
 `;
 
 const ContentWrapper = styled.div`
