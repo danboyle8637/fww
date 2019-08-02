@@ -9,6 +9,8 @@ const WorkoutCardInfoFooter = () => {
       <InfoButton />
       <InfoButton />
       <InfoButton />
+      <InfoButton />
+      <InfoButton />
     </InfoIconWrapper>
   );
 };
