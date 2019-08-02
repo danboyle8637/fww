@@ -2,15 +2,15 @@
 import React from "react";
 import styled from "styled-components";
 
+import FavoriteIcon from "../../../../svgs/FavoriteIcon";
+
 const WorkoutCardInfoFooter = () => {
   return (
     <InfoIconWrapper>
       <InfoButton />
       <InfoButton />
       <InfoButton />
-      <InfoButton />
-      <InfoButton />
-      <InfoButton />
+      <IsFavorite />
     </InfoIconWrapper>
   );
 };
@@ -22,6 +22,7 @@ const InfoIconWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20px, 24px));
   gap: 10px;
+  align-items: center;
 `;
 
 const InfoButton = styled.div`
@@ -30,4 +31,8 @@ const InfoButton = styled.div`
   border-radius: 50%;
   width: 20px;
   height: 20px;
+`;
+
+const IsFavorite = styled(FavoriteIcon)`
+  width: 21px;
 `;
