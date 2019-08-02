@@ -16,6 +16,8 @@ const ResetProgram = () => {
         <WorkoutCard workoutCard />
         <WorkoutCard workoutCard />
         <WorkoutCard workoutCard />
+        <WorkoutCard workoutCard />
+        <WorkoutCard workoutCard />
       </ProgramCardGrid>
     </SectionContainer>
   );

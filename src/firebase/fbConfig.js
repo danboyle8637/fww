@@ -14,3 +14,5 @@ const configSetup = {
 };
 
 firebase.initializeApp(configSetup);
+
+// Need to set up more
