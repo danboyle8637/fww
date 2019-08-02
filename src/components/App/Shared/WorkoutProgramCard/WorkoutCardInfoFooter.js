@@ -7,6 +7,8 @@ const WorkoutCardInfoFooter = () => {
     <InfoIconWrapper>
       <InfoButton />
       <InfoButton />
+      <InfoButton />
+      <InfoButton />
     </InfoIconWrapper>
   );
 };
@@ -16,7 +18,7 @@ export default WorkoutCardInfoFooter;
 const InfoIconWrapper = styled.div`
   margin: 8px 0 0 0;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 24px));
   gap: 10px;
 `;
 
