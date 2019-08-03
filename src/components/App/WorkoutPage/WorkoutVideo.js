@@ -5,6 +5,7 @@ import Image from "gatsby-image";
 
 import PlayButtonIcon from "../../../svgs/PlayButtonIcon";
 import WorkoutLabel from "./WorkoutLabel";
+import { above } from "../../../styles/Theme";
 
 const WorkoutVideo = () => {
   const query = graphql`
@@ -36,7 +37,9 @@ const WorkoutVideo = () => {
       <ContentWrapper onClick={handleShowVideo}>
         <PlayButton />
       </ContentWrapper>
-      <WorkoutLabel>Workout Video</WorkoutLabel>
+      <WorkoutLabel label={"workout"} numWorkouts={2}>
+        Workout Video
+      </WorkoutLabel>
     </SectionGrid>
   );
 };
@@ -51,6 +54,10 @@ const SectionGrid = styled.div`
   width: 100%;
   border-bottom: ${props =>
     `6px solid ${props.theme.mainBackgroundBorderColor}`};
+  ${above.tablet`
+    border-bottom: ${props =>
+      `8px solid ${props.theme.mainBackgroundBorderColor}`};
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -70,4 +77,10 @@ const WorkoutBackground = styled(Image)`
 
 const PlayButton = styled(PlayButtonIcon)`
   width: 60px;
+  ${above.mobile`
+    width: 75px;
+  `}
+  ${above.tablet`
+    width: 84px;
+  `}
 `;

@@ -18,7 +18,7 @@ const WorkoutCheckmark = ({ width, height, className }) => {
     TweenMax.set(circleFill, { transformOrigin: "50% 50%", scale: 0 });
     TweenMax.set(check, { drawSVG: "100% 100%" });
 
-    tl.to(circleFill, 0.5, {
+    tl.to(circleFill, 0.3, {
       scale: 1,
       ease: Power2.easeOut,
     }).to(check, 0.5, {

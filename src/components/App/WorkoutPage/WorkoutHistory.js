@@ -25,7 +25,6 @@ const WorkoutHistory = () => {
 export default WorkoutHistory;
 
 const WorkoutSectionContainer = styled.div`
-  margin: 80px 0 0 0;
   padding: 0 16px;
   display: flex;
   flex-direction: column;

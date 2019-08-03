@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { SectionContainer } from "../../styles/Containers";
 import ResetHeader from "./ResetPrograms/ResetHeader";
-import ProgressIndicator from "./ResetPrograms/ProgressIndicator";
+import ResetProgramDashboard from "./ResetPrograms/ResetProgramDashboard";
 import WorkoutCard from "./Shared/WorkoutCard";
 import { above } from "../../styles/Theme";
 
@@ -11,7 +11,7 @@ const ResetProgram = () => {
   return (
     <SectionContainer>
       <ResetHeader />
-      <ProgressIndicator />
+      <ResetProgramDashboard />
       <ProgramCardGrid>
         <WorkoutCard workoutCard />
         <WorkoutCard workoutCard />
@@ -32,8 +32,12 @@ const ProgramCardGrid = styled.div`
   gap: 20px;
   ${above.mobile`
     grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 60px;
   `}
   ${above.ipadPro`
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 60px;
   `}
 `;

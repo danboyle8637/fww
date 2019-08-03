@@ -22,7 +22,6 @@ const WorkoutTracking = () => {
 export default WorkoutTracking;
 
 const GoalContainer = styled.div`
-  margin: 80px 0 0 0;
   padding: 0 16px;
   display: flex;
   flex-direction: column;

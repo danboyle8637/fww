@@ -25,27 +25,28 @@ const ProgressIndicator = () => {
 export default ProgressIndicator;
 
 const ProgressContainer = styled.div`
-  margin: 80px 0 0 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   align-items: center;
+  justify-items: center;
+  gap: 20px;
   width: 100%;
 `;
 
 const LoaderGrid = styled.div`
-  margin: 20px 0 0 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
   align-items: center;
-  width: 240px;
+  width: 100%;
 `;
 
 const ProgressGraph = styled(ProgressLoader)`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  width: 180px;
+  width: 120px;
 `;
 
 const PercentWrapper = styled.div`

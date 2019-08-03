@@ -6,6 +6,7 @@ import { Header1 } from "../../../../styles/Headlines";
 import { BodyText } from "../../../../styles/BodyText";
 import WorkoutCircuitIcon from "../../../../svgs/WorkoutCircuitIcon";
 import Workout from "../../../../content/Firestore/hold-it-1-workout.json";
+import { above } from "../../../../styles/Theme";
 
 const WorkoutDetails = () => {
   const videoRef = useRef(null);
@@ -48,7 +49,14 @@ const WorkoutSectionContainer = styled.div`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
+  ${above.mobile`
+    width: 43rem;
+  `}
+  ${above.tablet`
+    width: 53rem;
+  `}
 `;
 
 const WorkokutContainer = styled.div`
@@ -58,7 +66,6 @@ const WorkokutContainer = styled.div`
 const CircuitDetails = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
 `;
 
@@ -91,7 +98,7 @@ const CircuitIcon = styled(WorkoutCircuitIcon)`
 
 const ExerciseNames = styled.p`
   position: relative;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px 20px;
   padding: 0;
   font-size: 16px;
   font-weight: 500;

@@ -4,7 +4,7 @@ import { setMargin } from "./Reusables";
 const sharedBodyText = css`
   margin: 0 0 20px 0;
   padding: 0;
-  font-size: ${props => props.setFontSize || "16px"};
+  font-size: ${props => `${props.setFontSize}px` || "16px"};
   font-weight: 500;
   color: ${props => props.theme.bodyText};
   &:last-child {

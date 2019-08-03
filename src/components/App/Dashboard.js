@@ -6,7 +6,7 @@ import DashboardHeader from "./Dashboard/DashboardHeader";
 import WorkoutCard from "./Shared/WorkoutCard";
 import { above } from "../../styles/Theme";
 
-const Dashboard = props => {
+const Dashboard = () => {
   return (
     <SectionContainer>
       <AppContentContainer>
@@ -27,11 +27,15 @@ const ProgramCardGrid = styled.div`
   margin: 60px 0 0 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 80px;
+  align-items: start;
   ${above.mobile`
     grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 60px;
   `}
   ${above.ipadPro`
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
   `}
 `;

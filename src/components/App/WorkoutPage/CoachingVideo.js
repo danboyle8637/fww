@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
-import CoachingMoreIcon from "../../../svgs/CoachingMoreIcon";
 import PlayButtonIcon from "../../../svgs/PlayButtonIcon";
 import WorkoutLabel from "./WorkoutLabel";
+import { above } from "../../../styles/Theme";
 
 const CoachingVideo = () => {
   const query = graphql`
@@ -52,6 +52,10 @@ const SectionGrid = styled.div`
   width: 100%;
   border-bottom: ${props =>
     `6px solid ${props.theme.mainBackgroundBorderColor}`};
+  ${above.tablet`
+    border-bottom: ${props =>
+      `8px solid ${props.theme.mainBackgroundBorderColor}`};
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -71,4 +75,10 @@ const CoachingBackground = styled(Image)`
 
 const PlayButton = styled(PlayButtonIcon)`
   width: 60px;
+  ${above.mobile`
+    width: 75px;
+  `}
+  ${above.tablet`
+    width: 84px;
+  `}
 `;

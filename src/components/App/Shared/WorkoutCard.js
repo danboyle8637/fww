@@ -38,7 +38,6 @@ const WorkoutCard = ({ workoutCard, programCard }) => {
 export default WorkoutCard;
 
 const WorkoutCardGrid = styled.div`
-  margin: 60px 0 0 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;

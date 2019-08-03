@@ -23,6 +23,8 @@ const Layout = styled.main`
     border-radius: 20px;
   `}
   ${above.laptop`
-    
+  `}
+  ${above.ultraWide`
+    margin-bottom: 200px;
   `}
 `;

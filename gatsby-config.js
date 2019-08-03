@@ -129,6 +129,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `AppCopy`,
+        path: `${__dirname}/src/content/App`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `ProgramsCopy`,
         path: `${__dirname}/src/content/Programs`,
       },

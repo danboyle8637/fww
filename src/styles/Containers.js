@@ -162,6 +162,12 @@ const AppContentContainer = styled.div`
   align-items: center;
   padding: 0 20px;
   width: 100%;
+  ${above.tablet`
+    width: 80%;
+  `}
+  ${above.ipadPro`
+    width: 100%;
+  `}
 `;
 
 const BlogContainer = styled.div`

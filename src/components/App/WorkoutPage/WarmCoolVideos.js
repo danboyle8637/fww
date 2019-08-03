@@ -5,6 +5,7 @@ import Image from "gatsby-image";
 
 import PlayButtonIcon from "../../../svgs/PlayButtonIcon";
 import WorkoutLabel from "./WorkoutLabel";
+import { above } from "../../../styles/Theme";
 
 const WarmCoolVideos = () => {
   const query = graphql`
@@ -80,6 +81,13 @@ const SectionGrid = styled.div`
     props.borderLeft && `3px solid ${props.theme.mainBackgroundBorderColor}`};
   border-right: ${props =>
     props.borderRight && `3px solid ${props.theme.mainBackgroundBorderColor}`};
+  ${above.tablet`
+    border-left: ${props =>
+      props.borderLeft && `4px solid ${props.theme.mainBackgroundBorderColor}`};
+    border-right: ${props =>
+      props.borderRight &&
+      `4px solid ${props.theme.mainBackgroundBorderColor}`};
+    `}
 `;
 
 const ContentWrapper = styled.div`
@@ -99,4 +107,13 @@ const WorkoutBackground = styled(Image)`
 
 const PlayButton = styled(PlayButtonIcon)`
   width: 34px;
+  ${above.mobile`
+    width: 46px;
+  `}
+  ${above.tablet`
+    width: 56px;
+  `}
+  ${above.ipadPro`
+    width: 66px;
+  `}
 `;

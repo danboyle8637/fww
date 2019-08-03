@@ -48,4 +48,25 @@ const darkTheme = {
   formErrorBackground: "#E14075",
 };
 
+// const lightTheme = {
+//   // This is the second darkest background color
+//   baseBackgroundColor: "#141414",
+//   // This is the darkest. The main page border
+//   mainBackgroundBorderColor: "#101010",
+//   // This is the main background color
+//   mainBackgroundColor: "#19191C",
+//   accentBackgroundColor: "#2B2C3A",
+//   headlinePrimary: "#545885",
+//   headlineSecondary: "#4D5D7E",
+//   bodyText: "#B3B6E1",
+//   whiteText: "#f8f8f8",
+//   strongBodyText: "#aff8ff",
+//   primaryAccent: "#5AFDF2",
+//   secondaryAccent: "#8B53F6",
+//   tertiaryAccent: "#B44CFF",
+//   footerBackground: "#26243E",
+//   footerAddressText: "#4d4b65",
+//   formErrorBackground: "#E14075",
+// };
+
 export { above, darkTheme, sizes, headlineWidths };
