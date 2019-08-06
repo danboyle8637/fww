@@ -20,6 +20,7 @@ const BlogAuthorBox = ({ altText, image, name, instagram, certs }) => {
 export default BlogAuthorBox;
 
 const AuthorContainer = styled.div`
+  margin: 20px 0 0 0;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 10px;

@@ -7,10 +7,11 @@ import { TweenMax } from "gsap/TweenMax";
 import { ElementContainer } from "../../../styles/Containers";
 import { BlogButton } from "../../../styles/Buttons";
 import BlogMoreIcon from "../../../svgs/BlogMoreIcon";
+// import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
+// import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import "./Blog.css";
 
 const BlogCard = ({
-  id,
   featureImage,
   altText,
   headline,
@@ -29,6 +30,7 @@ const BlogCard = ({
   const tagsRef = useRef(null);
   const descriptionButtonRef = useRef(null);
   const controlsButtonRef = useRef(null);
+  const detailsTimeLine = useRef(new TimelineMax({ paused: true }));
 
   useEffect(() => {
     const cardDescription = cardDescriptoinWrapperRef.current;
@@ -49,9 +51,9 @@ const BlogCard = ({
       autoAlpha: 0,
     });
 
-    const tl = new TimelineMax({ paused: true });
+    const detailsTL = detailsTimeLine.current;
 
-    const animation = tl
+    detailsTL
       .to(cardDescription, 0.3, {
         scaleY: 1,
       })
@@ -83,14 +85,14 @@ const BlogCard = ({
       );
 
     if (detailsOpen) {
-      animation.play(0);
+      detailsTL.play(0);
     } else {
-      animation.reverse(1);
+      detailsTL.reverse(1);
     }
 
     return () => {
-      tl.clear(true);
-      tl.kill();
+      detailsTL.clear(true);
+      detailsTL.kill();
     };
   }, [detailsOpen]);
 
@@ -124,8 +126,8 @@ const BlogCard = ({
           Read Post
         </BlogButton>
         <OpenCloseWrapper onClick={handleDetailsClick}>
-          <MoreCloseLabel>Details</MoreCloseLabel>
-          <MoreAndCloseIcon />
+          <MoreCloseLabel>{detailsOpen ? "Close" : "Details"}</MoreCloseLabel>
+          <MoreAndCloseIcon detailsOpen={detailsOpen} />
         </OpenCloseWrapper>
       </ControlsContainer>
     </BlogCardContainer>
@@ -201,6 +203,7 @@ const ControlsContainer = styled.div`
   align-items: center;
   background: ${props => props.theme.bodyText};
   border-radius: 0 0 6px 6px;
+  width: 100%;
   overflow: hidden;
 `;
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 
 import Global from "../styles/Global";
-import { above, darkTheme } from "../styles/Theme";
+import { darkTheme } from "../styles/Theme";
 import WebsiteLayout from "./Layouts/WebsiteLayout";
 import BlogLayout from "./Layouts/BlogLayout";
 import AppLayout from "./Layouts/AppLayout";
@@ -27,13 +27,13 @@ const Layout = ({ children, location }) => {
     } else {
       setSiteLayout("website");
     }
-  }, [location.pathName]);
+  }, [location.pathname]);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <MenuStore initialState={menuState} reducer={menuReducer}>
         <ScreenWidthStore>
-          <Global />
+          <Global blog={siteLayout} />
           <Header location={location} />
           {siteLayout === "blog" ? (
             <BlogLayout>{children}</BlogLayout>

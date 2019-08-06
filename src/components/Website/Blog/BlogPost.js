@@ -7,7 +7,6 @@ import { BlogContainer, ElementContainer } from "../../../styles/Containers";
 import { Header1 } from "../../../styles/Headlines";
 import BlockContent from "./BlockContent";
 import BlogAuthorBox from "./BlogAuthorBox";
-import DividerMarker1 from "../../../svgs/DividerMarker1";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
 import { above } from "../../../styles/Theme";
 
@@ -24,11 +23,10 @@ const BlogPost = ({ data }) => {
 
   return (
     <BlogPostContainer>
-      <FeatureImageWrapper>
-        <Image alt={featureImageAltText} fluid={featureImage} />
-      </FeatureImageWrapper>
       <BlockContentWrapper>
-        <TopMarkerEdge />
+        <FeatureImageWrapper>
+          <FeatureImage alt={featureImageAltText} fluid={featureImage} />
+        </FeatureImageWrapper>
         <BlogAuthorBox
           altText={authorAltText}
           image={authorAvatar}
@@ -65,22 +63,15 @@ const BlogPostContainer = styled.div`
 `;
 
 const FeatureImageWrapper = styled.div`
-  position: fixed;
-  top: 78px;
   width: 100%;
-  max-width: 1000px;
+  ${above.ipadPro`
+    border-radius: 8px 8px 0 0;
+  `}
 `;
 
-const TopMarkerEdge = styled(DividerMarker1)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 160%;
-  transform: translateY(-140px) rotate(180deg);
-  z-index: 2;
-  ${above.mobile`
-    transform: translateY(-184px) rotate(180deg);
-    width: 100%;
+const FeatureImage = styled(Image)`
+  ${above.ipadPro`
+    border-radius: 8px 8px 0 0;
   `}
 `;
 
@@ -99,16 +90,16 @@ const BottomMarkerEdge = styled(DividerMarker2)`
 
 const BlockContentWrapper = styled.div`
   position: relative;
-  margin: 320px 0 80px 0;
-  padding: 50px 0;
+  margin: 0 0 80px 0;
+  padding: 0 0 50px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: ${props => props.theme.mainBackgroundColor};
   z-index: 1;
   ${above.mobile`
-    margin: 460px 0 120px 0;
-    padding: 60px 0px;
+    margin: 0 0 120px 0;
+    padding: 0 0 60px 0;
     width: 700px;
   `}
 `;

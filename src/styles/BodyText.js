@@ -30,7 +30,7 @@ const SetBodyText = styled.div`
   }
   & li {
     position: relative;
-    margin-bottom: ${props => props.mBottom || "20px"};
+    margin-bottom: ${props => props.mBottom || "30px"};
     color: ${props => props.theme.bodyText};
     &::before {
       position: absolute;

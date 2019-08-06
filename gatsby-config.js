@@ -143,6 +143,20 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `7DayResetImages`,
+        path: `${__dirname}/src/images/7DayReset`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `7DayResetCopy`,
+        path: `${__dirname}/src/content/7DayReset`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `Firestore`,
         path: `${__dirname}/src/content/Firestore`,
       },

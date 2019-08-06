@@ -17,6 +17,7 @@ const TimerSection = () => {
           sourceInstanceName: { eq: "WhatWeDoCopy" }
           name: { regex: "/Timer/" }
         }
+        sort: { fields: birthtime }
       ) {
         nodes {
           childMarkdownRemark {
