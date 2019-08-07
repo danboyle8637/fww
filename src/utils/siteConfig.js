@@ -16,7 +16,7 @@ module.exports = {
     workoutsGroup: [
       { id: 4, title: "The App", path: "/the-app" },
       { id: 5, title: "Programs", path: "/programs" },
-      { id: 6, title: "7 Day Reset", path: "/" },
+      { id: 6, title: "7 Day Reset", path: "/join-a-7-day-reset-program" },
     ],
     coachingGroup: [
       { id: 7, title: "Follow Me", path: "/follow-me" },
@@ -34,7 +34,7 @@ module.exports = {
   },
   publicLoginMenu: [
     { id: 0, title: "Login", path: "/" },
-    { id: 1, title: "Join", path: "/" },
+    { id: 1, title: "Join", path: "/join-a-7-day-reset-program" },
   ],
   resetMemberMenu: [
     { id: 1, title: "Dashboard", path: "/app/" },
@@ -62,12 +62,12 @@ module.exports = {
     ],
     group2: [
       { id: 4, path: "/follow-me", name: "follow me" },
-      { id: 5, path: "/", name: "blog" },
+      { id: 5, path: "/blog", name: "blog" },
       { id: 6, path: "/", name: "podcast" },
     ],
     group3: [
       { id: 7, path: "/programs", name: "programs" },
-      { id: 8, path: "/", name: "7 day reset" },
+      { id: 8, path: "/join-a-7-day-reset-program", name: "7 day reset" },
       { id: 9, path: "/contact", name: "contact" },
     ],
     group4: [

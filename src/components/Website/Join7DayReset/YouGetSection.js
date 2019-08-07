@@ -1,23 +1,23 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Image from "gatsby-image";
 import styled from "styled-components";
+import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
-import BackgroundLoaderImage from "../../Shared/BackgroundImageLoader";
-import FWWLogo from "../../../svgs/FWWLogo";
+import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
+import Headline4 from "./Headlines/Headline4";
+import YouGetBullets from "./YouGetBullets";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
-import MissionCopy from "./Copy/MissionCopy";
 import { above } from "../../../styles/Theme";
 
-const MissionSection = () => {
+const YouGetSection = () => {
   const query = graphql`
     query {
-      missionMobile: file(
+      snatchMobile: file(
         sourceInstanceName: { eq: "7DayResetImages" }
-        name: { eq: "7-day-reset-kindal-flex-600x1300" }
+        name: { eq: "7-day-reset-kindal-snatching-600x1300" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
@@ -25,9 +25,9 @@ const MissionSection = () => {
           }
         }
       }
-      missionTablet: file(
+      snatchTablet: file(
         sourceInstanceName: { eq: "7DayResetImages" }
-        name: { eq: "7-day-reset-kindal-flex-834x1112" }
+        name: { eq: "7-day-reset-kindal-snatching-834x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
@@ -35,9 +35,9 @@ const MissionSection = () => {
           }
         }
       }
-      missionIpadPro: file(
+      snatchIpadPro: file(
         sourceInstanceName: { eq: "7DayResetImages" }
-        name: { eq: "7-day-reset-kindal-flex-1024x1112" }
+        name: { eq: "7-day-reset-kindal-snatching-1024x1112" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
@@ -45,9 +45,9 @@ const MissionSection = () => {
           }
         }
       }
-      missionLaptop: file(
+      snatchLaptop: file(
         sourceInstanceName: { eq: "7DayResetImages" }
-        name: { eq: "7-day-reset-kindal-flex-1440x900" }
+        name: { eq: "7-day-reset-kindal-snatching-1440x900" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
@@ -59,10 +59,10 @@ const MissionSection = () => {
   `;
 
   const images = useStaticQuery(query);
-  const mobile = images.missionMobile;
-  const tablet = images.missionTablet;
-  const ipadPro = images.missionIpadPro;
-  const laptop = images.missionLaptop;
+  const mobile = images.snatchMobile;
+  const tablet = images.snatchTablet;
+  const ipadPro = images.snatchIpadPro;
+  const laptop = images.snatchLaptop;
 
   const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
   const backgroundReady = useIsBackgroundReady(background);
@@ -74,48 +74,34 @@ const MissionSection = () => {
         {backgroundReady ? (
           <Image fluid={background} />
         ) : (
-          <BackgroundLoaderImage />
+          <BackgroundImageLoader />
         )}
       </BackgroundAsset>
       <ContentWrapper>
-        <Logo />
-        <MissionCopy />
+        <Headline4 />
+        <YouGetBullets />
       </ContentWrapper>
       <BottomDividerMarker />
     </SectionGrid>
   );
 };
 
-export default MissionSection;
+export default YouGetSection;
 
 const ContentWrapper = styled.div`
+  margin: 80px 0 0 0;
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  margin: 120px 0 0 0;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   z-index: 1;
   ${above.mobile`
-    margin: 200px 0 0 0;
-    align-self: start;
-    width: 54%;
+    margin: 170px 0 0 0;
   `}
   ${above.tablet`
-    margin: 200px 0 0 40px;
-    width: 50%;
+    margin: 190px 0 0 120px;
   `}
   ${above.ipadPro`
-    margin: 200px 0 0 180px;
-    width: 40%;
-  `}
-`;
-
-const Logo = styled(FWWLogo)`
-  width: 100px;
-  ${above.mobile`
-    width: 160px;
+    margin: 190px 0 0 300px;
   `}
 `;
 

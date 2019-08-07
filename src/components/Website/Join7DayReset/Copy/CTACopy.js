@@ -4,12 +4,12 @@ import { useStaticQuery, graphql } from "gatsby";
 import { ElementContainer } from "../../../../styles/Containers";
 import { SetBodyText } from "../../../../styles/BodyText";
 
-const HeadlineCopy = () => {
+const CTACopy = () => {
   const query = graphql`
     query {
-      resetHeadlineCTA: file(
+      resetLeadCopy: file(
         sourceInstanceName: { eq: "7DayResetCopy" }
-        name: { eq: "HeadlineCopy" }
+        name: { eq: "CTACopy" }
       ) {
         childMarkdownRemark {
           html
@@ -19,19 +19,13 @@ const HeadlineCopy = () => {
   `;
 
   const copy = useStaticQuery(query);
-  const body = copy.resetHeadlineCTA.childMarkdownRemark.html;
+  const body = copy.resetLeadCopy.childMarkdownRemark.html;
 
   return (
-    <ElementContainer
-      setMobileMarginTop={20}
-      setMobileWidth={"60%"}
-      setTabletWidth={"54%"}
-      setIpadProWidth={"40%"}
-      setLaptopWidth={"34%"}
-    >
+    <ElementContainer setMobileMarginTop={40}>
       <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
     </ElementContainer>
   );
 };
 
-export default HeadlineCopy;
+export default CTACopy;

@@ -10,6 +10,7 @@ import Headline1 from "./Headlines/Headline1";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundLoaderImage from "../../Shared/BackgroundImageLoader";
+import { above } from "../../../styles/Theme";
 
 const HeadlineSection = () => {
   const query = graphql`
@@ -79,7 +80,7 @@ const HeadlineSection = () => {
         <Headline1 />
       </HeadlineWrapper>
       <ButtonWrapper>
-        <ElementContainer>
+        <ElementContainer justifyCenter>
           <InnerButton to={"/"}>Join a Reset Program for FREE!</InnerButton>
         </ElementContainer>
       </ButtonWrapper>
@@ -95,6 +96,15 @@ const HeadlineWrapper = styled.div`
   align-self: start;
   margin: 80px 0 0 16px;
   z-index: 1;
+  ${above.mobile`
+    margin: 220px 0 0 70px;
+  `}
+  ${above.tablet`
+    margin: 220px 0 0 180px;
+  `}
+  ${above.ipadPro`
+    margin: 180px 0 0 340px;
+  `}
 `;
 
 const ButtonWrapper = styled.div`
@@ -104,4 +114,7 @@ const ButtonWrapper = styled.div`
   margin: 0 0 20px 0;
   padding: 0 16px;
   z-index: 1;
+  ${above.mobile`
+    margin: 0 0 60px 0;
+  `}
 `;

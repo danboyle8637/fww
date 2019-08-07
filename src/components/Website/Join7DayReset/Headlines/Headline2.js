@@ -19,9 +19,11 @@ const Headline2 = () => {
       <Header3 upper mobileLarge primary>
         Workout
       </Header3>
-      <Header3 upper mobileLarge primary>
-        Style
-      </Header3>
+      <ElementContainer moveMobileX={10}>
+        <Header3 upper mobileLarge primary>
+          Style
+        </Header3>
+      </ElementContainer>
     </ElementContainer>
   );
 };

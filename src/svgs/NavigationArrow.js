@@ -1,8 +1,32 @@
-import React from "react"
+import React, { useEffect, useRef } from "react";
+import { TweenMax } from "gsap/TweenMax";
 
-const NavigationArrow = ({ width, height, className }) => {
+const NavigationArrow = ({ width, height, className, isFAQOpen }) => {
+  const arrowRef = useRef(null);
+
+  useEffect(() => {
+    const arrow = arrowRef.current;
+
+    if (isFAQOpen) {
+      TweenMax.to(arrow, 0.3, {
+        transformOrigin: "50% 50%",
+        rotation: 90,
+      });
+    } else {
+      TweenMax.to(arrow, 0.2, {
+        transformOrigin: "50% 50%",
+        rotation: -180,
+      });
+    }
+
+    return () => {
+      TweenMax.killTweensOf(arrow);
+    };
+  }, [isFAQOpen]);
+
   return (
     <svg
+      ref={arrowRef}
       id="navigation-arrow"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -31,7 +55,7 @@ const NavigationArrow = ({ width, height, className }) => {
         fill="url(#navigationGradient)"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default NavigationArrow
+export default NavigationArrow;

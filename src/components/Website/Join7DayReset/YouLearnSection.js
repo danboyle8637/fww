@@ -15,7 +15,7 @@ const YouLearnSection = () => {
       <ContentContainer>
         <YouLearnCopy />
         <Headline3 />
-        <ElementContainer setMobileMarginTop={40}>
+        <ElementContainer justifyCenter setMobileMarginTop={40}>
           <InnerButton to={"/"}>Join A Reset Program For Free!</InnerButton>
         </ElementContainer>
       </ContentContainer>

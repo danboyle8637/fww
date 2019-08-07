@@ -11,12 +11,20 @@ const Headline1 = () => {
         Reset
       </Header1>
       <ElementContainer column moveMobileX={3}>
-        <Header1 mobileSmall secondary>
+        <Header1
+          mobileSmall
+          tabletMedium
+          secondary
+          setTLineHeight={1.4}
+          setIpadLineHeight={1.4}
+          setLLineHeight={1.4}
+        >
           how you
         </Header1>
         <Header1
           upper
           mobileMedium
+          tabletLarge
           primary
           setMLineHeight={1.4}
           setTLineHeight={1.4}
@@ -25,12 +33,13 @@ const Headline1 = () => {
         >
           Workout
         </Header1>
-        <Header1 upper mobileMedium secondary>
+        <Header1 upper mobileMedium tabletLarge secondary>
           Burn Fat
         </Header1>
         <Header1
           upper
           mobileMedium
+          tabletLarge
           primary
           setMLineHeight={1.4}
           setTLineHeight={1.4}
@@ -39,7 +48,7 @@ const Headline1 = () => {
         >
           Get Strong
         </Header1>
-        <Header1 upper mobileMedium secondary>
+        <Header1 upper mobileMedium tabletLarge secondary>
           & Stay Fit
         </Header1>
       </ElementContainer>

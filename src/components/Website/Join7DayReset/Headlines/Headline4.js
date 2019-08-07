@@ -1,30 +1,28 @@
+// You Get Section Headline
 import React from "react";
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header3 } from "../../../../styles/Headlines";
 
-const Headline3 = () => {
+const Headline4 = () => {
   return (
-    <ElementContainer column setMobileMarginTop={60}>
-      <Header3 mobileSmall tabletMedium primary>
-        But it depends on which
+    <ElementContainer column>
+      <Header3 upper mobileMedium tabletLarge primary>
+        Every Workout
       </Header3>
       <Header3
-        mobileMedium
-        tabletLarge
+        mobileSmall
+        tabletMedium
         secondary
         setMLineHeight={1.4}
         setTLineHeight={1.4}
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        Reset Program
-      </Header3>
-      <Header3 mobileMedium tabletLarge secondary>
-        YOU Choose
+        comes with:
       </Header3>
     </ElementContainer>
   );
 };
 
-export default Headline3;
+export default Headline4;
