@@ -1,22 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import { TweenMax } from "gsap/TweenMax";
 
-const NavigationArrow = ({ width, height, className, isFAQOpen }) => {
+const NavigationArrow = ({ width, height, className, isFAQOpen, isFAQ }) => {
   const arrowRef = useRef(null);
 
   useEffect(() => {
     const arrow = arrowRef.current;
 
-    if (isFAQOpen) {
-      TweenMax.to(arrow, 0.3, {
-        transformOrigin: "50% 50%",
-        rotation: 90,
-      });
-    } else {
-      TweenMax.to(arrow, 0.2, {
-        transformOrigin: "50% 50%",
-        rotation: -180,
-      });
+    if (isFAQ) {
+      if (isFAQOpen) {
+        TweenMax.to(arrow, 0.3, {
+          transformOrigin: "50% 50%",
+          rotation: 90,
+        });
+      } else {
+        TweenMax.to(arrow, 0.2, {
+          transformOrigin: "50% 50%",
+          rotation: -180,
+        });
+      }
     }
 
     return () => {

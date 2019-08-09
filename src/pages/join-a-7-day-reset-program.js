@@ -7,6 +7,8 @@ import YouLearnSection from "../components/Website/Join7DayReset/YouLearnSection
 import YouGetSection from "../components/Website/Join7DayReset/YouGetSection";
 import CTASection from "../components/Website/Join7DayReset/CTASection";
 import FAQSection from "../components/Website/Join7DayReset/FAQSection";
+import { faqState, reducer } from "../reducers/faqReducer";
+import { FAQStore } from "../context/FAQContext";
 
 const JoinA7DayResetProgram = () => {
   return (
@@ -17,7 +19,9 @@ const JoinA7DayResetProgram = () => {
       <YouLearnSection />
       <YouGetSection />
       <CTASection />
-      <FAQSection />
+      <FAQStore initialState={faqState} reducer={reducer}>
+        <FAQSection />
+      </FAQStore>
     </>
   );
 };

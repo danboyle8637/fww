@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { TweenMax } from "gsap/TweenMax";
 
 import { ElementContainer } from "../../../styles/Containers";
 import FormCheck from "../../../svgs/FormCheck";

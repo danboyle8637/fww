@@ -4,6 +4,8 @@ import styled from "styled-components";
 import VimeoPlayer from "../../Shared/VimeoPlayer";
 import { Header1 } from "../../../../styles/Headlines";
 import { BodyText } from "../../../../styles/BodyText";
+import { ElementContainer } from "../../../../styles/Containers";
+import { BaseContainer } from "../../../../styles/App";
 import WorkoutCircuitIcon from "../../../../svgs/WorkoutCircuitIcon";
 import Workout from "../../../../content/Firestore/hold-it-1-workout.json";
 import { above } from "../../../../styles/Theme";
@@ -29,16 +31,22 @@ const WorkoutDetails = () => {
   });
 
   return (
-    <>
+    <BaseContainer>
       <VimeoPlayer ref={videoRef} videoId={videoId} />
       <WorkoutSectionContainer>
         <Header1 upper mobileMedium primary tabletLarge>
           {Workout.title}
         </Header1>
-        <BodyText setMobileMarginTop={20}>{Workout.description}</BodyText>
+        <ElementContainer
+          alignSelfCenter
+          setMobileWidth={"400px"}
+          setLaptopWidth={"400px"}
+        >
+          <BodyText setMobileMarginTop={20}>{Workout.description}</BodyText>
+        </ElementContainer>
         <WorkokutContainer>{workoutBreakdown}</WorkokutContainer>
       </WorkoutSectionContainer>
-    </>
+    </BaseContainer>
   );
 };
 

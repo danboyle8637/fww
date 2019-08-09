@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { BaseContainer } from "../../styles/App";
 import CoachingVideo from "./WorkoutPage/CoachingVideo";
 import WorkoutVideo from "./WorkoutPage/WorkoutVideo";
 import WarmCoolVideos from "./WorkoutPage/WarmCoolVideos";
@@ -12,7 +13,7 @@ import { above } from "../../styles/Theme";
 
 const Workout = () => {
   return (
-    <WorkoutContainer>
+    <BaseContainer>
       <CoachingVideo />
       <WorkoutVideo />
       <WarmCoolVideos />
@@ -24,20 +25,11 @@ const Workout = () => {
         <CompleteWorkout />
         <DownloadWorkout />
       </CompleteWorkoutWrapper>
-    </WorkoutContainer>
+    </BaseContainer>
   );
 };
 
 export default Workout;
-
-const WorkoutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  ${above.ipadPro`
-    padding: 0 0 120px 0;
-  `}
-`;
 
 const WorkoutTrackingWrapper = styled.div`
   margin: 80px 0 0 0;

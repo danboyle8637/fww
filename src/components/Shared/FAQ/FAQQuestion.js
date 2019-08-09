@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { TweenMax } from "gsap/TweenMax";
 import faqAni from "../../../Animations/Tweens/faqAni";
-
+import { useFAQContext } from "../../../context/FAQContext";
 import NavigationArrow from "../../../svgs/NavigationArrow";
 
 const FAQQuestions = ({ q, a }) => {
@@ -10,6 +10,8 @@ const FAQQuestions = ({ q, a }) => {
   const [answerHeight, setAnswerHeight] = useState(0);
   const questionRef = useRef(null);
   const answerRef = useRef(null);
+  // eslint-disable-next-line
+  const [faqState, dispatch] = useFAQContext();
 
   useEffect(() => {
     const question = questionRef.current;
@@ -28,6 +30,19 @@ const FAQQuestions = ({ q, a }) => {
 
     if (isOpen) {
       faqAni(question, answer, answerHeight, isOpen);
+
+      if (faqState.isOpen) {
+        dispatch({ type: "closeAndClearPreviousQuestion" });
+      }
+
+      dispatch({
+        type: "setPreviousQuestion",
+        value: {
+          prevQuestion: question,
+          prevAnswer: answer,
+          answerHeight: answerHeight,
+        },
+      });
     } else {
       faqAni(question, answer, answerHeight, isOpen);
     }
@@ -40,7 +55,7 @@ const FAQQuestions = ({ q, a }) => {
   return (
     <FAQContainer ref={questionRef} onClick={handleFAQClick} isOpen={isOpen}>
       <FAQQuestionText>{q}</FAQQuestionText>
-      <FAQArrow isFAQOpen={isOpen} />
+      <FAQArrow isFAQ={true} isFAQOpen={isOpen} />
       <FAQAnswerText ref={answerRef} dangerouslySetInnerHTML={{ __html: a }} />
     </FAQContainer>
   );

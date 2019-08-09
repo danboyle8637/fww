@@ -12,11 +12,19 @@ const faqAni = (question, answer, answerHeight, isOpen) => {
         height: answerHeight,
         ease: Power2.easeOut,
       },
-      "-=0.1"
+      "-=0.01"
     )
       .to(
-        answer,
+        question,
         0.2,
+        {
+          gap: "16px",
+        },
+        "-=0.1"
+      )
+      .to(
+        answer,
+        0.1,
         {
           y: 0,
           autoAlpha: 1,
@@ -27,7 +35,6 @@ const faqAni = (question, answer, answerHeight, isOpen) => {
       .to(question, 0.2, {
         color: "#545885",
         borderColor: "#474EDD",
-        gap: "16px",
         ease: Power2.easeOut,
       });
   };
@@ -39,14 +46,13 @@ const faqAni = (question, answer, answerHeight, isOpen) => {
       {
         color: "#B3B6E1",
         borderColor: "#26243E",
-        gap: 0,
         ease: Power2.easeOut,
       },
       "-=0.1"
     )
       .to(
         answer,
-        0.2,
+        0.1,
         {
           y: -20,
           autoAlpha: 0,
@@ -54,9 +60,17 @@ const faqAni = (question, answer, answerHeight, isOpen) => {
         },
         "-=0.01"
       )
-      .to(answer, 0.5, {
-        height: 0,
-        ease: Power2.easeOut,
+      .to(
+        answer,
+        0.5,
+        {
+          height: 0,
+          ease: Power2.easeOut,
+        },
+        "-=0.01"
+      )
+      .to(question, 0.2, {
+        gap: 0,
       });
   };
 

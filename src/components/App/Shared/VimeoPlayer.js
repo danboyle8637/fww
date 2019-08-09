@@ -9,6 +9,7 @@ const VimeoPlayer = forwardRef(({ children, videoId }, ref) => {
       responsive: true,
       controls: true,
     });
+    
     player.on("play", () => {
       console.log("playing video!");
     });
