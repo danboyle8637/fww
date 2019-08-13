@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import { InnerButton } from "../../../styles/Buttons";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -76,27 +75,12 @@ const PictureMiddleSection = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
-      <ContentWrapper>
-        <InnerButton to={"/"}>Join the Ignite 7 Day Reset</InnerButton>
-      </ContentWrapper>
       <BottomDivider />
     </SectionGrid>
   );
 };
 
 export default PictureMiddleSection;
-
-const ContentWrapper = styled.div`
-  margin: 0 0 80px 0;
-  padding: 0 16px;
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  z-index: 2;
-`;
 
 const TopDivider = styled(DividerMarkerTriangle)`
   position: absolute;

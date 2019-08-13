@@ -23,7 +23,11 @@ const KBClinicCopy = () => {
 
   return (
     <ElementContainer setMobileMarginTop={40} setLaptopMarginTop={60}>
-      <SetBodyText setPadding dangerouslySetInnerHTML={{ __html: body }} />
+      <SetBodyText
+        bulletsMarginLeft={40}
+        setPadding
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
     </ElementContainer>
   );
 };

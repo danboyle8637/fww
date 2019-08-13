@@ -37,6 +37,14 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
           html
         }
       }
+      bbcVideoMessage: file(
+        sourceInstanceName: { eq: "BBCCopy" }
+        name: { eq: "VideoMessage" }
+      ) {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   `;
 
@@ -44,9 +52,15 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
   const bbc = videoLink.bbcWorkoutPreview.childMarkdownRemark.html;
   const strong = videoLink.strongWorkoutPreview.childMarkdownRemark.html;
   const ignite = videoLink.igniteVideoPreview.childMarkdownRemark.html;
+  const videoMessage = videoLink.bbcVideoMessage.childMarkdownRemark.html;
 
   return (
     <SectionContainer>
+      {program === "bbc" ? (
+        <BodyBurnVideoMessage
+          dangerouslySetInnerHTML={{ __html: videoMessage }}
+        />
+      ) : null}
       <VideoWrapper>
         {program === "ignite" ? (
           <VideoWrapper dangerouslySetInnerHTML={{ __html: ignite }} />
@@ -74,7 +88,7 @@ const VideoWrapper = styled.div`
   padding: 0;
   width: 100%;
   max-width: 50rem;
-  box-shadow: 0 3px 16px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
   ${above.tablet`
     border-radius: 8px;
     & iframe {
@@ -83,5 +97,20 @@ const VideoWrapper = styled.div`
   `}
   & p {
     display: none;
+  }
+`;
+
+const BodyBurnVideoMessage = styled.div`
+  margin: 0 16px 30px 16px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: ${props => props.theme.mainBackgroundBorderColor};
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  max-width: 50rem;
+  & p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: ${props => props.theme.bodyText};
   }
 `;

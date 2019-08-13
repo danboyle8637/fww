@@ -22,7 +22,7 @@ const BBCCard = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+            presentationWidth
           }
         }
       }
@@ -33,7 +33,7 @@ const BBCCard = () => {
         childImageSharp {
           fluid(maxWidth: 864, maxHeight: 600, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+            presentationWidth
           }
         }
       }
@@ -44,7 +44,7 @@ const BBCCard = () => {
         childImageSharp {
           fluid(maxWidth: 864, maxHeight: 420, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
+            presentationWidth
           }
         }
       }
@@ -116,7 +116,7 @@ const CardGrid = styled.div`
   border-radius: 12px;
   width: 90%;
   height: 90%;
-  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 3px 3px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   ${above.mobile`
     margin: 0 0 40px 0;

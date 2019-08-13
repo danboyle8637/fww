@@ -18,7 +18,7 @@ const ProgressLoader = ({ width, height, className, gradientId }) => {
     const tl = new TimelineMax({ paused: false });
 
     if (runAnimation) {
-      tl.to(loaderBar, 4, {
+      tl.to(loaderBar, 8, {
         drawSVG: "100%",
         ease: Power4.easeOut,
       });

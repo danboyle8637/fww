@@ -13,21 +13,34 @@ const Headline3 = () => {
         Part 2:
       </Header3>
       <Logo />
-      <Header3 tertiary mobileMedium>
-        Workouts
-      </Header3>
+      <WorkoutsWrapper>
+        <Header3 tertiary mobileMedium>
+          Workouts
+        </Header3>
+      </WorkoutsWrapper>
     </ElementContainer>
   );
 };
 
 export default Headline3;
 
+const WorkoutsWrapper = styled.div`
+  ${above.mobile`
+    transform: translateY(-40px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-50px);
+  `}
+`;
+
 const Logo = styled(StrongLogo)`
   width: 330px;
   ${above.mobile`
     width: 480px;
+    transform: translateY(-30px);
   `}
   ${above.tablet`
     width: 540px;
+    transform: translateY(-35px);
   `}
 `;

@@ -23,7 +23,11 @@ const LeadCopy = () => {
 
   return (
     <ElementContainer setMobileMarginTop={40} setLaptopMarginTop={60}>
-      <SetBodyText setPadding dangerouslySetInnerHTML={{ __html: body }} />
+      <SetBodyText
+        setPadding
+        bulletsMarginLeft={40}
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
     </ElementContainer>
   );
 };

@@ -10,8 +10,6 @@ const AppLayout = ({ children }) => {
 export default AppLayout;
 
 const Layout = styled.main`
-  margin-top: 78px;
-  margin-bottom: 120px;
   background-color: ${props => props.theme.mainBackgroundColor};
   width: 100%;
   max-width: 1200px;
@@ -19,12 +17,18 @@ const Layout = styled.main`
   ${above.tablet`
   `}
   ${above.ipadPro`
+    margin-top: 78px;
+    margin-bottom: 120px;
     border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
     border-radius: 20px;
   `}
   ${above.laptop`
+    
   `}
   ${above.ultraWide`
     margin-bottom: 200px;
   `}
 `;
+
+//
+// margin-bottom: 120px;

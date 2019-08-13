@@ -23,6 +23,7 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
+            presentationWidth
           }
         }
       }
@@ -33,6 +34,7 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
+            presentationWidth
           }
         }
       }
@@ -43,6 +45,7 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 1024, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
+            presentationWidth
           }
         }
       }
@@ -53,6 +56,7 @@ const Kindal = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
+            presentationWidth
           }
         }
       }
@@ -73,7 +77,11 @@ const Kindal = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal smiling with her arms crossed."
+            title="Kindal smiling with her arms crossed."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

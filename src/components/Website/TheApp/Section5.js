@@ -8,6 +8,7 @@ import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
 import DividerMarker2 from "../../../svgs/DividerMarker2";
+import NutrionLabel from "./NutritionLabel/NutritionLabel";
 import { above } from "../../../styles/Theme";
 
 const Section5 = () => {
@@ -67,12 +68,23 @@ const Section5 = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
+      <ContentWrapper>
+        <NutrionLabel />
+      </ContentWrapper>
       <BottomDivider />
     </SectionGrid>
   );
 };
 
 export default Section5;
+
+const ContentWrapper = styled.div`
+  margin: 50px 0 0 0;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  align-items: start;
+  z-index: 1;
+`;
 
 const TopDivider = styled(DividerMarker2)`
   position: absolute;

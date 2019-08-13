@@ -31,6 +31,7 @@ const SetBodyText = styled.div`
   & li {
     position: relative;
     margin-bottom: ${props => props.mBottom || "30px"};
+    margin-left: ${props => `${props.bulletsMarginLeft}px` || 0};
     color: ${props => props.theme.bodyText};
     &::before {
       position: absolute;

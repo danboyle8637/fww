@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 import {
   SectionContainer,
@@ -13,9 +14,11 @@ import LocationDot from "../../Shared/LocationDot";
 import AboveCardSwipe from "../../Shared/AboveCardsSwipe";
 import DraggableRow from "../../../Animations/Tweens/DraggableRow";
 import { useActiveCardContext } from "../../../context/ActiveSlideContext";
+import ScreenWidthContext from "../../../context/ScreenWidthContext";
 
 const DanQuestions = () => {
   const [{ activeCard }, dispatch] = useActiveCardContext();
+  const device = useContext(ScreenWidthContext);
 
   useEffect(() => {
     dispatch({ type: "setActiveCard", value: 3.5 });
@@ -58,16 +61,22 @@ const DanQuestions = () => {
       <ContentContainer>
         <div id="get-to-know-dan" />
         <Headline4 />
-        <AboveCardSwipe />
-        <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
-        <ElementContainer justifyCenter setMobileMarginTop={40}>
-          <LocationDot active={activeCard >= 2.5 ? true : false} />
-          <LocationDot active={activeCard === 1.5 ? true : false} />
-          <LocationDot active={activeCard === 0.5 ? true : false} />
-          <LocationDot active={activeCard === -0.5 ? true : false} />
-          <LocationDot active={activeCard === -1.5 ? true : false} />
-          <LocationDot active={activeCard <= -2.5 ? true : false} />
-        </ElementContainer>
+        {device === "laptop" || device === "ultraWide" ? (
+          <LaptopCardWrapper>{cards}</LaptopCardWrapper>
+        ) : (
+          <>
+            <AboveCardSwipe />
+            <DraggableRow numberOfCards={6}>{cards}</DraggableRow>
+            <ElementContainer justifyCenter setMobileMarginTop={40}>
+              <LocationDot active={activeCard >= 2.5 ? true : false} />
+              <LocationDot active={activeCard === 1.5 ? true : false} />
+              <LocationDot active={activeCard === 0.5 ? true : false} />
+              <LocationDot active={activeCard === -0.5 ? true : false} />
+              <LocationDot active={activeCard === -1.5 ? true : false} />
+              <LocationDot active={activeCard <= -2.5 ? true : false} />
+            </ElementContainer>
+          </>
+        )}
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/"}>Read My Origin Story</InnerButton>
         </ElementContainer>
@@ -77,3 +86,11 @@ const DanQuestions = () => {
 };
 
 export default DanQuestions;
+
+const LaptopCardWrapper = styled.div`
+  margin: 60px 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  row-gap: 50px;
+`;

@@ -73,7 +73,7 @@ const Dan = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image fluid={background} alt="Dan smiling with arms crossed." title="Dan smiling with arms crossed" />
         ) : (
           <BackgroundImageLoader />
         )}

@@ -1,4 +1,4 @@
-const validate = (value, rules) => {
+const validate = (value, rules, value2 = null) => {
   let isValid = true;
 
   // console.log(`Value: ${value}`)
@@ -23,8 +23,12 @@ const validate = (value, rules) => {
         break;
 
       case "isNumber": {
-        console.log(typeof value);
         isValid = isValid && numberValidator(value);
+        break;
+      }
+
+      case "matchPassword": {
+        isValid = isValid && matchPasswordValidator(value);
         break;
       }
 
@@ -48,5 +52,7 @@ const emailValidator = value => {
 };
 
 const numberValidator = value => !isNaN(value);
+
+const matchPasswordValidator = (value, value2) => value === value2;
 
 export default validate;

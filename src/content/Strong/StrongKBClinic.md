@@ -2,7 +2,7 @@
 id: strong_kb_clinic
 ---
 
-This is an in-depth breakdown of every fundamental kettlebell exercise like the:
+**This is an in-depth breakdown of every fundamental kettlebell exercise like the**:
 
 - Kettlebell deadlift
 - Swing and its variations

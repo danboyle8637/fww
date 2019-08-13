@@ -70,6 +70,7 @@ const DraggableRow = ({ numberOfCards, children }) => {
       return snap;
     } else {
       const snap = Math.round(endValue / screenWidth) * screenWidth;
+      console.log(snap);
       const activeCard = snap / screenWidth;
       dispatch({ type: "setActiveCard", value: activeCard });
       return snap;

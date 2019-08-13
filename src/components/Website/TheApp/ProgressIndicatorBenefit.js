@@ -43,7 +43,7 @@ const ProgressIndicatorBenefit = () => {
   const [setDuration, setMaxCount, setPlay, setCounter, counter] = useCounter();
 
   useEffect(() => {
-    setDuration(10);
+    setDuration(20);
     setMaxCount(100);
   }, []);
 

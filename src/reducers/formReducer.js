@@ -26,6 +26,28 @@ const workoutGoalValidation = {
   isRequired: false,
 };
 
+const passwordValidation = {
+  minLength: 6,
+  // Contains a number
+  // Contains a capital
+  isRequired: true,
+};
+
+const confirmPasswordValidation = {
+  isRequired: true,
+  matchPassword: true,
+};
+
+const usernameValidation = {
+  isRequired: true,
+  maxLength: 16,
+  minLength: 3,
+};
+
+const resetProgramValidation = {
+  isRequired: true,
+};
+
 // Initial Form State
 const formState = {
   firstNameValue: {
@@ -42,6 +64,24 @@ const formState = {
     valid: false,
   },
   emailAddressOptions: {
+    initial: true,
+    touched: false,
+    showInstructions: false,
+  },
+  passwordValue: {
+    value: "",
+    valid: false,
+  },
+  passwordOptions: {
+    initial: true,
+    touched: false,
+    showInstructions: false,
+  },
+  confirmPasswordValue: {
+    value: "",
+    valid: false,
+  },
+  confirmPasswordOptions: {
     initial: true,
     touched: false,
     showInstructions: false,
@@ -81,6 +121,27 @@ const formState = {
     valid: false,
   },
   workoutGoalOptions: {
+    initial: true,
+    touched: false,
+    showInstructions: false,
+  },
+  resetProgramValue: {
+    value: "",
+    valid: false,
+    options: [
+      { value: "ignite_reset", checked: false },
+      { value: "body_burn_reset", checked: false },
+      { value: "strong_reset", checked: false },
+    ],
+  },
+  resetProgramOptions: {
+    initial: true,
+  },
+  usernameValue: {
+    value: "",
+    valid: false,
+  },
+  usernameOptions: {
     initial: true,
     touched: false,
     showInstructions: false,
@@ -127,6 +188,50 @@ const formReducer = (state, action) => {
           initial: false,
           touched: !state.emailAddressOptions.touched,
           showInstructions: !state.emailAddressOptions.showInstructions,
+        },
+      };
+    }
+    case "passwordValue": {
+      const valid = validate(action.value, passwordValidation);
+      return {
+        ...state,
+        passwordValue: {
+          value: action.value,
+          valid: valid,
+        },
+      };
+    }
+    case "passwordOptions": {
+      return {
+        ...state,
+        passwordOptions: {
+          initial: false,
+          touched: !state.passwordOptions.touched,
+          showInstructions: !state.passwordOptions.showInstructions,
+        },
+      };
+    }
+    case "confirmPasswordValue": {
+      const valid = validate(
+        state.value,
+        confirmPasswordValidation,
+        state.passwordValue.value
+      );
+      return {
+        ...state,
+        confirmPasswordValue: {
+          value: state.value,
+          valid: valid,
+        },
+      };
+    }
+    case "confirmPasswordOptions": {
+      return {
+        ...state,
+        confirmPasswordOptions: {
+          initial: false,
+          touched: !state.confirmPasswordOptions.touched,
+          showInstructions: !state.confirmPasswordOptions.showInstructions,
         },
       };
     }
@@ -210,6 +315,64 @@ const formReducer = (state, action) => {
           initial: false,
           touched: !state.workoutGoalOptions.touched,
           showInstructions: !state.workoutGoalOptions.showInstructions,
+        },
+      };
+    }
+    case "resetProgramValue": {
+      const valid = validate(action.value, resetProgramValidation);
+
+      const options = state.resetProgramValue.options.map(option => {
+        if (action.value === option.value) {
+          return {
+            value: option.value,
+            checked: !option.checked,
+          };
+        } else if (option.checked) {
+          return {
+            value: option.value,
+            checked: !option.checked,
+          };
+        } else {
+          return {
+            value: option.value,
+            checked: option.checked,
+          };
+        }
+      });
+      return {
+        ...state,
+        resetProgramValue: {
+          value: action.value,
+          valid: valid,
+          options: options,
+        },
+      };
+    }
+    case "resetProgramOptions": {
+      return {
+        ...state,
+        resetProgramOptions: {
+          initial: false,
+        },
+      };
+    }
+    case "usernameValue": {
+      const valid = validate(action.value, usernameValidation);
+      return {
+        ...state,
+        usernameValue: {
+          value: action.value,
+          valid: valid,
+        },
+      };
+    }
+    case "usernameOptions": {
+      return {
+        ...state,
+        usernameOptions: {
+          initial: false,
+          touched: !state.usernameOptions.touched,
+          showInstructions: !state.usernameOptions.showInstructions,
         },
       };
     }

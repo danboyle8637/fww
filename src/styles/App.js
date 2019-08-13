@@ -15,6 +15,7 @@ const AppContentContainer = styled.div`
   `}
 `;
 
+// Add margin top and bottom to this
 const BaseContainer = styled.div`
   display: flex;
   flex-direction: column;

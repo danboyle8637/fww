@@ -116,7 +116,7 @@ const CardGrid = styled.div`
   width: 90%;
   height: 90%;
   border-radius: 12px;
-  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 3px 3px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   ${above.mobile`
     margin: 0 0 40px 0;
