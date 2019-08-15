@@ -5,54 +5,51 @@ import CaloriesRow from "./CaloriesRow";
 import IngredientRow from "./IngredientRow";
 import { above } from "../../../../styles/Theme";
 
-const NutritionLabel = () => {
+const NutritionLabel = ({ nutrition }) => {
   return (
     <NutritionLabelContainer>
       <BigFoodLabel>Nutrition Facts</BigFoodLabel>
       <LabelGroup>
         <SmallFoodLabel>Servings</SmallFoodLabel>
-        <SmallFoodLabel>1</SmallFoodLabel>
+        <SmallFoodLabel>{nutrition.servings}</SmallFoodLabel>
       </LabelGroup>
       <BoldDividerLine />
       <SmallFoodLabel>Amount per serving</SmallFoodLabel>
-      <CaloriesRow />
+      <CaloriesRow calories={nutrition.calories} />
       <MedDividerLine />
       <SmallFoodLabel right>% Daily Value</SmallFoodLabel>
       <ThinDividerLine />
-      <IngredientRow ingredient={"Total Fat"} amount={23} percent={23} />
-      <ThinDividerLine />
       <IngredientRow
-        indent
-        ingredient={"Saturated Fat"}
-        amount={23}
-        percent={23}
+        ingredient={"Total Fat"}
+        amount={nutrition.totalFat}
+        percent={nutrition.totalFatPercent}
       />
-      <ThinDividerLine />
-      <IngredientRow ingredient={"Cholesterol"} amount={23} percent={23} />
-      <ThinDividerLine />
-      <IngredientRow ingredient={"Sodium"} amount={23} percent={23} />
       <ThinDividerLine />
       <IngredientRow
         ingredient={"Total Carbohydrate"}
-        amount={23}
-        percent={23}
+        amount={nutrition.carbohydrate}
+        percent={nutrition.carbohydratePercent}
       />
       <ThinDividerLine />
       <IngredientRow
         indent
         ingredient={"Dietary Fiber"}
-        amount={23}
-        percent={23}
+        amount={nutrition.dietaryFiber}
+        percent={nutrition.dietaryFiberPercent}
       />
       <ThinDividerLine />
       <IngredientRow
         indent
         ingredient={"Total Sugars"}
-        amount={23}
-        percent={23}
+        amount={nutrition.sugar}
+        percent={"-"}
       />
       <ThinDividerLine />
-      <IngredientRow ingredient={"Protein"} amount={23} percent={23} />
+      <IngredientRow
+        ingredient={"Protein"}
+        amount={nutrition.protein}
+        percent={"-"}
+      />
     </NutritionLabelContainer>
   );
 };
@@ -67,11 +64,11 @@ const NutritionLabelContainer = styled.div`
   grid-template-rows: auto;
   row-gap: 2px;
   width: 100%;
-  max-width: 22rem;
   background: rgba(25, 25, 28, 0.8);
   border-radius: 8px;
   ${above.mobile`
     row-gap: 4px;
+    width: 22rem;
   `}
 `;
 

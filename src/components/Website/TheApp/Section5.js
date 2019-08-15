@@ -1,125 +1,105 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
-import Image from "gatsby-image";
+import { TweenMax, Power2 } from "gsap/TweenMax";
+import TimelineMax from "gsap/TimelineMax";
 
-import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
-import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
-import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
-import DividerMarker2 from "../../../svgs/DividerMarker2";
-import NutrionLabel from "./NutritionLabel/NutritionLabel";
-import { above } from "../../../styles/Theme";
+import Slide1 from "./NutritionSlider/Slide1";
+import Slide2 from "./NutritionSlider/Slide2";
+import Slide3 from "./NutritionSlider/Slide3";
+import Slide4 from "./NutritionSlider/Slide4";
+import SliderButtons from "./NutritionSlider/SliderButtons";
 
 const Section5 = () => {
-  const query = graphql`
-    query {
-      nutritionMobile: file(
-        sourceInstanceName: { eq: "NutritionImages" }
-        name: { eq: "steak-salad-600x1300" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
-        }
-      }
-      nutritionTablet: file(
-        sourceInstanceName: { eq: "NutritionImages" }
-        name: { eq: "steak-salad-834x1112" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
-        }
-      }
-      nutritionLaptop: file(
-        sourceInstanceName: { eq: "NutritionImages" }
-        name: { eq: "steak-salad-1440x900" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
-            ...GatsbyImageSharpFluid
-            aspectRatio
-          }
-        }
-      }
+  const [disableNext, setDisableNext] = useState(false);
+  const [disablePrev, setDisablePrev] = useState(true);
+  const [currentRecipe, setCurrentRecipe] = useState(0);
+  const [recipes, setRecipes] = useState([]);
+  const slide0Ref = useRef(null);
+  const slide1Ref = useRef(null);
+  const slide2Ref = useRef(null);
+  const slide3Ref = useRef(null);
+  const nextTlRef = useRef(new TimelineMax());
+  const prevTlRef = useRef(new TimelineMax());
+
+  useEffect(() => {
+    const slide0 = slide0Ref.current;
+    const slide1 = slide1Ref.current;
+    const slide2 = slide2Ref.current;
+    const slide3 = slide3Ref.current;
+
+    setRecipes([slide0, slide1, slide2, slide3]);
+
+    TweenMax.set([slide1, slide2, slide3], { x: "100%" });
+  }, []);
+
+  useEffect(() => {
+    if (currentRecipe === 3) {
+      setDisableNext(true);
     }
-  `;
 
-  const images = useStaticQuery(query);
-  const mobile = images.nutritionMobile;
-  const tablet = images.nutritionTablet;
-  const laptop = images.nutritionLaptop;
+    if (currentRecipe === 0) {
+      setDisablePrev(true);
+    }
+  }, [currentRecipe]);
 
-  const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
-  const backgroundReady = useIsBackgroundReady(background);
+  const handleSlide = action => {
+    const nextTl = nextTlRef.current;
+    const prevTl = prevTlRef.current;
+
+    if (action === "next" && currentRecipe < 3) {
+      nextTl
+        .to(recipes[currentRecipe], 1, { x: "-100%", ease: Power2.easeOut })
+        .to(
+          recipes[currentRecipe + 1],
+          1,
+          { x: "0%", ease: Power2.easeOut },
+          "-=1"
+        );
+      setCurrentRecipe(c => c + 1);
+      setDisablePrev(false);
+      return;
+    }
+
+    if (action === "prev" && currentRecipe > 0) {
+      prevTl
+        .to(recipes[currentRecipe], 1, { x: "100%", ease: Power2.easeOut })
+        .to(
+          recipes[currentRecipe - 1],
+          1,
+          { x: "0%", ease: Power2.easeOut },
+          "-=1"
+        );
+      setCurrentRecipe(c => c - 1);
+      setDisableNext(false);
+      return;
+    }
+  };
+
+  console.log(`Current Recipe: ${currentRecipe}`);
+  console.log(`Disable Previous Button: ${disablePrev}`);
+  console.log(`Disable Next Button: ${disableNext}`);
 
   return (
-    <SectionGrid>
-      <TopDivider />
-      <BackgroundAsset>
-        {backgroundReady ? (
-          <Image fluid={background} />
-        ) : (
-          <BackgroundImageLoader />
-        )}
-      </BackgroundAsset>
-      <ContentWrapper>
-        <NutrionLabel />
-      </ContentWrapper>
-      <BottomDivider />
-    </SectionGrid>
+    <SliderContainer>
+      <Slide1 ref={slide0Ref} />
+      <Slide2 ref={slide1Ref} />
+      <Slide3 ref={slide2Ref} />
+      <Slide4 ref={slide3Ref} />
+      <SliderButtons
+        handleSlide={handleSlide}
+        disablePrev={disablePrev}
+        disableNext={disableNext}
+      />
+    </SliderContainer>
   );
 };
 
 export default Section5;
 
-const ContentWrapper = styled.div`
-  margin: 50px 0 0 0;
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  align-items: start;
-  z-index: 1;
-`;
-
-const TopDivider = styled(DividerMarker2)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(-30px);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-30px);
-  `}
-  ${above.tablet`
-    transform: translateY(-40px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-70px);
-  `}
-`;
-
-const BottomDivider = styled(DividerMarker2)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(10px) rotate(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(10px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(30px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(60px) rotate(180deg);
-  `}
+const SliderContainer = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
 `;

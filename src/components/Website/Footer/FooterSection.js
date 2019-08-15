@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 import FWWLogo from "../../../svgs/FWWLogo";
 import FooterNavMenu from "./FooterNavMenu";
@@ -12,7 +13,9 @@ const FooterSection = () => {
   return (
     <FooterContainer>
       <FooterDivider fill={"#26243E"} />
-      <Logo />
+      <Link to={"/"}>
+        <Logo />
+      </Link>
       <FooterNavMenu />
       <SocialIcons />
       <FooterAddress />

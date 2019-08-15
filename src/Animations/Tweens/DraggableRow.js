@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import "../../greensock/ThrowPropsPlugin";
 import { useActiveCardContext } from "../../context/ActiveSlideContext";
-import { above } from "../../styles/Theme";
 
 const DraggableRow = ({ numberOfCards, children }) => {
   const [screenWidth, setScreenWidth] = useState(0);

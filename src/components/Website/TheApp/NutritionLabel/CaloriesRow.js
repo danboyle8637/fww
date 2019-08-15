@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import { above } from "../../../../styles/Theme";
 
-const CaloriesRow = () => {
+const CaloriesRow = ({ calories }) => {
   return (
     <CalorieRowContainer>
       <BigFoodLabel>Calories</BigFoodLabel>
-      <BigFoodLabel>876g</BigFoodLabel>
+      <BigFoodLabel>{calories}g</BigFoodLabel>
     </CalorieRowContainer>
   );
 };

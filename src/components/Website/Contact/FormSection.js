@@ -6,7 +6,7 @@ import {
   ContentContainer,
   ElementContainer,
 } from "../../../styles/Containers";
-import { OutterButton } from "../../../styles/Buttons";
+import { FormButton } from "../../../styles/Buttons";
 import TextInput from "../../Shared/Form/TextInput";
 import TextArea from "../../Shared/Form/TextArea";
 import RadioInput from "../../Shared/Form/RadioInput";
@@ -83,9 +83,9 @@ const FormSection = () => {
             onBlur={updateFormOptions}
           />
           <ElementContainer justifyCenter>
-            <OutterButton type="submit" disabled onClick={handleFormSubmit}>
+            <FormButton type="submit" onClick={handleFormSubmit}>
               Help Me Kindal!
-            </OutterButton>
+            </FormButton>
           </ElementContainer>
         </ContactForm>
       </ContentContainer>
