@@ -19,8 +19,12 @@ const FormSection = () => {
   const [formState, dispatch] = useFormStore();
   const { updateFormValue, updateFormOptions } = useContactFormControls();
 
-  const handleFormSubmit = () => {
-    console.log("Form needs to be submitted!");
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    console.log(`Name: ${formState.firstNameValue.value}`);
+    console.log(`Email: ${formState.emailAddressValue.value}`);
+    console.log(`Issue: ${formState.howCanIHelpValue.value}`);
+    console.log(`Message: ${formState.tellMeMoreValue.value}`);
   };
 
   return (

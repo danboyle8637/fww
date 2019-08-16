@@ -73,7 +73,6 @@ const Header = ({ location }) => {
   }, [showBackButton]);
 
   const handleBackButtonClick = () => {
-    console.log("Click and set up navigation");
     if (location.pathname.includes("blog") && location.pathname.length > 5) {
       navigate("/blog");
     }
@@ -88,6 +87,14 @@ const Header = ({ location }) => {
 
     if (location.pathname.includes("online-personal-training")) {
       navigate("/beginner-workouts-to-advanced");
+    }
+
+    if (
+      location.pathname.includes("ignite-strength-for-beginners") ||
+      location.pathname.includes("body-burn-challenges") ||
+      location.pathname.includes("strong-kettlebell-training")
+    ) {
+      navigate("/programs");
     }
   };
 

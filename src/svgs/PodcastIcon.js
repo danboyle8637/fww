@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import footerIconAni from "../Animations/Tweens/footerIconAni";
 
-const PodcastIcon = ({ width, height, className }) => {
+const PodcastIcon = ({ width, height, className, fill, stroke }) => {
   const [isClicked, setIsClicked] = useState(false);
   const podcastIconRef = useRef(null);
   const podcastPathRef = useRef(null);
@@ -36,7 +36,7 @@ const PodcastIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 178.42 216.87"
     >
-      <g id="podcast-icon" fill="#5afdf2">
+      <g id="podcast-icon" fill={fill || "#5afdf2"}>
         <circle id="head" cx="89.21" cy="88.32" r="23" />
         <path
           id="body"
@@ -48,7 +48,7 @@ const PodcastIcon = ({ width, height, className }) => {
         id="podcast-rings"
         data-name="podcast-rings"
         fill="none"
-        stroke="#5afdf2"
+        stroke={stroke || "#5afdf2"}
         strokeLinecap="round"
         strokeMiterlimit="10"
       >

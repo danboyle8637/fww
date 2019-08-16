@@ -13,9 +13,9 @@ const FooterSection = () => {
   return (
     <FooterContainer>
       <FooterDivider fill={"#26243E"} />
-      <Link to={"/"}>
+      <LogoLink to={"/"}>
         <Logo />
-      </Link>
+      </LogoLink>
       <FooterNavMenu />
       <SocialIcons />
       <FooterAddress />
@@ -38,6 +38,9 @@ const FooterContainer = styled.footer`
 
 const Logo = styled(FWWLogo)`
   width: 80px;
+`;
+
+const LogoLink = styled(Link)`
   z-index: 2;
 `;
 
