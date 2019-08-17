@@ -63,7 +63,11 @@ const KindalAlex = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal and Alex celebrating a great workout together"
+            title="Kindal and Alex celebrating a great workout together"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

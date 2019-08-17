@@ -31,7 +31,9 @@ const EndSection = () => {
       <ContentContainer>
         <SetBodyText dangerouslySetInnerHTML={{ __html: body }} />
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          <InnerButton to={"/"}>Signup for a Reset Program</InnerButton>
+          <InnerButton to={"/join-a-7-day-reset-program"}>
+            Signup for a Reset Program
+          </InnerButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

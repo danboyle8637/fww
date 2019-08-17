@@ -10,6 +10,7 @@ const AlertIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 184.03 162.89"
     >
+      <title>Alert Icon</title>
       <defs>
         <linearGradient
           id="alertPointGradient"

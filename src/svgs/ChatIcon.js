@@ -10,6 +10,7 @@ const ChatIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 197.48 148.21"
     >
+      <title>Chat Icon</title>
       <defs>
         <linearGradient
           id="chatDotGradient1"

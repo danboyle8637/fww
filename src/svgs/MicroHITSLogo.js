@@ -10,6 +10,7 @@ const MicroHITSLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 448.27 142.48"
     >
+      <title>Micro High Intensity Training Sessions Logo</title>
       <defs>
         <linearGradient
           id="micorHITSGradient"

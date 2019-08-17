@@ -87,17 +87,6 @@ const WorkoutTimerIcon = ({ width, height, className, timerId }) => {
       }
     }
 
-    // tl.to(shortWorkoutTimer, 2, {
-    //   drawSVG: "0%",
-    // }).to(
-    //   longWorkoutTimer,
-    //   2,
-    //   {
-    //     drawSVG: "0%",
-    //   },
-    //   "-=1.2"
-    // );
-
     return () => {
       tl.kill(null, longWorkoutTimer);
       tl.kill(null, shortWorkoutTimer);
@@ -114,6 +103,7 @@ const WorkoutTimerIcon = ({ width, height, className, timerId }) => {
       height={height}
       viewBox="0 0 246 249"
     >
+      <title>Workout Timer</title>
       <path
         ref={longWorkoutTimeRef}
         id="longer-workout"

@@ -6,7 +6,6 @@ import Image from "gatsby-image";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
-import DividerMarker2 from "../../../../svgs/DividerMarker2";
 import NutrionLabel from "../NutritionLabel/NutritionLabel";
 import { above } from "../../../../styles/Theme";
 
@@ -79,10 +78,13 @@ const Slide4 = forwardRef((props, ref) => {
 
   return (
     <NutritionGrid ref={ref}>
-      <TopDivider />
       <NutritionBackground>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Egg breakfast sandwich with low carb bun"
+            title="Egg breakfast sandwich with low carb bun"
+          />
         ) : (
           <BackgroundImageLoader />
         )}
@@ -90,7 +92,6 @@ const Slide4 = forwardRef((props, ref) => {
       <ContentWrapper>
         <NutrionLabel nutrition={info} />
       </ContentWrapper>
-      <BottomDivider />
     </NutritionGrid>
   );
 });
@@ -135,43 +136,5 @@ const ContentWrapper = styled.div`
   ${above.ipadPro`
     justify-self: center;
     transform: translateX(-140px);
-  `}
-`;
-
-const TopDivider = styled(DividerMarker2)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(-30px);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-30px);
-  `}
-  ${above.tablet`
-    transform: translateY(-40px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-70px);
-  `}
-`;
-
-const BottomDivider = styled(DividerMarker2)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(10px) rotate(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(10px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(30px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(60px) rotate(180deg);
   `}
 `;

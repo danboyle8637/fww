@@ -51,7 +51,6 @@ const MicroHITSection = () => {
             />
           </ElementContainer>
         </HeadlineContainer>
-
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/beginner-workouts-to-advanced"}>
             What's your fitness level?

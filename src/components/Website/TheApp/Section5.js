@@ -8,6 +8,9 @@ import Slide2 from "./NutritionSlider/Slide2";
 import Slide3 from "./NutritionSlider/Slide3";
 import Slide4 from "./NutritionSlider/Slide4";
 import SliderButtons from "./NutritionSlider/SliderButtons";
+import DividerMarker2 from "../../../svgs/DividerMarker2";
+import PlanSmartEatRealLogo from "../../../svgs/PlanSmartEatRealLogo";
+import { above } from "../../../styles/Theme";
 
 const Section5 = () => {
   const [disableNext, setDisableNext] = useState(false);
@@ -30,6 +33,12 @@ const Section5 = () => {
     setRecipes([slide0, slide1, slide2, slide3]);
 
     TweenMax.set([slide1, slide2, slide3], { x: "100%" });
+
+    return () => {
+      TweenMax.killTweensOf([slide0, slide1, slide2, slide3]);
+      nextTlRef.current.kill();
+      prevTlRef.current.kill();
+    };
   }, []);
 
   useEffect(() => {
@@ -52,12 +61,11 @@ const Section5 = () => {
         .to(
           recipes[currentRecipe + 1],
           1,
-          { x: "0%", ease: Power2.easeOut },
+          { x: "0%", ease: Power2.easeInOut },
           "-=1"
         );
       setCurrentRecipe(c => c + 1);
       setDisablePrev(false);
-      return;
     }
 
     if (action === "prev" && currentRecipe > 0) {
@@ -66,30 +74,28 @@ const Section5 = () => {
         .to(
           recipes[currentRecipe - 1],
           1,
-          { x: "0%", ease: Power2.easeOut },
+          { x: "0%", ease: Power2.easeInOut },
           "-=1"
         );
       setCurrentRecipe(c => c - 1);
       setDisableNext(false);
-      return;
     }
   };
 
-  console.log(`Current Recipe: ${currentRecipe}`);
-  console.log(`Disable Previous Button: ${disablePrev}`);
-  console.log(`Disable Next Button: ${disableNext}`);
-
   return (
     <SliderContainer>
+      <TopDivider />
       <Slide1 ref={slide0Ref} />
       <Slide2 ref={slide1Ref} />
       <Slide3 ref={slide2Ref} />
       <Slide4 ref={slide3Ref} />
+      <PSERBackground />
       <SliderButtons
         handleSlide={handleSlide}
         disablePrev={disablePrev}
         disableNext={disableNext}
       />
+      <BottomDivider />
     </SliderContainer>
   );
 };
@@ -102,4 +108,56 @@ const SliderContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   overflow: hidden;
+`;
+
+const PSERBackground = styled(PlanSmartEatRealLogo)`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: center;
+  align-self: center;
+  width: 200px;
+  z-index: 0;
+  ${above.mobile`
+    width: 400px;
+  `}
+`;
+
+const TopDivider = styled(DividerMarker2)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180%;
+  z-index: 2;
+  transform: translateY(-30px);
+  pointer-events: none;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(-30px);
+  `}
+  ${above.tablet`
+    transform: translateY(-40px);
+  `}
+  ${above.ipadPro`
+    transform: translateY(-70px);
+  `}
+`;
+
+const BottomDivider = styled(DividerMarker2)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 180%;
+  z-index: 2;
+  transform: translateY(10px) rotate(180deg);
+  pointer-events: none;
+  ${above.mobile`
+    width: 100%;
+    transform: translateY(10px) rotate(180deg);
+  `}
+  ${above.tablet`
+    transform: translateY(30px) rotate(180deg);
+  `}
+  ${above.ipadPro`
+    transform: translateY(60px) rotate(180deg);
+  `}
 `;

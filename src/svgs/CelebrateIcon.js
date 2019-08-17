@@ -10,6 +10,7 @@ const CelebrateIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 136.09 189.32"
     >
+      <title>Celebrate Icon</title>
       <defs>
         <linearGradient
           id="clankGradient1"

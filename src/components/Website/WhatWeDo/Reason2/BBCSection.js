@@ -70,7 +70,11 @@ const BBCSection = () => {
     <SectionGrid>
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal going hardcore while doing a pushup"
+            title="Kindal going hardcore while doing a pushup"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

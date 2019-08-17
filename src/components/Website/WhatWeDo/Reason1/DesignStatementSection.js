@@ -76,7 +76,11 @@ const DesignStatementSection = () => {
       <DividerTop />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal jumping rope and looking cool"
+            title="Kindal jumping rope and looking cool"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

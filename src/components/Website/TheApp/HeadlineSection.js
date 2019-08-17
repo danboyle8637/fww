@@ -71,7 +71,11 @@ const HeadlineSection = () => {
     <SectionGrid>
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="iPhone with the Fit Women's Weekly logo on it surrouned by some kettlebells and dumbbells."
+            title="iPhone Fit Women's Weekly app"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

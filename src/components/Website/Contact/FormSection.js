@@ -25,6 +25,8 @@ const FormSection = () => {
     console.log(`Email: ${formState.emailAddressValue.value}`);
     console.log(`Issue: ${formState.howCanIHelpValue.value}`);
     console.log(`Message: ${formState.tellMeMoreValue.value}`);
+
+    // Navigate to a thank you page.
   };
 
   return (

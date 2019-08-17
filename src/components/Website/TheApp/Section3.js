@@ -117,7 +117,11 @@ const Section3 = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a double kettlebell alternating keeling press"
+            title="Kindal doing a double kettlebell alternating keeling press"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

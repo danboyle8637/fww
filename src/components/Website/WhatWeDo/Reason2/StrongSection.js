@@ -72,7 +72,11 @@ const StrongSection = () => {
       <Divider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a kneeling double kettlebell press"
+            title="Kindal doing a kneeling double kettlebell press"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

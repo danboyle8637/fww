@@ -72,7 +72,11 @@ const IgniteSection = () => {
       <Divider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a crab tripod exercise"
+            title="Kindal doing a crab tripod exercise"
+          />
         ) : (
           <BackgroundImageLoader />
         )}
