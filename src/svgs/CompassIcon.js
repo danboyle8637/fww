@@ -10,6 +10,7 @@ const CompassIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 195 195"
     >
+      <title>Compass Navigation Icon</title>
       <defs>
         <linearGradient
           id="compassGradient"

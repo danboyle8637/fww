@@ -49,6 +49,7 @@ const InstagramIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 222 222"
     >
+      <title>Instagram Icon</title>
       <rect
         ref={instagramPathRef}
         id="camera-outline"

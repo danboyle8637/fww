@@ -10,6 +10,7 @@ const BlogIntensityIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 104 175"
     >
+      <title>Workout Intensity Tip Icon</title>
       <defs>
         <linearGradient
           id="blogIntensityIconGradient"

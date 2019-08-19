@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const FWWLogo = ({ width, height, className }) => {
   return (
@@ -10,6 +10,7 @@ const FWWLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 904.95 519.34"
     >
+      <title>Fit Women's Weekly Logo</title>
       <defs>
         <linearGradient
           id="w6-gradient"
@@ -149,7 +150,7 @@ const FWWLogo = ({ width, height, className }) => {
         id="f"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default FWWLogo
+export default FWWLogo;

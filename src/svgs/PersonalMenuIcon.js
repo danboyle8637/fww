@@ -10,6 +10,7 @@ const PersonalMenuIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 242.79 223.06"
     >
+      <title>Personal Menu Icon</title>
       <defs>
         <linearGradient
           id="aniMenuLineGradient1"

@@ -12,6 +12,7 @@ const TrainingPlanIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 218 217.87"
     >
+      <title>Training Plan Icon</title>
       <g id="calendar-gradient">
         <rect
           x="7.5"

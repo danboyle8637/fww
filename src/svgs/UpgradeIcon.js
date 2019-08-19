@@ -10,6 +10,7 @@ const UpgradeIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 208.76 217"
     >
+      <title>Upgrades Icon</title>
       <defs>
         <linearGradient
           id="upgradeArrowGradient1"

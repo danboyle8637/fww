@@ -38,6 +38,7 @@ const FollowYouTube = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 600 279.93"
     >
+      <title>Follow My YouTube Channel Animation</title>
       <defs>
         <linearGradient
           id="followYouTubeGradient"

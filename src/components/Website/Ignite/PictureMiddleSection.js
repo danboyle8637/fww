@@ -70,7 +70,11 @@ const PictureMiddleSection = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a standing bent over row with a band for Ignite."
+            title="Bent over row with band."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

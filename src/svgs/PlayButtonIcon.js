@@ -10,6 +10,7 @@ const PlayButtonIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 370.13 421.58"
     >
+      <title>Play Button Icon</title>
       <defs>
         <linearGradient
           id="verticalPlayBarGradient"

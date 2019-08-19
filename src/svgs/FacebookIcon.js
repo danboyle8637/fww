@@ -43,6 +43,7 @@ const FacebookIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 222 222"
     >
+      <title>Facebook Icon</title>
       <path
         ref={facebookPathRef}
         id="icon"

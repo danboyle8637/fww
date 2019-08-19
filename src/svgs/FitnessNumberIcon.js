@@ -14,6 +14,7 @@ class FitnessNumberIcon extends Component {
         height={height}
         viewBox="0 0 224.17 225.53"
       >
+        <title>Your Fitness Number Icon</title>
         <path
           fill="none"
           stroke="#545885"

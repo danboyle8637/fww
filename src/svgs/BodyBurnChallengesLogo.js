@@ -13,6 +13,7 @@ class BodyBurnChallengesLogo extends Component {
         height={height}
         viewBox="0 0 473.35 95.67"
       >
+        <title>Body Burn Challenges Logo</title>
         <defs>
           <linearGradient
             id="burnGradient"

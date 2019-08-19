@@ -70,7 +70,11 @@ const PictureMiddleSection = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a bodyweight split squat from a box."
+            title="Bodyweight split squat."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

@@ -52,6 +52,7 @@ const ChatTextIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 286.53 177.64"
     >
+      <title>Text Message Icon</title>
       <path
         id="word-bubble"
         d="M226 38.36H74.5A67.5 67.5 0 0 0 7 105.86v12.64A67.5 67.5 0 0 0 74.5 186h126.34C212 204 256 216 256 216c-12.24-7.34-14.35-24.67-10.12-33a67.53 67.53 0 0 0 47.65-64.53v-12.61A67.5 67.5 0 0 0 226 38.36z"

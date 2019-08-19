@@ -60,6 +60,7 @@ class DraggableLocationDot extends Component {
         height={height}
         viewBox="0 0 89 124.1"
       >
+        <title>Draggable Indicator Icon</title>
         <g id="active-dot">
           <path
             ref={this.setKettlebellRef}

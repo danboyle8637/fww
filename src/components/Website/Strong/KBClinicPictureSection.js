@@ -71,7 +71,11 @@ const KBClinicPictureSection = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a single arm kettlebell swing."
+            title="Single arm kettlebell swing."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

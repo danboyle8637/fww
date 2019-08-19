@@ -71,7 +71,11 @@ const HeadlineSection = () => {
     <SectionGrid>
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a tough exercise called the beast squat."
+            title="The beast squat."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

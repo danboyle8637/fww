@@ -44,6 +44,7 @@ const ProgressLoader = ({ width, height, className, gradientId }) => {
       height={height}
       viewBox="0 0 171 171"
     >
+      <title>Progress Loader</title>
       <defs>
         <linearGradient
           id={`progressLoaderGradient${gradientId}`}

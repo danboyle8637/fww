@@ -54,6 +54,17 @@ const SetBodyText = styled.div`
   & strong {
     color: ${props => props.theme.strongBodyText};
   }
+  & h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: ${props => props.theme.secondaryAccent};
+  }
+  & h4 {
+    margin: 60px 0 20px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: ${props => props.theme.tertiaryAccent};
+  }
 `;
 
 export { BodyText, SetBodyText };

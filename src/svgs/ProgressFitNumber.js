@@ -50,6 +50,7 @@ const ProgressFitNumber = ({
       height={height}
       viewBox="0 0 171 171"
     >
+      <title>Fitness Number Loader</title>
       <defs>
         <linearGradient
           id={`fitNumberGradient${gradientId}`}

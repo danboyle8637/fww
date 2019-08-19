@@ -10,6 +10,7 @@ const DoubleTroubleLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 450.21 211.17"
     >
+      <title>Double Trouble Program Logo</title>
       <defs>
         <linearGradient
           id="troubleGradient"

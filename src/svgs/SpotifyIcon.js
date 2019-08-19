@@ -10,6 +10,7 @@ const SpotifyIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 204 204"
     >
+      <title>Spotify Icon</title>
       <circle id="circle" cx="102" cy="102" r="102" fill="#f8f8f8" />
       <path
         id="top-line"

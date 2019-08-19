@@ -118,6 +118,7 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
       height={height}
       viewBox="0 0 275 79"
     >
+      <title>Swipe Indicator</title>
       <g id="swipe" fill={swipeFill || "#4d5d7e"}>
         <path
           ref={letterSRef}

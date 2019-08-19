@@ -10,6 +10,7 @@ const BodyBurnResetLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 420 157.71"
     >
+      <title>7 Day Body Burn Reset Logo</title>
       <defs>
         <linearGradient
           id="bodyBurnResetGradient"

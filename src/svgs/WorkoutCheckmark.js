@@ -47,6 +47,7 @@ const WorkoutCheckmark = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 241 241"
     >
+      <title>Workout Checkmark Icon</title>
       <path
         d="M125.38 25.87a100.5 100.5 0 1 1-100.5 100.5 100.51 100.51 0 0 1 100.5-100.5m0-20a120.51 120.51 0 0 0-85.21 205.71A120.5 120.5 0 0 0 210.59 41.17a119.72 119.72 0 0 0-85.21-35.3z"
         transform="translate(-4.88 -5.87)"

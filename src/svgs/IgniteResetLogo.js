@@ -9,6 +9,7 @@ const IgniteResetLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 420 157.71"
     >
+      <title>Ignite Reset Program Logo</title>
       <defs>
         <linearGradient
           id="sevenDayIgniteFlameGradient1"

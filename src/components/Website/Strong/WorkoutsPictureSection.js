@@ -71,7 +71,11 @@ const WorkoutsPictureSection = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a kneeling inverted kettlbell press complex."
+            title="Kneeling inverted kettlbell press complex."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

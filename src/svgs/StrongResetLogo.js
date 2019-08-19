@@ -12,6 +12,7 @@ const StrongResetLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 416.63 156.44"
     >
+      <title>7 Day Strong Reset Program Logo</title>
       <path
         d="M157.28 133.25l-55.9 123.64H63.81l57.73-125.28H43V101h114.28z"
         transform="translate(-42.96 -100.99)"

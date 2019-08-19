@@ -11,6 +11,7 @@ const InternalLinkIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 74.72 77.98"
     >
+      <title>Internal Site Link Icon</title>
       <path
         d="M42.04 55.75L27.9 69.89a14 14 0 0 1-19.8 0 14 14 0 0 1 0-19.8l14.14-14.14a14 14 0 0 1 19.8 0"
         fill="none"

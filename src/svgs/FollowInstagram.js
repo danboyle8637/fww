@@ -38,6 +38,7 @@ const FollowInstagram = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 600.01 280"
     >
+      <title>Follow Me On Instagram Animation</title>
       <defs>
         <linearGradient
           id="followInstagramGradient"

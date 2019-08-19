@@ -87,6 +87,7 @@ class MainMenuIcon extends Component {
         height={height}
         viewBox="0 0 282.5 209.36"
       >
+        <title>Main Menu Icon</title>
         <g
           id="close-menu-icon"
           fill="#fff"

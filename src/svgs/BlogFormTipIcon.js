@@ -9,6 +9,7 @@ const BlogFormTipIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 187.64 115.92"
     >
+      <title>Exercise Form Tip Icon</title>
       <defs>
         <linearGradient
           id="linear-gradient"

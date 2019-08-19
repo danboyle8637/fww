@@ -10,6 +10,7 @@ const ExerciseDatabaseIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 217.64 222.64"
     >
+      <title>Exercise Database Icon</title>
       <defs>
         <linearGradient
           id="exerciseBoxGradient1"

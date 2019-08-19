@@ -72,7 +72,11 @@ const StrongCard = () => {
     <CardContainer>
       <CardGrid>
         {backgroundReady ? (
-          <StrongBackground fluid={background} />
+          <StrongBackground
+            fluid={background}
+            alt="Kindal doing a turkish get up with a kettlebell."
+            title="Kindal doing a turkish get up with a kettlebell."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

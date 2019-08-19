@@ -37,6 +37,7 @@ const YouTubeIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 218.74 150.5"
     >
+      <title>YouTube Icon</title>
       <rect
         id="background"
         width="218.74"

@@ -16,7 +16,9 @@ const ResetSection = () => {
         <Headline3 />
         <ResetCopy />
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          <InnerButton to={"/"}>Sign Up for the 7 Day BBC Reset</InnerButton>
+          <InnerButton to={"/join-a-7-day-reset-program"}>
+            Sign Up for the 7 Day BBC Reset
+          </InnerButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

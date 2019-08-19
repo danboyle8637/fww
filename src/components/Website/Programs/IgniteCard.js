@@ -72,7 +72,11 @@ const IgniteProgramCard = () => {
     <CardContainer>
       <CardGrid>
         {backgroundReady ? (
-          <IgniteBackground fluid={background} />
+          <IgniteBackground
+            fluid={background}
+            alt="Kindal doing an elevated pushup off of a box."
+            title="Kindal doing an elevated pushup off of a box."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

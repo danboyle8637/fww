@@ -72,7 +72,11 @@ const BBCCard = () => {
     <CardContainer>
       <CardGrid>
         {backgroundReady ? (
-          <BBCBackground fluid={background} />
+          <BBCBackground
+            fluid={background}
+            alt="Kindal doing an exercise called a beast squat."
+            title="Kindal doing an exercise called a beast squat."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

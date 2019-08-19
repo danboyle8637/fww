@@ -10,6 +10,7 @@ const BlogShamelessPlugIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 151.97 176.5"
     >
+      <title>Shameless Plug Icon</title>
       <defs>
         <linearGradient
           id="shamelessPlugGradient"

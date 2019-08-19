@@ -10,6 +10,7 @@ const KettlebellHeartIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 136.39 187.6"
     >
+      <title>Kettlebell Heart Icon</title>
       <defs>
         <linearGradient
           id="kbHeartGradient1"

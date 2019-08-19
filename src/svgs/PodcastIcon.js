@@ -36,6 +36,7 @@ const PodcastIcon = ({ width, height, className, fill, stroke }) => {
       height={height}
       viewBox="0 0 178.42 216.87"
     >
+      <title>Podcast Icon</title>
       <g id="podcast-icon" fill={fill || "#5afdf2"}>
         <circle id="head" cx="89.21" cy="88.32" r="23" />
         <path

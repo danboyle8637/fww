@@ -10,6 +10,7 @@ const GooglePodcastIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 206.6 211.58"
     >
+      <title>Google Podcast App Icon</title>
       <path
         fill="none"
         stroke="#f8f8f8"

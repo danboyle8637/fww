@@ -72,7 +72,11 @@ const YouGetSection = () => {
       <TopDividerMarker />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal at the top of a kettlebell snatch exercise."
+            title="The top of a kettlebell snatch exercise."
+          />
         ) : (
           <BackgroundImageLoader />
         )}

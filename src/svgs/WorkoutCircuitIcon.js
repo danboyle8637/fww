@@ -10,6 +10,7 @@ const WorkoutCircuitIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 143 105.02"
     >
+      <title>Workout Circuit Icon</title>
       <path
         id="kettlebellCircuitIcon"
         d="M97.79 95.61c1.26.12 2.52.19 3.81.19a38.4 38.4 0 0 0 4-76.6 30.75 30.75 0 1 0-42.27 41.31 38 38 0 0 0 .67 4.44m14.47-49.62a18.31 18.31 0 0 1 12.71 5.08 38.48 38.48 0 0 0-26.31 25.74 18.4 18.4 0 0 1 13.6-30.82z"

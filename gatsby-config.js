@@ -157,6 +157,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `LegalCopy`,
+        path: `${__dirname}/src/content/Legal`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `Firestore`,
         path: `${__dirname}/src/content/Firestore`,
       },

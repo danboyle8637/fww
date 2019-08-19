@@ -10,6 +10,7 @@ const PenIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 211.85 206.15"
     >
+      <title>Pen Icon</title>
       <defs>
         <linearGradient
           id="penUtilGradient1"

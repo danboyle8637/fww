@@ -74,7 +74,9 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
       </VideoWrapper>
       <ContentContainer>
         <ElementContainer justifyCenter setMobileMarginTop={40}>
-          <InnerButton to={"/"}>{buttonText}</InnerButton>
+          <InnerButton to={"/join-a-7-day-reset-program"}>
+            {buttonText}
+          </InnerButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

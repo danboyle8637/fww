@@ -10,6 +10,7 @@ const IphoneX = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 479.91 952.91"
     >
+      <title>Iphone X Icon</title>
       <rect
         id="iphone-x-body"
         x="7.73"

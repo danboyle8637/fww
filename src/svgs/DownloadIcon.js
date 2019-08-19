@@ -10,6 +10,7 @@ const DownloadIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 261.26 223.33"
     >
+      <title>Download Training Plan Icon</title>
       <defs>
         <linearGradient
           id="downloadIconGradient"

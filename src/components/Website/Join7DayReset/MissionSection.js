@@ -72,7 +72,11 @@ const MissionSection = () => {
       <TopDividerMarker />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal flexing looking strong and incontrol of her body."
+            title="Kindal flexing looking strong."
+          />
         ) : (
           <BackgroundLoaderImage />
         )}

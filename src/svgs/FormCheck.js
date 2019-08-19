@@ -35,6 +35,7 @@ const FormCheck = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 163.92 126.59"
     >
+      <title>Check Icon</title>
       <path
         ref={checkRef}
         id="check"

@@ -106,6 +106,7 @@ const MoreIcon = ({ width, height, className, detailsOpen }) => {
       height={height}
       viewBox="0 0 184.5 52"
     >
+      <title>More Content Icon</title>
       <path
         ref={closeLeftCrossRef}
         fill="#19191c"

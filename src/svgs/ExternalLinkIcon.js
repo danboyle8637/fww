@@ -10,6 +10,7 @@ const ExternalLinkIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 83 83"
     >
+      <title>External Link Icon</title>
       <path
         id="box"
         d="M77 43.44V59a18.05 18.05 0 0 1-18 18H24A18.05 18.05 0 0 1 6 59V24A18.05 18.05 0 0 1 24 6h13.71"

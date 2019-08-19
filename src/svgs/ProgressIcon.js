@@ -49,6 +49,7 @@ const ProgressIcon = ({
       height={height}
       viewBox="0 0 219.2 219.2"
     >
+      <title>Progress Icon</title>
       <defs>
         <linearGradient
           id={gradientId}

@@ -10,6 +10,7 @@ const SpoonForkKnifeIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 154.1 214.96"
     >
+      <title>Spoon Fork and Knife Icon</title>
       <defs>
         <linearGradient
           id="spoonGradient"

@@ -38,6 +38,7 @@ const FollowPodcast = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 600 280"
     >
+      <title>Subscribe to My Podcast Animation</title>
       <defs>
         <linearGradient
           id="followPodcastGradient"

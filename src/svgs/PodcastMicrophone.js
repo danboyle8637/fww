@@ -10,6 +10,7 @@ const PodcastMicrophone = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 276.5 432.5"
     >
+      <title>Podcast Microphone Icon</title>
       <g id="mic-head" fill="none" stroke="#2b2c3a" strokeMiterlimit="10">
         <rect
           id="microphone-head"

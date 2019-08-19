@@ -13,6 +13,7 @@ class StrongLogo extends Component {
         height={height}
         viewBox="0 0 480.23 140.11"
       >
+        <title>Strong Program Logo</title>
         <defs>
           <linearGradient
             id="strGradient"

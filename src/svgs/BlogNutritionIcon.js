@@ -10,6 +10,7 @@ const BlogNutritionIcon = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 146.3 146.08"
     >
+      <title>Nutrition Tips and Tricks Icon</title>
       <defs>
         <linearGradient
           id="blogNutritionIconGradient"

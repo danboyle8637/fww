@@ -36,6 +36,7 @@ const NavigationArrow = ({ width, height, className, isFAQOpen, isFAQ }) => {
       height={height}
       viewBox="0 0 132.74 221.35"
     >
+      <title>Navigation Arrow Icon</title>
       <defs>
         <linearGradient
           id="navigationGradient"

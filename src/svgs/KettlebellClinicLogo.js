@@ -10,6 +10,7 @@ const KettlebellClinicLogo = ({ width, height, className }) => {
       height={height}
       viewBox="0 0 451.35 127.54"
     >
+      <title>Kettlebell Clinic Program Logo</title>
       <defs>
         <linearGradient
           id="kettlebellGradient"

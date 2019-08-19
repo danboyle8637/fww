@@ -62,7 +62,11 @@ const PictureEndSection = () => {
       <TopDivider />
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} />
+          <Image
+            fluid={background}
+            alt="Kindal doing a seated double handed row with a band."
+            title="Banded seated row."
+          />
         ) : (
           <BackgroundImageLoader />
         )}
