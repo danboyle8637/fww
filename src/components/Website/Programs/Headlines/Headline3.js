@@ -7,7 +7,7 @@ const Headline3 = () => {
   return (
     <ElementContainer column>
       <Header3 upper mobileLarge primary>
-        Challenge
+        Premium
       </Header3>
       <Header3
         mobileMedium

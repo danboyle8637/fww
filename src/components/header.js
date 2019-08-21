@@ -108,7 +108,9 @@ const Header = ({ location }) => {
           <BackButton />
         </BackButtonBackground>
       ) : null}
-      <Link to={"/"}>{showLogo ? <Logo /> : null}</Link>
+      <Link to={"/"}>
+        {showLogo ? <Logo showBackButton={showBackButton} /> : null}
+      </Link>
       <MenuChicklet />
     </HeaderBar>
   );
@@ -132,10 +134,10 @@ const HeaderBar = styled.header`
 const Logo = styled(FWWLogo)`
   width: 4rem;
   ${above.mobile`
-    width: 4.5rem;
+    width: ${props => (props.showBackButton ? "3rem" : "4.5rem")};
   `}
   ${above.tablet`
-    width: 5rem;
+    width: ${props => (props.showBackButton ? "3rem" : "5rem")};
   `}
 `;
 

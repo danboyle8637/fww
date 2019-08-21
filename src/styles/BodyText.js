@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { setMargin } from "./Reusables";
+import { above } from "../styles/Theme";
 
 const sharedBodyText = css`
   margin: 0 0 20px 0;
@@ -10,6 +11,9 @@ const sharedBodyText = css`
   &:last-child {
     margin-bottom: 0;
   }
+  ${above.mobile`
+    font-size: 16px;
+  `}
 `;
 
 const BodyText = styled.p`

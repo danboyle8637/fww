@@ -139,6 +139,7 @@ const ContentContainer = styled.div`
 `;
 
 const HeadlineContainer = styled.div`
+  ${setMargin}
   width: ${headlineWidths.mobile};
   ${above.mobile`
     max-width: ${headlineWidths.tablet};

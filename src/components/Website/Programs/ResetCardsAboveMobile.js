@@ -1,16 +1,16 @@
 import React from "react";
 
 import { HeadlineContainer } from "../../../styles/Containers";
-import IgniteCard from "./IgniteCard";
-import BBCCard from "./BBCCard";
-import StrongCard from "./StrongCard";
+import IgniteResetCard from "./Cards/IgniteResetCard";
+import BBCResetCard from "./Cards/BBCResetCard";
+import StrongResetCard from "./Cards/StrongResetCard";
 
 const ProgramsAboveMobile = () => {
   return (
     <HeadlineContainer setTabletMarginTop={60}>
-      <IgniteCard />
-      <BBCCard />
-      <StrongCard />
+      <IgniteResetCard />
+      <BBCResetCard />
+      <StrongResetCard />
     </HeadlineContainer>
   );
 };
