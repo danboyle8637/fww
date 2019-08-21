@@ -14,8 +14,6 @@ const Layout = styled.main`
   width: 100%;
   max-width: 1200px;
   overflow: hidden;
-  ${above.tablet`
-  `}
   ${above.ipadPro`
     margin-top: 78px;
     margin-bottom: 120px;

@@ -10,10 +10,20 @@ import {
   activeCardReducer,
   activeCardState,
 } from "../reducers/activeCardReducer";
+import siteConfig from "../utils/siteConfig";
+import WhatWeDoImage from "../images/FacebookShare/what-we-do-fb-share.jpg";
+import SEO from "../components/seo";
 
 const WhatWeDo = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.whatWeDoPage.title}
+        fbTitle={siteConfig.seo.whatWeDoPage.fbTitle}
+        description={siteConfig.seo.whatWeDoPage.description}
+        url={siteConfig.seo.whatWeDoPage.url}
+        image={WhatWeDoImage}
+      />
       <HeadlineSection />
       <TextMessageSection />
       <ActiveCardStore

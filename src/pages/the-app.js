@@ -9,10 +9,20 @@ import Section4 from "../components/Website/TheApp/Section4";
 import Section5 from "../components/Website/TheApp/Section5";
 import Section6 from "../components/Website/TheApp/Section6";
 import AppBetaSection from "../components/Website/TheApp/AppBetaSection";
+import siteConfig from "../utils/siteConfig";
+import TheAppImage from "../images/FacebookShare/the-app-fb-share.jpg";
+import SEO from "../components/seo";
 
 const TheApp = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.theAppPage.title}
+        fbTitle={siteConfig.seo.theAppPage.fbTitle}
+        description={siteConfig.seo.theAppPage.description}
+        url={siteConfig.seo.theAppPage.url}
+        image={TheAppImage}
+      />
       <HeadlineSection />
       <LeadSection />
       <Section1 />

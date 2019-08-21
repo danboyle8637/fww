@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Fit Women's Weekly`,
     description: `A fresh take on intense workouts and healthy meal planning for modern day, busy women.`,
-    author: `Never Back Down`,
+    author: `Kindal`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -227,12 +227,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-google-cloud-storage`,
-    //   options: {
-    //     key: "123456",
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -242,7 +236,7 @@ module.exports = {
         background_color: `#141414`,
         theme_color: `#8B53F6`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/fww-favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

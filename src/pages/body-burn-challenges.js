@@ -7,10 +7,20 @@ import BenefitsSection from "../components/Website/BodyBurnChallenges/BenefitsSe
 import VideoPreviewSection from "../components/Shared/VideoPreviewSection";
 import ResetSection from "../components/Website/BodyBurnChallenges/ResetSection";
 import PictureEndSection from "../components/Website/BodyBurnChallenges/PictureEndSection";
+import siteConfig from "../utils/siteConfig";
+import BBCImage from "../images/FacebookShare/bbc-fb-share.jpg";
+import SEO from "../components/seo";
 
 const BodyBurnChallenges = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.bodyBurnChallengesPage.title}
+        fbTitle={siteConfig.seo.bodyBurnChallengesPage.fbTitle}
+        description={siteConfig.seo.bodyBurnChallengesPage.description}
+        url={siteConfig.seo.bodyBurnChallengesPage.url}
+        image={BBCImage}
+      />
       <HeadlineSection />
       <LeadSection />
       <PictureMiddleSection />

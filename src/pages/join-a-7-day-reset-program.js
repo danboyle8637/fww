@@ -9,10 +9,20 @@ import CTASection from "../components/Website/Join7DayReset/CTASection";
 import FAQSection from "../components/Website/Join7DayReset/FAQSection";
 import { faqState, reducer } from "../reducers/faqReducer";
 import { FAQStore } from "../context/FAQContext";
+import siteConfig from "../utils/siteConfig";
+import ResetImage from "../images/FacebookShare/reset-fb-share.jpg";
+import SEO from "../components/seo";
 
 const JoinA7DayResetProgram = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.sevenDayResetPage.title}
+        fbTitle={siteConfig.seo.sevenDayResetPage.fbTitle}
+        description={siteConfig.seo.sevenDayResetPage.description}
+        url={siteConfig.seo.sevenDayResetPage.url}
+        image={ResetImage}
+      />
       <HeadlineSection />
       <LeadSection />
       <MissionSection />

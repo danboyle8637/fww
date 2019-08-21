@@ -108,6 +108,9 @@ export const query = graphql`
   query($id: String!) {
     blogPost: sanityBlogPost(id: { eq: $id }) {
       title
+      slug {
+        current
+      }
       author {
         name
         slug {

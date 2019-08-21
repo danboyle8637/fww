@@ -13,10 +13,20 @@ import {
 } from "../reducers/activeCardReducer";
 import { IsTweeningStore } from "../context/IsTweeningContext";
 import { tweeningReducer, tweeningState } from "../reducers/isTweeningReducer";
+import siteConfig from "../utils/siteConfig";
+import AboutImage from "../images/FacebookShare/about-fb-share.jpg";
+import SEO from "../components/seo";
 
 const About = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.aboutPage.title}
+        fbTitle={siteConfig.seo.aboutPage.fbTitle}
+        description={siteConfig.seo.aboutPage.description}
+        url={siteConfig.seo.aboutPage.url}
+        image={AboutImage}
+      />
       <HeadlineSection />
       <LeadSection />
       <Kindal />

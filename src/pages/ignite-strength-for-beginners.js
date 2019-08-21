@@ -7,10 +7,20 @@ import BenefitsSection from "../components/Website/Ignite/BenefitsSection";
 import VideoPreviewSection from "../components/Shared/VideoPreviewSection";
 import ResetSection from "../components/Website/Ignite/ResetSection";
 import PictureEndSection from "../components/Website/Ignite/PictureEndSection";
+import siteConfig from "../utils/siteConfig";
+import IgniteImage from "../images/FacebookShare/ignite-fb-share.jpg";
+import SEO from "../components/seo";
 
 const IgniteStrengthForBeginners = () => {
   return (
     <>
+      <SEO
+        pageTitle={siteConfig.seo.ignitePage.title}
+        fbTitle={siteConfig.seo.ignitePage.fbTitle}
+        description={siteConfig.seo.ignitePage.description}
+        url={siteConfig.seo.ignitePage.url}
+        image={IgniteImage}
+      />
       <HeadlineSection />
       <LeadSection />
       <PictureMiddleSection />

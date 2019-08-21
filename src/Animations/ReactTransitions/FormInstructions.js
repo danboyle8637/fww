@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Transition } from "react-transition-group";
-import { TweenMax, Power2 } from "gsap/TweenMax";
+import { TweenMax } from "gsap/TweenMax";
 
 const FormInstructions = ({ isTouched, isTextArea, children }) => {
   const [yPosition, setYPosition] = useState(-37);
