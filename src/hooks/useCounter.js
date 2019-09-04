@@ -27,7 +27,7 @@ const useCounter = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [counter, play]);
+  }, [counter, play, duration, maxCount]);
 
   return [setDuration, setMaxCount, setPlay, setCounter, counter];
 };

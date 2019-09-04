@@ -59,8 +59,8 @@ export default NagSection;
 const NagCardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  row-gap: 20px;
+  grid-template-rows: 1fr 1fr auto;
+  row-gap: 40px;
   ${above.mobile`
     row-gap: 40px;
   `}

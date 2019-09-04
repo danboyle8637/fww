@@ -38,7 +38,7 @@ const ProgressFitNumber = ({
     return () => {
       tl.kill(null, numberLoader);
     };
-  }, [runAnimation]);
+  }, [runAnimation, fitNumber]);
 
   return (
     <svg

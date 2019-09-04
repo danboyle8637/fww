@@ -45,7 +45,7 @@ const ProgressIndicatorBenefit = () => {
   useEffect(() => {
     setDuration(20);
     setMaxCount(100);
-  }, []);
+  }, [setDuration, setMaxCount]);
 
   useEffect(() => {
     if (runAnimation) {
@@ -53,7 +53,7 @@ const ProgressIndicatorBenefit = () => {
     } else {
       setCounter(0);
     }
-  }, [runAnimation]);
+  }, [runAnimation, setPlay, setCounter]);
 
   return (
     <BenefitGrid>

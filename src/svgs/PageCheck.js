@@ -6,7 +6,7 @@ import useSVGObserver from "../hooks/useSVGObserver";
 const PageCheck = ({ width, height, className }) => {
   const checkRef = useRef(null);
   const [setNode, runAnimation] = useSVGObserver({
-    rootMargin: "0% 0% -20% 0%",
+    rootMargin: "0% 0% -30% 0%",
     threshold: 0.5,
   });
 
@@ -14,15 +14,11 @@ const PageCheck = ({ width, height, className }) => {
     const check = checkRef.current;
 
     checkMarkAni(check, runAnimation, false);
-  }, [runAnimation]);
-
-  useEffect(() => {
-    const check = checkRef.current;
 
     return () => {
       checkMarkAni(check, runAnimation, true);
     };
-  }, []);
+  }, [runAnimation]);
 
   return (
     <svg

@@ -8,9 +8,9 @@ import DrawSVG from "../greensock/DrawSVGPlugin";
 const WorkoutTimerIcon = ({ width, height, className, timerId }) => {
   // eslint-disable-next-line
   const drawSVG = DrawSVG;
-  const [runCount10, setRunCount10] = useState(0);
-  const [runCount20, setRunCount20] = useState(0);
-  const [runCount30, setRunCount30] = useState(0);
+  const [runTimer10, setRunTimer10] = useState(true);
+  const [runTimer20, setRunTimer20] = useState(true);
+  const [runTimer30, setRunTimer30] = useState(true);
   const shortWorkoutTimeRef = useRef(null);
   const longWorkoutTimeRef = useRef(null);
 
@@ -21,67 +21,75 @@ const WorkoutTimerIcon = ({ width, height, className, timerId }) => {
   useEffect(() => {
     const shortWorkoutTimer = shortWorkoutTimeRef.current;
     const longWorkoutTimer = longWorkoutTimeRef.current;
-
     const tl = new TimelineMax();
 
     TweenMax.set(longWorkoutTimer, { drawSVG: "0%" });
     TweenMax.set(shortWorkoutTimer, { drawSVG: "0%" });
 
     if (timerId === 10 && runAnimation) {
-      if (runCount10 < 1) {
-        tl.to(longWorkoutTimer, 2, { drawSVG: "22%" }).to(
+      if (runTimer10) {
+        tl.to(longWorkoutTimer, 2, { drawSVG: "22%", ease: Power2.easeOut }).to(
           shortWorkoutTimer,
           2,
-          { drawSVG: "17%", ease: Power2.easeOut },
+          {
+            drawSVG: "17%",
+            ease: Power2.easeOut,
+            onComplete: () => setRunTimer10(false),
+          },
           "-=1.2"
         );
       } else {
         TweenMax.set(longWorkoutTimer, { drawSVG: "22%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "17%" });
       }
-      setRunCount10(c => c + 1);
     } else {
-      if (runCount10 > 0) {
+      if (!runTimer10) {
         TweenMax.set(longWorkoutTimer, { drawSVG: "22%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "17%" });
       }
     }
 
     if (timerId === 20 && runAnimation) {
-      if (runCount20 < 1) {
+      if (runTimer20) {
         tl.to(longWorkoutTimer, 2, { drawSVG: "52%", ease: Power2.easeOut }).to(
           shortWorkoutTimer,
           2,
-          { drawSVG: "44%", ease: Power2.easeOut },
+          {
+            drawSVG: "44%",
+            ease: Power2.easeOut,
+            onComplete: () => setRunTimer20(false),
+          },
           "-=1.2"
         );
       } else {
         TweenMax.set(longWorkoutTimer, { drawSVG: "52%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "44%" });
       }
-      setRunCount20(c => c + 1);
     } else {
-      if (runCount20 > 0) {
+      if (!runTimer20) {
         TweenMax.set(longWorkoutTimer, { drawSVG: "52%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "44%" });
       }
     }
 
     if (timerId === 30 && runAnimation) {
-      if (runCount30 < 1) {
+      if (runTimer30) {
         tl.to(longWorkoutTimer, 2, { drawSVG: "90%", ease: Power2.easeOut }).to(
           shortWorkoutTimer,
           2,
-          { drawSVG: "82%", ease: Power2.easeOut },
+          {
+            drawSVG: "82%",
+            ease: Power2.easeOut,
+            onComplete: () => setRunTimer30(false),
+          },
           "-=1.2"
         );
       } else {
         TweenMax.set(longWorkoutTimer, { drawSVG: "90%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "82%" });
       }
-      setRunCount30(c => c + 1);
     } else {
-      if (runCount30 > 0) {
+      if (!runTimer30) {
         TweenMax.set(longWorkoutTimer, { drawSVG: "90%" });
         TweenMax.set(shortWorkoutTimer, { drawSVG: "82%" });
       }
@@ -91,7 +99,7 @@ const WorkoutTimerIcon = ({ width, height, className, timerId }) => {
       tl.kill(null, longWorkoutTimer);
       tl.kill(null, shortWorkoutTimer);
     };
-  }, [runAnimation]);
+  }, [runAnimation, timerId, runTimer10, runTimer20, runTimer30]);
 
   return (
     <svg

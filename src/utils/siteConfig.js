@@ -22,7 +22,7 @@ module.exports = {
     coachingGroup: [
       { id: 7, title: "Follow Me", path: "/follow-me" },
       { id: 8, title: "Blog", path: "/blog" },
-      { id: 9, title: "Podcast", path: "/" },
+      { id: 9, title: "Podcast", path: "/podcast-channels" },
     ],
     helpGroup: [
       { id: 10, title: "Contact", path: "/contact" },
@@ -64,7 +64,7 @@ module.exports = {
     group2: [
       { id: 4, path: "/follow-me", name: "follow me" },
       { id: 5, path: "/blog", name: "blog" },
-      { id: 6, path: "/", name: "podcast" },
+      { id: 6, path: "/podcast-channels", name: "podcast" },
     ],
     group3: [
       { id: 7, path: "/programs", name: "programs" },
@@ -72,9 +72,9 @@ module.exports = {
       { id: 9, path: "/contact", name: "contact" },
     ],
     group4: [
-      { id: 10, path: "/", name: "privacy" },
-      { id: 11, path: "/", name: "disclaimer" },
-      { id: 12, path: "/", name: "terms" },
+      { id: 10, path: "/privacy-policy", name: "privacy" },
+      { id: 11, path: "/disclaimer", name: "disclaimer" },
+      { id: 12, path: "/terms-of-use", name: "terms" },
     ],
   },
   seo: {

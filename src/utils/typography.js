@@ -1,7 +1,7 @@
-import Typography from "typography"
+import Typography from "typography";
 
 const fonts = new Typography({
-  headerFontFamily: ["Montserrat", "Avenir Next", "Helvetica Neue"],
+  headerFontFamily: ["Roboto", "Avenir Next", "Helvetica Neue"],
   bodyFontFamily: ["Quicksand", "sans-serif"],
   bodyFontSize: "16px",
   baseLineHeight: 1.8,
@@ -10,6 +10,6 @@ const fonts = new Typography({
   headerWeight: 800,
   bodyWeight: 600,
   omitGoogleFont: true,
-})
+});
 
-export default fonts
+export default fonts;

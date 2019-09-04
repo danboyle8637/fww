@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { navigate } from "gatsby";
 
@@ -7,9 +7,17 @@ import { useMenuContext } from "../../../context/MenuContext";
 import { above } from "../../../styles/Theme";
 
 const MenuItemsGroup = ({ title, menuItems }) => {
-  const [closeMenu, setCloseMenu] = useState(false);
-  // eslint-disable-next-line
   const [menuState, dispatch] = useMenuContext();
+
+  const menuTimeout = () => {
+    const timeoutId = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    });
+
+    return timeoutId;
+  };
 
   const items = menuItems.map(item => {
     const id = item.id;
@@ -45,27 +53,12 @@ const MenuItemsGroup = ({ title, menuItems }) => {
     if (id === 10) navigate(path);
     if (id === 11) navigate(path);
 
-    setCloseMenu(true);
+    menuTimeout()
+      .then(() => {
+        dispatch({ type: "closeMenu" });
+      })
+      .catch(error => console.log(error));
   };
-
-  const menuTimeout = () => {
-    const timeoutId = setTimeout(() => {
-      dispatch({ type: "closeMenu" });
-    }, 300);
-
-    return timeoutId;
-  };
-
-  useEffect(() => {
-    if (closeMenu) {
-      menuTimeout();
-      setCloseMenu(false);
-    }
-
-    return () => {
-      clearTimeout(menuTimeout);
-    };
-  }, [closeMenu]);
 
   return (
     <GroupContainer>

@@ -25,7 +25,7 @@ const ReasonSection = () => {
 
   useEffect(() => {
     dispatch2({ type: "setActiveCard", value: 1 });
-  }, []);
+  }, [dispatch2]);
 
   const query = graphql`
     query {

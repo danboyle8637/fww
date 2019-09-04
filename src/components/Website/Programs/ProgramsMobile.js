@@ -20,7 +20,7 @@ const ProgramsMobile = () => {
 
   useEffect(() => {
     dispatch2({ type: "setActiveCard", value: 1 });
-  }, []);
+  }, [dispatch2]);
 
   return (
     <SectionContainer setMobileMarginTop={"60px"} setMobileMarginBottom={"0"}>

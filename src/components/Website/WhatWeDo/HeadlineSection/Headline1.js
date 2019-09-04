@@ -14,25 +14,19 @@ const Headline1 = () => {
       moveTabletX={160}
       moveLaptopX={400}
     >
-      <Header1 secondary>We're like a</Header1>
       <Header1
-        primary
-        upper
-        mobileLarge
-        setMLineHeight={1.0}
-        setTLineHeight={1.0}
-        setLLineHeight={1.0}
+        secondary
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
       >
+        We're like a
+      </Header1>
+      <Header1 primary upper mobileLarge>
         Personal
       </Header1>
-      <Header1
-        primary
-        upper
-        mobileLarge
-        setMLineHeight={1.0}
-        setTLineHeight={1.0}
-        setLLineHeight={1.0}
-      >
+      <Header1 primary upper mobileLarge>
         Assistant
       </Header1>
       <Header2
@@ -40,6 +34,7 @@ const Headline1 = () => {
         mobileSmall
         setMLineHeight={1.4}
         setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
         (fitness & nutrition style!)

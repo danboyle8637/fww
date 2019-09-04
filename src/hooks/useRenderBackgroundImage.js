@@ -11,23 +11,28 @@ const useRenderBackgroundImage = (
   const device = useContext(ScreenWidthContent);
   const [background, setBackground] = useState({});
 
+  const mobile = mobileBackground.childImageSharp.fluid;
+  const tablet = tabletBackground.childImageSharp.fluid;
+  const ipadPro = ipadProBackground.childImageSharp.fluid;
+  const laptop = desktopBackground.childImageSharp.fluid;
+
   useEffect(() => {
     if (device === "mobile") {
-      setBackground(mobileBackground.childImageSharp.fluid);
+      setBackground(mobile);
     }
 
     if (device === "tablet") {
-      setBackground(tabletBackground.childImageSharp.fluid);
+      setBackground(tablet);
     }
 
     if (device === "ipadPro") {
-      setBackground(ipadProBackground.childImageSharp.fluid);
+      setBackground(ipadPro);
     }
 
     if (device === "laptop" || device === "ultraWide") {
-      setBackground(desktopBackground.childImageSharp.fluid);
+      setBackground(laptop);
     }
-  }, [device]);
+  }, [device, mobile, tablet, ipadPro, laptop]);
 
   return background;
 };

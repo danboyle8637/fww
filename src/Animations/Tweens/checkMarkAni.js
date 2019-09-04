@@ -20,6 +20,19 @@ const checkMarkAni = (checkmark, runAnimation, kill) => {
     );
   }
 
+  if (!runAnimation) {
+    TweenMax.fromTo(
+      checkmark,
+      0.5,
+      {
+        drawSVG: "100% 0%",
+      },
+      {
+        drawSVG: "100% 100%",
+      }
+    );
+  }
+
   if (kill) {
     TweenMax.killTweensOf(checkmark);
   }

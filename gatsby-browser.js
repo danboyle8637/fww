@@ -8,6 +8,7 @@
 
 require("typeface-montserrat");
 require("typeface-quicksand");
+require("typeface-roboto");
 const React = require("react");
 const MainLayout = require("./src/components/Layouts/MainLayout").default;
 

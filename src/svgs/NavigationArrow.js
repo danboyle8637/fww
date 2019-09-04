@@ -24,7 +24,7 @@ const NavigationArrow = ({ width, height, className, isFAQOpen, isFAQ }) => {
     return () => {
       TweenMax.killTweensOf(arrow);
     };
-  }, [isFAQOpen]);
+  }, [isFAQOpen, isFAQ]);
 
   return (
     <svg

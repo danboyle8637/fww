@@ -116,6 +116,31 @@ const formState = {
   howCanIHelpOptions: {
     initial: true,
   },
+  biggestObstacleValue: {
+    value: "",
+    valid: false,
+    options: [
+      { value: "time", displayValue: "Not enough time", checked: false },
+      {
+        value: "intensity",
+        displayValue: "I need more intensity",
+        checked: false,
+      },
+      {
+        value: "coaching",
+        displayValue: "I want more coaching",
+        checked: false,
+      },
+      {
+        value: "mindset",
+        displayValue: "I want to believe in myself",
+        checked: false,
+      },
+    ],
+  },
+  biggestObstacleOptions: {
+    initial: true,
+  },
   workoutGoalValue: {
     value: "",
     valid: false,

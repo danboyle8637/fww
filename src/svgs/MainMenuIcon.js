@@ -51,13 +51,22 @@ class MainMenuIcon extends Component {
       })
       .to(this.menuTopBar, 0.1, {
         morphSVG: this.closeRightCross,
-        stroke: "#B44CFF",
+        stroke: "#5AFDF2",
         ease: Sine.easeOut,
       })
       .to(this.menuBottomBar, 0.1, {
         morphSVG: this.closeLeftCross,
-        stroke: "#B44CFF",
+        stroke: "#5AFDF2",
         ease: Sine.easeOut,
+      })
+      .to([this.menuTopBar, this.menuBottomBar], 0.2, {
+        transformOrigin: "50% 50%",
+        scale: 0.6,
+      })
+      .to([this.menuTopBar, this.menuBottomBar], 0.2, {
+        transformOrigin: "50% 50%",
+        scale: 1,
+        rotation: 360,
       });
   }
 
@@ -85,7 +94,8 @@ class MainMenuIcon extends Component {
         className={className}
         width={width}
         height={height}
-        viewBox="0 0 282.5 209.36"
+        viewBox="0 0 299.5 226.36"
+        // viewBox="0 0 282.5 209.36"
       >
         <title>Main Menu Icon</title>
         <g

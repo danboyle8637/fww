@@ -23,7 +23,7 @@ const KindalQuestions = () => {
 
   useEffect(() => {
     dispatch({ type: "setActiveCard", value: 3.5 });
-  }, []);
+  }, [dispatch]);
 
   const query = graphql`
     query {

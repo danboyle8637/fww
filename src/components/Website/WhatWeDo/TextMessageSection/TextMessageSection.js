@@ -27,7 +27,7 @@ const TextMessageSection = () => {
             I need a healthy, FAST, breakfast
           </TextBubbles>
           <TextBubbles client={false}>
-            The ##### breakfast is perfect. You'll love this!
+            My breakfast sandwich is perfect. You'll love it!
           </TextBubbles>
         </ElementContainer>
         <ElementContainer column setMobileMarginTop={60}>

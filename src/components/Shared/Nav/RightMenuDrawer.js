@@ -14,7 +14,7 @@ const RightMenuDrawer = () => {
   const showRightMenu = (node, done) => {
     TweenMax.fromTo(
       node,
-      0.5,
+      0.3,
       {
         x: "100%",
         onComplete: done,
@@ -27,7 +27,7 @@ const RightMenuDrawer = () => {
   };
 
   const exitRightMenu = (node, done) => {
-    TweenMax.to(node, 0.5, {
+    TweenMax.to(node, 0.3, {
       x: "100%",
       onComplete: done,
     });

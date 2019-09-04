@@ -14,14 +14,14 @@ const TextBubbles = ({ children, client }) => {
   });
 
   useEffect(() => {
-    textMessageAni(textMessageRef.current, client, runAnimation, false);
-  }, [runAnimation, client, textMessageRef]);
+    const textMessage = textMessageRef.current;
 
-  useEffect(() => {
+    textMessageAni(textMessage, client, runAnimation, false);
+
     return () => {
-      textMessageAni(textMessageRef.current, client, runAnimation, true);
+      textMessageAni(textMessage, client, runAnimation, true);
     };
-  }, []);
+  }, [runAnimation, client]);
 
   return (
     <BubbleWrapper ref={setNode} client={client}>

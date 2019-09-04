@@ -15,7 +15,7 @@ const FitNumberCard = ({ fitNumber, description }) => {
   useEffect(() => {
     setDuration(100);
     setMaxCount(fitNumber);
-  }, []);
+  }, [fitNumber, setDuration, setMaxCount]);
 
   useEffect(() => {
     if (runAnimation) {
@@ -23,7 +23,7 @@ const FitNumberCard = ({ fitNumber, description }) => {
     } else {
       setCounter(0);
     }
-  }, [runAnimation]);
+  }, [runAnimation, setPlay, setCounter]);
 
   return (
     <FitNumberContainer ref={setSVGNode}>

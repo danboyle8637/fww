@@ -31,6 +31,9 @@ const useContactFormControls = () => {
         });
         break;
       }
+      case "biggestObstacle": {
+        break;
+      }
       case "tellMeMore": {
         dispatch({
           type: "tellMeMoreValue",
@@ -66,6 +69,9 @@ const useContactFormControls = () => {
       }
       case "howCanIHelp": {
         dispatch({ type: "howCanIHelpOptions" });
+        break;
+      }
+      case "biggestObstacle": {
         break;
       }
       case "tellMeMore": {

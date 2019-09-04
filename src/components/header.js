@@ -50,7 +50,7 @@ const Header = ({ location }) => {
     } else {
       setShowBackButton(false);
     }
-  }, [location]);
+  }, [location, dispatch]);
 
   useEffect(() => {
     const backButton = backButtonRef.current;

@@ -100,13 +100,13 @@ const SwipeDot = ({ width, height, className, swipeFill }) => {
       tl.clear();
       tl.kill();
     };
-  }, [runAnimation]);
+  }, [runAnimation, dispatch]);
 
   useEffect(() => {
     if (tweenCount > 3) {
       dispatch({ type: "toggleTweening" });
     }
-  }, [tweenCount]);
+  }, [tweenCount, dispatch]);
 
   return (
     <svg

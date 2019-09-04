@@ -29,6 +29,8 @@ const Section5 = () => {
     const slide1 = slide1Ref.current;
     const slide2 = slide2Ref.current;
     const slide3 = slide3Ref.current;
+    const nextTl = nextTlRef.current;
+    const prevTl = prevTlRef.current;
 
     setRecipes([slide0, slide1, slide2, slide3]);
 
@@ -36,8 +38,8 @@ const Section5 = () => {
 
     return () => {
       TweenMax.killTweensOf([slide0, slide1, slide2, slide3]);
-      nextTlRef.current.kill();
-      prevTlRef.current.kill();
+      nextTl.kill();
+      prevTl.kill();
     };
   }, []);
 

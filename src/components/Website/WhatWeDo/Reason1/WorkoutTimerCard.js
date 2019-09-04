@@ -34,6 +34,7 @@ const WorkoutTimerCard = ({ timerId, headline, body }) => {
 export default WorkoutTimerCard;
 
 const TimerContainer = styled.div`
+  margin: 0 0 40px 0;
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 20px;
@@ -45,6 +46,9 @@ const TimerContainer = styled.div`
     column-gap: 0px;
     row-gap: 20px;
   `}
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const WorkoutTimer = styled(WorkoutTimerIcon)`

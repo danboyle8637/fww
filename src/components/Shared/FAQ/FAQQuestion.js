@@ -10,7 +10,6 @@ const FAQQuestions = ({ q, a }) => {
   const [answerHeight, setAnswerHeight] = useState(0);
   const questionRef = useRef(null);
   const answerRef = useRef(null);
-  // eslint-disable-next-line
   const [faqState, dispatch] = useFAQContext();
 
   useEffect(() => {
@@ -46,7 +45,7 @@ const FAQQuestions = ({ q, a }) => {
     } else {
       faqAni(question, answer, answerHeight, isOpen);
     }
-  }, [isOpen]);
+  }, [isOpen, dispatch, answerHeight, faqState.isOpen]);
 
   const handleFAQClick = () => {
     setIsOpen(!isOpen);

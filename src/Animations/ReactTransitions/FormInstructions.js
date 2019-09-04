@@ -22,7 +22,7 @@ const FormInstructions = ({ isTouched, isTextArea, children }) => {
             node,
             0.5,
             {
-              x: -300,
+              x: -200,
               y: yPosition,
               autoAlpha: 0,
             },
@@ -35,7 +35,7 @@ const FormInstructions = ({ isTouched, isTextArea, children }) => {
           );
         } else {
           TweenMax.to(node, 0.5, {
-            x: 300,
+            x: 200,
             y: yPosition,
             autoAlpha: 0,
             onComplete: done,

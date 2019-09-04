@@ -14,7 +14,7 @@ const LeftMenuDrawer = () => {
   const showLeftMenu = node => {
     TweenMax.fromTo(
       node,
-      0.5,
+      0.3,
       {
         x: "-100%",
       },
@@ -25,7 +25,7 @@ const LeftMenuDrawer = () => {
   };
 
   const exitLeftMenu = node => {
-    TweenMax.to(node, 0.5, {
+    TweenMax.to(node, 0.3, {
       x: "-100%",
     });
   };

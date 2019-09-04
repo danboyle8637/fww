@@ -161,13 +161,7 @@ const IgniteBackground = styled(Image)`
 `;
 
 const IgniteLogo = styled(Logo)`
-  width: 66%;
-  ${above.mobile`
-    width: 70%;
-  `}
-  ${above.tablet`
-    width: 50%;
-  `}
+  width: 100%;
 `;
 
 const LogoDescriptionWrapper = styled.div`

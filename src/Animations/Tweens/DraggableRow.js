@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Draggable } from "gsap/Draggable";
 import { TweenMax } from "gsap/TweenMax";
 import styled from "styled-components";
@@ -14,11 +14,52 @@ const DraggableRow = ({ numberOfCards, children }) => {
   // eslint-disable-next-line
   const [activeCardState, dispatch] = useActiveCardContext();
 
+  const snapX = useCallback(
+    endValue => {
+      if (numberOfCards % 2 === 0) {
+        let snap;
+
+        if (endValue > 0 && endValue <= prevEndValueRef.current) {
+          snap =
+            Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+        }
+
+        if (endValue > 0 && endValue >= prevEndValueRef.current) {
+          snap =
+            Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
+        }
+
+        if (endValue < 0 && endValue >= prevEndValueRef.current) {
+          snap =
+            Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
+        }
+
+        if (endValue < 0 && endValue <= prevEndValueRef.current) {
+          snap =
+            Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
+        }
+
+        const activeCard = snap / screenWidth;
+        dispatch({ type: "setActiveCard", value: activeCard });
+        prevEndValueRef.current = endValue;
+
+        return snap;
+      } else {
+        const snap = Math.round(endValue / screenWidth) * screenWidth;
+        console.log(snap);
+        const activeCard = snap / screenWidth;
+        dispatch({ type: "setActiveCard", value: activeCard });
+        return snap;
+      }
+    },
+    [dispatch, numberOfCards, screenWidth]
+  );
+
   useEffect(() => {
     const width = window.innerWidth;
     setScreenWidth(width);
     setStartPosition(Math.floor(numberOfCards / 2) * width);
-  }, []);
+  }, [numberOfCards]);
 
   useEffect(() => {
     const draggable = draggableContainerRef.current;
@@ -36,45 +77,7 @@ const DraggableRow = ({ numberOfCards, children }) => {
       edgeResistance: 0.6,
       snap: snapX,
     });
-  }, [startPosition]);
-
-  const snapX = endValue => {
-    if (numberOfCards % 2 === 0) {
-      let snap;
-
-      if (endValue > 0 && endValue <= prevEndValueRef.current) {
-        snap =
-          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
-      }
-
-      if (endValue > 0 && endValue >= prevEndValueRef.current) {
-        snap =
-          Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
-      }
-
-      if (endValue < 0 && endValue >= prevEndValueRef.current) {
-        snap =
-          Math.round(endValue / screenWidth) * screenWidth + screenWidth / 2;
-      }
-
-      if (endValue < 0 && endValue <= prevEndValueRef.current) {
-        snap =
-          Math.round(endValue / screenWidth) * screenWidth - screenWidth / 2;
-      }
-
-      const activeCard = snap / screenWidth;
-      dispatch({ type: "setActiveCard", value: activeCard });
-      prevEndValueRef.current = endValue;
-
-      return snap;
-    } else {
-      const snap = Math.round(endValue / screenWidth) * screenWidth;
-      console.log(snap);
-      const activeCard = snap / screenWidth;
-      dispatch({ type: "setActiveCard", value: activeCard });
-      return snap;
-    }
-  };
+  }, [startPosition, snapX]);
 
   return (
     <DraggableContainer ref={draggableContainerRef}>

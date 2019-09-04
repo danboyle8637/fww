@@ -39,7 +39,7 @@ const MenuMarkerBorder = () => {
   const showBorder = (node, isAppearing) => {
     TweenMax.fromTo(
       node,
-      0.5,
+      0.3,
       {
         x: `-${x}%`,
       },
@@ -50,7 +50,7 @@ const MenuMarkerBorder = () => {
   };
 
   const exitBorder = node => {
-    TweenMax.to(node, 0.5, {
+    TweenMax.to(node, 0.3, {
       x: `-${x}%`,
     });
   };

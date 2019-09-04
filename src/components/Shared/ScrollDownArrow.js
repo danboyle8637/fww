@@ -12,12 +12,13 @@ const ScrollDownArrow = ({ scrollId }) => {
   const scroll = ScrollToPlugin;
 
   useEffect(() => {
+    const arrow = arrowRef.current;
     // Takes the ref and whether to kill the Tween
-    bounceScrollArrow(arrowRef.current, false);
+    bounceScrollArrow(arrow, false);
 
     return () => {
       // Kills the tween when component unmounts
-      bounceScrollArrow(arrowRef.current, true);
+      bounceScrollArrow(arrow, true);
       TweenMax.killTweensOf(window);
     };
   }, []);
