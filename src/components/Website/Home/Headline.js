@@ -24,8 +24,8 @@ const Headline = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        A fresh take on intense workouts and healthy meal planning for modern
-        day, busy women.
+        We help busy women build a consistent workout habit and learn healthy -
+        real world - meal planning.
       </Header1>
     </ElementContainer>
   );

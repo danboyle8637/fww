@@ -31,7 +31,7 @@ export default RadioInput;
 
 const InputContainer = styled.div`
   margin: 0;
-  padding: 8px 12px;
+  padding: 8px 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

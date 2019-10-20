@@ -76,13 +76,22 @@ const PodcastButton = styled.a`
 const FormButton = styled.button`
   margin: 0;
   padding: 8px 12px;
-  background: ${props =>
-    props.kettlebell ? props.theme.tertiaryAccent : props.theme.primaryAccent};
-  border: none;
+  background-color: ${props =>
+    props.purple
+      ? props.theme.tertiaryAccent
+      : props.disabled
+      ? "transparent"
+      : props.theme.primaryAccent};
   border-radius: 6px;
+  border-color: ${props => (props.disabled ? "#2B2C3A" : "none")};
+  border-width: ${props => (props.disabled ? "2px" : 0)};
+  border-style: ${props => (props.disabled ? "solid" : "none")};
   text-decoration: none;
   text-align: center;
-  color: ${props => props.theme.mainBackgroundColor};
+  color: ${props =>
+    props.disabled
+      ? props.theme.accentBackgroundColor
+      : props.theme.mainBackgroundColor};
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   font-weight: 800;

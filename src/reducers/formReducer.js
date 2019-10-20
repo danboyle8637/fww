@@ -15,6 +15,10 @@ const howCanIHelpValidationRules = {
   isRequired: true,
 };
 
+const biggestObstacleValidationRules = {
+  isRequired: true,
+};
+
 const tellMeMoreValidationRules = {
   maxLength: 400,
   isRequired: false,
@@ -38,18 +42,11 @@ const confirmPasswordValidation = {
   matchPassword: true,
 };
 
-const usernameValidation = {
-  isRequired: true,
-  maxLength: 16,
-  minLength: 3,
-};
-
-const resetProgramValidation = {
-  isRequired: true,
-};
-
 // Initial Form State
 const formState = {
+  formValid: {
+    valid: false,
+  },
   firstNameValue: {
     value: "",
     valid: false,
@@ -302,6 +299,48 @@ const formReducer = (state, action) => {
         },
       };
     }
+    case "biggestObstacleValue": {
+      const valid = validate(action.value, biggestObstacleValidationRules);
+
+      const options = state.biggestObstacleValue.options.map(option => {
+        if (action.value === option.value) {
+          return {
+            value: option.value,
+            displayValue: option.displayValue,
+            checked: !option.checked,
+          };
+        } else if (option.checked) {
+          return {
+            value: option.value,
+            displayValue: option.displayValue,
+            checked: !option.checked,
+          };
+        } else {
+          return {
+            value: option.value,
+            displayValue: option.displayValue,
+            checked: option.checked,
+          };
+        }
+      });
+
+      return {
+        ...state,
+        biggestObstacleValue: {
+          value: action.value,
+          valid: valid,
+          options: options,
+        },
+      };
+    }
+    case "biggestObstacleOptions": {
+      return {
+        ...state,
+        biggestObstacleOptions: {
+          initial: false,
+        },
+      };
+    }
     case "tellMeMoreValue": {
       const valid = validate(action.value, tellMeMoreValidationRules);
       return {
@@ -340,64 +379,6 @@ const formReducer = (state, action) => {
           initial: false,
           touched: !state.workoutGoalOptions.touched,
           showInstructions: !state.workoutGoalOptions.showInstructions,
-        },
-      };
-    }
-    case "resetProgramValue": {
-      const valid = validate(action.value, resetProgramValidation);
-
-      const options = state.resetProgramValue.options.map(option => {
-        if (action.value === option.value) {
-          return {
-            value: option.value,
-            checked: !option.checked,
-          };
-        } else if (option.checked) {
-          return {
-            value: option.value,
-            checked: !option.checked,
-          };
-        } else {
-          return {
-            value: option.value,
-            checked: option.checked,
-          };
-        }
-      });
-      return {
-        ...state,
-        resetProgramValue: {
-          value: action.value,
-          valid: valid,
-          options: options,
-        },
-      };
-    }
-    case "resetProgramOptions": {
-      return {
-        ...state,
-        resetProgramOptions: {
-          initial: false,
-        },
-      };
-    }
-    case "usernameValue": {
-      const valid = validate(action.value, usernameValidation);
-      return {
-        ...state,
-        usernameValue: {
-          value: action.value,
-          valid: valid,
-        },
-      };
-    }
-    case "usernameOptions": {
-      return {
-        ...state,
-        usernameOptions: {
-          initial: false,
-          touched: !state.usernameOptions.touched,
-          showInstructions: !state.usernameOptions.showInstructions,
         },
       };
     }

@@ -5,13 +5,11 @@ import Global from "../styles/Global";
 import { darkTheme } from "../styles/Theme";
 import WebsiteLayout from "./Layouts/WebsiteLayout";
 import BlogLayout from "./Layouts/BlogLayout";
-import AppLayout from "./Layouts/AppLayout";
 import { ScreenWidthStore } from "../context/ScreenWidthContext";
 import { MenuStore } from "../context/MenuContext";
 import { menuState, menuReducer } from "../reducers/menuReducer";
 import Header from "./header";
 import FooterSection from "../components/Website/Footer/FooterSection";
-//import PageTransition from "../Animations/ReactTransitions/PageTransition";
 
 const Layout = ({ children, location }) => {
   const [siteLayout, setSiteLayout] = useState("website");
@@ -21,9 +19,6 @@ const Layout = ({ children, location }) => {
 
     if (pathName.includes("blog")) {
       setSiteLayout("blog");
-    } else if (pathName.match(/^\/app/)) {
-      console.log("You're in the app part now!");
-      setSiteLayout("app");
     } else {
       setSiteLayout("website");
     }
@@ -37,8 +32,6 @@ const Layout = ({ children, location }) => {
           <Header location={location} />
           {siteLayout === "blog" ? (
             <BlogLayout>{children}</BlogLayout>
-          ) : siteLayout === "app" ? (
-            <AppLayout>{children}</AppLayout>
           ) : siteLayout === "website" ? (
             <WebsiteLayout>{children}</WebsiteLayout>
           ) : null}

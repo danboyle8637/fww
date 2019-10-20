@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import {
@@ -14,12 +14,38 @@ import useContactFormControls from "../../../hooks/useContactFormControls";
 import { above } from "../../../styles/Theme";
 
 const ResetStep1Form = () => {
+  const [formButtonReady, setFormButtonReady] = useState(false);
+  // eslint-disable-next-line
   const [formState, dispatch] = useFormStore();
   const { updateFormValue, updateFormOptions } = useContactFormControls();
 
+  useEffect(() => {
+    if (
+      formState.biggestObstacleValue.valid &&
+      formState.firstNameValue.valid &&
+      formState.emailAddressValue.valid
+    ) {
+      setFormButtonReady(true);
+    } else {
+      setFormButtonReady(false);
+    }
+  }, [
+    formState.biggestObstacleValue.valid,
+    formState.firstNameValue.valid,
+    formState.emailAddressValue.valid,
+  ]);
+
   const handleFormSubmit = event => {
     event.preventDefault();
-    console.log("Go to step 2");
+    const step1Data = {
+      biggestObstacle: formState.biggestObstacleValue.value,
+      firstName: formState.firstNameValue.value,
+      emailAddress: formState.emailAddressValue.value,
+    };
+
+    const data = JSON.stringify(step1Data);
+
+    localStorage.setItem("resetStep1", data);
   };
 
   return (
@@ -55,7 +81,7 @@ const ResetStep1Form = () => {
             name="emailAddress"
             labelName="email:"
             labelFor="emailAddress"
-            labelInstructions="The email for your account"
+            labelInstructions="The email for your fit profile"
             labelError="Please use a valid email address..."
             value={formState.emailAddressValue.value}
             valid={formState.emailAddressValue.valid}
@@ -67,8 +93,14 @@ const ResetStep1Form = () => {
             onBlur={updateFormOptions}
           />
           <ElementContainer>
-            <FormButton type="submit" onClick={handleFormSubmit}>
-              Choose My Program!
+            <FormButton
+              disabled={!formButtonReady}
+              type="submit"
+              onClick={handleFormSubmit}
+            >
+              {formButtonReady
+                ? "Choose My Program!"
+                : "Fill Out Entire Form..."}
             </FormButton>
           </ElementContainer>
         </Step1Form>

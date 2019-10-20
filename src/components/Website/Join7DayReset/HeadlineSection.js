@@ -71,8 +71,8 @@ const HeadlineSection = () => {
     <SectionGrid>
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image 
-            fluid={background} 
+          <Image
+            fluid={background}
             alt="Kindal doing a bodyweight squat with good form."
             title="Bodyweight squat with good form."
           />
@@ -85,7 +85,9 @@ const HeadlineSection = () => {
       </HeadlineWrapper>
       <ButtonWrapper>
         <ElementContainer justifyCenter>
-          <InnerButton to={"/"}>Join a Reset Program for FREE!</InnerButton>
+          <InnerButton to={"/7-day-reset-step1"}>
+            Join a Reset Program for FREE!
+          </InnerButton>
         </ElementContainer>
       </ButtonWrapper>
     </SectionGrid>

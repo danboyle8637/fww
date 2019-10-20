@@ -73,7 +73,6 @@ const HeadlineSection = () => {
   const ipadPro = image.homeIpadPro;
   const desktop = image.homeLaptop;
 
-  // make sure you pass the whole data object
   const background = useRenderBackgroundImage(mobile, tablet, ipadPro, desktop);
   const backgroundReady = useIsBackgroundReady(background);
 
@@ -92,7 +91,11 @@ const HeadlineSection = () => {
     <SectionGrid>
       <BackgroundAsset>
         {backgroundReady ? (
-          <Image fluid={background} alt="Kindal walking with two kettlebells racked." title="Kindal with two racked kettlebels" />
+          <Image
+            fluid={background}
+            alt="Kindal walking with two kettlebells racked."
+            title="Kindal with two racked kettlebels"
+          />
         ) : (
           <BackgroundImageLoader />
         )}

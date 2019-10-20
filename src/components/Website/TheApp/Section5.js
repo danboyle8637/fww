@@ -17,6 +17,7 @@ const Section5 = () => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [currentRecipe, setCurrentRecipe] = useState(0);
   const [recipes, setRecipes] = useState([]);
+  
   const slide0Ref = useRef(null);
   const slide1Ref = useRef(null);
   const slide2Ref = useRef(null);

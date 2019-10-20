@@ -32,6 +32,10 @@ const useContactFormControls = () => {
         break;
       }
       case "biggestObstacle": {
+        dispatch({
+          type: "biggestObstacleValue",
+          value: inputValue,
+        });
         break;
       }
       case "tellMeMore": {
@@ -72,6 +76,7 @@ const useContactFormControls = () => {
         break;
       }
       case "biggestObstacle": {
+        dispatch({ type: "biggestObstacleOptions" });
         break;
       }
       case "tellMeMore": {

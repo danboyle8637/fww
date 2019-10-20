@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 
 import SEO from "../components/seo";
 
 const SecondPage = () => {
+  useEffect(() => {
+    const data = localStorage.getItem("resetStep1");
+    const objData = JSON.parse(data);
+
+    console.log(objData);
+  }, []);
+
   return (
     <>
       <SEO title="Page two" />
