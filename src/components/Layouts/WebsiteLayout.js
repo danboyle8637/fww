@@ -10,6 +10,8 @@ const WebsiteLayout = ({ children }) => {
 export default WebsiteLayout;
 
 const Layout = styled.main`
+  display: flex;
+  flex-direction: column;
   background-color: ${props => props.theme.mainBackgroundColor};
   width: 100%;
   max-width: 1440px;

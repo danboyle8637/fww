@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
-import {
-  SectionGrid,
-  BackgroundAsset,
-  HeadlineContainer,
-} from "../../../styles/GridContainer";
+import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import { ElementContainer } from "../../../styles/Containers";
+import { InnerButton } from "../../../styles/Buttons";
 import Headline from "./Headline";
 import FWWLogo from "../../../svgs/FWWLogo";
 import siteConfig from "../../../utils/siteConfig";
@@ -76,17 +73,6 @@ const HeadlineSection = () => {
   const background = useRenderBackgroundImage(mobile, tablet, ipadPro, desktop);
   const backgroundReady = useIsBackgroundReady(background);
 
-  const homeButtons = siteConfig.home.homeLinks.map(button => {
-    const id = button.id;
-    const path = button.path;
-    const name = button.name;
-    return (
-      <HomeButton key={id} to={path}>
-        {name}
-      </HomeButton>
-    );
-  });
-
   return (
     <SectionGrid>
       <BackgroundAsset>
@@ -100,15 +86,15 @@ const HeadlineSection = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
-      <HeadlineContainer column>
+      <ContentWrapper>
         <HeadlineWrapper>
           <Logo />
           <Headline />
         </HeadlineWrapper>
         <ElementContainer column setMobileMarginTop={40} moveTabletX={10}>
-          {homeButtons}
+          <InnerButton to={"/"}>Get Started for FREE!</InnerButton>
         </ElementContainer>
-      </HeadlineContainer>
+      </ContentWrapper>
     </SectionGrid>
   );
 };
@@ -119,38 +105,13 @@ const Logo = styled(FWWLogo)`
   width: 160px;
 `;
 
-const HeadlineWrapper = styled.div`
-  margin-left: 20px;
-  ${above.mobile`
-    margin-left: 0;
-  `}
-`;
+const HeadlineWrapper = styled.div``;
 
-const HomeButton = styled(Link)`
-  margin: 0 0 20px 0;
-  padding: 8px 40px 8px 0;
-  background: rgba(215, 218, 255, 0.3);
-  border: 2px solid ${props => props.theme.bodyText};
-  border-radius: 6px;
-  color: ${props => props.theme.whiteText};
-  font-size: 16px;
-  text-transform: capitalize;
-  text-align: right;
-  text-decoration: none;
-  width: 14rem;
-  transform: translateX(-40px);
-  transition: background-color, border, transform, 150ms ease-out;
-  cursor: pointer;
-  ${above.mobile`
-    padding: 8px;
-    text-align: center;
-    transform: translateX(0);
-  `}
-  ${above.tablet`
-    &:hover {
-      background: rgba(139, 83, 246, 0.3);
-      border: 2px solid ${props => props.theme.secondaryAccent};
-      transform: translateX(20px);
-    }
-  `}
+const ContentWrapper = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
 `;

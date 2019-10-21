@@ -164,6 +164,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `CardCopy`,
+        path: `${__dirname}/src/content/Cards`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `Firestore`,
         path: `${__dirname}/src/content/Firestore`,
       },
