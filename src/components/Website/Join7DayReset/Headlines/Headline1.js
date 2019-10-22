@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header1 } from "../../../../styles/Headlines";
@@ -6,55 +7,59 @@ import HeadlineCopy from "../Copy/HeadlineCopy";
 
 const Headline1 = () => {
   return (
-    <ElementContainer column>
-      <Header1 upper mobileLarge primary>
-        Reset
+    <HeadlineContainer>
+      <Header1
+        mobileMedium
+        tabletMedium
+        secondary
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        7 Days of
       </Header1>
-      <ElementContainer column moveMobileX={3}>
-        <Header1
-          mobileSmall
-          tabletMedium
-          secondary
-          setTLineHeight={1.4}
-          setIpadLineHeight={1.4}
-          setLLineHeight={1.4}
-        >
-          how you
-        </Header1>
-        <Header1
-          upper
-          mobileMedium
-          tabletLarge
-          primary
-          setMLineHeight={1.4}
-          setTLineHeight={1.4}
-          setIpadLineHeight={1.4}
-          setLLineHeight={1.4}
-        >
-          Workout
-        </Header1>
-        <Header1 upper mobileMedium tabletLarge secondary>
-          Burn Fat
-        </Header1>
-        <Header1
-          upper
-          mobileMedium
-          tabletLarge
-          primary
-          setMLineHeight={1.4}
-          setTLineHeight={1.4}
-          setIpadLineHeight={1.4}
-          setLLineHeight={1.4}
-        >
-          Get Strong
-        </Header1>
-        <Header1 upper mobileMedium tabletLarge secondary>
-          & Stay Fit
-        </Header1>
-      </ElementContainer>
+      <DetailedHeader upper mobileSmall primary>
+        Re-learning correct form
+      </DetailedHeader>
+
+      <DetailedHeader upper mobileSmall tabletLarge primary>
+        Discovering new exercises
+      </DetailedHeader>
+      <DetailedHeader upper mobileSmall tabletLarge secondary>
+        Getting pushed to your limit
+      </DetailedHeader>
+      <Header1
+        upper
+        mobileMedium
+        tabletLarge
+        primary
+        setMLineHeight={1.4}
+        setTLineHeight={1.4}
+        setIpadLineHeight={1.4}
+        setLLineHeight={1.4}
+      >
+        & Finding a Better
+      </Header1>
+      <Header1 upper mobileMedium tabletLarge secondary>
+        Way to Workout
+      </Header1>
       <HeadlineCopy />
-    </ElementContainer>
+    </HeadlineContainer>
   );
 };
 
 export default Headline1;
+
+const HeadlineContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DetailedHeader = styled.h1`
+  font-weight: 300;
+  font-size: 22px;
+  color: ${props =>
+    props.primary
+      ? props.theme.headlinePrimary
+      : props.theme.headlineSecondary};
+`;

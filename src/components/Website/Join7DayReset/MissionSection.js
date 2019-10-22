@@ -7,7 +7,7 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundLoaderImage from "../../Shared/BackgroundImageLoader";
-import FWWLogo from "../../../svgs/FWWLogo";
+import MainResetLogo from "../../../svgs/7DayResetFWWLogo";
 import DividerMarker1 from "../../../svgs/DividerMarker1";
 import MissionCopy from "./Copy/MissionCopy";
 import { above } from "../../../styles/Theme";
@@ -95,7 +95,7 @@ export default MissionSection;
 const ContentWrapper = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  margin: 120px 0 0 0;
+  margin: 80px 0 0 0;
   padding: 0 16px;
   display: flex;
   flex-direction: column;
@@ -116,8 +116,8 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const Logo = styled(FWWLogo)`
-  width: 100px;
+const Logo = styled(MainResetLogo)`
+  width: 90%;
   ${above.mobile`
     width: 160px;
   `}

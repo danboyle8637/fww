@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import TimelineMax from "gsap/TimelineMax";
-import { Linear } from "gsap/TweenMax";
+import { TweenMax, Linear } from "gsap/TweenMax";
 import DrawSVG from "../greensock/DrawSVGPlugin";
 
 import useSVGObserver from "../hooks/useSVGObserver";
@@ -23,6 +23,8 @@ const ProgressLoader = ({
     // eslint-disable-next-line
     const drawSVG = DrawSVG;
 
+    TweenMax.set(loaderBar, { drawSVG: "0%" });
+
     // This is the length of the path in the SVG
     const maxLength = DrawSVG.getLength(loaderBar);
 
@@ -38,12 +40,13 @@ const ProgressLoader = ({
           setPercentComplete(percentage);
         },
       });
-    } else {
-      tl.to(loaderBar, 4, {
-        drawSVG: "0%",
-        ease: Linear.easeNone,
-      });
     }
+    // else {
+    //   tl.to(loaderBar, 4, {
+    //     drawSVG: "0%",
+    //     ease: Linear.easeNone,
+    //   });
+    // }
 
     return () => {
       tl.kill(null, loaderBar);

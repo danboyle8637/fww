@@ -8,7 +8,8 @@ import Section3 from "../components/Website/TheApp/Section3";
 import Section4 from "../components/Website/TheApp/Section4";
 import Section5 from "../components/Website/TheApp/Section5";
 import Section6 from "../components/Website/TheApp/Section6";
-import AppBetaSection from "../components/Website/TheApp/AppBetaSection";
+import FeatureFullWidthCard from "../components/Cards/FeatureFullWidthCard";
+import AppCountdownTimer from "../components/Website/TheApp/AppCountdownTimer";
 import siteConfig from "../utils/siteConfig";
 import TheAppImage from "../images/FacebookShare/the-app-fb-share.jpg";
 import SEO from "../components/seo";
@@ -31,7 +32,8 @@ const TheApp = () => {
       <Section4 />
       <Section5 />
       <Section6 />
-      <AppBetaSection />
+      <FeatureFullWidthCard />
+      <AppCountdownTimer />
     </>
   );
 };

@@ -93,7 +93,9 @@ const HeadlineSection = () => {
           <ScrollDownArrow scrollId="home-card-section" />
         </HeadlineWrapper>
         <ButtonWrapper>
-          <InnerButton to={"/"}>Get Started for FREE!</InnerButton>
+          <InnerButton to={"/join-a-7-day-reset-program"}>
+            Get Started for FREE!
+          </InnerButton>
         </ButtonWrapper>
       </ContentWrapper>
     </SectionGrid>

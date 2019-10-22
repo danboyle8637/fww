@@ -99,8 +99,9 @@ export default HeadlineSection;
 const HeadlineWrapper = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  margin: 80px 0 0 0;
+  padding: 0 16px;
   align-self: start;
-  margin: 80px 0 0 16px;
   z-index: 1;
   ${above.mobile`
     margin: 220px 0 0 70px;
