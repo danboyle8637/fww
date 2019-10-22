@@ -8,7 +8,7 @@ import { ElementContainer } from "../../../styles/Containers";
 import { InnerButton } from "../../../styles/Buttons";
 import Headline from "./Headline";
 import FWWLogo from "../../../svgs/FWWLogo";
-import siteConfig from "../../../utils/siteConfig";
+import ScrollDownArrow from "../../Shared/ScrollDownArrow";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -90,10 +90,11 @@ const HeadlineSection = () => {
         <HeadlineWrapper>
           <Logo />
           <Headline />
+          <ScrollDownArrow scrollId="home-card-section" />
         </HeadlineWrapper>
-        <ElementContainer column setMobileMarginTop={40} moveTabletX={10}>
+        <ButtonWrapper>
           <InnerButton to={"/"}>Get Started for FREE!</InnerButton>
-        </ElementContainer>
+        </ButtonWrapper>
       </ContentWrapper>
     </SectionGrid>
   );
@@ -102,16 +103,52 @@ const HeadlineSection = () => {
 export default HeadlineSection;
 
 const Logo = styled(FWWLogo)`
+  align-self: flex-start;
   width: 160px;
 `;
 
-const HeadlineWrapper = styled.div``;
-
 const ContentWrapper = styled.div`
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
+  ${above.mobile`
+    margin: 0 0 0 40px;
+    width: 56%;
+  `}
+  ${above.tablet`
+    justify-content: space-around;
+  `}
+  ${above.ipadPro`
+    margin: 0 0 0 340px;
+    width: 40%;
+  `}
+`;
+
+const HeadlineWrapper = styled.div`
+  margin: 70px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  ${above.mobile`
+    margin: 140px 0 0 0;
+    width: 100%;
+  `}
+  ${above.tablet`
+    margin: 0 0 0 0;
+  `}
+`;
+
+const ButtonWrapper = styled.div`
+  margin: 0 0 40px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  ${above.mobile`
+    margin: 0 0 120px 0;
+  `}
 `;

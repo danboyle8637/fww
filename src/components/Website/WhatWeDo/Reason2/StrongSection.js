@@ -7,6 +7,7 @@ import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import StrongLogo from "../../../../svgs/StrongLogo";
 import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import StrongCopy from "./Copy/StrongCopy";
+import StrongHeadline from "./Headlines/StrongHeadline";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
@@ -83,7 +84,10 @@ const StrongSection = () => {
       </BackgroundAsset>
       <ContentWrapper>
         <Logo />
-        <StrongCopy />
+        <StrongHeadline />
+        <CopyWrapper>
+          <StrongCopy />
+        </CopyWrapper>
       </ContentWrapper>
     </SectionGrid>
   );
@@ -92,13 +96,7 @@ const StrongSection = () => {
 export default StrongSection;
 
 const Logo = styled(StrongLogo)`
-  width: 320px;
-  ${above.mobile`
-    width: 440px;
-  `}
-  ${above.tablet`
-    width: 560px;
-  `}
+  width: 100%;
 `;
 
 const Divider = styled(DividerMarkerTriangle)`
@@ -121,20 +119,36 @@ const Divider = styled(DividerMarkerTriangle)`
 `;
 
 const ContentWrapper = styled.div`
-  margin: 40px 0 0 16px;
+  margin: 40px 0 0 0;
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 64%;
+  width: 100%;
   z-index: 1;
   ${above.mobile`
-    margin: 160px 0 0 40px;
-    width: 40%;
+    margin: 60px 0 0 40px;
+    width: 80%;
   `}
   ${above.tablet`
-    margin: 160px 0 0 80px;
+    margin: 260px 0 0 10px;
+    width: 68%;
+  `}
+  ${above.ipadPro`
+    margin: 200px 0 0 10px;
+    width: 58%;
+  `}
+`;
+
+const CopyWrapper = styled.div`
+  width: 56%;
+  ${above.mobile`
+    width: 70%;
+  `}
+  ${above.tablet`
+    width: 80%;
   `}
 `;

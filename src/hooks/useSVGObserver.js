@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 
-const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
+const useSVGObserver = ({
+  root = null,
+  rootMargin,
+  threshold = 1,
+  shouldUnobserve = false,
+}) => {
   const [ratio, setRatio] = useState(0);
   //const [target, setTarget] = useState({});
   const [previousRatio, setPreviousRatio] = useState(0);
@@ -32,7 +37,12 @@ const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
     });
   };
 
-  const observer = useRef(new IntersectionObserver(startAnimation, options));
+  const buildObserver =
+    typeof window !== `undefined`
+      ? new IntersectionObserver(startAnimation, options)
+      : null;
+
+  const observer = useRef(buildObserver);
 
   // This effect sets the observer when the node is passed in.
   useEffect(() => {
@@ -55,6 +65,9 @@ const useSVGObserver = ({ root = null, rootMargin, threshold = 1 }) => {
     if (ratio > previousRatio) {
       //console.log("Icon is on screen");
       setRunAnimation(true);
+      if (shouldUnobserve) {
+        observer.current.unobserve(svgNode);
+      }
     }
 
     if (ratio < previousRatio) {

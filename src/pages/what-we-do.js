@@ -1,7 +1,7 @@
 import React from "react";
 
 import HeadlineSection from "../components/Website/WhatWeDo/HeadlineSection/HeadlineSection";
-import TextMessageSection from "../components/Website/WhatWeDo/TextMessageSection/TextMessageSection";
+import LeadSection from "../components/Website/WhatWeDo/TextMessageSection/LeadSection";
 import ReasonSection from "../components/Website/WhatWeDo/ReasonSection/ReasonSection";
 import { IsTweeningStore } from "../context/IsTweeningContext";
 import { ActiveCardStore } from "../context/ActiveSlideContext";
@@ -25,7 +25,7 @@ const WhatWeDo = () => {
         image={WhatWeDoImage}
       />
       <HeadlineSection />
-      <TextMessageSection />
+      <LeadSection />
       <ActiveCardStore
         reducer={activeCardReducer}
         initialState={activeCardState}

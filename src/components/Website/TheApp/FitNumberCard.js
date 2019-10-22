@@ -1,35 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import ProgressFitNumber from "../../../svgs/ProgressFitNumber";
 import { SetBodyText } from "../../../styles/BodyText";
-import useCounter from "../../../hooks/useCounter";
-import useSVGObserver from "../../../hooks/useSVGObserver";
 
 const FitNumberCard = ({ fitNumber, description }) => {
-  const [setDuration, setMaxCount, setPlay, setCounter, count] = useCounter();
-  const [setSVGNode, runAnimation] = useSVGObserver({
-    rootMargin: "0px 0px -100px 0px",
-  });
-
-  useEffect(() => {
-    setDuration(100);
-    setMaxCount(fitNumber);
-  }, [fitNumber, setDuration, setMaxCount]);
-
-  useEffect(() => {
-    if (runAnimation) {
-      setPlay(true);
-    } else {
-      setCounter(0);
-    }
-  }, [runAnimation, setPlay, setCounter]);
+  const [number, setNumber] = useState(0);
 
   return (
-    <FitNumberContainer ref={setSVGNode}>
+    <FitNumberContainer>
       <FitNumberGrid>
-        <BackgroundFitNumber gradientId={fitNumber} fitNumber={fitNumber} />
-        <FitNumber>{count}</FitNumber>
+        <BackgroundFitNumber
+          gradientId={fitNumber}
+          fitNumber={fitNumber}
+          setNumber={setNumber}
+        />
+        <FitNumber>{number}</FitNumber>
       </FitNumberGrid>
       <SetBodyText dangerouslySetInnerHTML={{ __html: description }} />
     </FitNumberContainer>

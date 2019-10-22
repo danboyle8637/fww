@@ -65,7 +65,12 @@ const CardSection = () => {
     );
   });
 
-  return <CardContainer>{cardList}</CardContainer>;
+  return (
+    <>
+      <div id="home-card-section" />
+      <CardContainer>{cardList}</CardContainer>
+    </>
+  );
 };
 
 export default CardSection;

@@ -1,6 +1,6 @@
 ---
 id: reason2_strong
-headline: Looking for the Next Level?
+headline: Looking for a new challenge?
 ---
 
-Awesome! Learn kettlebell training and experience an advanced workout style perfect for sculpting an athletic body.
+Learn kettlebell training. It's an advanced workout style perfect for sculpting an athletic - seriously fit - body.

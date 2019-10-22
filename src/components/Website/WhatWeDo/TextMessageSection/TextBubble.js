@@ -5,7 +5,7 @@ import { above } from "../../../../styles/Theme";
 import textMessageAni from "../../../../Animations/Tweens/textMessageAni";
 import useSVGObserver from "../../../../hooks/useSVGObserver";
 
-const TextBubbles = ({ children, client }) => {
+const TextBubble = ({ children, client }) => {
   const textMessageRef = useRef(null);
 
   const [setNode, runAnimation] = useSVGObserver({
@@ -32,7 +32,7 @@ const TextBubbles = ({ children, client }) => {
   );
 };
 
-export default TextBubbles;
+export default TextBubble;
 
 const BubbleWrapper = styled.div`
   align-self: ${props => (props.client ? "flex-start" : "flex-end")};

@@ -23,6 +23,7 @@ const BenefitCard = ({
   body,
   gradientNum,
   column,
+  setPercentComplete,
 }) => {
   const iconArray = [
     { title: "play_button", component: <PlayButton /> },
@@ -30,7 +31,12 @@ const BenefitCard = ({
     { title: "pen", component: <Pen /> },
     {
       title: "progress_indicator",
-      component: <Progress gradientNum={gradientNum} />,
+      component: (
+        <Progress
+          gradientNum={gradientNum}
+          setPercentComplete={setPercentComplete}
+        />
+      ),
     },
     {
       title: "numbers",

@@ -8,6 +8,7 @@ const PageCheck = ({ width, height, className }) => {
   const [setNode, runAnimation] = useSVGObserver({
     rootMargin: "0% 0% -30% 0%",
     threshold: 0.5,
+    shouldUnobserve: true,
   });
 
   useEffect(() => {

@@ -101,10 +101,14 @@ const ContentWrapper = styled.div`
   width: 50%;
   z-index: 1;
   ${above.mobile`
-    margin: 120px 0 0 60px;
+    margin: 180px 0 0 40px;
   `}
   ${above.tablet`
-    margin: 200px 0 0 80px;
+    margin: 280px 0 0 80px;
+    width: 50%;
+  `}
+  ${above.ipadPro`
+    margin: 280px 0 0 140px;
     width: 30%;
   `}
 `;

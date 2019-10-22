@@ -14,7 +14,7 @@ const Headline3 = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        We're going to
+        It's time to
       </Header3>
       <Header3 upper primary mobileLarge>
         Smash It!

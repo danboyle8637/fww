@@ -90,34 +90,30 @@ const BBCSection = () => {
 export default BBCSection;
 
 const Logo = styled(BBCLogo)`
-  width: 320px;
-  ${above.mobile`
-    width: 460px;
-  `}
-  ${above.tablet`
-    width: 620px;
-  `}
-  ${above.ipadPro`
-    width: 540px;
-  `}
+  width: 100%;
 `;
 
 const ContentWrapper = styled.div`
-  margin: 80px 0 0 16px;
+  margin: 80px 0 0 0;
+  padding: 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 70%;
+  width: 100%;
   z-index: 1;
   ${above.mobile`
     margin: 160px 0 0 40px;
-    width: 50%;
+    width: 80%;
   `}
   ${above.tablet`
-    margin: 280px 0 0 80px;
-    width: 40%;
+    margin: 240px 0 0 80px;
+    width: 80%;
+  `}
+  ${above.ipadPro`
+    margin: 120px 0 0 40px;
+    width: 56%;
   `}
 `;

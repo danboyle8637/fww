@@ -6,10 +6,7 @@ import { ElementContainer } from "../../../styles/Containers";
 const Headline = () => {
   return (
     <ElementContainer
-      setMobileWidth={"220px"}
-      setTabletWidth={"360px"}
-      setIpadProWidth={"400px"}
-      setLaptopWidth={"600px"}
+      setMobileMarginTop={12}
       setTabletMarginTop={20}
       setLaptopMarginTop={20}
       moveMobileX={10}
@@ -24,8 +21,8 @@ const Headline = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        We help busy women build a consistent workout habit and learn healthy -
-        real world - meal planning.
+        We help busy women get their workouts done… get fit… and get back to
+        their life.
       </Header1>
     </ElementContainer>
   );

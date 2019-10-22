@@ -15,7 +15,7 @@ const EndSection = () => {
         <Headline2 />
         <ElementContainer justifyCenter setMobileMarginTop={60}>
           <InnerButton to={"/online-personal-training"}>
-            The Final Big Secret?
+            The Final Missing Piece?
           </InnerButton>
         </ElementContainer>
       </ContentContainer>

@@ -92,13 +92,7 @@ const IgniteSection = () => {
 export default IgniteSection;
 
 const Logo = styled(IgniteLogo)`
-  width: 220px;
-  ${above.mobile`
-    width: 260px;
-  `}
-  ${above.tablet`
-    width: 340px;
-  `}
+  width: 100%;
 `;
 
 const Divider = styled(DividerMarkerTriangle)`
@@ -131,14 +125,14 @@ const ContentWrapper = styled.div`
   z-index: 1;
   ${above.mobile`
     margin: 140px 0 0 80px;
-    width: 40%;
+    width: 70%;
   `}
   ${above.tablet`
     margin: 140px 0 0 60px;
-    width: 30%;
+    width: 60%;
   `}
   ${above.ipadPro`
-    margin: 140px 0 0 240px;
-    width: 30%;
+    margin: 140px 0 0 140px;
+    width: 40%;
   `}
 `;

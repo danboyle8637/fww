@@ -21,7 +21,7 @@ const Headline1 = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        We're like a
+        We're like your
       </Header1>
       <Header1 primary upper mobileLarge>
         Personal

@@ -23,21 +23,10 @@ const StrongCopy = () => {
   `;
 
   const copy = useStaticQuery(query);
-  const headline = copy.file.childMarkdownRemark.frontmatter.headline;
   const body = copy.file.childMarkdownRemark.html;
 
   return (
-    <ElementContainer column setMobileMarginTop={5} setMobileWidth={"90%"}>
-      <Header3
-        primary
-        mobileMedium
-        setMLineHeight={1.4}
-        setTLineHeight={1.4}
-        setIpadLineHeight={1.4}
-        setLLineHeight={1.4}
-      >
-        {headline}
-      </Header3>
+    <ElementContainer column setMobileMarginTop={5}>
       <SetBodyText
         setMobileMarginTop={12}
         dangerouslySetInnerHTML={{ __html: body }}

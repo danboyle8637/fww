@@ -1,71 +1,46 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-  SectionContainer,
-  ElementContainer,
-  ContentContainer,
-} from "../../../../styles/Containers";
-import TextBubbles from "./TextBubbles";
-import Headline3 from "./Headline3";
-import Headline1 from "./Headline1";
-import Headline2 from "./Headline2";
-import FWWLogo from "../../../../svgs/FWWLogo";
+import { ElementContainer } from "../../../../styles/Containers";
+import TextBubble from "./TextBubble";
 
 const TextMessageSection = () => {
   return (
-    <SectionContainer>
-      <TextMessageContainer>
-        <div id="what-we-do-lead" />
-        <Headline3 />
-        <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles client={true}>I need a workout</TextBubbles>
-          <TextBubbles client={false}>I have just the one</TextBubbles>
-        </ElementContainer>
-        <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles client={true}>
-            I need a healthy, FAST, breakfast
-          </TextBubbles>
-          <TextBubbles client={false}>
-            My breakfast sandwich is perfect. You'll love it!
-          </TextBubbles>
-        </ElementContainer>
-        <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles client={true}>
-            I only have 12 minutes to workout. Help!?!
-          </TextBubbles>
-          <TextBubbles client={false}>
-            Get one round of Switch done. It's better than skipping.
-          </TextBubbles>
-        </ElementContainer>
-        <ElementContainer column setMobileMarginTop={60}>
-          <TextBubbles client={true}>
-            I need a good strength workout today.
-          </TextBubbles>
-          <TextBubbles client={false}>
-            Awesome. Let's do a kettlebell workout!
-          </TextBubbles>
-        </ElementContainer>
-      </TextMessageContainer>
-      <ContentContainer>
-        <Headline1 />
-        <Logo />
-        <Headline2 />
-      </ContentContainer>
-    </SectionContainer>
+    <MessageContainer>
+      <ElementContainer column setMobileMarginTop={60}>
+        <TextBubble client={true}>I need a workout</TextBubble>
+        <TextBubble client={false}>I have just the one</TextBubble>
+      </ElementContainer>
+      <ElementContainer column setMobileMarginTop={60}>
+        <TextBubble client={true}>I need a healthy, FAST, breakfast</TextBubble>
+        <TextBubble client={false}>
+          My breakfast sandwich is perfect. You'll love it!
+        </TextBubble>
+      </ElementContainer>
+      <ElementContainer column setMobileMarginTop={60}>
+        <TextBubble client={true}>
+          I only have 12 minutes to workout. Help!?!
+        </TextBubble>
+        <TextBubble client={false}>
+          Get one round of Switch done. It's better than skipping.
+        </TextBubble>
+      </ElementContainer>
+      <ElementContainer column setMobileMarginTop={60}>
+        <TextBubble client={true}>
+          I need a good strength workout today.
+        </TextBubble>
+        <TextBubble client={false}>
+          Awesome. Let's do a kettlebell workout!
+        </TextBubble>
+      </ElementContainer>
+    </MessageContainer>
   );
 };
 
 export default TextMessageSection;
 
-const TextMessageContainer = styled.div`
-  padding: 0 1rem;
-  width: 100%;
-  max-width: 34rem;
-`;
-
-const Logo = styled(FWWLogo)`
-  margin: 80px 0;
-  width: 180px;
-  align-self: center;
+const MessageContainer = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 1;
 `;

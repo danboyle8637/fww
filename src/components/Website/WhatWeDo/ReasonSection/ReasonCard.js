@@ -78,7 +78,7 @@ const CardWrapper = styled.div`
 const ContentWrapper = styled.div`
   margin: 30px 0 0 0;
   ${above.mobile`
-    margin: 0 0 0 12px;
+    margin: 0 0 0 20px;
   `}
   ${above.ipadPro`
     margin: 30px 0 0 0;

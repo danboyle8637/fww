@@ -1,6 +1,6 @@
 ---
 id: reason3_nag1
-headline: If you’re following an active plan…
+headline: When you’re following an active plan…
 icon: chat
 ---
 

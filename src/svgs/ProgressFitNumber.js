@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import TimelineMax from "gsap/TimelineMax";
-import { Power4 } from "gsap/TweenMax";
+import { Linear } from "gsap/TweenMax";
 import DrawSVG from "../greensock/DrawSVGPlugin";
 
 import useSVGObserver from "../hooks/useSVGObserver";
@@ -11,10 +11,12 @@ const ProgressFitNumber = ({
   className,
   gradientId,
   fitNumber,
+  setNumber,
 }) => {
   const numberLoaderRef = useRef(null);
   const [setSVGNode, runAnimation] = useSVGObserver({
     rootMargin: "0px 0px -100px 0px",
+    shouldUnobserve: true,
   });
 
   useEffect(() => {
@@ -23,15 +25,23 @@ const ProgressFitNumber = ({
     const drawSVG = DrawSVG;
     const tl = new TimelineMax({ paused: false });
 
+    // This is the length of the path in the SVG
+    const maxLength = DrawSVG.getLength(numberLoader);
+
     if (runAnimation) {
       tl.to(numberLoader, 4, {
         drawSVG: `${fitNumber * 10}%`,
-        ease: Power4.easeOut,
+        ease: Linear.easeNone,
+        onUpdate: () => {
+          const position = DrawSVG.getPosition(numberLoader)[1];
+          const percentage = Math.round(((position / maxLength) * 100) / 10);
+          setNumber(percentage);
+        },
       });
     } else {
       tl.to(numberLoader, 4, {
         drawSVG: "0%",
-        ease: Power4.easeOut,
+        ease: Linear.easeNone,
       });
     }
 

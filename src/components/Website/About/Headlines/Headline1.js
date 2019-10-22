@@ -1,7 +1,9 @@
 import React from "react";
+import styled from 'styled-components'
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header1, Header2 } from "../../../../styles/Headlines";
+import { above } from '../../../../styles/Theme'
 
 const Headline1 = () => {
   return (
@@ -19,14 +21,25 @@ const Headline1 = () => {
       >
         the
       </Header2>
+      <StatusQuoWrapper>
       <Header1 upper primary mobileLarge>
         Status
       </Header1>
       <Header1 upper primary mobileLarge>
         Quo!
       </Header1>
+      </StatusQuoWrapper>
     </ElementContainer>
   );
 };
 
 export default Headline1;
+
+const StatusQuoWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  ${above.mobile`
+    grid-template-columns: auto auto;
+    gap: 12px;
+  `}
+`

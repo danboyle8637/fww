@@ -1,6 +1,6 @@
 ---
 id: reason2_ignite
-headline: Getting back into exercise?
+headline: Are you a beginner?
 ---
 
 There’s a program just for you called Ignite. Its filmed with modifications and beginner friendly intensity levels.

@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import IphoneX from "../../../svgs/IphoneX";
 import BenefitCard from "./BenefitCard";
 import { Header4 } from "../../../styles/Headlines";
-import useCounter from "../../../hooks/useCounter";
-import useSVGObserver from "../../../hooks/useSVGObserver";
 import { above } from "../../../styles/Theme";
 
 const ProgressIndicatorBenefit = () => {
@@ -37,34 +35,19 @@ const ProgressIndicatorBenefit = () => {
     benefit.progressBenefit.childMarkdownRemark.frontmatter.bottomHeadline;
   const benefit3Body = benefit.progressBenefit.childMarkdownRemark.html;
 
-  const [setSVGNode, runAnimation] = useSVGObserver({
-    rootMargin: "0px 0px -150px 0px",
-  });
-  const [setDuration, setMaxCount, setPlay, setCounter, counter] = useCounter();
-
-  useEffect(() => {
-    setDuration(20);
-    setMaxCount(100);
-  }, [setDuration, setMaxCount]);
-
-  useEffect(() => {
-    if (runAnimation) {
-      setPlay(true);
-    } else {
-      setCounter(0);
-    }
-  }, [runAnimation, setPlay, setCounter]);
+  const [percentComplete, setPercentComplete] = useState();
 
   return (
     <BenefitGrid>
-      <Counter ref={setSVGNode}>
+      <Counter>
         <Header4 secondary mobileSmall>
-          {counter}%
+          {percentComplete}%
         </Header4>
       </Counter>
       <BackgroundIphone />
       <BenefitWrapper>
         <BenefitCard
+          setPercentComplete={setPercentComplete}
           icon={benefit3Icon}
           topHeadline={benefit3TopHeadline}
           bottomHeadline={benefit3BottomHeadline}

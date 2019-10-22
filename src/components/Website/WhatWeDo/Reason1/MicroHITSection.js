@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
 import {
@@ -11,8 +10,7 @@ import {
 import Headline3 from "./Headlines/Headline3";
 import { SetBodyText } from "../../../../styles/BodyText";
 import { InnerButton } from "../../../../styles/Buttons";
-import MicroHITSLogo from "../../../../svgs/MicroHITSLogo";
-import { above } from "../../../../styles/Theme";
+import MicroHitCard from "./MicroHitCard";
 
 const MicroHITSection = () => {
   const query = graphql`
@@ -42,7 +40,7 @@ const MicroHITSection = () => {
             setTabletMarginTop={40}
             setLaptopMarginTop={40}
           >
-            <MicroHITS />
+            <MicroHitCard />
             <SetBodyText
               setMobileMarginTop={20}
               setTabletMarginTop={40}
@@ -62,10 +60,3 @@ const MicroHITSection = () => {
 };
 
 export default MicroHITSection;
-
-const MicroHITS = styled(MicroHITSLogo)`
-  width: 80%;
-  ${above.mobile`
-    width: 50%;
-  `}
-`;

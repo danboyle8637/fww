@@ -1,31 +1,47 @@
 import React, { useEffect, useRef } from "react";
 import TimelineMax from "gsap/TimelineMax";
-import { Power4 } from "gsap/TweenMax";
+import { Linear } from "gsap/TweenMax";
 import DrawSVG from "../greensock/DrawSVGPlugin";
 
 import useSVGObserver from "../hooks/useSVGObserver";
 
-const ProgressLoader = ({ width, height, className, gradientId }) => {
+const ProgressLoader = ({
+  width,
+  height,
+  className,
+  gradientId,
+  setPercentComplete,
+}) => {
   const loaderBarRef = useRef(null);
   const [setSVGNode, runAnimation] = useSVGObserver({
     rootMargin: "0px 0px -100px 0px",
+    shouldUnobserve: true,
   });
 
   useEffect(() => {
     const loaderBar = loaderBarRef.current;
     // eslint-disable-next-line
     const drawSVG = DrawSVG;
+
+    // This is the length of the path in the SVG
+    const maxLength = DrawSVG.getLength(loaderBar);
+
     const tl = new TimelineMax({ paused: false });
 
     if (runAnimation) {
-      tl.to(loaderBar, 8, {
+      tl.to(loaderBar, 4, {
         drawSVG: "100%",
-        ease: Power4.easeOut,
+        ease: Linear.easeNone,
+        onUpdate: () => {
+          const position = DrawSVG.getPosition(loaderBar)[1];
+          const percentage = Math.round((position / maxLength) * 100);
+          setPercentComplete(percentage);
+        },
       });
     } else {
       tl.to(loaderBar, 4, {
         drawSVG: "0%",
-        ease: Power4.easeOut,
+        ease: Linear.easeNone,
       });
     }
 

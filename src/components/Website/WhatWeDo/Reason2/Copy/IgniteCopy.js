@@ -31,6 +31,7 @@ const IgniteCopy = () => {
       <Header3
         primary
         mobileMedium
+        tabletLarge
         setMLineHeight={1.4}
         setTLineHeight={1.4}
         setIpadLineHeight={1.4}
