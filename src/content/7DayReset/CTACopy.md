@@ -2,14 +2,16 @@
 id: reset_cta_copy
 ---
 
-**Just create your fit profile and get started**.
+**Create a fit profile to get started**.
 
-Plus you’ll be on our list for when the full app goes into beta.
+It’s only 3 small steps…
 
-We currently have over 187 workouts (over 43 hours of workout video) filmed and ready to go.
+- Tell me your current biggest obstacle
+- Choose your program
+- Sign up with your email, Google or Facebook account
 
-We’re building the software now to help you live a consistent, strong, badass lifestyle.
+**We’ll be working out in less than 90 seconds**.
 
-**Get started right now**.
+Plus you’ll be on my newsletter list for weekly coaching and motivation to keep you track.
 
-Create your fit profile and I’ll see you on the inside!
+Get started now. Create your fit profile.

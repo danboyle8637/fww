@@ -13,7 +13,7 @@ const MenuItemsGroup = ({ title, menuItems }) => {
     const timeoutId = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve();
-      }, 300);
+      }, 400);
     });
 
     return timeoutId;

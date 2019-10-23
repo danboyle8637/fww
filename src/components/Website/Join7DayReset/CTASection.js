@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-  SectionContainer,
-  ContentContainer,
-  ElementContainer,
-} from "../../../styles/Containers";
+import { SectionContainer, ElementContainer } from "../../../styles/Containers";
 import { InnerButton } from "../../../styles/Buttons";
-import ResetFWWLogo from "../../../svgs/7DayResetFWWLogo";
 import Headline5 from "./Headlines/Headline5";
+import Headline6 from "./Headlines/Headline6";
 import CTACopy from "./Copy/CTACopy";
 
 const CTASection = () => {
@@ -18,7 +14,7 @@ const CTASection = () => {
         <Headline5 />
         <CTACopy />
         <ElementContainer column alignCenter setMobileMarginTop={60}>
-          <ResetLogo />
+          <Headline6 />
           <ElementContainer setMobileMarginTop={40}>
             <InnerButton to={"/7-day-reset-step1"}>
               Join a Reset Program For Free
@@ -32,6 +28,9 @@ const CTASection = () => {
 
 export default CTASection;
 
-const ResetLogo = styled(ResetFWWLogo)`
-  width: 200px;
+const ContentContainer = styled.div`
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

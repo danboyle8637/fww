@@ -2,6 +2,6 @@
 id: reset_headline_mission_copy
 ---
 
-This is why I created Fit Women’s Weekly.
+It's why I created Fit Women’s Weekly.
 
-To give you the best workouts AND help you build an exercise habit that burns fat... builds strength... no matter how busy you are.
+I'll give you the best worouts AND help you build an exercise habit to burn fat and build strength no matter how busy you are.

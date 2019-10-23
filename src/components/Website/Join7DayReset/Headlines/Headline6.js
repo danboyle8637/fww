@@ -4,7 +4,7 @@ import React from "react";
 import { ElementContainer } from "../../../../styles/Containers";
 import { Header3 } from "../../../../styles/Headlines";
 
-const Headline5 = () => {
+const Headline6 = () => {
   return (
     <ElementContainer column>
       <Header3
@@ -15,7 +15,7 @@ const Headline5 = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        Join for
+        Get Started Right Now!
       </Header3>
       <Header3 upper mobileLarge primary>
         Free!
@@ -24,4 +24,4 @@ const Headline5 = () => {
   );
 };
 
-export default Headline5;
+export default Headline6;

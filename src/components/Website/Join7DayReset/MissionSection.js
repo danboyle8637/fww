@@ -102,9 +102,9 @@ const ContentWrapper = styled.div`
   align-items: center;
   z-index: 1;
   ${above.mobile`
-    margin: 200px 0 0 0;
+    margin: 160px 0 0 0;
     align-self: start;
-    width: 54%;
+    width: 52%;
   `}
   ${above.tablet`
     margin: 200px 0 0 40px;
@@ -119,7 +119,7 @@ const ContentWrapper = styled.div`
 const Logo = styled(MainResetLogo)`
   width: 90%;
   ${above.mobile`
-    width: 160px;
+    width: 100%;
   `}
 `;
 

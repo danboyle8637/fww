@@ -6,7 +6,7 @@ import {
   ElementContainer,
 } from "../../../styles/Containers";
 import { InnerButton } from "../../../styles/Buttons";
-import Headline3 from "./Headlines/Headline3";
+import ResetProgramCard from "../../Cards/ResetProgramCard";
 import YouLearnCopy from "./Copy/YouLearnCopy";
 
 const YouLearnSection = () => {
@@ -14,10 +14,10 @@ const YouLearnSection = () => {
     <SectionContainer>
       <ContentContainer>
         <YouLearnCopy />
-        <Headline3 />
+        <ResetProgramCard />
         <ElementContainer justifyCenter setMobileMarginTop={40}>
           <InnerButton to={"/7-day-reset-step1"}>
-            Join A Reset Program For Free!
+            Click To Choose Your Program
           </InnerButton>
         </ElementContainer>
       </ContentContainer>
