@@ -21,8 +21,7 @@ const Headline = () => {
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        We help busy women get their workouts done… get fit… and get back to
-        their life.
+        We help busy women get workouts done… get fit… and get back to life.
       </Header1>
     </ElementContainer>
   );
