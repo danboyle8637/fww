@@ -19,10 +19,10 @@ const TextMessageSection = () => {
       </ElementContainer>
       <ElementContainer column setMobileMarginTop={60}>
         <TextBubble client={true}>
-          I only have 12 minutes to workout. Help!?!
+          I only have 12 minutes to workout. Is that enough?
         </TextBubble>
         <TextBubble client={false}>
-          Get one round of Switch done. It's better than skipping.
+          Yes it is. Always do at least one round.
         </TextBubble>
       </ElementContainer>
       <ElementContainer column setMobileMarginTop={60}>

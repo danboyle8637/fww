@@ -1,7 +1,8 @@
 ---
 id: reason3_card
-headline: reason3
+headline: Keeping You Motivated
 buttonText: I Want a Workout Partner!
+image: "../../images/WhatWeDo/card-stay-on-top-of-you-864x420.jpg"
 path: /online-personal-training/
 ---
 

@@ -1,8 +1,9 @@
 ---
 id: reason1_card
-headline: reason1
+headline: Designed for Busy Women
 buttonText: I'm busy... Show Me!
+image: "../../images/WhatWeDo/card-designed-for-busy-women-864x420.jpg"
 path: /workouts-for-busy-women/
 ---
 
-Learn how we **improved workout design** so you can get a workout done no matter how busy or hectic your day gets.
+We **improved workout design** so you can get a workout done no matter how busy or hectic your day gets.

@@ -2,19 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
-import {
-  SectionContainer,
-  ElementContainer,
-} from "../../../../styles/Containers";
+import { SectionContainer } from "../../../../styles/Containers";
 import Headline1 from "./Headlines/Headline1";
-import ReasonCard from "./ReasonCard";
-import DraggableRow from "../../../../Animations/Tweens/DraggableRow";
-import SwipeDot from "../../../../svgs/SwipeDot";
-import LocationDot from "../../../Shared/LocationDot";
+import BenefitCard from "../../../Cards/BenefitCard";
 import { useIsTweeningContext } from "../../../../context/IsTweeningContext";
-import DismissSwipeIcon from "../../../../Animations/ReactTransitions/DismissSwipeIcon";
 import { useActiveCardContext } from "../../../../context/ActiveSlideContext";
 import ScreenWidthContext from "../../../../context/ScreenWidthContext";
+import { above } from "../../../../styles/Theme";
 
 const ReasonSection = () => {
   // eslint-disable-next-line
@@ -41,8 +35,17 @@ const ReasonSection = () => {
           childMarkdownRemark {
             html
             frontmatter {
+              id
               headline
               buttonText
+              image {
+                childImageSharp {
+                  fluid(maxWidth: 864, maxHeight: 420, quality: 90) {
+                    ...GatsbyImageSharpFluid
+                    aspectRatio
+                  }
+                }
+              }
               path
             }
           }
@@ -55,18 +58,23 @@ const ReasonSection = () => {
 
   const cards = data.reasonCards.nodes.map(card => {
     const id = card.id;
-    const headlineId = card.childMarkdownRemark.frontmatter.headline;
+    const cardId = card.childMarkdownRemark.frontmatter.id;
+    const headline = card.childMarkdownRemark.frontmatter.headline;
     const buttonText = card.childMarkdownRemark.frontmatter.buttonText;
     const path = card.childMarkdownRemark.frontmatter.path;
-    const body = card.childMarkdownRemark.html;
+    const description = card.childMarkdownRemark.html;
+    const image =
+      card.childMarkdownRemark.frontmatter.image.childImageSharp.fluid;
 
     return (
-      <ReasonCard
+      <BenefitCard
         key={id}
-        headlineId={headlineId}
+        cardId={cardId}
+        headline={headline}
         buttonText={buttonText}
         path={path}
-        body={body}
+        description={description}
+        image={image}
       />
     );
   });
@@ -74,42 +82,24 @@ const ReasonSection = () => {
   return (
     <SectionContainer>
       <Headline1 />
-      {device === "laptop" || device === "ultraWide" ? (
-        <>
-          <SwipeWrapper />
-          <LaptopCardWrapper>{cards}</LaptopCardWrapper>
-        </>
-      ) : (
-        <>
-          <SwipeWrapper>
-            <DismissSwipeIcon isTweening={isTweening}>
-              <Swipe />
-            </DismissSwipeIcon>
-          </SwipeWrapper>
-          <DraggableRow numberOfCards={3}>{cards}</DraggableRow>
-          <ElementContainer justifyCenter setMobileMarginTop={40}>
-            <LocationDot active={activeCard >= 1 ? true : false} />
-            <LocationDot active={activeCard === 0 ? true : false} />
-            <LocationDot active={activeCard <= -1 ? true : false} />
-          </ElementContainer>
-        </>
-      )}
+      <CardContainer>{cards}</CardContainer>
     </SectionContainer>
   );
 };
 
 export default ReasonSection;
 
-const SwipeWrapper = styled.div`
-  margin: 20px 0 0 0;
-  height: 60px;
-`;
-
-const Swipe = styled(SwipeDot)`
-  width: 140px;
-`;
-
-const LaptopCardWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
+const CardContainer = styled.div`
+  margin: 40px 0 0 0;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 40px;
+  ${above.tablet`
+    grid-template-columns: 1fr 1fr;
+  `}
+  ${above.ipadPro`
+    grid-template-columns: repeat(3, 1fr);
+  `}
 `;

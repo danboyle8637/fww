@@ -18,7 +18,7 @@ const HomeCard = ({ headline, body, image, buttonText, slug }) => {
             setMobileMarginTop={12}
             dangerouslySetInnerHTML={{ __html: body }}
           />
-          <Button to={slug}>{buttonText}</Button>
+          <Button>{buttonText}</Button>
         </ContentWrapper>
       </CardContainer>
     </UnstyledLink>
