@@ -24,7 +24,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 600, maxHeight: 1300, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -35,7 +34,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 834, maxHeight: 1112, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -46,7 +44,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 1024, maxHeight: 1366, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -57,7 +54,6 @@ const HeadlineSection = () => {
         childImageSharp {
           fluid(maxWidth: 1440, maxHeight: 900, quality: 90) {
             ...GatsbyImageSharpFluid
-            aspectRatio
           }
         }
       }
@@ -65,40 +61,52 @@ const HeadlineSection = () => {
   `;
 
   const image = useStaticQuery(query);
-  const mobile = image.homeMobile;
-  const tablet = image.homeTablet;
-  const ipadPro = image.homeIpadPro;
-  const desktop = image.homeLaptop;
+  const mobile = image.homeMobile.childImageSharp.fluid;
+  const tablet = image.homeTablet.childImageSharp.fluid;
+  const ipadPro = image.homeIpadPro.childImageSharp.fluid;
+  const laptop = image.homeLaptop.childImageSharp.fluid;
 
-  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, desktop);
-  const backgroundReady = useIsBackgroundReady(background);
+  const sources = [
+    mobile,
+    {
+      ...laptop,
+      media: `(min-width: 1100px)`,
+    },
+    {
+      ...ipadPro,
+      media: `(min-width: 960px)`,
+    },
+    {
+      ...tablet,
+      media: `(min-width: 600px)`,
+    },
+  ];
+
+  //const sources = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  //const backgroundReady = useIsBackgroundReady(background);
 
   return (
-    <SectionGrid>
-      <BackgroundAsset>
-        {backgroundReady ? (
-          <Image
-            fluid={background}
-            alt="Kindal walking with two kettlebells racked."
-            title="Kindal with two racked kettlebels"
-          />
-        ) : (
-          <BackgroundImageLoader />
-        )}
-      </BackgroundAsset>
-      <ContentWrapper>
-        <HeadlineWrapper>
-          <Logo />
-          <Headline />
-          <ScrollDownArrow scrollId="home-card-section" />
-        </HeadlineWrapper>
-        <ButtonWrapper>
-          <InnerButton to={"/join-a-7-day-reset-program"}>
-            Get Started for FREE!
-          </InnerButton>
-        </ButtonWrapper>
-      </ContentWrapper>
-    </SectionGrid>
+    <>
+      <SectionGrid>
+        <BackgroundImage
+          fluid={sources}
+          alt="Kindal walking with two kettlebells racked."
+          title="Kindal with two racked kettlebels"
+        />
+        <ContentWrapper>
+          <HeadlineWrapper>
+            <Logo />
+            <Headline />
+            <ScrollDownArrow scrollId="home-card-section" />
+          </HeadlineWrapper>
+          <ButtonWrapper>
+            <InnerButton to={"/join-a-7-day-reset-program"}>
+              Get Started for FREE!
+            </InnerButton>
+          </ButtonWrapper>
+        </ContentWrapper>
+      </SectionGrid>
+    </>
   );
 };
 
@@ -109,6 +117,14 @@ const Logo = styled(FWWLogo)`
   width: 160px;
 `;
 
+const BackgroundImage = styled(Image)`
+  margin: 0;
+  padding: 0;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 1;
+`;
+
 const ContentWrapper = styled.div`
   padding: 0 16px;
   grid-column: 1 / -1;
@@ -116,7 +132,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
   ${above.mobile`
     margin: 0 0 0 40px;
     width: 56%;

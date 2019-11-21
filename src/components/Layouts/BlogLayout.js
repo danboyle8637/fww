@@ -10,7 +10,7 @@ const BlogLayout = ({ children }) => {
 export default BlogLayout;
 
 const Layout = styled.main`
-  background-color: ${props => props.theme.baseBackgroundcolor};
+  background-color: ${props => props.theme.mainBackgroundColor};
   width: 100%;
   max-width: 980px;
   overflow: hidden;

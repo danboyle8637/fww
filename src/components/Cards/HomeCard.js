@@ -4,6 +4,7 @@ import Image from "gatsby-image";
 import { Link } from "gatsby";
 
 import { SetBodyText } from "../../styles/BodyText";
+import { above } from "../../styles/Theme";
 
 const HomeCard = ({ headline, body, image, buttonText, slug }) => {
   return (
@@ -37,9 +38,12 @@ const CardContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0 6px 12px -4px rgba(0, 0, 0, 0.4);
   transition: box-shadow 300ms ease-in-out;
-  &:hover {
-    box-shadow: 0px 0px 0px 3px ${props => props.theme.primaryAccent};
-  }
+  ${above.ipadPro`
+    &:hover {
+      box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props =>
+        props.theme.primaryAccent};
+    }
+  `}
 `;
 
 const ImageWrapper = styled.div`
@@ -77,4 +81,10 @@ const Button = styled.div`
 
 const UnstyledLink = styled(Link)`
   text-decoration: none;
+  border-radius: 10px;
+  transition: box-shadow 300ms ease-in-out;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.primaryAccent};
+  }
 `;

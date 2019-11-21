@@ -18,15 +18,6 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${props => props.theme.mainBackgroundColor};
-    ${above.mobile`
-      background-color: ${props =>
-        props.blog === "blog"
-          ? props.theme.baseBackgroundColor
-          : props.theme.mainBackgroundColor};
-    `}
-    ${above.ipadPro`
-      background-color: ${props => props.theme.baseBackgroundColor};
-    `}
     ${above.laptop`
       background-color: ${props => props.theme.baseBackgroundColor};
     `}

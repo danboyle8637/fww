@@ -72,4 +72,6 @@ const FormRadioInput = styled.div`
   border-radius: 12px;
   border: 2px solid;
   border-color: ${props => props.theme.strongBodyText};
+  box-shadow: ${props =>
+    props.checked ? 'inset 1px 1px 3px 2px rgba(0, 0, 0, 0.4)' : 'none'};
 `;

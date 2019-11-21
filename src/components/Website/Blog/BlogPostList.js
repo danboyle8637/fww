@@ -3,32 +3,28 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 
 import { SectionContainer, ContentContainer } from "../../../styles/Containers";
-import BlogCard from "./BlogCard";
+import BlogCard from "../../Cards/BlogCard";
+//import BlogCard from "./BlogCard";
 import BlogHeader from "./BlogHeader";
 import { above } from "../../../styles/Theme";
 
 const BlogPostList = ({ data }) => {
   const cards = data.blogCard.nodes.map(card => {
     const id = card.id;
-    const headline = card.title;
     const featureImage = card.mainImage.asset.fluid;
     const featureImageAltText = card.mainImage.asset.altText;
     const tags = card.tags;
     const teaserCopy = card.teaserCopy;
-    const buttonText = card.buttonText;
     const slug = card.slug.current;
 
     return (
       <BlogCard
         key={id}
         id={id}
-        headline={headline}
         featureImage={featureImage}
         altText={featureImageAltText}
-        buttonText={buttonText}
         tags={tags}
         teaserCopy={teaserCopy}
-        buttonText={buttonText}
         slug={slug}
       />
     );
@@ -70,7 +66,6 @@ export const query = graphql`
         id
         title
         teaserCopy
-        buttonText
         mainImage {
           altText
           asset {
@@ -81,6 +76,7 @@ export const query = graphql`
         }
         tags {
           title
+          tagColor
         }
         slug {
           current

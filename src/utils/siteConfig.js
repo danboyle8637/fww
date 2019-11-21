@@ -9,6 +9,9 @@ module.exports = {
     laptop: helpers.getRems(1450),
     ultraWide: helpers.getRems(1460),
   },
+  api: {
+    baseUrl: 'http://localhost:5000'
+  },
   publicNavMenu: {
     aboutGroup: [
       { id: 2, title: "What We Do", path: "/what-we-do" },

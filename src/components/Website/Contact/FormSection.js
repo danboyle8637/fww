@@ -1,17 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-  SectionContainer,
-  ContentContainer,
-  ElementContainer,
-} from "../../../styles/Containers";
+import { ContentContainer, ElementContainer } from "../../../styles/Containers";
 import { FormButton } from "../../../styles/Buttons";
 import TextInput from "../../Shared/Form/TextInput";
 import TextArea from "../../Shared/Form/TextArea";
 import RadioInput from "../../Shared/Form/RadioInput";
 import { useFormStore } from "../../../context/FormContext";
 import useContactFormControls from "../../../hooks/useContactFormControls";
+import siteConfig from "../../../utils/siteConfig";
 import { above } from "../../../styles/Theme";
 
 const FormSection = () => {
@@ -25,6 +22,27 @@ const FormSection = () => {
     console.log(`Email: ${formState.emailAddressValue.value}`);
     console.log(`Issue: ${formState.howCanIHelpValue.value}`);
     console.log(`Message: ${formState.tellMeMoreValue.value}`);
+
+    const contactUrl = `http://localhost:5001/fit-womens-weekly/us-central1/fwwContactPage`;
+
+    const contactRequest = {
+      firstName: formState.firstNameValue.value,
+      email: formState.emailAddressValue.value,
+      issue: formState.howCanIHelpValue.value,
+      message: formState.tellMeMoreValue.value,
+    };
+
+    fetch(contactUrl, {
+      method: "POST",
+      body: JSON.stringify(contactRequest),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.message);
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
     // Navigate to a thank you page.
   };
@@ -100,6 +118,12 @@ const FormSection = () => {
 };
 
 export default FormSection;
+
+const SectionContainer = styled.div`
+  margin: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+`;
 
 const ContactForm = styled.form`
   margin: 0;
