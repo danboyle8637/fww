@@ -103,7 +103,7 @@ const formState = {
         checked: false,
       },
       {
-        value: "join_old_side",
+        value: "join_old_site",
         displayValue: "Join the old site",
         checked: false,
       },

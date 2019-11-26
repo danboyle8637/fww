@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { navigate } from "gatsby";
 
 import { BodyText } from "../../../styles/BodyText";
+import BaseButton from "../../Buttons/BaseButton";
 import { InnerButton } from "../../../styles/Buttons";
 import { above } from "../../../styles/Theme";
 
 const SevenDayResetCardContent = () => {
+  const handleBaseButtonClick = () => navigate("/join-a-7-day-reset-program");
+
   return (
     <ContentContainer>
       <Headline>Get Started for FREE!</Headline>
@@ -15,9 +19,9 @@ const SevenDayResetCardContent = () => {
         comfort-zone… and introduce you to a new workout style designed for busy
         women like you.
       </BodyText>
-      <InnerButton to={"/join-a-7-day-reset-program"}>
+      <BaseButton handleClick={handleBaseButtonClick}>
         Create a FREE Account
-      </InnerButton>
+      </BaseButton>
     </ContentContainer>
   );
 };

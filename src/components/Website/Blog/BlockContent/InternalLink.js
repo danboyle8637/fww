@@ -22,7 +22,7 @@ const LinkContainer = styled.span`
 
 const Text = styled(Link)`
   position: relative;
-  margin: 0 0 20px 0;
+  margin: 0;
   padding: 0;
   font-size: 16px;
   font-weight: 500;

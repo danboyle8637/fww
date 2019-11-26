@@ -6,4 +6,4 @@ slug: "/the-app"
 buttonText: See The Future
 ---
 
-Imagine a fitness app designed by trainers. Not investors and no corporations.
+Imagine a fitness app designed by trainers. Not investors or corporations.

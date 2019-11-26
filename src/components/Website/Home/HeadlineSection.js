@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
@@ -9,6 +9,7 @@ import { InnerButton } from "../../../styles/Buttons";
 import Headline from "./Headline";
 import FWWLogo from "../../../svgs/FWWLogo";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
+import BaseButton from '../../Buttons/BaseButton'
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -61,38 +62,28 @@ const HeadlineSection = () => {
   `;
 
   const image = useStaticQuery(query);
-  const mobile = image.homeMobile.childImageSharp.fluid;
-  const tablet = image.homeTablet.childImageSharp.fluid;
-  const ipadPro = image.homeIpadPro.childImageSharp.fluid;
-  const laptop = image.homeLaptop.childImageSharp.fluid;
+  const mobile = image.homeMobile;
+  const tablet = image.homeTablet;
+  const ipadPro = image.homeIpadPro;
+  const laptop = image.homeLaptop;
 
-  const sources = [
-    mobile,
-    {
-      ...laptop,
-      media: `(min-width: 1100px)`,
-    },
-    {
-      ...ipadPro,
-      media: `(min-width: 960px)`,
-    },
-    {
-      ...tablet,
-      media: `(min-width: 600px)`,
-    },
-  ];
+  const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
+  const backgroundReady = useIsBackgroundReady(background);
 
-  //const sources = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
-  //const backgroundReady = useIsBackgroundReady(background);
+  const handleBaseButtonClick = () => navigate('/join-a-7-day-reset-program')
 
   return (
     <>
       <SectionGrid>
-        <BackgroundImage
-          fluid={sources}
-          alt="Kindal walking with two kettlebells racked."
-          title="Kindal with two racked kettlebels"
-        />
+        {backgroundReady ? (
+          <BackgroundImage
+            fluid={background}
+            alt="Kindal walking with two kettlebells racked."
+            title="Kindal with two racked kettlebels"
+          />
+        ) : (
+          <BackgroundImageLoader />
+        )}
         <ContentWrapper>
           <HeadlineWrapper>
             <Logo />
@@ -100,9 +91,9 @@ const HeadlineSection = () => {
             <ScrollDownArrow scrollId="home-card-section" />
           </HeadlineWrapper>
           <ButtonWrapper>
-            <InnerButton to={"/join-a-7-day-reset-program"}>
+            <BaseButton handleClick={handleBaseButtonClick}>
               Get Started for FREE!
-            </InnerButton>
+            </BaseButton>
           </ButtonWrapper>
         </ContentWrapper>
       </SectionGrid>

@@ -6,4 +6,4 @@ slug: "/programs"
 buttonText: Ready to Sweat?
 ---
 
-Intense programs designed for your fitness level so you results.
+Intense programs designed to challenge your fitness level.
