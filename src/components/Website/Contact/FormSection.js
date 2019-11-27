@@ -50,7 +50,7 @@ const FormSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
-        <ContactForm>
+        <ContactForm onSubmit={handleFormSubmit}>
           <TextInput
             type="text"
             name="firstName"
@@ -107,9 +107,7 @@ const FormSection = () => {
             onBlur={updateFormOptions}
           />
           <ElementContainer justifyCenter>
-            <FormButton type="submit" onClick={handleFormSubmit}>
-              Help Me Kindal!
-            </FormButton>
+            <FormButton type="submit">Help Me Kindal!</FormButton>
           </ElementContainer>
         </ContactForm>
       </ContentContainer>
