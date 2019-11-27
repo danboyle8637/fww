@@ -12,10 +12,10 @@ import { above } from "../../../styles/Theme";
 
 const MenuChicklet = () => {
   // eslint-disable-next-line
-  const [menuState, dispatch] = useMenuContext();
+  const [menuState, dispatchMenuAction] = useMenuContext();
 
   const handleToggleMenu = () => {
-    dispatch({ type: "toggleMenu" });
+    dispatchMenuAction({ type: "toggleMenu" });
   };
 
   return (
@@ -26,7 +26,6 @@ const MenuChicklet = () => {
       <Portal>
         <RightMenuDrawer />
         <LeftMenuDrawer />
-        <MenuMarkerBorder />
       </Portal>
     </>
   );

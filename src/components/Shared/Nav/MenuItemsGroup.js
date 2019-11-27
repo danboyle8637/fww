@@ -62,16 +62,7 @@ const MenuItemsGroup = ({ title, menuItems }) => {
 
   return (
     <GroupContainer>
-      <Header3
-        upper
-        mobileSmall
-        tabletMedium
-        laptopMedium
-        ultraWideLarge
-        primary
-      >
-        {title}
-      </Header3>
+      <LinkGroupHeader>{title}</LinkGroupHeader>
       <MenuList>{items}</MenuList>
     </GroupContainer>
   );
@@ -89,20 +80,53 @@ const MenuList = styled.ul`
   margin: 10px 0 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 12px;
+  ${above.tablet`
+    gap: 18px;
+  `}
+  ${above.ipadPro`
+    gap: 12px;
+  `}
 `;
 
 const MenuItem = styled.li`
-  margin: 0 0 8px 0;
+  margin: 0;
   padding: 0;
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
+const LinkGroupHeader = styled.h3`
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  color: ${props => props.theme.headlinePrimary};
+  font-weight: 800;
+  text-transform: uppercase;
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 20px;
+    background: ${props => props.theme.headlinePrimary};
+  }
+  ${above.mobile`
+    font-size: 32px;
+  `}
+`;
+
 const MenuLink = styled.a`
   font-family: Montserrat, sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 18px;
   color: ${props =>
     props.pathName === props.path
       ? props.theme.primaryAccent

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
+import { useMenuContext } from "../../context/MenuContext";
 import { above } from "../../styles/Theme";
 
 const NavCTAButton = ({ children, handleClick }) => {
+  // eslint-disable-next-line
+  const [menuState, dispatchMenuAction] = useMenuContext()
+  const buttonRef = useRef(null)
+
   return <ButtonContainer onClick={handleClick}>{children}</ButtonContainer>;
 };
 

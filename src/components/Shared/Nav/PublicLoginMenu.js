@@ -12,20 +12,16 @@ const PublicLoginMenu = () => {
     const path = item.path;
 
     return (
-      <MenuItem key={id}>
-        {id === 0 ? (
-          <LoginLink to={path}>{title}</LoginLink>
-        ) : (
-          <JoinLink to={path}>{title}</JoinLink>
-        )}
-      </MenuItem>
+      <AppLink join={id === 0 ? false : true} key={id} to={path}>
+        {title}
+      </AppLink>
     );
   });
 
   return (
     <MenuContainer>
       <MembersLabel>Members</MembersLabel>
-      <MenuList>{loginItems}</MenuList>
+      <ButtonWrapper>{loginItems}</ButtonWrapper>
     </MenuContainer>
   );
 };
@@ -33,13 +29,17 @@ const PublicLoginMenu = () => {
 export default PublicLoginMenu;
 
 const MenuContainer = styled.div`
-  margin: 120px 0 0 0;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 80%;
+  ${above.mobile`
+    height: 90%;
+  `}
   ${above.ipadPro`
     margin: 0;
     flex-direction: row;
@@ -48,91 +48,78 @@ const MenuContainer = styled.div`
 `;
 
 const MembersLabel = styled.h3`
-  margin: 0 0 20px 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin: 0;
   padding: 0;
   font-size: 82px;
   font-weight: 800;
+  word-wrap: normal;
   text-transform: uppercase;
   color: #000000;
+  width: 100%;
   transform: rotate(-90deg);
   ${above.mobile`
     font-size: 120px;
-    transform: translateY(40px) rotate(-90deg);
   `}
   ${above.tablet`
     font-size: 160px;
   `}
   ${above.ipadPro`
-    font-size: 140px;
+    top: 45%;
+    left: 40%;
+    font-size: 180px;
     transform: rotate(-90deg);
   `}
   ${above.laptop`
-    font-size: 180px;
+    top: 26%;
+    font-size: 200px;
   `}
 `;
 
-const MenuList = styled.ul`
-  margin: 10px 0 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  list-style: none;
+const ButtonWrapper = styled.div`
+  margin: 40px 0 0 0;
+  padding: 0 12px;
+  align-self: end;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+  ${above.mobile`
+    padding: 0 40px;
+  `}
   ${above.ipadPro`
-    margin: 0;
-    transform: translateX(-240px);
-  `}
-  ${above.laptop`
-    transform: translateX(-280px);
+    justify-self: center;
+    align-self: center;
   `}
 `;
 
-const MenuItem = styled.li`
-  margin: 0 0 8px 0;
+const AppLink = styled.a`
+  margin: 0;
   padding: 0;
-  &:last-child {
-    margin-bottom: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: ${props =>
+    props.join ? props.theme.baseBackgroundColor : props.theme.headlinePrimary};
+  background: ${props => (props.join ? props.theme.primaryAccent : "none")};
+  border: 2px solid
+    ${props => (props.join ? "none" : props.theme.headlinePrimary)};
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.tertiaryAccent};
   }
-`;
-
-const JoinLink = styled(Link)`
-  margin: 0;
-  padding: 0;
-  font-family: Montserrat, sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: ${props => props.theme.primaryAccent};
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
   ${above.mobile`
     font-size: 32px;
   `}
   ${above.tablet`
     font-size: 46px;
-  `}
-  ${above.laptop`
-    font-size: 56px;
-  `}
-`;
-
-const LoginLink = styled(Link)`
-  margin: 0;
-  padding: 0;
-  font-family: Montserrat, sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: ${props => props.theme.headlinePrimary};
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  ${above.mobile`
-    font-size: 32px;
-  `}
-  ${above.tablet`
-    font-size: 46px;
-  `}
-  ${above.laptop`
-    font-size: 56px;
   `}
 `;

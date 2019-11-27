@@ -382,6 +382,63 @@ const formReducer = (state, action) => {
         },
       };
     }
+    case "resetContactForm": {
+      return {
+        ...state,
+        firstNameValue: {
+          value: "",
+          valid: false,
+        },
+        firstNameOptions: {
+          initial: true,
+          touched: false,
+          showInstructions: false,
+        },
+        emailAddressValue: {
+          value: "",
+          valid: false,
+        },
+        emailAddressOptions: {
+          initial: true,
+          touched: false,
+          showInstructions: false,
+        },
+        tellMeMoreValue: {
+          value: "",
+          valid: false,
+        },
+        tellMeMoreOptions: {
+          initial: true,
+          touched: false,
+          showInstructions: false,
+        },
+        howCanIHelpValue: {
+          value: "",
+          valid: false,
+          options: [
+            {
+              value: "technical",
+              displayValue: "Technical help",
+              checked: false,
+            },
+            {
+              value: "7_day_reset",
+              displayValue: "7 Day Reset Challenge",
+              checked: false,
+            },
+            {
+              value: "join_old_site",
+              displayValue: "Join the old site",
+              checked: false,
+            },
+            { value: "other", displayValue: "Other", checked: false },
+          ],
+        },
+        howCanIHelpOptions: {
+          initial: true,
+        },
+      };
+    }
     default: {
       return state;
     }

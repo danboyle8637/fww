@@ -10,7 +10,10 @@ module.exports = {
     ultraWide: helpers.getRems(1460),
   },
   api: {
-    baseUrl: 'http://localhost:5000'
+    baseUrl: "http://localhost:5000",
+  },
+  functions: {
+    baseUrl: "http://localhost:5001",
   },
   publicNavMenu: {
     aboutGroup: [

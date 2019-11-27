@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { ContentContainer, ElementContainer } from "../../../styles/Containers";
 import { FormButton } from "../../../styles/Buttons";
+import BaseButton from "../../Buttons/BaseButton";
 import TextInput from "../../Shared/Form/TextInput";
 import TextArea from "../../Shared/Form/TextArea";
 import RadioInput from "../../Shared/Form/RadioInput";
@@ -11,19 +12,22 @@ import useContactFormControls from "../../../hooks/useContactFormControls";
 import siteConfig from "../../../utils/siteConfig";
 import { above } from "../../../styles/Theme";
 
-const FormSection = () => {
-  // eslint-disable-next-line
-  const [formState, dispatch] = useFormStore();
+const FormSection = ({
+  isSyncing,
+  setIsSyncing,
+  setSyncMessage,
+  setShowMessage,
+  setDialogMessage,
+}) => {
+  const [formState, dispatchFormAction] = useFormStore();
   const { updateFormValue, updateFormOptions } = useContactFormControls();
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    console.log(`Name: ${formState.firstNameValue.value}`);
-    console.log(`Email: ${formState.emailAddressValue.value}`);
-    console.log(`Issue: ${formState.howCanIHelpValue.value}`);
-    console.log(`Message: ${formState.tellMeMoreValue.value}`);
+    setSyncMessage("Sending Message...");
+    setIsSyncing(true);
 
-    const contactUrl = `http://localhost:5001/fit-womens-weekly/us-central1/fwwContactPage`;
+    const contactUrl = `${siteConfig.functions.baseUrl}/fit-womens-weekly/us-central1/fwwContactPage`;
 
     const contactRequest = {
       firstName: formState.firstNameValue.value,
@@ -39,13 +43,29 @@ const FormSection = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data.message);
+        dispatchFormAction({ type: "resetContactForm" });
+        setSyncMessage("✉️ Message sent!");
+        setIsSyncing(false);
+        setDialogMessage(
+          "✉️ Your message has been sent I will get back to you in less than 24 hours!"
+        );
+        setShowMessage(true);
       })
       .catch(error => {
         console.log(error);
+        dispatchFormAction({ type: "resetContactForm" });
+        setSyncMessage("😢 Error. Try again!");
+        setIsSyncing(false);
+        setDialogMessage(
+          "😢 Yikes, something went wrong. I reset the form... try again!"
+        );
+        setShowMessage(true);
       });
 
     // Navigate to a thank you page.
   };
+
+  const resetForm = () => dispatchFormAction({ type: "resetContactForm" });
 
   return (
     <SectionContainer>
@@ -107,7 +127,9 @@ const FormSection = () => {
             onBlur={updateFormOptions}
           />
           <ElementContainer justifyCenter>
-            <FormButton type="submit">Help Me Kindal!</FormButton>
+            <BaseButton type="submit">
+              {isSyncing ? "Sending Your Message" : "Help Me Out Kindal!"}
+            </BaseButton>
           </ElementContainer>
         </ContactForm>
       </ContentContainer>

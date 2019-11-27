@@ -24,12 +24,13 @@ const PublicNavMenu = () => {
 export default PublicNavMenu;
 
 const MenuContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 90%;
   ${above.mobile`
     height: 90%;
   `}
@@ -37,7 +38,7 @@ const MenuContainer = styled.div`
     height: 80%;
   `}
   ${above.ipadPro`
-    height: 100vh;
+    height: 90%;
   `}
   ${above.laptop`
     height: 86%;

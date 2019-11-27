@@ -23,7 +23,7 @@ const TextArea = props => {
         <FormInstructions isTouched={isError && !isTouched} isTextArea={true}>
           <HelpLabel htmlFor={labelFor}>{labelError}</HelpLabel>
         </FormInstructions>
-        <MainLabelTransition isTouched={isNormal}>
+        <MainLabelTransition isTouched={isNormal} isTextArea={true}>
           <InputLabel htmlFor={labelFor}>{labelName}</InputLabel>
         </MainLabelTransition>
         {isValid && <CheckMark />}

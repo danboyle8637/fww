@@ -65,8 +65,8 @@ const RightDrawer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 44%;
-  padding: 20px;
+  width: 46%;
+  padding: 20px 0;
   overflow: hidden;
   z-index: 1009;
   ${above.ipadPro`

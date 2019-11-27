@@ -18,7 +18,7 @@ const Header = ({ location }) => {
   const [showLogo, setShowLogo] = useState(true);
   const [showBackButton, setShowBackButton] = useState(false);
   // eslint-disable-next-line
-  const [menuStore, dispatch] = useMenuContext();
+  const [menuStore, dispatchMenuAction] = useMenuContext();
 
   useEffect(() => {
     return () => {
@@ -34,7 +34,7 @@ const Header = ({ location }) => {
   }, [device]);
 
   useEffect(() => {
-    dispatch({ type: "setPathName", value: location.pathname });
+    dispatchMenuAction({ type: "setPathName", value: location.pathname });
 
     if (location.pathname.includes("blog") && location.pathname.length > 5) {
       setShowBackButton(true);
@@ -50,7 +50,7 @@ const Header = ({ location }) => {
     } else {
       setShowBackButton(false);
     }
-  }, [location, dispatch]);
+  }, [location, dispatchMenuAction]);
 
   useEffect(() => {
     const backButton = backButtonRef.current;

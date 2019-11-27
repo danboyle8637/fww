@@ -56,6 +56,7 @@ const LeftDrawer = styled.div`
   bottom: 0;
   left: 0;
   background: ${props => props.theme.mainBackgroundColor};
+  border-right: 8px solid rgba(180, 76, 255, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
