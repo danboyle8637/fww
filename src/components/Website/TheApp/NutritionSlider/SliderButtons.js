@@ -39,6 +39,10 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   width: 100px;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.tertiaryAccent};
+  }
 `;
 
 const NextArrow = styled(NavigationArrow)`

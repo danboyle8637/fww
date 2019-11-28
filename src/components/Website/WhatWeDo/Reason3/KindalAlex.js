@@ -4,8 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
-import DividerMarker1 from "../../../../svgs/DividerMarker1";
-import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
@@ -60,7 +58,7 @@ const KindalAlex = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -72,48 +70,29 @@ const KindalAlex = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
-      <BottomDivider />
+      <BottomLine />
     </SectionGrid>
   );
 };
 
 export default KindalAlex;
 
-const TopDivider = styled(DividerMarker1)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%;
-  z-index: 2;
-  ${above.mobile`
-    width: 180%;
-    transform: translateY(-66px);
-  `}
-  ${above.tablet`
-    width: 160%;
-    transform: translateY(-80px);
-  `}
-  ${above.ipadPro`
-    width: 100%;
-    transform: translateY(-70px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarkerTriangle)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0;
   right: 0;
-  width: 200%;
-  z-index: 1;
-  transform: translate(80px, 1px) rotate(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translate(0px, 50px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translate(0px, 70px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translate(0px, 94px) rotate(180deg);
-  `}
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

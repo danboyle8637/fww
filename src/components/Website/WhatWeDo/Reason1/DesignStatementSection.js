@@ -73,7 +73,7 @@ const DesignStatementSection = () => {
 
   return (
     <SectionGrid>
-      <DividerTop />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -88,7 +88,7 @@ const DesignStatementSection = () => {
       <HeadlineWrapper>
         <Headline2 />
       </HeadlineWrapper>
-      <DividerBottom />
+      <BottonLine />
     </SectionGrid>
   );
 };
@@ -114,41 +114,22 @@ const HeadlineWrapper = styled.div`
   `}
 `;
 
-const DividerTop = styled(DividerMarker1)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 240%;
-  transform: translateY(-40px);
-  z-index: 2;
-  ${above.mobile`
-    width: 140%;
-    transform: translateY(-50px);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(-50px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-70px);
-  `}
+  right: 0;
+  height: 12px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const DividerBottom = styled(DividerMarker2)`
+const BottonLine = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 200%;
-  transform: translateY(30px) rotate(180deg);
-  z-index: 2;
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(30px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(40px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(64px) rotate(180deg);
-  `}
+  right: 0;
+  height: 12px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
+import NavCTAButtonTransition from "../../Animations/ReactTransitions/NavCTAButtonTransition";
 import { useMenuContext } from "../../context/MenuContext";
 import { above } from "../../styles/Theme";
 
 const NavCTAButton = ({ children, handleClick }) => {
   // eslint-disable-next-line
-  const [menuState, dispatchMenuAction] = useMenuContext()
-  const buttonRef = useRef(null)
+  const [menuState, dispatchMenuAction] = useMenuContext();
 
-  return <ButtonContainer onClick={handleClick}>{children}</ButtonContainer>;
+  return (
+    <NavCTAButtonTransition menuOpen={menuState.isOpen}>
+      <ButtonContainer onClick={handleClick}>{children}</ButtonContainer>
+    </NavCTAButtonTransition>
+  );
 };
 
 export default NavCTAButton;

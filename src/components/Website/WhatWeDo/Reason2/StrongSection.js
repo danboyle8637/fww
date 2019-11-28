@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import StrongLogo from "../../../../svgs/StrongLogo";
-import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import StrongCopy from "./Copy/StrongCopy";
 import StrongHeadline from "./Headlines/StrongHeadline";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
@@ -70,7 +69,6 @@ const StrongSection = () => {
 
   return (
     <SectionGrid>
-      <Divider />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -89,6 +87,7 @@ const StrongSection = () => {
           <StrongCopy />
         </CopyWrapper>
       </ContentWrapper>
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -97,25 +96,6 @@ export default StrongSection;
 
 const Logo = styled(StrongLogo)`
   width: 100%;
-`;
-
-const Divider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 200%;
-  z-index: 2;
-  transform: translate(-60px, 15px) rotate(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(35px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(65px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(95px) rotate(180deg);
-  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -151,4 +131,14 @@ const CopyWrapper = styled.div`
   ${above.tablet`
     width: 80%;
   `}
+`;
+
+const BottomLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

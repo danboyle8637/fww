@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import IgniteLogo from "../../../../svgs/IgniteLogo";
-import DividerMarkerTriangle from "../../../../svgs/DividerMarkerTriangle";
 import IgniteCopy from "./Copy/IgniteCopy";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
@@ -69,7 +68,7 @@ const IgniteSection = () => {
 
   return (
     <SectionGrid>
-      <Divider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -95,24 +94,6 @@ const Logo = styled(IgniteLogo)`
   width: 100%;
 `;
 
-const Divider = styled(DividerMarkerTriangle)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  z-index: 2;
-  transform: translateY(-45px);
-  ${above.mobile`
-    width: 100%;
-  `}
-  ${above.tablet`
-    transform: translateY(-80px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-100px);
-  `}
-`;
-
 const ContentWrapper = styled.div`
   margin: 40px 0 0 16px;
   grid-column: 1 / -1;
@@ -135,4 +116,14 @@ const ContentWrapper = styled.div`
     margin: 140px 0 0 140px;
     width: 40%;
   `}
+`;
+
+const TopLine = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

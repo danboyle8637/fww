@@ -45,28 +45,3 @@ const MainLabelTransition = ({ isTextArea, isTouched, children }) => {
 };
 
 export default MainLabelTransition;
-
-{
-  /* <Transition
-  in={isTouched}
-  unmountOnExit={true}
-  addEndListener={(node, done) => {
-    if (isTouched) {
-      TweenMax.set(node, {
-        y: 0,
-        fontSize: "16px",
-        autoAlpha: 1,
-      });
-    } else {
-      TweenMax.to(node, 0.5, {
-        x: 300,
-        fontSize: "12px",
-        autoAlpha: 0,
-        onComplete: done,
-      });
-    }
-  }}
->
-  {children}
-</Transition> */
-}

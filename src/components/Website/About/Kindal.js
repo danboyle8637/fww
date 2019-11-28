@@ -6,8 +6,6 @@ import styled from "styled-components";
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import KindalHeadline from "./Headlines/KindalHeadline";
 import Certifications from "./Certifications";
-import DividerMarker1 from "../../../svgs/DividerMarker1";
-import DividerMarker2 from "../../../svgs/DividerMarker2";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -74,7 +72,7 @@ const Kindal = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -90,7 +88,7 @@ const Kindal = () => {
         <KindalHeadline />
         <Certifications kindal={true} />
       </ContentWrapper>
-      <BottomDivider />
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -117,42 +115,22 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const TopDivider = styled(DividerMarker1)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  transform: translateY(-36px);
-  z-index: 2;
-  ${above.mobile`
-    width: 120%;
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(-46px);
-  `}
-  ${above.ipadPro`
-    width: 100%;
-    transform: translateY(-66px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarker2)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 180%;
-  transform: translateY(26px) rotate(180deg);
-  z-index: 2;
-  ${above.mobile`
-    width: 120%;
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(46px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    width: 100%;
-    transform: translateY(66px) rotate(180deg);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

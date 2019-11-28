@@ -26,6 +26,7 @@ const CardContainer = styled.div`
   flex-direction: column;
   background: ${props => props.theme.mainBackgroundBorderColor};
   border-radius: 10px;
+  box-shadow: 0 0 0 6px rgba(43, 44, 58, 0.6);
   ${above.mobile`
     padding: 20px;
     align-self: center;

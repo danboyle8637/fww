@@ -12,7 +12,6 @@ import { above } from "../../../styles/Theme";
 const FooterSection = () => {
   return (
     <FooterContainer>
-      <FooterDivider fill={"#26243E"} />
       <LogoLink to={"/"}>
         <Logo />
       </LogoLink>
@@ -33,6 +32,7 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   background: ${props => props.theme.footerBackground};
+  border-top: 6px solid #373362;
   width: 100%;
 `;
 
@@ -42,25 +42,4 @@ const Logo = styled(FWWLogo)`
 
 const LogoLink = styled(Link)`
   z-index: 2;
-`;
-
-const FooterDivider = styled(DividerMarker1)`
-  position: absolute;
-  bottom: 100%;
-  right: 0;
-  width: 140%;
-  transform: translateY(10px) rotate(180deg);
-  pointer-events: none;
-  z-index: 1;
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(20px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(40px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    width: 100%;
-    transform: translateY(70px) rotate(180deg);
-  `}
 `;

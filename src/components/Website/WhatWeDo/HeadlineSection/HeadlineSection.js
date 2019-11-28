@@ -82,6 +82,7 @@ const HeadlineSection = () => {
         <Headline1 />
         <ScrollDownArrow scrollId="what-we-do-lead" />
       </ContentContainer>
+      <BottonLine />
     </SectionGrid>
   );
 };
@@ -106,4 +107,14 @@ const ContentContainer = styled.div`
   ${above.ipadPro`
     width: 75%;
   `}
+`;
+
+const BottonLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

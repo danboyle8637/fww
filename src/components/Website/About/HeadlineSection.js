@@ -85,6 +85,7 @@ const HeadlineSection = () => {
         <HeadlineCopy />
         <ScrollDownArrow scrollId="about-lead" />
       </ContentWrapper>
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -111,4 +112,14 @@ const ContentWrapper = styled.div`
     margin: 280px 0 0 140px;
     width: 30%;
   `}
+`;
+
+const BottomLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
