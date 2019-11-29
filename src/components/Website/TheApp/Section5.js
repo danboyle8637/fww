@@ -8,7 +8,6 @@ import Slide2 from "./NutritionSlider/Slide2";
 import Slide3 from "./NutritionSlider/Slide3";
 import Slide4 from "./NutritionSlider/Slide4";
 import SliderButtons from "./NutritionSlider/SliderButtons";
-import DividerMarker2 from "../../../svgs/DividerMarker2";
 import PlanSmartEatRealLogo from "../../../svgs/PlanSmartEatRealLogo";
 import { above } from "../../../styles/Theme";
 
@@ -17,7 +16,7 @@ const Section5 = () => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [currentRecipe, setCurrentRecipe] = useState(0);
   const [recipes, setRecipes] = useState([]);
-  
+
   const slide0Ref = useRef(null);
   const slide1Ref = useRef(null);
   const slide2Ref = useRef(null);
@@ -87,7 +86,7 @@ const Section5 = () => {
 
   return (
     <SliderContainer>
-      <TopDivider />
+      <TopLine />
       <Slide1 ref={slide0Ref} />
       <Slide2 ref={slide1Ref} />
       <Slide3 ref={slide2Ref} />
@@ -98,7 +97,7 @@ const Section5 = () => {
         disablePrev={disablePrev}
         disableNext={disableNext}
       />
-      <BottomDivider />
+      <BottomLine />
     </SliderContainer>
   );
 };
@@ -125,42 +124,22 @@ const PSERBackground = styled(PlanSmartEatRealLogo)`
   `}
 `;
 
-const TopDivider = styled(DividerMarker2)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(-30px);
-  pointer-events: none;
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-30px);
-  `}
-  ${above.tablet`
-    transform: translateY(-40px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-70px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarker2)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(10px) rotate(180deg);
-  pointer-events: none;
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(10px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(30px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(60px) rotate(180deg);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

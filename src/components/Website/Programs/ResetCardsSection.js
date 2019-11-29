@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 
-import { SectionContainer, ContentContainer } from "../../../styles/Containers";
+import { ContentContainer } from "../../../styles/Containers";
 import Headline2 from "./Headlines/Headline2";
 import ResetCardsMobile from "./ResetCardsMobile";
 import ResetCardsAboveMobile from "./ResetCardsAboveMobile";
@@ -44,3 +45,9 @@ const ResetCardsSection = () => {
 };
 
 export default ResetCardsSection;
+
+const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

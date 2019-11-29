@@ -1,87 +1,73 @@
 import React from "react";
 import styled from "styled-components";
 
-import IgniteReset from "../../svgs/IgniteResetLogo";
-import BodyBurnReset from "../../svgs/BodyBurnResetLogo";
-import StrongReset from "../../svgs/StrongResetLogo";
+import ProgramCardFooter from "./Footers/ProgramCardFooter";
+import ResetProgramCardHeader from "./Headers/ResetProgramCardHeader";
 import { above } from "../../styles/Theme";
 
-const ResetProgramCard = () => {
-  const logos = [
-    {
-      id: 1,
-      logo: <IgniteReset />,
-      text: "Choose if you're more of a beginner",
-    },
-    {
-      id: 2,
-      logo: <BodyBurnReset />,
-      text: "Choose if you're more intermediate",
-    },
-    {
-      id: 3,
-      logo: <StrongReset />,
-      text: "Choose if you want a real challenge",
-    },
-  ];
-
-  const cards = logos.map(program => {
-    const id = program.id;
-    const text = program.text;
-    const logo = program.logo;
-
-    return (
-      <Card key={id}>
-        <LogoWrapper>{logo}</LogoWrapper>
-        <DescriptionWrapper>{text}</DescriptionWrapper>
-      </Card>
-    );
-  });
-
-  return <CardContainer>{cards}</CardContainer>;
+const ChooseResetProgramCard = ({
+  programId,
+  description,
+  fitnessLevel,
+  numberOfWorkouts,
+  duration,
+  coverImage,
+  altText,
+}) => {
+  return (
+    <CardGrid>
+      <CardContainer>
+        <ResetProgramCardHeader
+          programId={programId}
+          coverImage={coverImage}
+          altText={altText}
+        />
+        <DescriptionWrapper dangerouslySetInnerHTML={{ __html: description }} />
+        <ProgramCardFooter
+          fitnessLevel={fitnessLevel}
+          numberOfWorkouts={numberOfWorkouts}
+          duration={duration}
+        />
+      </CardContainer>
+    </CardGrid>
+  );
 };
 
-export default ResetProgramCard;
+export default ChooseResetProgramCard;
 
-const CardContainer = styled.div`
-  margin: 60px 0 0 0;
+const CardGrid = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  align-items: center;
-  gap: 30px;
-  width: 100%;
-  ${above.mobile`
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  border-radius: 10px 10px 40px 10px;
+  transition: box-shadow 300ms ease-in-out;
+  ${above.ipadPro`
+    &:hover {
+      box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props =>
+        props.theme.tertiaryAccent};
+    }
   `}
 `;
 
-const Card = styled.div`
-  padding: 12px;
+const CardContainer = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
   background: ${props => props.theme.mainBackgroundBorderColor};
-  border-radius: 8px;
+  border-radius: 10px 10px 40px 10px;
   width: 100%;
-  ${above.mobile`
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    justify-items: center;
-  `}
+  max-width: 390px;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.3);
 `;
 
-const LogoWrapper = styled.div`
-  padding: 5px 0 0 0;
-  width: 120px;
-  ${above.mobile`
-    width: 100%;
-  `}
-`;
-
-const DescriptionWrapper = styled.p`
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-  color: ${props => props.theme.headlinePrimary};
+const DescriptionWrapper = styled.div`
+  margin: 8px 0 0 0;
+  padding: 8px;
+  font-family: QuicksandSemiBold;
+  font-size: 14px;
+  text-decoration: none;
+  color: ${props => props.theme.bodyText};
 `;

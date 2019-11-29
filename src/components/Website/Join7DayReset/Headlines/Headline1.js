@@ -8,32 +8,20 @@ import HeadlineCopy from "../Copy/HeadlineCopy";
 const Headline1 = () => {
   return (
     <HeadlineContainer>
-      <Header1
-        upper
-        mobileLarge
-        primary
-        setMLineHeight={1.4}
-        setTLineHeight={1.4}
-        setIpadLineHeight={1.4}
-        setLLineHeight={1.4}
-      >
+      <Header1 upper mobileLarge primary>
         Finally
       </Header1>
-      <Header1 mobileMedium tabletMedium secondary>
-        a workout design
-      </Header1>
       <Header1
         upper
         mobileLarge
         primary
-        setMLineHeight={1.4}
         setTLineHeight={1.4}
         setIpadLineHeight={1.4}
         setLLineHeight={1.4}
       >
-        Built
+        a workout design
       </Header1>
-      <Header1 upper mobileMedium tabletLarge secondary>
+      <Header1 upper mobileMedium tabletLarge secondary setMLineHeight={1.4}>
         For Busy Women
       </Header1>
       <HeadlineCopy />

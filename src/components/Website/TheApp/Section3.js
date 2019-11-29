@@ -5,8 +5,6 @@ import Image from "gatsby-image";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import BenefitCard from "./BenefitCard";
-import DividerMarker1 from "../../../svgs/DividerMarker1";
-import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -114,7 +112,7 @@ const Section3 = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -140,7 +138,7 @@ const Section3 = () => {
           body={benefit7Body}
         />
       </BenefitCardWrapper>
-      <BottomDivider />
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -172,40 +170,22 @@ const BenefitCardWrapper = styled.div`
   `}
 `;
 
-const TopDivider = styled(DividerMarker1)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%;
-  transform: translateY(-36px);
-  z-index: 2;
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-26px);
-  `}
-  ${above.tablet`
-    transform: translateY(-36px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-66px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarkerTriangle)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0;
   right: 0;
-  width: 180%;
-  transform: translate(0, 30px) rotate(180deg);
-  z-index: 2;
-  ${above.mobile`
-    width: 100%;
-    transform: translate(0, 40px) rotate(180deg);
-  `}
-  ${above.tablet`
-    transform: translate(0, 70px) rotate(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translate(0, 70px) rotate(180deg);
-  `}
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

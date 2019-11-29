@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import { ElementContainer } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
+import OutsideButton from "../../Buttons/OutsideButton";
 import Headline1 from "./Headlines/Headline1";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
@@ -84,12 +84,11 @@ const HeadlineSection = () => {
         <Headline1 />
       </HeadlineWrapper>
       <ButtonWrapper>
-        <ElementContainer justifyCenter>
-          <InnerButton to={"/7-day-reset-step1"}>
-            Join a Reset Program for FREE!
-          </InnerButton>
-        </ElementContainer>
+        <OutsideButton linkLocation={"https://google.com"}>
+          Join a Reset Program for FREE!
+        </OutsideButton>
       </ButtonWrapper>
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -120,8 +119,20 @@ const ButtonWrapper = styled.div`
   align-self: end;
   margin: 0 0 20px 0;
   padding: 0 16px;
+  display: flex;
+  justify-content: center;
   z-index: 1;
   ${above.mobile`
     margin: 0 0 60px 0;
   `}
+`;
+
+const BottomLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

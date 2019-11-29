@@ -1,11 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { ElementContainer } from "../../../styles/Containers";
 import { SetBodyText } from "../../../styles/BodyText";
-import { InnerButton } from "../../../styles/Buttons";
+import BaseButton from "../../Buttons/BaseButton";
 import Logo from "../../../svgs/BodyBurnChallengesLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
@@ -68,6 +68,8 @@ const BBCCard = () => {
   const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
+  const handleButtonClick = () => navigate("/body-burn-challenges");
+
   return (
     <CardContainer>
       <CardGrid>
@@ -90,9 +92,9 @@ const BBCCard = () => {
             />
           </LogoDescriptionWrapper>
           <ElementContainer>
-            <InnerButton to={"/body-burn-challenges"}>
+            <BaseButton handleClick={handleButtonClick}>
               Learn More About BBC
-            </InnerButton>
+            </BaseButton>
           </ElementContainer>
         </ContentContainer>
       </CardGrid>

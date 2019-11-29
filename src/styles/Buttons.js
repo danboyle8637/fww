@@ -48,6 +48,10 @@ const OutterButton = styled.a`
   width: 100%;
   max-width: 600px;
   cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.tertiaryAccent};
+  }
 `;
 
 const PodcastButton = styled.a`

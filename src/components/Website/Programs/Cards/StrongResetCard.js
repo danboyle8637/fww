@@ -1,11 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { ElementContainer } from "../../../../styles/Containers";
 import { SetBodyText } from "../../../../styles/BodyText";
-import { InnerButton } from "../../../../styles/Buttons";
+import BaseButton from "../../../Buttons/BaseButton";
 import Logo from "../../../../svgs/StrongResetLogo";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
@@ -68,6 +68,8 @@ const StrongResetCard = () => {
   const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
+  const handleButtonClick = () => navigate("/join-a-7-day-reset-program");
+
   return (
     <CardContainer>
       <CardGrid>
@@ -92,9 +94,9 @@ const StrongResetCard = () => {
             </ElementContainer>
           </LogoDescriptionWrapper>
           <ElementContainer>
-            <InnerButton to={"/join-a-7-day-reset-program"}>
+            <BaseButton handleClick={handleButtonClick}>
               Join The Reset for FREE!
-            </InnerButton>
+            </BaseButton>
           </ElementContainer>
         </ContentContainer>
       </CardGrid>

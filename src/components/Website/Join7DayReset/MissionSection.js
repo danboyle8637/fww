@@ -8,7 +8,6 @@ import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundLoaderImage from "../../Shared/BackgroundImageLoader";
 import MainResetLogo from "../../../svgs/7DayResetFWWLogo";
-import DividerMarker1 from "../../../svgs/DividerMarker1";
 import MissionCopy from "./Copy/MissionCopy";
 import { above } from "../../../styles/Theme";
 
@@ -69,7 +68,7 @@ const MissionSection = () => {
 
   return (
     <SectionGrid>
-      <TopDividerMarker />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -85,7 +84,7 @@ const MissionSection = () => {
         <Logo />
         <MissionCopy />
       </ContentWrapper>
-      <BottomDividerMarker />
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -123,40 +122,22 @@ const Logo = styled(MainResetLogo)`
   `}
 `;
 
-const TopDividerMarker = styled(DividerMarker1)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  transform: translate(0, -20px);
-  z-index: 2;
-  ${above.mobile`
-    width: 120%;
-    transform: translate(0, -40px);
-  `}
-  ${above.tablet`
-    width: 100%;
-  `}
-  ${above.ipadPro`
-    transform: translate(0, -64px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDividerMarker = styled(DividerMarker1)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0;
   right: 0;
-  width: 180%;
-  transform: translate(0, 30px) rotate(180deg);
-  z-index: 2;
-  ${above.mobile`
-    width: 120%;
-    transform: translate(0, 30px) rotate(180deg);
-  `}
-  ${above.tablet`
-    width: 100%;
-  `}
-  ${above.ipadPro`
-    transform: translate(0, 70px) rotate(180deg);
-  `}
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

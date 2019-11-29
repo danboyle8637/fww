@@ -1,11 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { ElementContainer } from "../../../styles/Containers";
 import { SetBodyText } from "../../../styles/BodyText";
-import { InnerButton } from "../../../styles/Buttons";
+import BaseButton from "../../Buttons/BaseButton";
 import Logo from "../../../svgs/StrongLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
@@ -68,6 +68,8 @@ const StrongCard = () => {
   const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
+  const handleButtonClick = () => navigate("/strong-kettlebell-training");
+
   return (
     <CardContainer>
       <CardGrid>
@@ -91,9 +93,9 @@ const StrongCard = () => {
             </ElementContainer>
           </LogoDescriptionWrapper>
           <ElementContainer>
-            <InnerButton to={"/strong-kettlebell-training"}>
+            <BaseButton handleClick={handleButtonClick}>
               Learn More About Strong
-            </InnerButton>
+            </BaseButton>
           </ElementContainer>
         </ContentContainer>
       </CardGrid>

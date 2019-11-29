@@ -61,7 +61,7 @@ class MainMenuIcon extends Component {
       })
       .to([this.menuTopBar, this.menuBottomBar], 0.2, {
         transformOrigin: "50% 50%",
-        scale: 0.6,
+        scale: 0.4,
       })
       .to([this.menuTopBar, this.menuBottomBar], 0.2, {
         transformOrigin: "50% 50%",

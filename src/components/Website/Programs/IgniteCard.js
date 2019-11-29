@@ -1,11 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { ElementContainer } from "../../../styles/Containers";
 import { SetBodyText } from "../../../styles/BodyText";
-import { InnerButton } from "../../../styles/Buttons";
+import BaseButton from "../../Buttons/BaseButton";
 import Logo from "../../../svgs/IgniteLogo";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
@@ -68,6 +68,8 @@ const IgniteProgramCard = () => {
   const background = useRenderBackgroundImage(mobile, tablet, laptop, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
+  const handleButtonClick = () => navigate("/ignite-strength-for-beginners");
+
   return (
     <CardContainer>
       <CardGrid>
@@ -90,9 +92,9 @@ const IgniteProgramCard = () => {
             />
           </LogoDescriptionWrapper>
           <ElementContainer>
-            <InnerButton to={"/ignite-strength-for-beginners"}>
+            <BaseButton handleClick={handleButtonClick}>
               Learn More About Ignite
-            </InnerButton>
+            </BaseButton>
           </ElementContainer>
         </ContentContainer>
       </CardGrid>
