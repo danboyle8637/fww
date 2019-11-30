@@ -6,7 +6,6 @@ import {
   ContentContainer,
 } from "../../../../styles/Containers";
 import TextMessageSection from "./TextMessageSection";
-import IPhoneX from "../../../../svgs/IphoneX";
 import Headline3 from "./Headline3";
 import Headline1 from "./Headline1";
 import Headline2 from "./Headline2";

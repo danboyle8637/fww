@@ -3,13 +3,11 @@ import styled from "styled-components";
 import { useStaticQuery, graphql, navigate } from "gatsby";
 import Image from "gatsby-image";
 
-import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import { ElementContainer } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
+import { SectionGrid } from "../../../styles/GridContainer";
 import Headline from "./Headline";
 import FWWLogo from "../../../svgs/FWWLogo";
 import ScrollDownArrow from "../../Shared/ScrollDownArrow";
-import BaseButton from '../../Buttons/BaseButton'
+import BaseButton from "../../Buttons/BaseButton";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
@@ -70,7 +68,7 @@ const HeadlineSection = () => {
   const background = useRenderBackgroundImage(mobile, tablet, ipadPro, laptop);
   const backgroundReady = useIsBackgroundReady(background);
 
-  const handleBaseButtonClick = () => navigate('/join-a-7-day-reset-program')
+  const handleBaseButtonClick = () => navigate("/join-a-7-day-reset-program");
 
   return (
     <>

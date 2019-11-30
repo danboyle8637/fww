@@ -7,8 +7,6 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
-import DividerMarker2 from "../../../svgs/DividerMarker2";
-import { above } from "../../../styles/Theme";
 
 const PictureEndSection = () => {
   const query = graphql`
@@ -59,7 +57,7 @@ const PictureEndSection = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -72,6 +70,7 @@ const PictureEndSection = () => {
         )}
       </BackgroundAsset>
       <ContentWrapper />
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -89,21 +88,22 @@ const ContentWrapper = styled.div`
   z-index: 2;
 `;
 
-const TopDivider = styled(DividerMarker2)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translateY(-15px);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-15px);
-  `}
-  ${above.tablet`
-    transform: translateY(-45px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-65px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
+`;
+
+const BottomLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

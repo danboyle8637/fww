@@ -42,15 +42,15 @@ const HeadlineWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transform: translate(-40px, 60px) rotate(-7deg);
+  transform: translate(-100px, 20px) rotate(-7deg);
   ${above.mobile`
-    transform: translate(-80px, 60px) rotate(-7deg);
+    transform: translate(-120px, 20px) rotate(-7deg);
   `}
   ${above.tablet`
-    transform: translate(0px, 80px) rotate(-7deg);
+    transform: translate(-220px, 30px) rotate(-7deg);
   `}
   ${above.ipadPro`
-    transform: translate(40px, 60px) rotate(-7deg);
+    transform: translate(-40px, 30px) rotate(-7deg);
   `}
 `;
 

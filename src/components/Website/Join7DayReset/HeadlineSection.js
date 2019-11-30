@@ -4,7 +4,6 @@ import Image from "gatsby-image";
 import styled from "styled-components";
 
 import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
-import { ElementContainer } from "../../../styles/Containers";
 import OutsideButton from "../../Buttons/OutsideButton";
 import Headline1 from "./Headlines/Headline1";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";

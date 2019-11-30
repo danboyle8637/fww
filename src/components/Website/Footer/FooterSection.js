@@ -6,14 +6,12 @@ import FWWLogo from "../../../svgs/FWWLogo";
 import FooterNavMenu from "./FooterNavMenu";
 import SocialIcons from "./SocialIcons";
 import FooterAddress from "./FooterAddress";
-import DividerMarker1 from "../../../svgs/DividerMarker1";
-import { above } from "../../../styles/Theme";
 
 const FooterSection = () => {
   return (
     <FooterContainer>
       <LogoLink to={"/"}>
-        <Logo />
+        <Logo footerLogo={true} />
       </LogoLink>
       <FooterNavMenu />
       <SocialIcons />

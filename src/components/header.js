@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import { TweenMax, Power2 } from "gsap/TweenMax";
@@ -6,16 +6,13 @@ import { TweenMax, Power2 } from "gsap/TweenMax";
 import { getRems } from "../utils/helpers";
 import FWWLogo from "../svgs/FWWLogo";
 import MenuChicklet from "./Shared/Nav/MenuChicklet";
-import ScreenWidthContext from "../context/ScreenWidthContext";
 import NavigationArrow from "../svgs/NavigationArrow";
 import NavCTAButton from "../components/Buttons/NavCTAButton";
 import { useMenuContext } from "../context/MenuContext";
 import { above } from "../styles/Theme";
 
 const Header = ({ location }) => {
-  const device = useContext(ScreenWidthContext);
   const backButtonRef = useRef(null);
-  const [showLogo, setShowLogo] = useState(true);
   const [showBackButton, setShowBackButton] = useState(false);
   // eslint-disable-next-line
   const [menuStore, dispatchMenuAction] = useMenuContext();
@@ -26,12 +23,6 @@ const Header = ({ location }) => {
       backButtonRef.current = null;
     };
   }, []);
-
-  useEffect(() => {
-    if (device === "mobile") {
-      setShowLogo(false);
-    }
-  }, [device]);
 
   useEffect(() => {
     dispatchMenuAction({ type: "setPathName", value: location.pathname });

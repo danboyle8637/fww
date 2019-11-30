@@ -85,6 +85,7 @@ const HeadlineSection = () => {
         <HeadlineCopy />
         <ScrollDownArrow scrollId={"ignite-lead"} />
       </ContentWrapper>
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -92,6 +93,7 @@ const HeadlineSection = () => {
 export default HeadlineSection;
 
 const ContentWrapper = styled.div`
+  margin: 60px 0 0 0;
   padding: 20px 0 0 16px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
@@ -101,7 +103,7 @@ const ContentWrapper = styled.div`
   width: 80%;
   z-index: 1;
   ${above.mobile`
-    margin: 60px 0 0 60px;
+    margin: 100px 0 0 60px;
     padding: 0;
     width: 46%;
   `}
@@ -110,14 +112,29 @@ const ContentWrapper = styled.div`
     padding: 0;
     width: 40%;
   `}
+  ${above.ipadPro`
+    margin: 180px 0 0 230px;
+    padding: 0;
+    width: 40%;
+  `}
 `;
 
 const Logo = styled(IgniteLogo)`
-  width: 80%;
+  width: 90%;
   ${above.mobile`
     width: 100%;
   `}
   ${above.tablet`
     width: 80%;
   `}
+`;
+
+const BottomLine = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

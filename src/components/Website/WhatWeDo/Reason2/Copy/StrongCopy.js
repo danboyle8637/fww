@@ -2,7 +2,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { ElementContainer } from "../../../../../styles/Containers";
-import { Header3 } from "../../../../../styles/Headlines";
 import { SetBodyText } from "../../../../../styles/BodyText";
 
 const StrongCopy = () => {

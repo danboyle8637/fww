@@ -7,7 +7,6 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
-import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
 import Headline3 from "./Headlines/Headline3";
 import { above } from "../../../styles/Theme";
 
@@ -68,7 +67,7 @@ const WorkoutsPictureSection = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -83,7 +82,7 @@ const WorkoutsPictureSection = () => {
       <ContentWrapper>
         <Headline3 />
       </ContentWrapper>
-      <BottomDivider />
+      <BottomLine />
     </SectionGrid>
   );
 };
@@ -102,42 +101,22 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const TopDivider = styled(DividerMarkerTriangle)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translate(-20px, -55px) rotateY(180deg) rotateZ(6deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(-55px) rotateY(180deg);
-  `}
-  ${above.tablet`
-    transform: translateY(-75px) rotateY(180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-105px) rotateY(180deg);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarkerTriangle)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 180%;
-  z-index: 1;
-  transform: translateY(45px) rotate(-180deg) rotateY(180deg);
-  ${above.mobile`
-    width: 100%;
-    transform: translateY(55px) rotate(-180deg) rotateY(180deg);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(80px) rotate(-180deg) rotateY(180deg);
-  `}
-  ${above.ipadPro`
-    width: 100%;
-    transform: translateY(110px) rotate(-180deg) rotateY(180deg);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

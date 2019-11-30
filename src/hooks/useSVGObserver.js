@@ -74,7 +74,7 @@ const useSVGObserver = ({
       //console.log("Icon is off screen");
       setRunAnimation(false);
     }
-  }, [ratio, previousRatio]);
+  }, [ratio, previousRatio, svgNode, shouldUnobserve]);
 
   return [setSVGNode, runAnimation];
 };

@@ -7,8 +7,6 @@ import { SectionGrid, BackgroundAsset } from "../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../Shared/BackgroundImageLoader";
-import DividerMarkerTriangle from "../../../svgs/DividerMarkerTriangle";
-import { above } from "../../../styles/Theme";
 
 const PictureMiddleSection = () => {
   const query = graphql`
@@ -67,7 +65,7 @@ const PictureMiddleSection = () => {
 
   return (
     <SectionGrid>
-      <TopDivider />
+      <TopLine />
       <BackgroundAsset>
         {backgroundReady ? (
           <Image
@@ -79,49 +77,29 @@ const PictureMiddleSection = () => {
           <BackgroundImageLoader />
         )}
       </BackgroundAsset>
-      <BottomDivider />
+      <BottomLine />
     </SectionGrid>
   );
 };
 
 export default PictureMiddleSection;
 
-const TopDivider = styled(DividerMarkerTriangle)`
+const TopLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 180%;
-  z-index: 2;
-  transform: translate(-20px, -25px) rotate(4deg);
-  ${above.mobile`
-    width: 160%;
-    transform: translateY(-85px);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(-65px);
-  `}
-  ${above.ipadPro`
-    transform: translateY(-105px);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;
 
-const BottomDivider = styled(DividerMarkerTriangle)`
+const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 180%;
-  z-index: 1;
-  transform: translateY(65px) rotate(-180deg);
-  ${above.mobile`
-    width: 160%;
-    transform: translateY(105px) rotate(-180deg);
-  `}
-  ${above.tablet`
-    width: 100%;
-    transform: translateY(75px) rotate(-180deg);
-  `}
-  ${above.ipadPro`
-    transform: translateY(105px) rotate(-180deg);
-  `}
+  right: 0;
+  height: 16px;
+  background: rgba(43, 44, 58, 0.5);
+  z-index: 3;
 `;

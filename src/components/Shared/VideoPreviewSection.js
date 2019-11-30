@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 
-import {
-  SectionContainer,
-  ContentContainer,
-  ElementContainer,
-} from "../../styles/Containers";
-import { InnerButton } from "../../styles/Buttons";
+import { ContentContainer, ElementContainer } from "../../styles/Containers";
+import BaseButton from "../Buttons/BaseButton";
 import { above } from "../../styles/Theme";
 
-const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
+const VideoPreviewSection = ({ program, buttonText }) => {
   const query = graphql`
     query {
       bbcWorkoutPreview: file(
@@ -54,6 +50,8 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
   const ignite = videoLink.igniteVideoPreview.childMarkdownRemark.html;
   const videoMessage = videoLink.bbcVideoMessage.childMarkdownRemark.html;
 
+  const handleButtonClick = () => navigate("/join-a-7-day-reset-program");
+
   return (
     <SectionContainer>
       {program === "bbc" ? (
@@ -74,9 +72,7 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
       </VideoWrapper>
       <ContentContainer>
         <ElementContainer justifyCenter setMobileMarginTop={40}>
-          <InnerButton to={"/join-a-7-day-reset-program"}>
-            {buttonText}
-          </InnerButton>
+          <BaseButton handleClick={handleButtonClick}>{buttonText}</BaseButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>
@@ -84,6 +80,12 @@ const VideoPreviewSection = ({ program, buttonText, kettlebell }) => {
 };
 
 export default VideoPreviewSection;
+
+const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const VideoWrapper = styled.div`
   margin: 0;

@@ -41,17 +41,11 @@ const ProgressLoader = ({
         },
       });
     }
-    // else {
-    //   tl.to(loaderBar, 4, {
-    //     drawSVG: "0%",
-    //     ease: Linear.easeNone,
-    //   });
-    // }
 
     return () => {
       tl.kill(null, loaderBar);
     };
-  }, [runAnimation]);
+  }, [runAnimation, setPercentComplete]);
 
   return (
     <svg

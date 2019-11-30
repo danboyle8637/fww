@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ElementContainer } from "../../../../styles/Containers";
 import { Header1 } from "../../../../styles/Headlines";
 import HeadlineCopy from "../Copy/HeadlineCopy";
 

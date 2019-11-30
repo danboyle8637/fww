@@ -7,7 +7,6 @@ import { SectionGrid, BackgroundAsset } from "../../../../styles/GridContainer";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
-import { above } from "../../../../styles/Theme";
 
 const KindalAlex = () => {
   const query = graphql`

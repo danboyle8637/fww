@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { TweenMax, Power2 } from "gsap/TweenMax";
 
 import MainMenuIcon from "../../../svgs/MainMenuIcon";
 import RightMenuDrawer from "./RightMenuDrawer";
@@ -14,16 +13,6 @@ const MenuChicklet = () => {
   // eslint-disable-next-line
   const [menuState, dispatchMenuAction] = useMenuContext();
   const menuChickletRef = useRef(null);
-
-  // useEffect(() => {
-  //   const menuChicklet = menuChickletRef.current;
-
-  //   if (menuState.isOpen) {
-  //     TweenMax.to(menuChicklet, 0.5, { x: -60 });
-  //   } else {
-  //     TweenMax.to(menuChicklet, 0.5, { x: 0 });
-  //   }
-  // }, [menuChickletRef, menuState.isOpen]);
 
   const handleToggleMenu = () => {
     dispatchMenuAction({ type: "toggleMenu" });

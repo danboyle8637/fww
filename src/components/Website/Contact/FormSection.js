@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { ContentContainer, ElementContainer } from "../../../styles/Containers";
-import { FormButton } from "../../../styles/Buttons";
 import BaseButton from "../../Buttons/BaseButton";
 import TextInput from "../../Shared/Form/TextInput";
 import TextArea from "../../Shared/Form/TextArea";
@@ -61,11 +60,7 @@ const FormSection = ({
         );
         setShowMessage(true);
       });
-
-    // Navigate to a thank you page.
   };
-
-  const resetForm = () => dispatchFormAction({ type: "resetContactForm" });
 
   return (
     <SectionContainer>

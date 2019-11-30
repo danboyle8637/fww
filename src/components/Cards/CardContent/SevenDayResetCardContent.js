@@ -4,7 +4,6 @@ import { navigate } from "gatsby";
 
 import { BodyText } from "../../../styles/BodyText";
 import BaseButton from "../../Buttons/BaseButton";
-import { InnerButton } from "../../../styles/Buttons";
 import { above } from "../../../styles/Theme";
 
 const SevenDayResetCardContent = () => {

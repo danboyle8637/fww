@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { navigate } from "gatsby";
 
-import { Header3 } from "../../../styles/Headlines";
 import { useMenuContext } from "../../../context/MenuContext";
 import { above } from "../../../styles/Theme";
 

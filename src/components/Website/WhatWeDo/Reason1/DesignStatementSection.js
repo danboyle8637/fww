@@ -8,8 +8,6 @@ import Headline2 from "./Headlines/Headline2";
 import useRenderBackgroundImage from "../../../../hooks/useRenderBackgroundImage";
 import useIsBackgroundReady from "../../../../hooks/useIsBackgroundReady";
 import BackgroundImageLoader from "../../../Shared/BackgroundImageLoader";
-import DividerMarker1 from "../../../../svgs/DividerMarker1";
-import DividerMarker2 from "../../../../svgs/DividerMarker2";
 import { above } from "../../../../styles/Theme";
 
 const DesignStatementSection = () => {

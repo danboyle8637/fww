@@ -1,21 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import { SectionContainer } from "../../../../styles/Containers";
 import Headline1 from "./Headlines/Headline1";
 import BenefitCard from "../../../Cards/BenefitCard";
-import { useIsTweeningContext } from "../../../../context/IsTweeningContext";
 import { useActiveCardContext } from "../../../../context/ActiveSlideContext";
-import ScreenWidthContext from "../../../../context/ScreenWidthContext";
 import { above } from "../../../../styles/Theme";
 
 const ReasonSection = () => {
   // eslint-disable-next-line
-  const [{ isTweening }, dispatch] = useIsTweeningContext();
-  // eslint-disable-next-line
   const [{ activeCard }, dispatch2] = useActiveCardContext();
-  const device = useContext(ScreenWidthContext);
 
   useEffect(() => {
     dispatch2({ type: "setActiveCard", value: 1 });
