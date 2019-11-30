@@ -21,6 +21,8 @@ export default NavCTAButton;
 const ButtonContainer = styled.button`
   margin: 0;
   padding: 4px 20px;
+  grid-column: 2;
+  justify-self: end;
   display: flex;
   justify-content: center;
   align-items: center;

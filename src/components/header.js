@@ -106,12 +106,11 @@ const Header = ({ location }) => {
       <LogoLink to={"/"}>
         <Logo showBackButton={showBackButton} showBackButton={showBackButton} />
       </LogoLink>
-      <MenuWrapper>
-        <NavCTAButton handleClick={handleCTAButtonClick}>
-          Start for FREE!
-        </NavCTAButton>
-        <MenuChicklet />
-      </MenuWrapper>
+
+      <NavCTAButton handleClick={handleCTAButtonClick}>
+        Start for FREE!
+      </NavCTAButton>
+      <MenuChicklet />
     </HeaderBar>
   );
 };
@@ -123,8 +122,9 @@ const HeaderBar = styled.header`
   padding: 12px 20px;
   position: fixed;
   top: 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 20px;
   align-items: center;
   width: 100%;
   max-width: ${props => `${props.maxWidth}rem`};
@@ -132,6 +132,7 @@ const HeaderBar = styled.header`
 `;
 
 const Logo = styled(FWWLogo)`
+  justify-self: start;
   display: ${props => (props.showBackButton ? "none" : "flex")};
   justify-content: center;
   align-items: center;
@@ -169,14 +170,4 @@ const LogoLink = styled(Link)`
     outline: none;
     box-shadow: 0 0 0 2px #000, 0 0 0 4px ${props => props.theme.tertiaryAccent};
   }
-`;
-
-const MenuWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 20px;
-  align-items: center;
-  ${above.mobile`
-    gap: 40px;
-  `}
 `;

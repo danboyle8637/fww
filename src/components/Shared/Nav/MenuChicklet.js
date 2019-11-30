@@ -34,6 +34,7 @@ const MenuChicklet = () => {
 export default MenuChicklet;
 
 const Chicklet = styled.div`
+  grid-column: 3;
   justify-self: end;
   display: flex;
   justify-content: center;
