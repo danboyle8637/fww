@@ -15,14 +15,16 @@ const Layout = ({ children, location }) => {
   const [siteLayout, setSiteLayout] = useState("website");
 
   useEffect(() => {
-    const pathName = location.pathname;
+    if (typeof window !== undefined) {
+      const pathName = location.pathname;
 
-    if (pathName.includes("blog")) {
-      setSiteLayout("blog");
-    } else {
-      setSiteLayout("website");
+      if (pathName.includes("blog")) {
+        setSiteLayout("blog");
+      } else {
+        setSiteLayout("website");
+      }
     }
-  }, [location.pathname]);
+  }, [location]);
 
   return (
     <ThemeProvider theme={darkTheme}>

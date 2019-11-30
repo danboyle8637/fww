@@ -1,5 +1,8 @@
 #firebase
 firebase/
+.firebaserc
+firebase.json
+cloudbuild.yaml
 
 #plugins
 plugins/
