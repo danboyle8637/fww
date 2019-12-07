@@ -20,7 +20,7 @@ const SectionContainer = styled.div`
 `;
 
 const FooterLabel = styled.p`
-  font-family: QuicksandMedium;
+  font-family: Quicksand;
   font-size: 12px;
   color: ${props =>
     props.label ? props.theme.footerAddressText : props.theme.primaryAccent};

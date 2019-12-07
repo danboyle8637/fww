@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import FWWBlackNavLogo from "../../../svgs/FWWBlackNavLogo";
 import siteConfig from "../../../utils/siteConfig";
 import { above } from "../../../styles/Theme";
 
@@ -19,6 +20,7 @@ const PublicLoginMenu = () => {
 
   return (
     <MenuContainer>
+      <NavLogo />
       <MembersLabel>Members</MembersLabel>
       <ButtonWrapper>{loginItems}</ButtonWrapper>
     </MenuContainer>
@@ -28,48 +30,27 @@ const PublicLoginMenu = () => {
 export default PublicLoginMenu;
 
 const MenuContainer = styled.div`
-  position: relative;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 80%;
-  ${above.mobile`
-    height: 90%;
-  `}
-  ${above.ipadPro`
-    margin: 0;
-    flex-direction: row;
-    justify-content: center;
-  `}
 `;
 
 const MembersLabel = styled.h3`
-  position: absolute;
-  top: 50%;
-  left: 0;
   margin: 0;
   padding: 0;
-  font-size: 82px;
+  font-size: 33px;
   font-weight: 800;
   word-wrap: normal;
   text-transform: uppercase;
   color: #000000;
-  width: 100%;
-  transform: rotate(-90deg);
   ${above.mobile`
-    font-size: 120px;
+    font-size: 70px;
   `}
   ${above.tablet`
-    font-size: 160px;
+    font-size: 90px;
   `}
   ${above.ipadPro`
-    top: 45%;
-    left: 40%;
-    font-size: 180px;
-    transform: rotate(-90deg);
+    font-size: 120px;
   `}
   ${above.laptop`
     top: 26%;
@@ -78,14 +59,13 @@ const MembersLabel = styled.h3`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 40px 0 0 0;
-  padding: 0 12px;
-  align-self: end;
+  margin: 12px 0 0 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
   width: 100%;
   max-width: 360px;
+  z-index: 1;
   ${above.mobile`
     padding: 0 40px;
   `}
@@ -111,6 +91,7 @@ const AppLink = styled.a`
   text-align: center;
   border-radius: 8px;
   cursor: pointer;
+  transition: box-shadow 300ms ease-in-out;
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.tertiaryAccent};
@@ -118,7 +99,20 @@ const AppLink = styled.a`
   ${above.mobile`
     font-size: 32px;
   `}
+  ${above.ipadPro`
+    &:hover {
+      box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props =>
+        props.theme.tertiaryAccent};
+    }
+  `}
+`;
+
+const NavLogo = styled(FWWBlackNavLogo)`
+  width: 120px;
+  ${above.mobile`
+    width: 200px;
+  `}
   ${above.tablet`
-    font-size: 46px;
+    width: 300px;
   `}
 `;

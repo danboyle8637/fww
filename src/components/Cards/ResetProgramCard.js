@@ -66,8 +66,10 @@ const CardContainer = styled.div`
 const DescriptionWrapper = styled.div`
   margin: 8px 0 0 0;
   padding: 8px;
-  font-family: QuicksandSemiBold;
-  font-size: 14px;
-  text-decoration: none;
-  color: ${props => props.theme.bodyText};
+  & p {
+    font-family: Quicksand;
+    font-size: 14px;
+    text-decoration: none;
+    color: ${props => props.theme.bodyText};
+  }
 `;

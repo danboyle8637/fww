@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 
 import { SectionContainer, ContentContainer } from "../../../styles/Containers";
 import BlogCard from "../../Cards/BlogCard";
-//import BlogCard from "./BlogCard";
 import BlogHeader from "./BlogHeader";
 import { above } from "../../../styles/Theme";
 

@@ -23,6 +23,7 @@ const Layout = styled.main`
     max-width: 800px;
   `}
   ${above.laptop`
+    background-color: ${props => props.theme.baseBackgroundColor};
     max-width: 980px;
   `}
   ${above.ultraWide`

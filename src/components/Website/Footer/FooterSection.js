@@ -11,7 +11,7 @@ const FooterSection = () => {
   return (
     <FooterContainer>
       <LogoLink to={"/"}>
-        <Logo footerLogo={true} />
+        <Logo gradientId="FooterLogo" />
       </LogoLink>
       <FooterNavMenu />
       <SocialIcons />

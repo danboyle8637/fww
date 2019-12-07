@@ -104,13 +104,14 @@ const Header = ({ location }) => {
         </BackButtonBackground>
       ) : null}
       <LogoLink to={"/"}>
-        <Logo showBackButton={showBackButton} showBackButton={showBackButton} />
+        <Logo showBackButton={showBackButton} gradientId="NavLogo" />
       </LogoLink>
-
-      <NavCTAButton handleClick={handleCTAButtonClick}>
-        Start for FREE!
-      </NavCTAButton>
-      <MenuChicklet />
+      <NavCTAWrapper>
+        <NavCTAButton handleClick={handleCTAButtonClick}>
+          Start for FREE!
+        </NavCTAButton>
+        <MenuChicklet />
+      </NavCTAWrapper>
     </HeaderBar>
   );
 };
@@ -122,9 +123,8 @@ const HeaderBar = styled.header`
   padding: 12px 20px;
   position: fixed;
   top: 0;
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: ${props => `${props.maxWidth}rem`};
@@ -170,4 +170,10 @@ const LogoLink = styled(Link)`
     outline: none;
     box-shadow: 0 0 0 2px #000, 0 0 0 4px ${props => props.theme.tertiaryAccent};
   }
+`;
+
+const NavCTAWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
 `;

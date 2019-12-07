@@ -84,7 +84,7 @@ const HeadlineSection = () => {
         )}
         <ContentWrapper>
           <HeadlineWrapper>
-            <Logo />
+            <Logo gradientId="HomeHeaderLogo" />
             <Headline />
             <ScrollDownArrow scrollId="home-card-section" />
           </HeadlineWrapper>

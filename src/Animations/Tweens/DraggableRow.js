@@ -72,9 +72,9 @@ const DraggableRow = ({ numberOfCards, children }) => {
       throwProps: true,
       bounds: window,
       cursor: "grab",
-      activeCursor: "grabbing",
-      dragResistance: 0.5,
+      dragResistance: 0.1,
       edgeResistance: 0.6,
+      activeCursor: "grabbing",
       snap: snapX,
     });
   }, [startPosition, snapX]);

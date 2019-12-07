@@ -64,6 +64,7 @@ const LeftDrawer = styled.div`
   width: 54%;
   padding: 20px;
   overflow: hidden;
+  box-shadow: 3px 0 8px 3px rgba(0,0,0,0.4);
   z-index: 1009;
   ${above.mobile`
     padding: 0 0 0 100px;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FWWLogo = ({ width, height, className, footerLogo }) => {
+const FWWLogo = ({ width, height, className, gradientId }) => {
   return (
     <svg
       id="fww-logo"
@@ -13,7 +13,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
       <title>Fit Women's Weekly Logo</title>
       <defs>
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient" : "fwwMainGradient"}
+          id={`fwwMainLogo${gradientId}`}
           x1="911.72"
           y1="393.87"
           x2="729.54"
@@ -26,31 +26,31 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
           <stop offset="1" stopColor="#8b53f6" />
         </linearGradient>
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient5" : "fwwMainGradient5"}
+          id={`fwwMainLogo${gradientId}5`}
           x1="744.68"
           y1="309.6"
           x2="744.68"
           y2="634.24"
-          xlinkHref={footerLogo ? "#fwwMainFooterGradient" : "#fwwMainGradient"}
+          xlinkHref={`#fwwMainLogo${gradientId}`}
         />
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient4" : "fwwMainGradient4"}
+          id={`fwwMainLogo${gradientId}4`}
           x1="695.77"
           y1="375.94"
           x2="506.75"
           y2="649.14"
-          xlinkHref={footerLogo ? "#fwwMainFooterGradient" : "#fwwMainGradient"}
+          xlinkHref={`#fwwMainLogo${gradientId}`}
         />
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient3" : "fwwMainGradient3"}
+          id={`fwwMainLogo${gradientId}3`}
           x1="516.13"
           y1="309.59"
           x2="516.13"
           y2="634.24"
-          xlinkHref={footerLogo ? "#fwwMainFooterGradient" : "#fwwMainGradient"}
+          xlinkHref={`#fwwMainLogo${gradientId}`}
         />
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient2" : "fwwMainGradient2"}
+          id={`fwwMainLogo${gradientId}2`}
           x1="464.47"
           y1="373.35"
           x2="281.87"
@@ -63,23 +63,19 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
           <stop offset="1" stopColor="#8b53f6" />
         </linearGradient>
         <linearGradient
-          id={footerLogo ? "fwwMainFooterGradient1" : "fwwMainGradient1"}
+          id={`fwwMainLogo${gradientId}1`}
           x1="286.88"
           y1="309.66"
           x2="286.88"
           y2="634.24"
-          xlinkHref={
-            footerLogo ? "#fwwMainFooterGradient2" : "#fwwMainGradient2"
-          }
+          xlinkHref={`#fwwMainLogo${gradientId}2`}
         />
       </defs>
       <path
         id="w-6"
         d="M956.59 317.25l-82 237-26.34 76.15a5.72 5.72 0 0 1-5.4 3.85h-70.41a5.72 5.72 0 0 1-5.41-7.56l12.35-36.37L804 517.88l69.39-204.34a5.72 5.72 0 0 1 5.42-3.88h72.39a5.72 5.72 0 0 1 5.39 7.59z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient)" : "url(#fwwMainGradient)"
-        }
+        fill={`url(#fwwMainLogo${gradientId})`}
       />
       <path
         id="shadow-6"
@@ -91,9 +87,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
         id="w-5"
         d="M838.75 634.24h-70.32a5.73 5.73 0 0 1-5.36-3.71l-76.28-202.8-41.54-110.39a5.73 5.73 0 0 1 5.37-7.74h72.44a5.71 5.71 0 0 1 5.35 3.74l20 54.18 95.68 259a5.72 5.72 0 0 1-5.34 7.72z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient5)" : "url(#fwwMainGradient5)"
-        }
+        fill={`url(#fwwMainLogo${gradientId}5)`}
       />
       <path
         id="shadow-5"
@@ -105,9 +99,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
         id="w-4"
         d="M724.47 317.21l-83.32 244.37-23.46 68.79a5.72 5.72 0 0 1-5.41 3.87h-71.69a5.73 5.73 0 0 1-5.42-7.55l17.07-50.52L573.59 513l.17-.5 67.27-199a5.73 5.73 0 0 1 5.42-3.89l72.6.06a5.72 5.72 0 0 1 5.42 7.54z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient4)" : "url(#fwwMainGradient4)"
-        }
+        fill={`url(#fwwMainLogo${gradientId}4)`}
       />
       <path
         id="shadow-4"
@@ -119,9 +111,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
         id="w-3"
         d="M608.31 634.24h-71.66a5.72 5.72 0 0 1-5.39-3.78L459 429.7l-28.48-79.2-11.95-33.2a5.72 5.72 0 0 1 5.38-7.65H498.69a5.71 5.71 0 0 1 5.4 3.84l19.5 55.7 90.12 257.5a5.72 5.72 0 0 1-5.4 7.55z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient3)" : "url(#fwwMainGradient3)"
-        }
+        fill={`url(#fwwMainLogo${gradientId}3)`}
       />
       <path
         id="shadow-3"
@@ -133,9 +123,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
         id="w-2"
         d="M500 317.28l-89.57 245.85-24.53 67.34a5.72 5.72 0 0 1-5.38 3.77h-70.43a5.72 5.72 0 0 1-5.39-7.61l21.77-62.1 18-51.29 70-199.76a5.71 5.71 0 0 1 5.39-3.83h74.7a5.72 5.72 0 0 1 5.44 7.63z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient2)" : "url(#fwwMainGradient2)"
-        }
+        fill={`url(#fwwMainLogo${gradientId}2)`}
       />
       <path
         id="shadow-2"
@@ -147,9 +135,7 @@ const FWWLogo = ({ width, height, className, footerLogo }) => {
         id="w-1"
         d="M376.61 634.24H306.1a5.7 5.7 0 0 1-5.4-3.83l-89-255.84-19.94-57.31a5.71 5.71 0 0 1 5.4-7.6h75.73a5.73 5.73 0 0 1 5.43 3.91L311.9 415 382 626.72a5.72 5.72 0 0 1-5.39 7.52z"
         transform="translate(-51.96 -114.9)"
-        fill={
-          footerLogo ? "url(#fwwMainFooterGradient1)" : "url(#fwwMainGradient1)"
-        }
+        fill={`url(#fwwMainLogo${gradientId}1)`}
       />
       <path
         id="shadow-1"

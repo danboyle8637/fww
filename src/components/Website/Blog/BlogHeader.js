@@ -9,7 +9,7 @@ const BlogHeader = () => {
     <HeadlineGrid>
       <Kettlebell />
       <ContentContainer>
-        <Logo />
+        <Logo gradientId="BlogHeader" />
         <BlogHeadline>Blog</BlogHeadline>
       </ContentContainer>
     </HeadlineGrid>
