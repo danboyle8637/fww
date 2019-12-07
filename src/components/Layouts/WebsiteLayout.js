@@ -16,10 +16,6 @@ const Layout = styled.main`
   width: 100%;
   max-width: 1440px;
   overflow: hidden;
-  ${above.tablet`
-  `}
-  ${above.ipadPro`
-  `}
   ${above.laptop`
     border: 21px solid ${props => props.theme.mainBackgroundBorderColor};
     border-radius: 20px;

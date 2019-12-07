@@ -6,6 +6,9 @@
 
 // You can delete this file if you're not using it
 import React from "react";
+import CustomLayout from "./wrapPageElement";
+
+export const wrapPageElement = CustomLayout;
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
   setPostBodyComponents([

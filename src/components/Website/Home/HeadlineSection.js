@@ -71,31 +71,29 @@ const HeadlineSection = () => {
   const handleBaseButtonClick = () => navigate("/join-a-7-day-reset-program");
 
   return (
-    <>
-      <SectionGrid>
-        {backgroundReady ? (
-          <BackgroundImage
-            fluid={background}
-            alt="Kindal walking with two kettlebells racked."
-            title="Kindal with two racked kettlebels"
-          />
-        ) : (
-          <BackgroundImageLoader />
-        )}
-        <ContentWrapper>
-          <HeadlineWrapper>
-            <Logo gradientId="HomeHeaderLogo" />
-            <Headline />
-            <ScrollDownArrow scrollId="home-card-section" />
-          </HeadlineWrapper>
-          <ButtonWrapper>
-            <BaseButton handleClick={handleBaseButtonClick}>
-              Get Started for FREE!
-            </BaseButton>
-          </ButtonWrapper>
-        </ContentWrapper>
-      </SectionGrid>
-    </>
+    <SectionGrid>
+      {backgroundReady ? (
+        <BackgroundImage
+          fluid={background}
+          alt="Kindal walking with two kettlebells racked."
+          title="Kindal with two racked kettlebels"
+        />
+      ) : (
+        <BackgroundImageLoader />
+      )}
+      <ContentWrapper>
+        <HeadlineWrapper>
+          <Logo gradientId="HomeHeaderLogo" />
+          <Headline />
+          <ScrollDownArrow scrollId="home-card-section" />
+        </HeadlineWrapper>
+        <ButtonWrapper>
+          <BaseButton handleClick={handleBaseButtonClick}>
+            Get Started for FREE!
+          </BaseButton>
+        </ButtonWrapper>
+      </ContentWrapper>
+    </SectionGrid>
   );
 };
 

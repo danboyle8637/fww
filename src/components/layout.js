@@ -32,11 +32,13 @@ const Layout = ({ children, location }) => {
         <ScreenWidthStore>
           <Global blog={siteLayout} />
           <Header location={location} />
+
           {siteLayout === "blog" ? (
             <BlogLayout>{children}</BlogLayout>
           ) : siteLayout === "website" ? (
             <WebsiteLayout>{children}</WebsiteLayout>
           ) : null}
+
           <FooterSection />
         </ScreenWidthStore>
       </MenuStore>

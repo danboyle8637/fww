@@ -3,6 +3,7 @@ firebase/
 .firebaserc
 firebase.json
 cloudbuild.yaml
+.firebase
 
 #plugins
 plugins/

@@ -107,6 +107,7 @@ const SectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   ${above.mobile`
     margin-top: ${props => props.setTabletMarginTop || "7.5rem"};
     margin-bottom: ${props => props.setTabletMarginBottom || "7.5rem"};

@@ -66,7 +66,7 @@ const Header3 = styled.h3`
   letter-spacing: 0.1rem;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   margin: 20px 0 0 0;
   padding: 2px 12px;
   align-self: flex-start;
@@ -77,6 +77,17 @@ const Button = styled.div`
   font-weight: 400;
   font-size: 14px;
   color: #f8f8f8;
+  transition: box-shadow 300ms ease-in-out;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props => props.theme.tertiaryAccent};
+  }
+  ${above.ipadPro`
+    &:hover {
+      box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props =>
+        props.theme.tertiaryAccent};
+    }
+  `}
 `;
 
 const UnstyledLink = styled(Link)`
