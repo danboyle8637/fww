@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 
 import {
   SectionContainer,
@@ -9,7 +9,7 @@ import {
 } from "../../../../styles/Containers";
 import Headline3 from "./Headlines/Headline3";
 import { SetBodyText } from "../../../../styles/BodyText";
-import { InnerButton } from "../../../../styles/Buttons";
+import BaseButton from "../../../Buttons/BaseButton";
 import MicroHitCard from "./MicroHitCard";
 
 const MicroHITSection = () => {
@@ -28,6 +28,8 @@ const MicroHITSection = () => {
 
   const copy = useStaticQuery(query);
   const body = copy.file.childMarkdownRemark.html;
+
+  const handleButtonClick = () => navigate("/beginner-workouts-to-advanced");
 
   return (
     <SectionContainer>
@@ -50,9 +52,9 @@ const MicroHITSection = () => {
           </ElementContainer>
         </HeadlineContainer>
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          <InnerButton to={"/beginner-workouts-to-advanced"}>
+          <BaseButton handleClick={handleButtonClick}>
             What's your fitness level?
-          </InnerButton>
+          </BaseButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

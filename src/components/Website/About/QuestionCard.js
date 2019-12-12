@@ -37,11 +37,9 @@ const CardWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background: #101010;
-  border-bottom: 3px solid;
-  border-color: ${props => props.theme.secondaryAccent};
   border-radius: 6px;
   width: 90%;
-  transition: transform, box-shadow, 200ms ease-in-out;
+  transition: transform, box-shadow, 300ms ease-in-out;
   ${above.mobile`
     width: 80%;
   `}
@@ -53,8 +51,8 @@ const CardWrapper = styled.div`
     align-items: flex-start;
     width: 345px;
     &:hover {
-      box-shadow: 0 6px 4px 2px rgba(0,0,0,0.3);
-      transform: translateY(-4px);
+      box-shadow: 0 0 0 2px #000, 0 0 0 5px ${props =>
+        props.theme.primaryAccent};
     }
   `}
 `;

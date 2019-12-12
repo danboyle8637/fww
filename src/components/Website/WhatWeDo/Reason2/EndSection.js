@@ -1,22 +1,25 @@
 import React from "react";
+import { navigate } from "gatsby";
 
 import {
   SectionContainer,
   ContentContainer,
   ElementContainer,
 } from "../../../../styles/Containers";
-import { InnerButton } from "../../../../styles/Buttons";
+import BaseButton from "../../../Buttons/BaseButton";
 import Headline2 from "./Headlines/Headline2";
 
 const EndSection = () => {
+  const handleButtonClick = () => navigate("/online-personal-training");
+
   return (
     <SectionContainer>
       <ContentContainer>
         <Headline2 />
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          <InnerButton to={"/online-personal-training"}>
+          <BaseButton handleClick={handleButtonClick}>
             The Final Missing Piece?
-          </InnerButton>
+          </BaseButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

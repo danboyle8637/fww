@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import Image from "gatsby-image";
 
+import BaseButton from "../Buttons/BaseButton";
 import { SetBodyText } from "../../styles/BodyText";
 
 const BenefitCard = ({
@@ -13,24 +14,24 @@ const BenefitCard = ({
   path,
   cardId,
 }) => {
+  const handleCardClick = () => navigate(path);
+
   return (
-    <UnstyledLink to={path}>
-      <CardContainer>
-        <ImageWrapper>
-          <BackgroundImage fluid={image} />
-          <HeadlineWrapper cardId={cardId}>
-            <Header3>{headline}</Header3>
-          </HeadlineWrapper>
-        </ImageWrapper>
-        <ContentWrapper>
-          <SetBodyText
-            setMobileMarginTop={12}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-          <Button>{buttonText}</Button>
-        </ContentWrapper>
-      </CardContainer>
-    </UnstyledLink>
+    <CardContainer onClick={handleCardClick}>
+      <ImageWrapper>
+        <BackgroundImage fluid={image} />
+        <HeadlineWrapper cardId={cardId}>
+          <Header3>{headline}</Header3>
+        </HeadlineWrapper>
+      </ImageWrapper>
+      <ContentWrapper>
+        <SetBodyText
+          setMobileMarginTop={12}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+        <BaseButton handleClick={handleCardClick}>{buttonText}</BaseButton>
+      </ContentWrapper>
+    </CardContainer>
   );
 };
 
@@ -89,24 +90,4 @@ const Header3 = styled.h3`
   font-size: 28px;
   color: ${props => props.theme.headlinePrimary};
   letter-spacing: 0.1rem;
-`;
-
-const Button = styled.div`
-  margin: 0;
-  padding: 8px 12px;
-  background: ${props => props.theme.primaryAccent};
-  border-radius: 6px;
-  text-decoration: none;
-  text-align: center;
-  color: ${props => props.theme.mainBackgroundColor};
-  font-family: Montserrat, sans-serif;
-  text-transform: uppercase;
-  font-weight: 800;
-  width: 100%;
-  max-width: 600px;
-  cursor: pointer;
-`;
-
-const UnstyledLink = styled(Link)`
-  text-decoration: none;
 `;

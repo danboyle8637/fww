@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import styled from "styled-components";
 
 import {
@@ -7,7 +7,7 @@ import {
   ContentContainer,
   ElementContainer,
 } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
+import BaseButton from "../../Buttons/BaseButton";
 import QuestionCard from "./QuestionCard";
 import Headline4 from "./Headlines/Headline4";
 import LocationDot from "../../Shared/LocationDot";
@@ -56,6 +56,8 @@ const DanQuestions = () => {
     return <QuestionCard key={id} question={question} body={body} />;
   });
 
+  const handleButtonClick = () => navigate("/");
+
   return (
     <SectionContainer>
       <ContentContainer>
@@ -78,7 +80,9 @@ const DanQuestions = () => {
           </>
         )}
         <ElementContainer justifyCenter setMobileMarginTop={60}>
-          <InnerButton to={"/"}>Read My Origin Story</InnerButton>
+          <BaseButton handleClick={handleButtonClick}>
+            Read My Origin Story
+          </BaseButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>
