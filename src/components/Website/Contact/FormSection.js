@@ -26,7 +26,7 @@ const FormSection = ({
     setSyncMessage("Sending Message...");
     setIsSyncing(true);
 
-    const contactUrl = `${siteConfig.functions.baseUrl}/fit-womens-weekly/us-central1/fwwContactPage`;
+    const contactUrl = `${siteConfig.functions.baseUrl}`;
 
     const contactRequest = {
       firstName: formState.firstNameValue.value,

@@ -10,10 +10,11 @@ module.exports = {
     ultraWide: helpers.getRems(1460),
   },
   api: {
-    baseUrl: "http://localhost:5000",
+    baseUrl: "https://resetapi.fitwomensweekly.com",
   },
   functions: {
-    baseUrl: "http://localhost:5001",
+    baseUrl:
+      "https://us-central1-fit-womens-weekly.cloudfunctions.net/fwwContactPage",
   },
   publicNavMenu: {
     aboutGroup: [
