@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import { SectionContainer, ElementContainer } from "../../../styles/Containers";
-import { InnerButton } from "../../../styles/Buttons";
+import OutsideButton from "../../Buttons/OutsideButton";
 import Headline5 from "./Headlines/Headline5";
 import Headline6 from "./Headlines/Headline6";
 import CTACopy from "./Copy/CTACopy";
 
 const CTASection = () => {
+  const link = "https://reset.fitwomensweekly.com";
+
   return (
     <SectionContainer>
       <ContentContainer>
@@ -16,9 +18,9 @@ const CTASection = () => {
         <ElementContainer column alignCenter setMobileMarginTop={60}>
           <Headline6 />
           <ElementContainer setMobileMarginTop={40}>
-            <InnerButton to={"/7-day-reset-step1"}>
+            <OutsideButton linkLocation={link}>
               Join a Reset Program For Free
-            </InnerButton>
+            </OutsideButton>
           </ElementContainer>
         </ElementContainer>
       </ContentContainer>

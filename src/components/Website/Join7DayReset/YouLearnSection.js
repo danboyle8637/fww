@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql, navigate } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import {
   SectionContainer,
   ContentContainer,
   ElementContainer,
 } from "../../../styles/Containers";
-import BaseButton from "../../Buttons/BaseButton";
+import OutsideButton from "../../Buttons/OutsideButton";
 import ResetProgramCard from "../../Cards/ResetProgramCard";
 import YouLearnCopy from "./Copy/YouLearnCopy";
 import { above } from "../../../styles/Theme";
@@ -74,8 +74,6 @@ const YouLearnSection = () => {
     );
   });
 
-  const handleButtonClick = () => navigate("/7-day-reset-step1");
-
   return (
     <SectionContainer>
       <ContentContainer>
@@ -84,9 +82,9 @@ const YouLearnSection = () => {
       <CardWrapper>{cards}</CardWrapper>
       <ContentContainer>
         <ElementContainer justifyCenter setMobileMarginTop={40}>
-          <BaseButton handleClick={handleButtonClick}>
+          <OutsideButton linkLocation="https://reset.fitwomensweekly.com">
             Click To Choose Your Program
-          </BaseButton>
+          </OutsideButton>
         </ElementContainer>
       </ContentContainer>
     </SectionContainer>

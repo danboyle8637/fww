@@ -12,7 +12,13 @@ const PublicLoginMenu = () => {
     const path = item.path;
 
     return (
-      <AppLink join={id === 0 ? false : true} key={id} to={path}>
+      <AppLink
+        join={id === 0 ? false : true}
+        key={id}
+        href={path}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {title}
       </AppLink>
     );

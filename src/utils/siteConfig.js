@@ -41,8 +41,8 @@ module.exports = {
     ],
   },
   publicLoginMenu: [
-    { id: 0, title: "Login", path: "/" },
-    { id: 1, title: "Join", path: "/join-a-7-day-reset-program" },
+    { id: 0, title: "Login", path: "https://reset.fitwomensweekly.com" },
+    { id: 1, title: "Join", path: "https://reset.fitwomensweekly.com/7-day-reset-step1" },
   ],
   resetMemberMenu: [
     { id: 1, title: "Dashboard", path: "/app/" },

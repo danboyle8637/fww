@@ -6,9 +6,6 @@ import MissionSection from "../components/Website/Join7DayReset/MissionSection";
 import YouLearnSection from "../components/Website/Join7DayReset/YouLearnSection";
 import YouGetSection from "../components/Website/Join7DayReset/YouGetSection";
 import CTASection from "../components/Website/Join7DayReset/CTASection";
-import FAQSection from "../components/Website/Join7DayReset/FAQSection";
-import { faqState, reducer } from "../reducers/faqReducer";
-import { FAQStore } from "../context/FAQContext";
 import siteConfig from "../utils/siteConfig";
 import ResetImage from "../images/FacebookShare/reset-fb-share.jpg";
 import SEO from "../components/seo";
@@ -29,9 +26,6 @@ const JoinA7DayResetProgram = () => {
       <YouLearnSection />
       <YouGetSection />
       <CTASection />
-      <FAQStore initialState={faqState} reducer={reducer}>
-        <FAQSection />
-      </FAQStore>
     </>
   );
 };
