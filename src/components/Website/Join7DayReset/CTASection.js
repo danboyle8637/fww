@@ -8,7 +8,7 @@ import Headline6 from "./Headlines/Headline6";
 import CTACopy from "./Copy/CTACopy";
 
 const CTASection = () => {
-  const link = "https://reset.fitwomensweekly.com";
+  const link = "https://reset.fitwomensweekly.com/7-day-reset-step1";
 
   return (
     <SectionContainer>

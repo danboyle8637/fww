@@ -82,7 +82,7 @@ const YouLearnSection = () => {
       <CardWrapper>{cards}</CardWrapper>
       <ContentContainer>
         <ElementContainer justifyCenter setMobileMarginTop={40}>
-          <OutsideButton linkLocation="https://reset.fitwomensweekly.com">
+          <OutsideButton linkLocation="https://reset.fitwomensweekly.com/7-day-reset-step1">
             Click To Choose Your Program
           </OutsideButton>
         </ElementContainer>

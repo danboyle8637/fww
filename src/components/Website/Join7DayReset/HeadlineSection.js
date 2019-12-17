@@ -83,7 +83,7 @@ const HeadlineSection = () => {
         <Headline1 />
       </HeadlineWrapper>
       <ButtonWrapper>
-        <OutsideButton linkLocation={"https://reset.fitwomensweekly.com"}>
+        <OutsideButton linkLocation={"https://reset.fitwomensweekly.com/7-day-reset-step1"}>
           Join a Reset Program for FREE!
         </OutsideButton>
       </ButtonWrapper>
