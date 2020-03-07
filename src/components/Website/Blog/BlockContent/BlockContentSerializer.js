@@ -23,6 +23,8 @@ const sanityConfig = {
 const serializers = {
   types: {
     block: props => {
+      console.log("Block Props:", props);
+
       switch (props.node.style) {
         case "primarySubhead": {
           return <PrimarySubhead>{props.children}</PrimarySubhead>;
@@ -101,6 +103,7 @@ const serializers = {
       return <BlogStrongText>{props.children}</BlogStrongText>;
     },
     externalLink: props => {
+      console.log(props);
       const link = props.mark.href;
       return <ExternalLink link={link}>{props.children}</ExternalLink>;
     },
